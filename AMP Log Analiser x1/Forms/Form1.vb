@@ -57,6 +57,7 @@ Public Class frmMainForm
 #End Region
 
     'Declare the Version Number
+
     Dim MyCurrentVersionNumber As String = "v1.0.3.2"          'Update on every released version.
     Dim CurrentPublishVersionNumber As String                   'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
     '### DEVELOPER VARIABLES ###
