@@ -23,17 +23,22 @@ Partial Class SplashScreen
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GLabel2 = New gLabel.gLabel()
+        Me.GLabel1 = New gLabel.gLabel()
         Me.SuspendLayout()
         '
         'GLabel2
         '
+        Me.GLabel2.BackColor = System.Drawing.Color.Transparent
+        Me.GLabel2.CheckedColor = System.Drawing.Color.Transparent
         Me.GLabel2.Feather = 255
         Me.GLabel2.FillTypeLinear = System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
         Me.GLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GLabel2.Font = New System.Drawing.Font("Verdana", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GLabel2.ForeColor = System.Drawing.Color.White
+        Me.GLabel2.Glow = 5
         Me.GLabel2.GlowColor = System.Drawing.Color.Black
         Me.GLabel2.Location = New System.Drawing.Point(50, 42)
+        Me.GLabel2.MouseOverColor = System.Drawing.Color.Transparent
         Me.GLabel2.Name = "GLabel2"
         Me.GLabel2.Pulse = True
         Me.GLabel2.ShadowColor = System.Drawing.Color.Black
@@ -45,18 +50,32 @@ Partial Class SplashScreen
         Me.GLabel2.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.GLabel2.UseCompatibleTextRendering = True
         '
+        'GLabel1
+        '
+        Me.GLabel1.BackColor = System.Drawing.Color.Transparent
+        Me.GLabel1.Location = New System.Drawing.Point(64, 166)
+        Me.GLabel1.Name = "GLabel1"
+        Me.GLabel1.Size = New System.Drawing.Size(114, 34)
+        Me.GLabel1.TabIndex = 4
+        Me.GLabel1.Text = "GLabel1"
+        '
         'SplashScreen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DimGray
-        Me.ClientSize = New System.Drawing.Size(562, 402)
+        Me.ClientSize = New System.Drawing.Size(610, 446)
+        Me.Controls.Add(Me.GLabel1)
         Me.Controls.Add(Me.GLabel2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "SplashScreen"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "SplashScreen"
+        Me.TopMost = True
+        Me.TransparencyKey = System.Drawing.Color.FromArgb(CType(CType(191, Byte), Integer), CType(CType(1, Byte), Integer), CType(CType(191, Byte), Integer))
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents GLabel2 As gLabel.gLabel
+    Friend WithEvents GLabel1 As gLabel.gLabel
 End Class

@@ -57,9 +57,18 @@ Public Class frmMainForm
 #End Region
 
     'Declare the Version Number
+    Shared Function BuildVers()
+        Dim MyCurrentVersionNumber As String = "v1.0.3.2"          'Update on every released version.
+        Return MyCurrentVersionNumber
+    End Function
+    Shared Function PublishedVers()
+        Dim CurrentPublishVersionNumber As String = ""                  'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
+        Return CurrentPublishVersionNumber
+    End Function
 
-    Dim MyCurrentVersionNumber As String = "v1.0.3.2"          'Update on every released version.
-    Dim CurrentPublishVersionNumber As String                   'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
+
+    Dim MyCurrentVersionNumber As String = frmMainForm.BuildVers()       'Update on every released version.
+    Dim CurrentPublishVersionNumber As String = frmMainForm.PublishedVers()                 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
     '### DEVELOPER VARIABLES ###
     Dim Ignore_CTUN_Logging As Boolean = False                  'TRUE if you want to pretend that CTUN is not in the logs
     Dim Ignore_LOG_Version As Boolean = False                   'TRUE is you want to load any log regardless of the Firmware Version that created it.

@@ -118,7 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ApplicationEvents.vb" />
-    <Compile Include="Classes\Class1.vb" />
+    <Compile Include="Classes\GlobalDefs.vb" />
     <Compile Include="Forms\Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
     </Compile>

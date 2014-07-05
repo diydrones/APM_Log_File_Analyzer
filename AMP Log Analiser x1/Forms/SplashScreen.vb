@@ -9,60 +9,29 @@ Imports System.Data
 Imports gLabel
 
 Public Class SplashScreen
-#Region "     Form Position Code Start & Constants "
-    'Form Position Code Start
-    Public Const WM_NCLBUTTONDOWN As Integer = &HA1
-    Public Const HTBORDER As Integer = 18
-    Public Const HTBOTTOM As Integer = 15
-    Public Const HTBOTTOMLEFT As Integer = 16
-    Public Const HTBOTTOMRIGHT As Integer = 17
-    Public Const HTCAPTION As Integer = 2
-    Public Const HTLEFT As Integer = 10
-    Public Const HTRIGHT As Integer = 11
-    Public Const HTTOP As Integer = 12
-    Public Const HTTOPLEFT As Integer = 13
-    Public Const HTTOPRIGHT As Integer = 14
-    Public Const EM_GETLINECOUNT = &HBA
-    Public Const EM_LINESCROLL = &HB6
+    Dim MyCurrentVersionNumber As String = frmMainForm.BuildVers()
 
-    Private Sub SavePosition(ByVal frm As Form, ByVal app_name As String)
-        SaveSetting(app_name, "Geometry", "WindowState", frm.WindowState)
-        If frm.WindowState = FormWindowState.Normal Then
-            SaveSetting(app_name, "Geometry", "Left", frm.Left)
-            SaveSetting(app_name, "Geometry", "Top", frm.Top)
-            SaveSetting(app_name, "Geometry", "Width", frm.Width)
-            SaveSetting(app_name, "Geometry", "Height", frm.Height)
-        Else
-            SaveSetting(app_name, "Geometry", "Left", frm.RestoreBounds.Left)
-            SaveSetting(app_name, "Geometry", "Top", frm.RestoreBounds.Top)
-            SaveSetting(app_name, "Geometry", "Width", frm.RestoreBounds.Width)
-            SaveSetting(app_name, "Geometry", "Height", frm.RestoreBounds.Height)
-        End If
+    Private Sub SplashScreen_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
+        e.Graphics.Clear(Color.FromArgb(255, 191, 1, 191))
+        e.Graphics.FillPolygon(Brushes.DarkTurquoise, _
+            New PointF() { _
+            New Point(122, 36), New Point(180, 102), _
+            New Point(262, 126), New Point(189, 173), _
+            New Point(217, 230), New Point(132, 194), _
+            New Point(62, 228), New Point(62, 160), _
+            New Point(13, 112), New Point(73, 97) _
+            })
     End Sub
-    Private Sub RestorePosition(ByVal frm As Form, ByVal app_name As String)
-        frm.SetBounds( _
-            GetSetting(app_name, "Geometry", "Left", Me.RestoreBounds.Left), _
-            GetSetting(app_name, "Geometry", "Top", Me.RestoreBounds.Top), _
-            GetSetting(app_name, "Geometry", "Width", Me.RestoreBounds.Width), _
-            GetSetting(app_name, "Geometry", "Height", Me.RestoreBounds.Height) _
-        )
-        Me.WindowState = GetSetting(app_name, "Geometry", "WindowState", Me.WindowState)
-    End Sub
-    'Form Position Code End
-
-
-#End Region
-
     Private Sub SplashScreen_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        RestorePosition(Me, "Splash")
+
+        GLabel1.Text = MyCurrentVersionNumber
         Dim t As Timer = New Timer()
-        t.Interval = 2000
+        t.Interval = 5000
         AddHandler t.Tick, AddressOf HandleTimerTick
         t.Start()
     End Sub
     Private Sub SplashScreen_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
-        SavePosition(Me, "Splash")
 
     End Sub
     Private Sub HandleTimerTick(ByVal sender As System.Object, ByVal e As System.EventArgs)
