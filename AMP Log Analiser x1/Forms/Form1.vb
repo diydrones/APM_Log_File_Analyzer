@@ -58,7 +58,7 @@ Public Class frmMainForm
 
     'Declare the Version Number
     Shared Function BuildVers()
-        Dim MyCurrentVersionNumber As String = "v1.0.3.2"          'Update on every released version.
+        Dim MyCurrentVersionNumber As String = "v1.0.3.3"          'Update on every released version.
         Return MyCurrentVersionNumber
     End Function
     Shared Function PublishedVers()
@@ -3898,7 +3898,9 @@ End Class
 '           KMG - Added the "Press Esc to Abort" label
 '           KMG - Created the Pull Request.
 
-
+'v1.0.3.3   
+'           CAW - Moved build versions into a shared function so all forms could access the #'s 
+'           CAW - Started a rudimentary spash screen
 
 ' ##TODO##
 'Because there is no EV logs in my Plane sample then the Take Off is not recorded, because of this there are no mode times.
