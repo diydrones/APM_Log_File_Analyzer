@@ -6,6 +6,7 @@ Imports System.Collections
 Imports System.ComponentModel
 Imports System.Windows.Forms
 Imports System.Data
+Imports System.Deployment.Application
 Imports gLabel
 
 Public Class SplashScreen
@@ -27,9 +28,14 @@ Public Class SplashScreen
 
         GLabel1.Text = MyCurrentVersionNumber
         Dim t As Timer = New Timer()
-        t.Interval = 5000
+        If (ApplicationDeployment.IsNetworkDeployed) Then
+            t.Interval = 5000
+        Else
+            t.Interval = 50
+        End If
         AddHandler t.Tick, AddressOf HandleTimerTick
         t.Start()
+        Me.Refresh()
     End Sub
     Private Sub SplashScreen_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
 

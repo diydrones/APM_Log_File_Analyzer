@@ -94,12 +94,13 @@ Partial Class SplashScreen
         Me.GLabel4.CheckedColor = System.Drawing.Color.Transparent
         Me.GLabel4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GLabel4.ForeColor = System.Drawing.Color.AliceBlue
-        Me.GLabel4.Location = New System.Drawing.Point(49, 291)
+        Me.GLabel4.Location = New System.Drawing.Point(49, 287)
         Me.GLabel4.Name = "GLabel4"
         Me.GLabel4.ShadowColor = System.Drawing.Color.Transparent
-        Me.GLabel4.Size = New System.Drawing.Size(534, 36)
+        Me.GLabel4.Size = New System.Drawing.Size(534, 40)
         Me.GLabel4.TabIndex = 6
-        Me.GLabel4.Text = "Copyright 2014 Kevin Guest. All rights reserved." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "* now with more cowbell!"
+        Me.GLabel4.Text = "Copyright 2014 Kevin Guest. All rights reserved." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "With special thanks to Craig Wo" & _
+    "rden. * now with more cowbell!"
         '
         'PictureBox1
         '
