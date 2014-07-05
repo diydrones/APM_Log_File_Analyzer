@@ -12,8 +12,8 @@ Public Class SplashScreen
     Dim MyCurrentVersionNumber As String = frmMainForm.BuildVers()
 
     Private Sub SplashScreen_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
-        e.Graphics.Clear(Color.FromArgb(255, 191, 1, 191))
-        e.Graphics.FillPolygon(Brushes.DarkTurquoise, _
+        e.Graphics.Clear(Color.FromArgb(255, 0, 0, 0))
+        e.Graphics.FillPolygon(Brushes.DarkGreen, _
             New PointF() { _
             New Point(122, 36), New Point(180, 102), _
             New Point(262, 126), New Point(189, 173), _

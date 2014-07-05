@@ -58,7 +58,7 @@ Public Class frmMainForm
 
     'Declare the Version Number
     Shared Function BuildVers()
-        Dim MyCurrentVersionNumber As String = "v1.0.3.3"          'Update on every released version.
+        Dim MyCurrentVersionNumber As String = "v1.0.3.4"          'Update on every released version.
         Return MyCurrentVersionNumber
     End Function
     Shared Function PublishedVers()
@@ -3901,6 +3901,8 @@ End Class
 'v1.0.3.3   
 '           CAW - Moved build versions into a shared function so all forms could access the #'s 
 '           CAW - Started a rudimentary spash screen
+'v1.0.3.4   
+'           CAW - Finished initial splash screen. Not too bad :)
 
 ' ##TODO##
 'Because there is no EV logs in my Plane sample then the Take Off is not recorded, because of this there are no mode times.

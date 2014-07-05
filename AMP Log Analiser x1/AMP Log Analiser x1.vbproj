@@ -219,6 +219,7 @@
     <Content Include="Resources\HelpB.png" />
     <Content Include="Resources\left-back.png" />
     <Content Include="Resources\LLB.png" />
+    <Content Include="Resources\loggerwindow.png" />
     <Content Include="Resources\MCB.wav" />
     <Content Include="Resources\menuback.png" />
     <Content Include="Resources\newicon.ico" />
