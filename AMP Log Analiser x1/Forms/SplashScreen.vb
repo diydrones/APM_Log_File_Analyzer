@@ -9,6 +9,7 @@ Imports System.Data
 Imports System.Deployment.Application
 Imports gLabel
 
+
 Public Class SplashScreen
     Dim MyCurrentVersionNumber As String = frmMainForm.BuildVers()
 
@@ -24,17 +25,23 @@ Public Class SplashScreen
             })
     End Sub
     Private Sub SplashScreen_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
+        Debug.Print("Loading Splash Screen")
+        Debug.Print("About to call the first gLabel")
         GLabel1.Text = MyCurrentVersionNumber
+        Debug.Print("First gLabel has been called")
         Dim t As Timer = New Timer()
         If (ApplicationDeployment.IsNetworkDeployed) Then
+            Debug.Print("Application is Deployed")
             t.Interval = 5000
         Else
+            Debug.Print("Application is NOT Deployed")
             t.Interval = 50
         End If
+        Debug.Print("About to request the handler")
         AddHandler t.Tick, AddressOf HandleTimerTick
+        Debug.Print("About to start the ticker")
         t.Start()
+        Debug.Print("Ticker started")
         Me.Refresh()
     End Sub
     Private Sub SplashScreen_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
