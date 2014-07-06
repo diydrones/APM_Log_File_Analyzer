@@ -3183,6 +3183,9 @@ Public Class frmMainForm
     End Sub
 
     Private Function AutoUpdate(ByVal CurrentVersion As String) As Integer
+        '### Note: This has all changed to make the Updater Program push the file changes
+        '###    instead of the Log_Analyzer pulling them from the FTP.
+
         'The function will check an FTP website to see if there are any updates for a program.
         'If found it will download the updated program to the local machine. Then it will download a
         'program called UpdaterProgram.exe (used to update the folders on the local machine). 
@@ -3284,66 +3287,69 @@ Public Class frmMainForm
                 Dim bytesIn As Integer = 0 ' Number of bytes read to buffer
                 Dim totalBytesIn As Integer = 0 ' Total number of bytes received (= filesize)
 
-                'Prepare new FTP connection to Get the required file.
-                Debug.Print("Preparing a new FTP Download connection...")
-                Debug.Print("Requesting file: " & ProgramName & "...")
-                Dim ftpRequest As System.Net.FtpWebRequest = System.Net.FtpWebRequest.Create(DecryptData(SiteName) & ProgramName)
-                ftpRequest.Credentials = New Net.NetworkCredential(DecryptData(UserName), DecryptData(Password))
-                ftpRequest.Method = Net.WebRequestMethods.Ftp.DownloadFile
-                Debug.Print("Waiting for a response...")
-                Dim ftpResponse As System.Net.FtpWebResponse = ftpRequest.GetResponse
-                Debug.Print("Found FTP File.")
+                ''Prepare new FTP connection to Get the required file.
+                'Debug.Print("Preparing a new FTP Download connection...")
+                'Debug.Print("Requesting file: " & ProgramName & "...")
+                'Dim ftpRequest As System.Net.FtpWebRequest = System.Net.FtpWebRequest.Create(DecryptData(SiteName) & ProgramName)
+                'ftpRequest.Credentials = New Net.NetworkCredential(DecryptData(UserName), DecryptData(Password))
+                'ftpRequest.Method = Net.WebRequestMethods.Ftp.DownloadFile
+                'Debug.Print("Waiting for a response...")
+                'Dim ftpResponse As System.Net.FtpWebResponse = ftpRequest.GetResponse
+                'Debug.Print("Found FTP File.")
 
-                'Need to check local folder exists, if not create it.
-                Debug.Print("Preparing to copy file to local machine...")
-                Debug.Print("Checking for the local folder exists: " & UpdateToLocaleFolder)
-                If Directory.Exists(UpdateToLocaleFolder) Then
-                    Debug.Print("Found: " & UpdateToLocaleFolder & ", no further action required.")
-                Else
-                    Debug.Print("Not Found: " & UpdateToLocaleFolder)
-                    Debug.Print("Creating: " & UpdateToLocaleFolder)
-                    Directory.CreateDirectory(UpdateToLocaleFolder)
-                    Debug.Print("Success!")
-                End If
+                ''Need to check local folder exists, if not create it.
+                'Debug.Print("Preparing to copy file to local machine...")
+                'Debug.Print("Checking for the local folder exists: " & UpdateToLocaleFolder)
+                'If Directory.Exists(UpdateToLocaleFolder) Then
+                '    Debug.Print("Found: " & UpdateToLocaleFolder & ", no further action required.")
+                'Else
+                '    Debug.Print("Not Found: " & UpdateToLocaleFolder)
+                '    Debug.Print("Creating: " & UpdateToLocaleFolder)
+                '    Directory.CreateDirectory(UpdateToLocaleFolder)
+                '    Debug.Print("Success!")
+                'End If
 
-                'Need to check that the file we are about to create does not already exist.
-                Debug.Print("Checking previous update does not still exist: " & UpdateToLocaleFolder & ProgramName)
-                If File.Exists(UpdateToLocaleFolder & ProgramName) Then
-                    Debug.Print("Found: " & UpdateToLocaleFolder & ProgramName)
-                    Debug.Print("Attempting to delete old update file: " & UpdateToLocaleFolder & ProgramName)
-                    File.Delete(UpdateToLocaleFolder & ProgramName)
-                    Debug.Print("Success!")
-                Else
-                    Debug.Print("Not Found: " & UpdateToLocaleFolder & ProgramName & ", no further action required.")
-                End If
+                ''Need to check that the file we are about to create does not already exist.
+                'Debug.Print("Checking previous update does not still exist: " & UpdateToLocaleFolder & ProgramName)
+                'If File.Exists(UpdateToLocaleFolder & ProgramName) Then
+                '    Debug.Print("Found: " & UpdateToLocaleFolder & ProgramName)
+                '    Debug.Print("Attempting to delete old update file: " & UpdateToLocaleFolder & ProgramName)
+                '    File.Delete(UpdateToLocaleFolder & ProgramName)
+                '    Debug.Print("Success!")
+                'Else
+                '    Debug.Print("Not Found: " & UpdateToLocaleFolder & ProgramName & ", no further action required.")
+                'End If
 
-                ' Write the content to the output file
-                Debug.Print("Creating Local Update File: " & UpdateToLocaleFolder & ProgramName)
-                output = System.IO.File.Create(UpdateToLocaleFolder & ProgramName)
-                Debug.Print("Success, at least by name, file is still empty!")
+                '' Write the content to the output file
+                'Debug.Print("Creating Local Update File: " & UpdateToLocaleFolder & ProgramName)
+                'output = System.IO.File.Create(UpdateToLocaleFolder & ProgramName)
+                'Debug.Print("Success, at least by name, file is still empty!")
 
-                Debug.Print("Opening the stream...")
-                Dim stream2 As System.IO.Stream = ftpRequest.GetResponse.GetResponseStream
+                'Debug.Print("Opening the stream...")
+                'Dim stream2 As System.IO.Stream = ftpRequest.GetResponse.GetResponseStream
 
-                Debug.Print("Writing file contents...")
-                bytesIn = 1 ' Set initial value to 1 to get into loop. We get out of the loop when bytesIn is zero
-                Do Until bytesIn < 1
-                    bytesIn = stream2.Read(buffer, 0, 1024) ' Read max 1024 bytes to buffer and get the actual number of bytes received
-                    If bytesIn > 0 Then
-                        ' Dump the buffer to a file
-                        output.Write(buffer, 0, bytesIn)
-                        ' Calc total filesize
-                        totalBytesIn += bytesIn
-                        ' Show user the filesize
-                        'Label1.Text = totalBytesIn.ToString + " Bytes Downloaded"
-                        Application.DoEvents()
-                    End If
-                Loop
-                Debug.Print("Success!")
-                ' Close streams
-                Debug.Print("Closing FTP download connection...")
-                output.Close()
-                stream2.Close()
+                'Debug.Print("Writing file contents...")
+                'bytesIn = 1 ' Set initial value to 1 to get into loop. We get out of the loop when bytesIn is zero
+                'Do Until bytesIn < 1
+                '    bytesIn = stream2.Read(buffer, 0, 1024) ' Read max 1024 bytes to buffer and get the actual number of bytes received
+                '    If bytesIn > 0 Then
+                '        ' Dump the buffer to a file
+                '        output.Write(buffer, 0, bytesIn)
+                '        ' Calc total filesize
+                '        totalBytesIn += bytesIn
+                '        ' Show user the filesize
+                '        'Label1.Text = totalBytesIn.ToString + " Bytes Downloaded"
+                '        Application.DoEvents()
+                '    End If
+                'Loop
+                'Debug.Print("Success!")
+                '' Close streams
+                'Debug.Print("Closing FTP download connection...")
+                'output.Close()
+                'stream2.Close()
+
+
+
 
                 'Prepare to Get the updater program file via FTP.
                 bytesIn = 0 ' Number of bytes read to buffer
@@ -3358,6 +3364,19 @@ Public Class frmMainForm
                 Debug.Print("Waiting for a response...")
                 Dim ftpResponse2 As System.Net.FtpWebResponse = ftpRequest2.GetResponse
                 Debug.Print("Found FTP File.")
+
+                'Need to check local folder exists, if not create it.
+                Debug.Print("Preparing to copy file to local machine...")
+                Debug.Print("Checking for the local folder exists: " & UpdateToLocaleFolder)
+                If Directory.Exists(UpdateToLocaleFolder) Then
+                    Debug.Print("Found: " & UpdateToLocaleFolder & ", no further action required.")
+                Else
+                    Debug.Print("Not Found: " & UpdateToLocaleFolder)
+                    Debug.Print("Creating: " & UpdateToLocaleFolder)
+                    Directory.CreateDirectory(UpdateToLocaleFolder)
+                    Debug.Print("Success!")
+                End If
+
 
                 'Need to check that the file we are about to create does not already exist.
                 'We know the folder already exists from the step above
@@ -3400,60 +3419,60 @@ Public Class frmMainForm
                 stream3.Close()
 
 
-                ' ### Updated by KMG to ensure the gLabel.dll is moved to the Local PC.
-                'Prepare to Get the gLabel.dll file via FTP.
-                bytesIn = 0 ' Number of bytes read to buffer
-                totalBytesIn = 0 ' Total number of bytes received (= filesize)
+                '' ### Updated by KMG to ensure the gLabel.dll is moved to the Local PC.
+                ''Prepare to Get the gLabel.dll file via FTP.
+                'bytesIn = 0 ' Number of bytes read to buffer
+                'totalBytesIn = 0 ' Total number of bytes received (= filesize)
 
-                'Prepare new FTP connection to Get the required file.
-                Debug.Print("Preparing a new FTP Download connection...")
-                Debug.Print("Requesting file: " & "gLabel.dll" & "...")
-                Dim ftpRequest3 As System.Net.FtpWebRequest = System.Net.FtpWebRequest.Create(DecryptData(SiteName) & "gLabel.dll")
-                ftpRequest3.Credentials = New Net.NetworkCredential(DecryptData(UserName), DecryptData(Password))
-                ftpRequest3.Method = Net.WebRequestMethods.Ftp.DownloadFile
-                Debug.Print("Waiting for a response...")
-                Dim ftpResponse3 As System.Net.FtpWebResponse = ftpRequest3.GetResponse
-                Debug.Print("Found FTP File.")
+                ''Prepare new FTP connection to Get the required file.
+                'Debug.Print("Preparing a new FTP Download connection...")
+                'Debug.Print("Requesting file: " & "gLabel.dll" & "...")
+                'Dim ftpRequest3 As System.Net.FtpWebRequest = System.Net.FtpWebRequest.Create(DecryptData(SiteName) & "gLabel.dll")
+                'ftpRequest3.Credentials = New Net.NetworkCredential(DecryptData(UserName), DecryptData(Password))
+                'ftpRequest3.Method = Net.WebRequestMethods.Ftp.DownloadFile
+                'Debug.Print("Waiting for a response...")
+                'Dim ftpResponse3 As System.Net.FtpWebResponse = ftpRequest3.GetResponse
+                'Debug.Print("Found FTP File.")
 
-                'Need to check that the file we are about to create does not already exist.
-                'We know the folder already exists from the step above
-                Debug.Print("Checking previous update does not still exist: " & UpdateToLocaleFolder & "gLabel.dll")
-                If File.Exists(UpdateToLocaleFolder & "gLabel.dll") Then
-                    Debug.Print("Found: " & UpdateToLocaleFolder & "gLabel.dll")
-                    Debug.Print("Attempting to delete old update file: " & UpdateToLocaleFolder & "gLabel.dll")
-                    File.Delete(UpdateToLocaleFolder & "gLabel.dll")
-                    Debug.Print("Success!")
-                Else
-                    Debug.Print("Not Found: " & UpdateToLocaleFolder & "gLabel.dll" & ", no further action required.")
-                End If
+                ''Need to check that the file we are about to create does not already exist.
+                ''We know the folder already exists from the step above
+                'Debug.Print("Checking previous update does not still exist: " & UpdateToLocaleFolder & "gLabel.dll")
+                'If File.Exists(UpdateToLocaleFolder & "gLabel.dll") Then
+                '    Debug.Print("Found: " & UpdateToLocaleFolder & "gLabel.dll")
+                '    Debug.Print("Attempting to delete old update file: " & UpdateToLocaleFolder & "gLabel.dll")
+                '    File.Delete(UpdateToLocaleFolder & "gLabel.dll")
+                '    Debug.Print("Success!")
+                'Else
+                '    Debug.Print("Not Found: " & UpdateToLocaleFolder & "gLabel.dll" & ", no further action required.")
+                'End If
 
-                ' Write the content to the output file
-                Debug.Print("Creating Local Update File: " & UpdateToLocaleFolder & "gLabel.dll")
-                output = System.IO.File.Create(UpdateToLocaleFolder & "gLabel.dll")
-                Debug.Print("Success, at least by name, file is still empty!")
+                '' Write the content to the output file
+                'Debug.Print("Creating Local Update File: " & UpdateToLocaleFolder & "gLabel.dll")
+                'output = System.IO.File.Create(UpdateToLocaleFolder & "gLabel.dll")
+                'Debug.Print("Success, at least by name, file is still empty!")
 
-                Debug.Print("Opening the stream...")
-                Dim stream4 As System.IO.Stream = ftpRequest3.GetResponse.GetResponseStream
+                'Debug.Print("Opening the stream...")
+                'Dim stream4 As System.IO.Stream = ftpRequest3.GetResponse.GetResponseStream
 
-                Debug.Print("Writing file contents...")
-                bytesIn = 1 ' Set initial value to 1 to get into loop. We get out of the loop when bytesIn is zero
-                Do Until bytesIn < 1
-                    bytesIn = stream4.Read(buffer, 0, 1024) ' Read max 1024 bytes to buffer and get the actual number of bytes received
-                    If bytesIn > 0 Then
-                        ' Dump the buffer to a file
-                        output.Write(buffer, 0, bytesIn)
-                        ' Calc total filesize
-                        totalBytesIn += bytesIn
-                        ' Show user the filesize
-                        'Label1.Text = totalBytesIn.ToString + " Bytes Downloaded"
-                        Application.DoEvents()
-                    End If
-                Loop
-                Debug.Print("Success!")
-                ' Close streams
-                Debug.Print("Closing FTP download connection...")
-                output.Close()
-                stream4.Close()
+                'Debug.Print("Writing file contents...")
+                'bytesIn = 1 ' Set initial value to 1 to get into loop. We get out of the loop when bytesIn is zero
+                'Do Until bytesIn < 1
+                '    bytesIn = stream4.Read(buffer, 0, 1024) ' Read max 1024 bytes to buffer and get the actual number of bytes received
+                '    If bytesIn > 0 Then
+                '        ' Dump the buffer to a file
+                '        output.Write(buffer, 0, bytesIn)
+                '        ' Calc total filesize
+                '        totalBytesIn += bytesIn
+                '        ' Show user the filesize
+                '        'Label1.Text = totalBytesIn.ToString + " Bytes Downloaded"
+                '        Application.DoEvents()
+                '    End If
+                'Loop
+                'Debug.Print("Success!")
+                '' Close streams
+                'Debug.Print("Closing FTP download connection...")
+                'output.Close()
+                'stream4.Close()
 
 
 
