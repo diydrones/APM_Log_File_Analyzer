@@ -31,18 +31,23 @@ Public Class SplashScreen
         GLabel1.Text = MyCurrentVersionNumber
         Debug.Print("First gLabel has been called")
         Dim t As Timer = New Timer()
+        Me.Refresh()
         If (ApplicationDeployment.IsNetworkDeployed) Then
             Debug.Print("Application is Deployed")
             t.Interval = 5000
+
         Else
             Debug.Print("Application is NOT Deployed")
-            t.Interval = 50
+            t.Interval = 5000
+
         End If
         Debug.Print("About to request the handler")
         AddHandler t.Tick, AddressOf HandleTimerTick
-        Debug.Print("About to start the ticker")
+
+        Debug.Print("About to sleep")
+        Me.Refresh()
         t.Start()
-        Debug.Print("Ticker started")
+        Debug.Print("Sleep Finished")
         Me.Refresh()
     End Sub
     Private Sub SplashScreen_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
@@ -51,6 +56,7 @@ Public Class SplashScreen
     Private Sub HandleTimerTick(ByVal sender As System.Object, ByVal e As System.EventArgs)
         frmMainForm.Show()
         Me.Close()
+
     End Sub
 
 End Class
