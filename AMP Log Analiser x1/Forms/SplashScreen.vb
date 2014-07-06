@@ -38,7 +38,7 @@ Public Class SplashScreen
 
         Else
             Debug.Print("Application is NOT Deployed")
-            t.Interval = 5000
+            t.Interval = 50
 
         End If
         Debug.Print("About to request the handler")
