@@ -12,7 +12,6 @@ Imports gLabel
 
 
 Public Class SplashScreen
-    Dim MyCurrentVersionNumber As String = frmMainForm.BuildVers()
 
     Private Sub SplashScreen_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
         e.Graphics.Clear(Color.FromArgb(255, 0, 0, 0))
