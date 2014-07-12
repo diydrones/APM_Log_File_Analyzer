@@ -31,6 +31,16 @@
                 End If
 
 
+                frmPowerRails.Chart1.Series("Vcc").Points.AddY(Value5 / 1000)
+                frmPowerRails.Chart1.Series("Volts").Points.AddY(Value3 / 100)
+                frmPowerRails.Chart1.Series("Amps").Points.AddY(Value4 / 100)
+                frmPowerRails.Chart1.Series("Thrust").Points.AddY(Log_CTUN_ThrOut)
+
+                ' Add the min / max lines
+                frmPowerRails.Chart1.Series("VccLowLine").Points.AddY(4.5)
+                frmPowerRails.Chart1.Series("VccHighLine").Points.AddY(5.5)
+                frmPowerRails.Chart1.Series("VccOSDLine").Points.AddY(5.25)
+
                 'Debug.Print(vbNewLine)
                 'Debug.Print(vbNewLine)
                 'Debug.Print("Debug CURR Data Variables:-")

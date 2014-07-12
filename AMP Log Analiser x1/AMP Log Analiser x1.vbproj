@@ -156,6 +156,12 @@
     <Compile Include="Forms\SplashScreen.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\PowerRails.Designer.vb">
+      <DependentUpon>PowerRails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PowerRails.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SplashScreen.resx">
       <DependentUpon>SplashScreen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PowerRails.resx">
+      <DependentUpon>PowerRails.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

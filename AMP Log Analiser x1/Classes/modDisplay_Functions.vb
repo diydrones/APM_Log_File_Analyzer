@@ -513,6 +513,8 @@ Module modDisplay_Functions
             WriteTextLog("")
         End If
         WriteTextLog("")
+
+        frmPowerRails.Show()
     End Sub
 
     Sub ShowVibrationChart(txtWarning As String)
@@ -527,20 +529,20 @@ Module modDisplay_Functions
         frmVibrationChart.richtextLogVibration.AppendText(FormatTextLogValuesVibration("StDev", StandardDeviation(IMU_Vibration_AccX), StandardDeviation(IMU_Vibration_AccY), StandardDeviation(IMU_Vibration_AccZ), 0, 0) & vbNewLine)
         frmVibrationChart.richtextLogVibration.AppendText("Datalines: " & IMU_Vibration_Start_DL & " ~ " & IMU_Vibration_End_DL & vbNewLine)
 
-
+        ' ### Data is now writen to the chart during analysis ###
         'Write the data to the chart
-        For n = 0 To 4999
-            frmVibrationChart.Chart1.Series("AccX").Points.AddY(IMU_Vibration_AccX(n))
-            frmVibrationChart.Chart1.Series("AccY").Points.AddY(IMU_Vibration_AccY(n))
-            frmVibrationChart.Chart1.Series("AccZ").Points.AddY(IMU_Vibration_AccZ(n))
-            frmVibrationChart.Chart1.Series("Altitude").Points.AddY(IMU_Vibration_Alt(n))
-            frmVibrationChart.Chart1.Series("Speed").Points.AddY(IMU_Vibration_Spd(n))
-            'Add the Marker Lines
-            frmVibrationChart.Chart1.Series("XYHighLine").Points.AddY(3)
-            frmVibrationChart.Chart1.Series("XYLowLine").Points.AddY(-3)
-            frmVibrationChart.Chart1.Series("ZHighLine").Points.AddY(-5)
-            frmVibrationChart.Chart1.Series("ZLowLine").Points.AddY(-15)
-        Next
+        'For n = 0 To 4999
+        '    frmVibrationChart.Chart1.Series("AccX").Points.AddY(IMU_Vibration_AccX(n))
+        '    frmVibrationChart.Chart1.Series("AccY").Points.AddY(IMU_Vibration_AccY(n))
+        '    frmVibrationChart.Chart1.Series("AccZ").Points.AddY(IMU_Vibration_AccZ(n))
+        '    frmVibrationChart.Chart1.Series("Altitude").Points.AddY(IMU_Vibration_Alt(n))
+        '    frmVibrationChart.Chart1.Series("Speed").Points.AddY(IMU_Vibration_Spd(n))
+        '    'Add the Marker Lines
+        '    frmVibrationChart.Chart1.Series("XYHighLine").Points.AddY(3)
+        '    frmVibrationChart.Chart1.Series("XYLowLine").Points.AddY(-3)
+        '    frmVibrationChart.Chart1.Series("ZHighLine").Points.AddY(-5)
+        '    frmVibrationChart.Chart1.Series("ZLowLine").Points.AddY(-15)
+        'Next
     End Sub
 
     Public Function StandardDeviation(NumericArray As Object) As Double
