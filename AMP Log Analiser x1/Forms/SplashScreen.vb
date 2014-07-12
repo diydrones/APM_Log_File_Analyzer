@@ -33,7 +33,7 @@ Public Class SplashScreen
         Me.Refresh()
         If (ApplicationDeployment.IsNetworkDeployed) Then
             Debug.Print("Application is Deployed")
-            t.Interval = 5000
+            t.Interval = 3000
 
         Else
             Debug.Print("Application is NOT Deployed")
@@ -55,7 +55,6 @@ Public Class SplashScreen
     Private Sub HandleTimerTick(ByVal sender As System.Object, ByVal e As System.EventArgs)
         frmMainForm.Show()
         Me.Close()
-
     End Sub
 
 End Class
