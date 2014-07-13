@@ -2,6 +2,7 @@
     Public Sub ReadFile(ByVal strLogFileName As String)
 
         With frmMainForm
+            .btnAnalyze.Visible = False
             'Initialise the Variables for Reading the Variables
             Dim objReader As New System.IO.StreamReader(strLogFileName)
 
@@ -185,6 +186,10 @@
             .barReadFile.Visible = False
 
             Debug.Print("Sub ReadFile Completed" & vbNewLine)
+
+            'show the required buttons
+            frmMainForm.btnGraphs.Visible = True
+            frmMainForm.btnCopyText.Visible = True
 
         End With
     End Sub

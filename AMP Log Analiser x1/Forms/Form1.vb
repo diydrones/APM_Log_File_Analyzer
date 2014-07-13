@@ -60,11 +60,9 @@ Public Class frmMainForm
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If FileOpened = True Then
             btnAnalyze.Visible = True
-            btnVibrations.Visible = True
             PictureBox1.Visible = False
         ElseIf FileOpened = False Then
             btnAnalyze.Visible = False
-            btnVibrations.Visible = False
             PictureBox1.Visible = True
         End If
 
@@ -218,7 +216,7 @@ Public Class frmMainForm
             MsgBox("Please Select a Valid APM Log File first!", MsgBoxStyle.Exclamation & vbOKOnly, "APM Log Error")
         End If
     End Sub
-    Private Sub btnVibrations_Click(sender As Object, e As EventArgs) Handles btnVibrations.Click
+    Private Sub btnCopyText_Click(sender As Object, e As EventArgs) Handles btnCopyText.Click
         Call CopytoClip() 'changed this to its own sub so it can be called via anything except the one button it was assigned to
     End Sub
     Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
@@ -236,24 +234,24 @@ Public Class frmMainForm
 
     End Sub
 
-    Private Sub btnTempAnalysis_Click(sender As Object, e As EventArgs) Handles btnTempAnalysis.Click
+    Private Sub btnAnalysis_Click(sender As Object, e As EventArgs) Handles btnAnalysis.Click
         Call ButtonsCheckBoxes_Visible(True)
         Call ButtonsCharting_Visible(False)
         Call Chart_PowerRails_Visible(False)
         Call Chart_Vibrations_Visible(False)
     End Sub
 
-    Private Sub btnTempGraphs_Click(sender As Object, e As EventArgs) Handles btnTempGraphs.Click
+    Private Sub btnGraphs_Click(sender As Object, e As EventArgs) Handles btnGraphs.Click
         Call ButtonsCheckBoxes_Visible(False)
         Call ButtonsCharting_Visible(True)
     End Sub
 
-    Private Sub btnTempPowerChart_Click(sender As Object, e As EventArgs) Handles btnTempPowerChart.Click
+    Private Sub btnPowerChart_Click(sender As Object, e As EventArgs) Handles btnPowerChart.Click
         Call Chart_Vibrations_Visible(False)
         Call Chart_PowerRails_Visible(True)
     End Sub
 
-    Private Sub btnTempVibrationChart_Click(sender As Object, e As EventArgs) Handles btnTempVibrationChart.Click
+    Private Sub btnVibrationChart_Click(sender As Object, e As EventArgs) Handles btnVibrationChart.Click
         Call Chart_Vibrations_Visible(True)
         Call Chart_PowerRails_Visible(False)
     End Sub
