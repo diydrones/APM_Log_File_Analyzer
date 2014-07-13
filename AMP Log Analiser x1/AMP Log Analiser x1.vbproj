@@ -156,12 +156,6 @@
     <Compile Include="Forms\SplashScreen.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PowerRails.Designer.vb">
-      <DependentUpon>PowerRails.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\PowerRails.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -178,12 +172,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Classes\RichTextBoxEx.vb" />
-    <Compile Include="Forms\VibrationChart.Designer.vb">
-      <DependentUpon>VibrationChart.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\VibrationChart.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Classes\modRevisionHistory.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -196,17 +184,11 @@
     <EmbeddedResource Include="Forms\SplashScreen.resx">
       <DependentUpon>SplashScreen.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PowerRails.resx">
-      <DependentUpon>PowerRails.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\VibrationChart.resx">
-      <DependentUpon>VibrationChart.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -57,30 +57,19 @@
                         log_IMU_Sum_Spd = log_IMU_Sum_Spd + Log_GPS_Spd
                         log_IMU_Sum_Alt = log_IMU_Sum_Alt + TempAlt
 
-                        'Collect the data in the Array so that we can calculate the Mean and Standard Deviation during the flight summary
-                        '(only happes if we collect all 5000 records)
-                        'If Log_IMU_DLs_for_Slow_FLight < 5000 Then
-                        'IMU_Vibration_AccX(Log_IMU_DLs_for_Slow_FLight) = Log_IMU_AccX
-                        'IMU_Vibration_AccY(Log_IMU_DLs_for_Slow_FLight) = Log_IMU_AccY
-                        'IMU_Vibration_AccZ(Log_IMU_DLs_for_Slow_FLight) = Log_IMU_AccZ
-                        'IMU_Vibration_Alt(Log_IMU_DLs_for_Slow_FLight) = TempAlt 'Log_CTUN_BarAlt
-                        'IMU_Vibration_Spd(Log_IMU_DLs_for_Slow_FLight) = Log_GPS_Spd
-                        'Log_IMU_DLs_for_Slow_FLight = Log_IMU_DLs_for_Slow_FLight + 1
-                        'IMU_Vibration_End_DL = DataLine
-                        'End If
 
                         '### NEW CODE to send data directly to chart ####
-                        frmVibrationChart.Chart1.Series("AccX").Points.AddY(Log_IMU_AccX)
-                        frmVibrationChart.Chart1.Series("AccY").Points.AddY(Log_IMU_AccY)
-                        frmVibrationChart.Chart1.Series("AccZ").Points.AddY(Log_IMU_AccZ)
-                        frmVibrationChart.Chart1.Series("Altitude").Points.AddY(TempAlt) 'Log_CTUN_BarAlt
-                        frmVibrationChart.Chart1.Series("Speed").Points.AddY(Log_GPS_Spd)
+                        frmMainForm.chartVibrations.Series("AccX").Points.AddY(Log_IMU_AccX)
+                        frmMainForm.chartVibrations.Series("AccY").Points.AddY(Log_IMU_AccY)
+                        frmMainForm.chartVibrations.Series("AccZ").Points.AddY(Log_IMU_AccZ)
+                        frmMainForm.chartVibrations.Series("Altitude").Points.AddY(TempAlt) 'Log_CTUN_BarAlt
+                        frmMainForm.chartVibrations.Series("Speed").Points.AddY(Log_GPS_Spd)
 
                         '    'Add the Marker Lines
-                        frmVibrationChart.Chart1.Series("XYHighLine").Points.AddY(3)
-                        frmVibrationChart.Chart1.Series("XYLowLine").Points.AddY(-3)
-                        frmVibrationChart.Chart1.Series("ZHighLine").Points.AddY(-5)
-                        frmVibrationChart.Chart1.Series("ZLowLine").Points.AddY(-15)
+                        frmMainForm.chartVibrations.Series("XYHighLine").Points.AddY(3)
+                        frmMainForm.chartVibrations.Series("XYLowLine").Points.AddY(-3)
+                        frmMainForm.chartVibrations.Series("ZHighLine").Points.AddY(-5)
+                        frmMainForm.chartVibrations.Series("ZLowLine").Points.AddY(-15)
 
                         Log_IMU_DLs_for_Slow_FLight = Log_IMU_DLs_for_Slow_FLight + 1
                         IMU_Vibration_End_DL = DataLine
@@ -90,55 +79,21 @@
                     Else
 
                         '### NEW CODE to send data directly to chart ####
-                        frmVibrationChart.Chart1.Series("AccX").Points.AddY(0)
-                        frmVibrationChart.Chart1.Series("AccY").Points.AddY(0)
-                        frmVibrationChart.Chart1.Series("AccZ").Points.AddY(0)
-                        frmVibrationChart.Chart1.Series("Altitude").Points.AddY(0) 'Log_CTUN_BarAlt
-                        frmVibrationChart.Chart1.Series("Speed").Points.AddY(0)
+                        frmMainForm.chartVibrations.Series("AccX").Points.AddY(0)
+                        frmMainForm.chartVibrations.Series("AccY").Points.AddY(0)
+                        frmMainForm.chartVibrations.Series("AccZ").Points.AddY(0)
+                        frmMainForm.chartVibrations.Series("Altitude").Points.AddY(TempAlt) 'Log_CTUN_BarAlt
+                        frmMainForm.chartVibrations.Series("Speed").Points.AddY(Log_GPS_Spd)
 
                         '    'Add the Marker Lines
-                        frmVibrationChart.Chart1.Series("XYHighLine").Points.AddY(3)
-                        frmVibrationChart.Chart1.Series("XYLowLine").Points.AddY(-3)
-                        frmVibrationChart.Chart1.Series("ZHighLine").Points.AddY(-5)
-                        frmVibrationChart.Chart1.Series("ZLowLine").Points.AddY(-15)
+                        frmMainForm.chartVibrations.Series("XYHighLine").Points.AddY(3)
+                        frmMainForm.chartVibrations.Series("XYLowLine").Points.AddY(-3)
+                        frmMainForm.chartVibrations.Series("ZHighLine").Points.AddY(-5)
+                        frmMainForm.chartVibrations.Series("ZLowLine").Points.AddY(-15)
 
                         Log_IMU_DLs_for_Slow_FLight = Log_IMU_DLs_for_Slow_FLight + 1
                         IMU_Vibration_End_DL = DataLine
 
-
-                        ''We need a mimimum of 5000 successive records otherwise we reset and look for a better sample.
-                        'If Log_IMU_DLs_for_Slow_FLight < 5000 Then
-                        '    'Record everything as Zero as we are landed or below the specified altitude.
-                        '    IMU_Vibration_AccX(Log_IMU_DLs_for_Slow_FLight) = 0
-                        '    IMU_Vibration_AccY(Log_IMU_DLs_for_Slow_FLight) = 0
-                        '    IMU_Vibration_AccZ(Log_IMU_DLs_for_Slow_FLight) = -10
-                        '    IMU_Vibration_Alt(Log_IMU_DLs_for_Slow_FLight) = TempAlt 'Log_CTUN_BarAlt
-                        '    IMU_Vibration_Spd(Log_IMU_DLs_for_Slow_FLight) = Log_GPS_Spd
-                        '    Log_IMU_DLs_for_Slow_FLight = Log_IMU_DLs_for_Slow_FLight + 1
-                        '    IMU_Vibration_End_DL = DataLine
-
-                        '    '    Log_IMU_DLs_for_Slow_FLight = 0
-                        '    '    Log_IMU_Sum_AccX = 0
-                        '    '    Log_IMU_Sum_AccY = 0
-                        '    '    Log_IMU_Sum_AccZ = 0
-                        '    '    Log_IMU_Min_AccX = 99
-                        '    '    Log_IMU_Max_AccX = -99
-                        '    '    Log_IMU_Min_AccY = 99
-                        '    '    Log_IMU_Max_AccY = -99
-                        '    '    Log_IMU_Min_AccZ = 99
-                        '    '    Log_IMU_Max_AccZ = -99
-                        '    '    log_IMU_Min_Spd = 99
-                        '    '    log_IMU_Max_Spd = 0
-                        '    '    log_IMU_Sum_Spd = 0
-                        '    '    log_IMU_Min_Alt = 99
-                        '    '    log_IMU_Max_Alt = 0
-                        '    '    log_IMU_Sum_Alt = 0
-                        '    '    IMU_Vibration_Start_DL = 0
-                        '    '    IMU_Vibration_End_DL = 0
-                        'Else
-                        '    'The last successive readings of IMU data gave us what ween needed to check for vibration, dont collect anymore.
-                        '    IMU_Vibration_Check = True
-                        'End If
                     End If
                 End If
             End If

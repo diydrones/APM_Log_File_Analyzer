@@ -331,12 +331,10 @@ Module modFile_Handling
             Debug.Print("Open File Completed." & vbNewLine)
             If FileOpened = True Then
                 .btnAnalyze.Visible = True
-                .btnDisplayVibrationChart.Visible = True
                 .btnVibrations.Visible = True
                 .PictureBox1.Visible = False
             ElseIf FileOpened = False Then
                 .btnAnalyze.Visible = False
-                .btnDisplayVibrationChart.Visible = False
                 .btnVibrations.Visible = False
                 .PictureBox1.Visible = True
             End If
