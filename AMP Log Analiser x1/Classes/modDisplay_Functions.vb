@@ -461,7 +461,6 @@ Module modDisplay_Functions
 
         'Only display this if IMU logging has been performed.
         If IMU_Logging = True Then
-            If frmMainForm.chkboxVibrations.Checked = True Then frmMainForm.btnDisplayVibrationChart.Enabled = True
             If IMU_Vibration_Check = True Then
                 'Calcualte the Mean and Standard Deviation on the recorded vibration logs.
 
@@ -486,17 +485,11 @@ Module modDisplay_Functions
                         WriteTextLog("WARNING: HIGH Levels of Vibration Detected, recommended not to fly!")
                         WriteTextLog("WARNING: See the Vibration Section on this web link:")
                         WriteTextLog("         http://copter.ardupilot.com/wiki/common-diagnosing-problems-using-logs/")
-
-                        'Display the Vibration Chart
-                        Call ShowVibrationChart("WARNING: Level of vibrations are above recommended values.")
                     Else
                         WriteTextLog("")
                         WriteTextLog("WARNING: Level of vibrations are above recommended values.")
                         WriteTextLog("WARNING: See the Vibration Section on this web link:")
                         WriteTextLog("         http://copter.ardupilot.com/wiki/common-diagnosing-problems-using-logs/")
-
-                        'Display the Vibration Chart
-                        Call ShowVibrationChart("WARNING: Level of vibrations are above recommended values.")
                     End If
                 Else
                     WriteTextLog("")
@@ -513,34 +506,12 @@ Module modDisplay_Functions
             WriteTextLog("")
         End If
         WriteTextLog("")
-    End Sub
-
-    Sub ShowVibrationChart(txtWarning As String)
-        'Update the Chart Screen
-        frmVibrationChart.Show()
-        frmVibrationChart.lblWarning.Text = txtWarning
-        frmVibrationChart.richtextLogVibration.AppendText("Vibration Summary over " & Log_IMU_DLs_for_Slow_FLight & " successive IMU readings (exceptions filtered):" & vbNewLine)
-        frmVibrationChart.richtextLogVibration.AppendText("          AccX      AccY      AccZ      Spd       Alt" & vbNewLine)
-        frmVibrationChart.richtextLogVibration.AppendText(FormatTextLogValuesVibration("Max", Log_IMU_Max_AccX, Log_IMU_Max_AccY, Log_IMU_Max_AccZ, log_IMU_Max_Spd, log_IMU_Max_Alt) & vbNewLine)
-        frmVibrationChart.richtextLogVibration.AppendText(FormatTextLogValuesVibration("Avg", Log_IMU_Sum_AccX / Log_IMU_DLs_for_Slow_FLight, Log_IMU_Sum_AccY / Log_IMU_DLs_for_Slow_FLight, Log_IMU_Sum_AccZ / Log_IMU_DLs_for_Slow_FLight, log_IMU_Sum_Spd / Log_IMU_DLs_for_Slow_FLight, log_IMU_Sum_Alt / Log_IMU_DLs_for_Slow_FLight) & vbNewLine)
-        frmVibrationChart.richtextLogVibration.AppendText(FormatTextLogValuesVibration("Min", Log_IMU_Min_AccX, Log_IMU_Min_AccY, Log_IMU_Min_AccZ, log_IMU_Min_Spd, log_IMU_Min_Alt) & vbNewLine)
-        frmVibrationChart.richtextLogVibration.AppendText(FormatTextLogValuesVibration("StDev", StandardDeviation(IMU_Vibration_AccX), StandardDeviation(IMU_Vibration_AccY), StandardDeviation(IMU_Vibration_AccZ), 0, 0) & vbNewLine)
-        frmVibrationChart.richtextLogVibration.AppendText("Datalines: " & IMU_Vibration_Start_DL & " ~ " & IMU_Vibration_End_DL & vbNewLine)
 
 
-        'Write the data to the chart
-        For n = 0 To 4999
-            frmVibrationChart.Chart1.Series("AccX").Points.AddY(IMU_Vibration_AccX(n))
-            frmVibrationChart.Chart1.Series("AccY").Points.AddY(IMU_Vibration_AccY(n))
-            frmVibrationChart.Chart1.Series("AccZ").Points.AddY(IMU_Vibration_AccZ(n))
-            frmVibrationChart.Chart1.Series("Altitude").Points.AddY(IMU_Vibration_Alt(n))
-            frmVibrationChart.Chart1.Series("Speed").Points.AddY(IMU_Vibration_Spd(n))
-            'Add the Marker Lines
-            frmVibrationChart.Chart1.Series("XYHighLine").Points.AddY(3)
-            frmVibrationChart.Chart1.Series("XYLowLine").Points.AddY(-3)
-            frmVibrationChart.Chart1.Series("ZHighLine").Points.AddY(-5)
-            frmVibrationChart.Chart1.Series("ZLowLine").Points.AddY(-15)
-        Next
+        'Change the y min max values of the Voltage chart to meet the needs of the users flight pack.
+        frmMainForm.chartPowerRails.ChartAreas("Volts").AxisY.Minimum = Int((Log_Min_Battery_Volts / 100)) - 0.5
+        frmMainForm.chartPowerRails.ChartAreas("Volts").AxisY.Maximum = Int((Log_Max_Battery_Volts / 100)) + 1.5
+
     End Sub
 
     Public Function StandardDeviation(NumericArray As Object) As Double
@@ -601,5 +572,42 @@ Module modDisplay_Functions
         StandardDeviation = dblAnswer
     End Function
 
+    Public Sub Chart_PowerRails_Visible(OnOff As Boolean)
+        frmMainForm.chartPowerRails.Visible = OnOff
+        frmMainForm.lblVcc.Visible = OnOff
+        frmMainForm.lblVolts.Visible = OnOff
+        frmMainForm.lblOSD.Visible = OnOff
+        frmMainForm.lblAmps.Visible = OnOff
+        frmMainForm.lblThrust.Visible = OnOff
+        frmMainForm.Refresh()
+    End Sub
 
+    Public Sub Chart_Vibrations_Visible(OnOff As Boolean)
+        frmMainForm.chartVibrations.Visible = OnOff
+        frmMainForm.lblAccXY.Visible = OnOff
+        frmMainForm.lblXY_Acceptable.Visible = OnOff
+        frmMainForm.lblAccZ.Visible = OnOff
+        frmMainForm.lblAccZ_Acceptable.Visible = OnOff
+        frmMainForm.lblAltitude.Visible = OnOff
+        frmMainForm.lblAbove.Visible = OnOff
+        frmMainForm.lblSpeed.Visible = OnOff
+        frmMainForm.Refresh()
+    End Sub
+
+    Public Sub ButtonsCheckBoxes_Visible(OnOff As Boolean)
+        frmMainForm.chkboxParameterWarnings.Visible = OnOff
+        frmMainForm.chkboxFlightDataTypes.Visible = OnOff
+        frmMainForm.chkboxNonCriticalEvents.Visible = OnOff
+        frmMainForm.chkboxSplitModeLandings.Visible = OnOff
+        frmMainForm.chkboxPM.Visible = OnOff
+        frmMainForm.chkboxDU32.Visible = OnOff
+        frmMainForm.chkboxErrors.Visible = OnOff
+        frmMainForm.chkboxVibrations.Visible = OnOff
+        frmMainForm.chkboxAutoCommands.Visible = OnOff
+    End Sub
+
+    Public Sub ButtonsCharting_Visible(OnOff As Boolean)
+        frmMainForm.btnTempPowerChart.Visible = OnOff
+        frmMainForm.btnTempVibrationChart.Visible = OnOff
+    End Sub
 End Module

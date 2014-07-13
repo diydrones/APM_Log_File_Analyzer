@@ -60,12 +60,10 @@ Public Class frmMainForm
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If FileOpened = True Then
             btnAnalyze.Visible = True
-            btnDisplayVibrationChart.Visible = True
             btnVibrations.Visible = True
             PictureBox1.Visible = False
         ElseIf FileOpened = False Then
             btnAnalyze.Visible = False
-            btnDisplayVibrationChart.Visible = False
             btnVibrations.Visible = False
             PictureBox1.Visible = True
         End If
@@ -118,6 +116,7 @@ Public Class frmMainForm
 
     End Sub
     Private Sub Form1_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
+
         'saves form position
         SavePosition(Me, "PMForm")
     End Sub
@@ -236,9 +235,29 @@ Public Class frmMainForm
         Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RZFHAR67833ZQ")
 
     End Sub
-    Private Sub btnDisplayVibrationChart_Click(sender As Object, e As EventArgs) Handles btnDisplayVibrationChart.Click
-        Call ShowVibrationChart("User Forced Chart being Displayed..")
+
+    Private Sub btnTempAnalysis_Click(sender As Object, e As EventArgs) Handles btnTempAnalysis.Click
+        Call ButtonsCheckBoxes_Visible(True)
+        Call ButtonsCharting_Visible(False)
+        Call Chart_PowerRails_Visible(False)
+        Call Chart_Vibrations_Visible(False)
     End Sub
+
+    Private Sub btnTempGraphs_Click(sender As Object, e As EventArgs) Handles btnTempGraphs.Click
+        Call ButtonsCheckBoxes_Visible(False)
+        Call ButtonsCharting_Visible(True)
+    End Sub
+
+    Private Sub btnTempPowerChart_Click(sender As Object, e As EventArgs) Handles btnTempPowerChart.Click
+        Call Chart_Vibrations_Visible(False)
+        Call Chart_PowerRails_Visible(True)
+    End Sub
+
+    Private Sub btnTempVibrationChart_Click(sender As Object, e As EventArgs) Handles btnTempVibrationChart.Click
+        Call Chart_Vibrations_Visible(True)
+        Call Chart_PowerRails_Visible(False)
+    End Sub
+
 
 End Class
 

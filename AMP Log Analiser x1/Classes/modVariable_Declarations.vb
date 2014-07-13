@@ -219,11 +219,6 @@ Module modVariable_Declarations
     Public log_IMU_Max_Alt As Integer = 0                   'Holds the maximum altitude detected during a slow flight / hover.
     Public log_IMU_Sum_Alt As Integer = 0                   'Holds the of all altitude detected during a slow flight / hover.
     Public IMU_Vibration_Check As Boolean = False           'TRUE when 500 successive records have been successfully read for vibration checking.
-    Public IMU_Vibration_AccX(5000) As Single               'Array holds the values that will be analysied for the Mean and Standard Deviation results of AccX
-    Public IMU_Vibration_AccY(5000) As Single               'Array holds the values that will be analysied for the Mean and Standard Deviation results of AccY
-    Public IMU_Vibration_AccZ(5000) As Single               'Array holds the values that will be analysied for the Mean and Standard Deviation results of AccZ
-    Public IMU_Vibration_Alt(5000) As Single                'Array holds the Altitude values that will be plotted on the Vibration Charts
-    Public IMU_Vibration_Spd(5000) As Single                'Array holds the Speed values that will be plotted on the Vibration Charts
     Public IMU_Vibration_Start_DL As Single = 0             'Holds the Dataline Number of where we started logging for vibrations
     Public IMU_Vibration_End_DL As Single = 0               'Holds the Dataline Number of where we Ended the logging for vibrations
 

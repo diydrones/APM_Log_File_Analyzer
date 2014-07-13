@@ -208,7 +208,7 @@
         IMU_Vibration_Check = False                     'TRUE when 500 successive records have been successfully read for vibration checking.
         IMU_Vibration_Start_DL = 0                      'Holds the Dataline Number of where we started logging for vibrations
         IMU_Vibration_End_DL = 0                        'Holds the Dataline Number of where we Ended the logging for vibrations
-        frmMainForm.btnDisplayVibrationChart.Enabled = False    'Disable the tempory vibration button
+
 
         'Declare the ATT Variables
         Log_ATT_RollIn = 0                              'Holds current the ATT RollIn Data

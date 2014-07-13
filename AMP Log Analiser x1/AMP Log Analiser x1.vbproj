@@ -172,12 +172,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Classes\RichTextBoxEx.vb" />
-    <Compile Include="Forms\VibrationChart.Designer.vb">
-      <DependentUpon>VibrationChart.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\VibrationChart.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Classes\modRevisionHistory.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -195,9 +189,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\VibrationChart.resx">
-      <DependentUpon>VibrationChart.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

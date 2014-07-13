@@ -24,6 +24,32 @@ Partial Class frmMainForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMainForm))
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea5 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea6 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea7 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea8 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series10 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series11 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series12 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series13 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series14 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series15 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series16 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OpenFD = New System.Windows.Forms.OpenFileDialog()
         Me.lblCurrentVersion = New System.Windows.Forms.Label()
@@ -36,7 +62,6 @@ Partial Class frmMainForm
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnHelp = New System.Windows.Forms.Button()
         Me.btnVibrations = New System.Windows.Forms.Button()
-        Me.btnDisplayVibrationChart = New System.Windows.Forms.Button()
         Me.btnAnalyze = New System.Windows.Forms.Button()
         Me.btnLoadLog = New System.Windows.Forms.Button()
         Me.chkboxAutoCommands = New System.Windows.Forms.CheckBox()
@@ -49,6 +74,8 @@ Partial Class frmMainForm
         Me.chkboxNonCriticalEvents = New System.Windows.Forms.CheckBox()
         Me.chkboxSplitModeLandings = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnTempVibrationChart = New System.Windows.Forms.Button()
+        Me.btnTempPowerChart = New System.Windows.Forms.Button()
         Me.lblEsc = New System.Windows.Forms.Label()
         Me.barReadFile = New System.Windows.Forms.ProgressBar()
         Me.lblErrorCount = New System.Windows.Forms.Label()
@@ -59,8 +86,26 @@ Partial Class frmMainForm
         Me.chkboxVibrationInFlight = New System.Windows.Forms.CheckBox()
         Me.lblErrors = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.chartPowerRails = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.lblVcc = New System.Windows.Forms.Label()
+        Me.lblVolts = New System.Windows.Forms.Label()
+        Me.lblAmps = New System.Windows.Forms.Label()
+        Me.lblThrust = New System.Windows.Forms.Label()
+        Me.lblOSD = New System.Windows.Forms.Label()
+        Me.btnTempGraphs = New System.Windows.Forms.Button()
+        Me.btnTempAnalysis = New System.Windows.Forms.Button()
+        Me.chartVibrations = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.lblAbove = New System.Windows.Forms.Label()
+        Me.lblSpeed = New System.Windows.Forms.Label()
+        Me.lblAltitude = New System.Windows.Forms.Label()
+        Me.lblAccZ = New System.Windows.Forms.Label()
+        Me.lblAccXY = New System.Windows.Forms.Label()
+        Me.lblAccZ_Acceptable = New System.Windows.Forms.Label()
+        Me.lblXY_Acceptable = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chartPowerRails, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chartVibrations, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -100,13 +145,13 @@ Partial Class frmMainForm
         Me.richtxtLogAnalysis.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.richtxtLogAnalysis.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.richtxtLogAnalysis.ForeColor = System.Drawing.Color.White
-        Me.richtxtLogAnalysis.Location = New System.Drawing.Point(212, 87)
+        Me.richtxtLogAnalysis.Location = New System.Drawing.Point(222, 87)
         Me.richtxtLogAnalysis.Name = "richtxtLogAnalysis"
         Me.richtxtLogAnalysis.ReadOnly = True
-        Me.richtxtLogAnalysis.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.richtxtLogAnalysis.Size = New System.Drawing.Size(794, 605)
+        Me.richtxtLogAnalysis.Size = New System.Drawing.Size(784, 605)
         Me.richtxtLogAnalysis.TabIndex = 19
         Me.richtxtLogAnalysis.Text = ""
+        Me.richtxtLogAnalysis.WordWrap = False
         '
         'lblErrorCountNo
         '
@@ -179,7 +224,7 @@ Partial Class frmMainForm
         Me.btnVibrations.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.CTB
         Me.btnVibrations.FlatAppearance.BorderSize = 0
         Me.btnVibrations.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnVibrations.Location = New System.Drawing.Point(222, 10)
+        Me.btnVibrations.Location = New System.Drawing.Point(152, 10)
         Me.btnVibrations.MaximumSize = New System.Drawing.Size(64, 68)
         Me.btnVibrations.MinimumSize = New System.Drawing.Size(64, 68)
         Me.btnVibrations.Name = "btnVibrations"
@@ -187,21 +232,6 @@ Partial Class frmMainForm
         Me.btnVibrations.TabIndex = 27
         Me.ToolTip1.SetToolTip(Me.btnVibrations, "Copy formatted text to clipboard for pasting to RCG Forums")
         Me.btnVibrations.UseVisualStyleBackColor = True
-        '
-        'btnDisplayVibrationChart
-        '
-        Me.btnDisplayVibrationChart.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.VB
-        Me.btnDisplayVibrationChart.Enabled = False
-        Me.btnDisplayVibrationChart.FlatAppearance.BorderSize = 0
-        Me.btnDisplayVibrationChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDisplayVibrationChart.Location = New System.Drawing.Point(152, 10)
-        Me.btnDisplayVibrationChart.MaximumSize = New System.Drawing.Size(64, 68)
-        Me.btnDisplayVibrationChart.MinimumSize = New System.Drawing.Size(64, 68)
-        Me.btnDisplayVibrationChart.Name = "btnDisplayVibrationChart"
-        Me.btnDisplayVibrationChart.Size = New System.Drawing.Size(64, 68)
-        Me.btnDisplayVibrationChart.TabIndex = 5
-        Me.ToolTip1.SetToolTip(Me.btnDisplayVibrationChart, "Click this button to display vibration analysis")
-        Me.btnDisplayVibrationChart.UseVisualStyleBackColor = True
         '
         'btnAnalyze
         '
@@ -398,6 +428,8 @@ Partial Class frmMainForm
         '
         Me.Panel1.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.left_back
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel1.Controls.Add(Me.btnTempVibrationChart)
+        Me.Panel1.Controls.Add(Me.btnTempPowerChart)
         Me.Panel1.Controls.Add(Me.lblEsc)
         Me.Panel1.Controls.Add(Me.barReadFile)
         Me.Panel1.Controls.Add(Me.chkboxAutoCommands)
@@ -420,6 +452,26 @@ Partial Class frmMainForm
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(225, 602)
         Me.Panel1.TabIndex = 24
+        '
+        'btnTempVibrationChart
+        '
+        Me.btnTempVibrationChart.Location = New System.Drawing.Point(123, 70)
+        Me.btnTempVibrationChart.Name = "btnTempVibrationChart"
+        Me.btnTempVibrationChart.Size = New System.Drawing.Size(75, 23)
+        Me.btnTempVibrationChart.TabIndex = 40
+        Me.btnTempVibrationChart.Text = "Vibrations"
+        Me.btnTempVibrationChart.UseVisualStyleBackColor = True
+        Me.btnTempVibrationChart.Visible = False
+        '
+        'btnTempPowerChart
+        '
+        Me.btnTempPowerChart.Location = New System.Drawing.Point(123, 21)
+        Me.btnTempPowerChart.Name = "btnTempPowerChart"
+        Me.btnTempPowerChart.Size = New System.Drawing.Size(75, 23)
+        Me.btnTempPowerChart.TabIndex = 40
+        Me.btnTempPowerChart.Text = "Power Rails"
+        Me.btnTempPowerChart.UseVisualStyleBackColor = True
+        Me.btnTempPowerChart.Visible = False
         '
         'lblEsc
         '
@@ -523,27 +575,470 @@ Partial Class frmMainForm
         Me.PictureBox1.TabIndex = 32
         Me.PictureBox1.TabStop = False
         '
+        'chartPowerRails
+        '
+        Me.chartPowerRails.BackColor = System.Drawing.Color.Transparent
+        ChartArea1.AxisX.LabelStyle.Enabled = False
+        ChartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Maroon
+        ChartArea1.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea1.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
+        ChartArea1.AxisX.Minimum = 0.0R
+        ChartArea1.AxisY.Interval = 0.2R
+        ChartArea1.AxisY.IsLabelAutoFit = False
+        ChartArea1.AxisY.IsStartedFromZero = False
+        ChartArea1.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
+        ChartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea1.AxisY.LineColor = System.Drawing.Color.Maroon
+        ChartArea1.AxisY.MajorGrid.Interval = 0.2R
+        ChartArea1.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea1.AxisY.Maximum = 5.8R
+        ChartArea1.AxisY.Minimum = 4.2R
+        ChartArea1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea1.Name = "Vcc"
+        ChartArea1.Position.Auto = False
+        ChartArea1.Position.Height = 19.0!
+        ChartArea1.Position.Width = 95.0!
+        ChartArea1.Position.X = 3.0!
+        ChartArea1.Position.Y = 3.0!
+        ChartArea2.AxisX.LabelStyle.Enabled = False
+        ChartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea2.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea2.AxisX.Minimum = 0.0R
+        ChartArea2.AxisY.Interval = 1.0R
+        ChartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea2.AxisY.MajorGrid.Interval = 1.0R
+        ChartArea2.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea2.AxisY.Maximum = 17.5R
+        ChartArea2.AxisY.Minimum = 7.5R
+        ChartArea2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea2.Name = "Volts"
+        ChartArea2.Position.Auto = False
+        ChartArea2.Position.Height = 20.0!
+        ChartArea2.Position.Width = 96.0!
+        ChartArea2.Position.X = 2.0!
+        ChartArea2.Position.Y = 26.0!
+        ChartArea3.AxisX.LabelStyle.Enabled = False
+        ChartArea3.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea3.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea3.Name = "Amps"
+        ChartArea3.Position.Auto = False
+        ChartArea3.Position.Height = 20.0!
+        ChartArea3.Position.Width = 95.0!
+        ChartArea3.Position.X = 3.0!
+        ChartArea3.Position.Y = 47.0!
+        ChartArea4.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea4.AxisY.IsLabelAutoFit = False
+        ChartArea4.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
+        ChartArea4.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea4.AxisY.Maximum = 1200.0R
+        ChartArea4.AxisY.Minimum = 0.0R
+        ChartArea4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea4.Name = "Thrust"
+        ChartArea4.Position.Auto = False
+        ChartArea4.Position.Height = 20.0!
+        ChartArea4.Position.Width = 96.0!
+        ChartArea4.Position.X = 2.0!
+        ChartArea4.Position.Y = 67.0!
+        Me.chartPowerRails.ChartAreas.Add(ChartArea1)
+        Me.chartPowerRails.ChartAreas.Add(ChartArea2)
+        Me.chartPowerRails.ChartAreas.Add(ChartArea3)
+        Me.chartPowerRails.ChartAreas.Add(ChartArea4)
+        Legend1.Enabled = False
+        Legend1.IsDockedInsideChartArea = False
+        Legend1.Name = "Legend1"
+        Legend1.Title = "Key"
+        Me.chartPowerRails.Legends.Add(Legend1)
+        Me.chartPowerRails.Location = New System.Drawing.Point(212, 84)
+        Me.chartPowerRails.Name = "chartPowerRails"
+        Series1.ChartArea = "Vcc"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series1.Color = System.Drawing.Color.Red
+        Series1.Legend = "Legend1"
+        Series1.Name = "Vcc"
+        Series2.BorderWidth = 3
+        Series2.ChartArea = "Vcc"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series2.Color = System.Drawing.Color.Blue
+        Series2.IsVisibleInLegend = False
+        Series2.Legend = "Legend1"
+        Series2.Name = "VccHighLine"
+        Series3.BorderWidth = 3
+        Series3.ChartArea = "Vcc"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series3.Color = System.Drawing.Color.Blue
+        Series3.IsVisibleInLegend = False
+        Series3.Legend = "Legend1"
+        Series3.Name = "VccLowLine"
+        Series4.ChartArea = "Vcc"
+        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series4.Color = System.Drawing.Color.OliveDrab
+        Series4.Legend = "Legend1"
+        Series4.Name = "VccOSDLine"
+        Series5.ChartArea = "Volts"
+        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series5.Color = System.Drawing.Color.Blue
+        Series5.Legend = "Legend1"
+        Series5.Name = "Volts"
+        Series6.ChartArea = "Amps"
+        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series6.Color = System.Drawing.Color.Fuchsia
+        Series6.IsVisibleInLegend = False
+        Series6.Legend = "Legend1"
+        Series6.Name = "Amps"
+        Series7.ChartArea = "Thrust"
+        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series7.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Series7.IsVisibleInLegend = False
+        Series7.Legend = "Legend1"
+        Series7.Name = "Thrust"
+        Me.chartPowerRails.Series.Add(Series1)
+        Me.chartPowerRails.Series.Add(Series2)
+        Me.chartPowerRails.Series.Add(Series3)
+        Me.chartPowerRails.Series.Add(Series4)
+        Me.chartPowerRails.Series.Add(Series5)
+        Me.chartPowerRails.Series.Add(Series6)
+        Me.chartPowerRails.Series.Add(Series7)
+        Me.chartPowerRails.Size = New System.Drawing.Size(794, 691)
+        Me.chartPowerRails.TabIndex = 33
+        Me.chartPowerRails.Text = "Chart1"
+        Me.chartPowerRails.Visible = False
+        '
+        'lblVcc
+        '
+        Me.lblVcc.AutoSize = True
+        Me.lblVcc.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblVcc.ForeColor = System.Drawing.Color.Blue
+        Me.lblVcc.Location = New System.Drawing.Point(290, 100)
+        Me.lblVcc.Name = "lblVcc"
+        Me.lblVcc.Size = New System.Drawing.Size(213, 26)
+        Me.lblVcc.TabIndex = 34
+        Me.lblVcc.Text = "Vcc - APM Voltage"
+        Me.lblVcc.Visible = False
+        '
+        'lblVolts
+        '
+        Me.lblVolts.AutoSize = True
+        Me.lblVolts.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblVolts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lblVolts.Location = New System.Drawing.Point(290, 260)
+        Me.lblVolts.Name = "lblVolts"
+        Me.lblVolts.Size = New System.Drawing.Size(265, 26)
+        Me.lblVolts.TabIndex = 35
+        Me.lblVolts.Text = "Volts - Main Flight Pack"
+        Me.lblVolts.Visible = False
+        '
+        'lblAmps
+        '
+        Me.lblAmps.AutoSize = True
+        Me.lblAmps.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAmps.ForeColor = System.Drawing.Color.GreenYellow
+        Me.lblAmps.Location = New System.Drawing.Point(290, 404)
+        Me.lblAmps.Name = "lblAmps"
+        Me.lblAmps.Size = New System.Drawing.Size(73, 26)
+        Me.lblAmps.TabIndex = 36
+        Me.lblAmps.Text = "Amps"
+        Me.lblAmps.Visible = False
+        '
+        'lblThrust
+        '
+        Me.lblThrust.AutoSize = True
+        Me.lblThrust.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblThrust.ForeColor = System.Drawing.Color.Red
+        Me.lblThrust.Location = New System.Drawing.Point(290, 543)
+        Me.lblThrust.Name = "lblThrust"
+        Me.lblThrust.Size = New System.Drawing.Size(78, 26)
+        Me.lblThrust.TabIndex = 37
+        Me.lblThrust.Text = "Thrust"
+        Me.lblThrust.Visible = False
+        '
+        'lblOSD
+        '
+        Me.lblOSD.AutoSize = True
+        Me.lblOSD.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblOSD.ForeColor = System.Drawing.Color.GreenYellow
+        Me.lblOSD.Location = New System.Drawing.Point(878, 148)
+        Me.lblOSD.Name = "lblOSD"
+        Me.lblOSD.Size = New System.Drawing.Size(119, 17)
+        Me.lblOSD.TabIndex = 38
+        Me.lblOSD.Text = "OSD Max 5.25v"
+        Me.lblOSD.Visible = False
+        '
+        'btnTempGraphs
+        '
+        Me.btnTempGraphs.Location = New System.Drawing.Point(433, 27)
+        Me.btnTempGraphs.Name = "btnTempGraphs"
+        Me.btnTempGraphs.Size = New System.Drawing.Size(75, 23)
+        Me.btnTempGraphs.TabIndex = 39
+        Me.btnTempGraphs.Text = "Graphs"
+        Me.btnTempGraphs.UseVisualStyleBackColor = True
+        '
+        'btnTempAnalysis
+        '
+        Me.btnTempAnalysis.Location = New System.Drawing.Point(524, 27)
+        Me.btnTempAnalysis.Name = "btnTempAnalysis"
+        Me.btnTempAnalysis.Size = New System.Drawing.Size(75, 23)
+        Me.btnTempAnalysis.TabIndex = 40
+        Me.btnTempAnalysis.Text = "Analysis"
+        Me.btnTempAnalysis.UseVisualStyleBackColor = True
+        '
+        'chartVibrations
+        '
+        Me.chartVibrations.BackColor = System.Drawing.Color.Transparent
+        ChartArea5.AxisX.LabelStyle.Enabled = False
+        ChartArea5.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea5.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea5.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
+        ChartArea5.AxisX.Minimum = 0.0R
+        ChartArea5.AxisY.IsStartedFromZero = False
+        ChartArea5.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea5.AxisY.MajorGrid.Interval = 1.0R
+        ChartArea5.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea5.AxisY.Maximum = 5.0R
+        ChartArea5.AxisY.Minimum = -5.0R
+        ChartArea5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea5.Name = "AccXY"
+        ChartArea5.Position.Auto = False
+        ChartArea5.Position.Height = 19.0!
+        ChartArea5.Position.Width = 95.0!
+        ChartArea5.Position.X = 3.0!
+        ChartArea5.Position.Y = 3.0!
+        ChartArea6.AxisX.LabelStyle.Enabled = False
+        ChartArea6.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea6.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea6.AxisX.Minimum = 0.0R
+        ChartArea6.AxisY.Interval = 1.0R
+        ChartArea6.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea6.AxisY.MajorGrid.Interval = 1.0R
+        ChartArea6.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea6.AxisY.Maximum = -3.0R
+        ChartArea6.AxisY.Minimum = -17.0R
+        ChartArea6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea6.Name = "AccZ"
+        ChartArea6.Position.Auto = False
+        ChartArea6.Position.Height = 20.0!
+        ChartArea6.Position.Width = 96.0!
+        ChartArea6.Position.X = 2.0!
+        ChartArea6.Position.Y = 26.0!
+        ChartArea7.AxisX.LabelStyle.Enabled = False
+        ChartArea7.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea7.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea7.Name = "Altitude"
+        ChartArea7.Position.Auto = False
+        ChartArea7.Position.Height = 20.0!
+        ChartArea7.Position.Width = 95.0!
+        ChartArea7.Position.X = 3.0!
+        ChartArea7.Position.Y = 47.0!
+        ChartArea8.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea8.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea8.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea8.Name = "Speed"
+        ChartArea8.Position.Auto = False
+        ChartArea8.Position.Height = 20.0!
+        ChartArea8.Position.Width = 96.0!
+        ChartArea8.Position.X = 2.0!
+        ChartArea8.Position.Y = 67.0!
+        Me.chartVibrations.ChartAreas.Add(ChartArea5)
+        Me.chartVibrations.ChartAreas.Add(ChartArea6)
+        Me.chartVibrations.ChartAreas.Add(ChartArea7)
+        Me.chartVibrations.ChartAreas.Add(ChartArea8)
+        Legend2.Enabled = False
+        Legend2.IsDockedInsideChartArea = False
+        Legend2.Name = "Legend1"
+        Legend2.Title = "Key"
+        Me.chartVibrations.Legends.Add(Legend2)
+        Me.chartVibrations.Location = New System.Drawing.Point(212, 84)
+        Me.chartVibrations.Name = "chartVibrations"
+        Series8.ChartArea = "AccXY"
+        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series8.Color = System.Drawing.Color.Red
+        Series8.Legend = "Legend1"
+        Series8.Name = "AccX"
+        Series9.ChartArea = "AccXY"
+        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series9.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Series9.Legend = "Legend1"
+        Series9.Name = "AccY"
+        Series10.BorderWidth = 3
+        Series10.ChartArea = "AccXY"
+        Series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series10.Color = System.Drawing.Color.Blue
+        Series10.IsVisibleInLegend = False
+        Series10.Legend = "Legend1"
+        Series10.Name = "XYHighLine"
+        Series11.BorderWidth = 3
+        Series11.ChartArea = "AccXY"
+        Series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series11.Color = System.Drawing.Color.Blue
+        Series11.IsVisibleInLegend = False
+        Series11.Legend = "Legend1"
+        Series11.Name = "XYLowLine"
+        Series12.ChartArea = "AccZ"
+        Series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series12.Color = System.Drawing.Color.Blue
+        Series12.Legend = "Legend1"
+        Series12.Name = "AccZ"
+        Series13.BorderWidth = 3
+        Series13.ChartArea = "AccZ"
+        Series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series13.Color = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Series13.IsVisibleInLegend = False
+        Series13.Legend = "Legend1"
+        Series13.Name = "ZHighLine"
+        Series14.BorderWidth = 3
+        Series14.ChartArea = "AccZ"
+        Series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series14.Color = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Series14.IsVisibleInLegend = False
+        Series14.Legend = "Legend1"
+        Series14.Name = "ZLowLine"
+        Series15.ChartArea = "Altitude"
+        Series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series15.Color = System.Drawing.Color.Fuchsia
+        Series15.IsVisibleInLegend = False
+        Series15.Legend = "Legend1"
+        Series15.Name = "Altitude"
+        Series16.ChartArea = "Speed"
+        Series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series16.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Series16.IsVisibleInLegend = False
+        Series16.Legend = "Legend1"
+        Series16.Name = "Speed"
+        Me.chartVibrations.Series.Add(Series8)
+        Me.chartVibrations.Series.Add(Series9)
+        Me.chartVibrations.Series.Add(Series10)
+        Me.chartVibrations.Series.Add(Series11)
+        Me.chartVibrations.Series.Add(Series12)
+        Me.chartVibrations.Series.Add(Series13)
+        Me.chartVibrations.Series.Add(Series14)
+        Me.chartVibrations.Series.Add(Series15)
+        Me.chartVibrations.Series.Add(Series16)
+        Me.chartVibrations.Size = New System.Drawing.Size(804, 685)
+        Me.chartVibrations.TabIndex = 41
+        Me.chartVibrations.Text = "Chart1"
+        Me.chartVibrations.Visible = False
+        '
+        'lblAbove
+        '
+        Me.lblAbove.AutoSize = True
+        Me.lblAbove.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAbove.ForeColor = System.Drawing.Color.Green
+        Me.lblAbove.Location = New System.Drawing.Point(557, 404)
+        Me.lblAbove.Name = "lblAbove"
+        Me.lblAbove.Size = New System.Drawing.Size(449, 26)
+        Me.lblAbove.TabIndex = 48
+        Me.lblAbove.Text = "Vibrations only Analysed when above 2m"
+        Me.lblAbove.Visible = False
+        '
+        'lblSpeed
+        '
+        Me.lblSpeed.AutoSize = True
+        Me.lblSpeed.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSpeed.ForeColor = System.Drawing.Color.Red
+        Me.lblSpeed.Location = New System.Drawing.Point(290, 543)
+        Me.lblSpeed.Name = "lblSpeed"
+        Me.lblSpeed.Size = New System.Drawing.Size(80, 26)
+        Me.lblSpeed.TabIndex = 47
+        Me.lblSpeed.Text = "Speed"
+        Me.lblSpeed.Visible = False
+        '
+        'lblAltitude
+        '
+        Me.lblAltitude.AutoSize = True
+        Me.lblAltitude.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAltitude.ForeColor = System.Drawing.Color.Green
+        Me.lblAltitude.Location = New System.Drawing.Point(290, 404)
+        Me.lblAltitude.Name = "lblAltitude"
+        Me.lblAltitude.Size = New System.Drawing.Size(93, 26)
+        Me.lblAltitude.TabIndex = 46
+        Me.lblAltitude.Text = "Altitude"
+        Me.lblAltitude.Visible = False
+        '
+        'lblAccZ
+        '
+        Me.lblAccZ.AutoSize = True
+        Me.lblAccZ.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAccZ.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lblAccZ.Location = New System.Drawing.Point(290, 260)
+        Me.lblAccZ.Name = "lblAccZ"
+        Me.lblAccZ.Size = New System.Drawing.Size(66, 26)
+        Me.lblAccZ.TabIndex = 45
+        Me.lblAccZ.Text = "AccZ"
+        Me.lblAccZ.Visible = False
+        '
+        'lblAccXY
+        '
+        Me.lblAccXY.AutoSize = True
+        Me.lblAccXY.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAccXY.ForeColor = System.Drawing.Color.Blue
+        Me.lblAccXY.Location = New System.Drawing.Point(290, 100)
+        Me.lblAccXY.Name = "lblAccXY"
+        Me.lblAccXY.Size = New System.Drawing.Size(162, 26)
+        Me.lblAccXY.TabIndex = 44
+        Me.lblAccXY.Text = "AccX && AccY "
+        Me.lblAccXY.Visible = False
+        '
+        'lblAccZ_Acceptable
+        '
+        Me.lblAccZ_Acceptable.AutoSize = True
+        Me.lblAccZ_Acceptable.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAccZ_Acceptable.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lblAccZ_Acceptable.Location = New System.Drawing.Point(689, 260)
+        Me.lblAccZ_Acceptable.Name = "lblAccZ_Acceptable"
+        Me.lblAccZ_Acceptable.Size = New System.Drawing.Size(317, 26)
+        Me.lblAccZ_Acceptable.TabIndex = 43
+        Me.lblAccZ_Acceptable.Text = "Z Acceptable Range -15 ~ -5"
+        Me.lblAccZ_Acceptable.Visible = False
+        '
+        'lblXY_Acceptable
+        '
+        Me.lblXY_Acceptable.AutoSize = True
+        Me.lblXY_Acceptable.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblXY_Acceptable.ForeColor = System.Drawing.Color.Blue
+        Me.lblXY_Acceptable.Location = New System.Drawing.Point(677, 100)
+        Me.lblXY_Acceptable.Name = "lblXY_Acceptable"
+        Me.lblXY_Acceptable.Size = New System.Drawing.Size(329, 26)
+        Me.lblXY_Acceptable.TabIndex = 42
+        Me.lblXY_Acceptable.Text = "XY Acceptable Range -3 ~ +3"
+        Me.lblXY_Acceptable.Visible = False
+        '
         'frmMainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(1008, 688)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.ClientSize = New System.Drawing.Size(1028, 688)
+        Me.Controls.Add(Me.lblXY_Acceptable)
+        Me.Controls.Add(Me.lblAccXY)
+        Me.Controls.Add(Me.lblSpeed)
+        Me.Controls.Add(Me.lblAbove)
+        Me.Controls.Add(Me.lblAltitude)
+        Me.Controls.Add(Me.lblAccZ)
+        Me.Controls.Add(Me.lblAccZ_Acceptable)
+        Me.Controls.Add(Me.lblVcc)
+        Me.Controls.Add(Me.lblOSD)
+        Me.Controls.Add(Me.lblThrust)
+        Me.Controls.Add(Me.lblAmps)
+        Me.Controls.Add(Me.lblVolts)
+        Me.Controls.Add(Me.btnTempAnalysis)
+        Me.Controls.Add(Me.btnTempGraphs)
         Me.Controls.Add(Me.btnDonate)
         Me.Controls.Add(Me.lblMyCurrentVersion)
         Me.Controls.Add(Me.lblCurrentVersion)
-        Me.Controls.Add(Me.richtxtLogAnalysis)
         Me.Controls.Add(Me.btnMCB)
         Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.btnVibrations)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.btnDisplayVibrationChart)
         Me.Controls.Add(Me.btnAnalyze)
         Me.Controls.Add(Me.btnLoadLog)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.lblErrorCountNo)
+        Me.Controls.Add(Me.chartVibrations)
+        Me.Controls.Add(Me.chartPowerRails)
+        Me.Controls.Add(Me.richtxtLogAnalysis)
+        Me.Controls.Add(Me.PictureBox1)
         Me.ForeColor = System.Drawing.Color.White
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -553,6 +1048,8 @@ Partial Class frmMainForm
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chartPowerRails, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chartVibrations, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -574,7 +1071,6 @@ Partial Class frmMainForm
     Friend WithEvents chkboxVibrationInFlight As System.Windows.Forms.CheckBox
     Friend WithEvents txtVibrationAltitude As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents btnDisplayVibrationChart As System.Windows.Forms.Button
     Friend WithEvents lblErrorCount As System.Windows.Forms.Label
     Friend WithEvents lblErrorCountNo As System.Windows.Forms.Label
     Friend WithEvents chkboxDU32 As System.Windows.Forms.CheckBox
@@ -592,4 +1088,22 @@ Partial Class frmMainForm
     Friend WithEvents btnDonate As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents lblEsc As System.Windows.Forms.Label
+    Friend WithEvents chartPowerRails As System.Windows.Forms.DataVisualization.Charting.Chart
+    Friend WithEvents lblVcc As System.Windows.Forms.Label
+    Friend WithEvents lblVolts As System.Windows.Forms.Label
+    Friend WithEvents lblAmps As System.Windows.Forms.Label
+    Friend WithEvents lblThrust As System.Windows.Forms.Label
+    Friend WithEvents lblOSD As System.Windows.Forms.Label
+    Friend WithEvents btnTempGraphs As System.Windows.Forms.Button
+    Friend WithEvents btnTempVibrationChart As System.Windows.Forms.Button
+    Friend WithEvents btnTempPowerChart As System.Windows.Forms.Button
+    Friend WithEvents btnTempAnalysis As System.Windows.Forms.Button
+    Friend WithEvents chartVibrations As System.Windows.Forms.DataVisualization.Charting.Chart
+    Friend WithEvents lblAbove As System.Windows.Forms.Label
+    Friend WithEvents lblSpeed As System.Windows.Forms.Label
+    Friend WithEvents lblAltitude As System.Windows.Forms.Label
+    Friend WithEvents lblAccZ As System.Windows.Forms.Label
+    Friend WithEvents lblAccXY As System.Windows.Forms.Label
+    Friend WithEvents lblAccZ_Acceptable As System.Windows.Forms.Label
+    Friend WithEvents lblXY_Acceptable As System.Windows.Forms.Label
 End Class
