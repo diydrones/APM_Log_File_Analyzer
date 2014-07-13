@@ -3,6 +3,8 @@
 
         With frmMainForm
             .btnAnalyze.Visible = False
+            .btnGraphs.Visible = False
+            .btnCopyText.Visible = False
             'Initialise the Variables for Reading the Variables
             Dim objReader As New System.IO.StreamReader(strLogFileName)
 
@@ -137,6 +139,8 @@
                         WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": ERROR: User has aborted the analysis")
                         ESCPress = False
                         .lblEsc.Visible = False
+                        .btnGraphs.Visible = True
+                        .btnCopyText.Visible = True
                         Exit Sub
                     End If
 
