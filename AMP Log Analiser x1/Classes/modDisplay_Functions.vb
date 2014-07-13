@@ -573,7 +573,6 @@ Module modDisplay_Functions
     End Function
 
     Public Sub Chart_PowerRails_Visible(OnOff As Boolean)
-        frmMainForm.richtxtLogAnalysis.Visible = False
         frmMainForm.chartPowerRails.Visible = OnOff
         frmMainForm.lblVcc.Visible = OnOff
         frmMainForm.lblVolts.Visible = OnOff
@@ -584,7 +583,6 @@ Module modDisplay_Functions
     End Sub
 
     Public Sub Chart_Vibrations_Visible(OnOff As Boolean)
-        frmMainForm.richtxtLogAnalysis.Visible = False
         frmMainForm.chartVibrations.Visible = OnOff
         frmMainForm.lblAccXY.Visible = OnOff
         frmMainForm.lblXY_Acceptable.Visible = OnOff
@@ -597,6 +595,8 @@ Module modDisplay_Functions
     End Sub
 
     Public Sub ButtonsCheckBoxes_Visible(OnOff As Boolean)
+        frmMainForm.btnLoadLog.Visible = OnOff
+        frmMainForm.richtxtLogAnalysis.Visible = OnOff
         frmMainForm.chkboxParameterWarnings.Visible = OnOff
         frmMainForm.chkboxFlightDataTypes.Visible = OnOff
         frmMainForm.chkboxNonCriticalEvents.Visible = OnOff
@@ -606,6 +606,9 @@ Module modDisplay_Functions
         frmMainForm.chkboxErrors.Visible = OnOff
         frmMainForm.chkboxVibrations.Visible = OnOff
         frmMainForm.chkboxAutoCommands.Visible = OnOff
+        frmMainForm.btnPowerChart.Visible = Not OnOff
+        frmMainForm.btnVibrationChart.Visible = Not OnOff
+        frmMainForm.lblWorkInProgress.Visible = Not OnOff
     End Sub
 
     Public Sub ButtonsCharting_Visible(OnOff As Boolean)
@@ -614,6 +617,7 @@ Module modDisplay_Functions
         frmMainForm.btnAnalysis.Visible = OnOff
         frmMainForm.btnCopyText.Visible = Not OnOff
         frmMainForm.btnGraphs.Visible = Not OnOff
+        frmMainForm.btnAnalyze.Visible = Not OnOff
 
     End Sub
 End Module

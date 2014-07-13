@@ -327,6 +327,8 @@ Module modFile_Handling
                 Debug.Print("User Selected File " & strLogPathFileName)
                 .richtxtLogAnalysis.Clear()
                 FileOpened = True
+                Call ButtonsCheckBoxes_Visible(True)
+                Call ButtonsCharting_Visible(False)
                 frmMainForm.btnAnalyze.Visible = True
             End If
             Debug.Print("Open File Completed." & vbNewLine)
