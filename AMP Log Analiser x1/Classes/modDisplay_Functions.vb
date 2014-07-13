@@ -573,6 +573,7 @@ Module modDisplay_Functions
     End Function
 
     Public Sub Chart_PowerRails_Visible(OnOff As Boolean)
+        frmMainForm.richtxtLogAnalysis.Visible = False
         frmMainForm.chartPowerRails.Visible = OnOff
         frmMainForm.lblVcc.Visible = OnOff
         frmMainForm.lblVolts.Visible = OnOff
@@ -583,6 +584,7 @@ Module modDisplay_Functions
     End Sub
 
     Public Sub Chart_Vibrations_Visible(OnOff As Boolean)
+        frmMainForm.richtxtLogAnalysis.Visible = False
         frmMainForm.chartVibrations.Visible = OnOff
         frmMainForm.lblAccXY.Visible = OnOff
         frmMainForm.lblXY_Acceptable.Visible = OnOff
@@ -607,7 +609,11 @@ Module modDisplay_Functions
     End Sub
 
     Public Sub ButtonsCharting_Visible(OnOff As Boolean)
-        frmMainForm.btnTempPowerChart.Visible = OnOff
-        frmMainForm.btnTempVibrationChart.Visible = OnOff
+        frmMainForm.btnPowerChart.Visible = OnOff
+        frmMainForm.btnVibrationChart.Visible = OnOff
+        frmMainForm.btnAnalysis.Visible = OnOff
+        frmMainForm.btnCopyText.Visible = Not OnOff
+        frmMainForm.btnGraphs.Visible = Not OnOff
+
     End Sub
 End Module

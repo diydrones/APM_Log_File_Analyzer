@@ -27,7 +27,7 @@
     <ProductName>APM Log File Analiser</ProductName>
     <PublisherName>TheBionicbone</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.3.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -228,10 +228,12 @@
     <Content Include="Resources\CMBB.png" />
     <Content Include="Resources\CTB.png" />
     <Content Include="Resources\DB.png" />
+    <Content Include="Resources\GraphsB.png" />
     <Content Include="Resources\HelpB.png" />
     <Content Include="Resources\left-back.png" />
     <Content Include="Resources\LLB.png" />
     <Content Include="Resources\MCB.wav" />
+    <Content Include="Resources\menuback-B-R.png" />
     <Content Include="Resources\menuback.png" />
     <Content Include="Resources\newicon.ico" />
     <Content Include="Resources\OFD.png" />

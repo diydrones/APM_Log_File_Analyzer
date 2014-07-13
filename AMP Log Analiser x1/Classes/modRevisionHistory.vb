@@ -201,6 +201,16 @@
     '           KMG - Submitted Pull - Code Cleansing
     '           KMG - Added the "Press Esc to Abort" label
     '           KMG - Created the Pull Request.
+    '
+    'v1.0.3.5   13/07/2014 - Released on Server
+    '           Got a little out of sync with updates do to pull issues :(  but from memory...
+    '           Splash Screen has been added bt the Questor, very cool!
+    '           Added the Vibrations Chart as an overlay on the Main Form and removed the old form.
+    '           Changed the way in which vibration data is stored to make space for more charts,
+    '               the data in now written directly to the chart during the analysis
+    '           Added the Power Rails Chart.
+    '           Created the Charting buttons and altered the way they interact between the graphs and analysis window.
+    '           It should now be simple to add many more charts with upto 4 charts per page!
 
 
 
