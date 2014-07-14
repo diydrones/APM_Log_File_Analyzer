@@ -73,10 +73,7 @@ Partial Class frmMainForm
         Me.chkboxDU32 = New System.Windows.Forms.CheckBox()
         Me.chkboxNonCriticalEvents = New System.Windows.Forms.CheckBox()
         Me.chkboxSplitModeLandings = New System.Windows.Forms.CheckBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblWorkInProgress = New System.Windows.Forms.Label()
-        Me.btnVibrationChart = New System.Windows.Forms.Button()
-        Me.btnPowerChart = New System.Windows.Forms.Button()
+        Me.panAnalysisButtons = New System.Windows.Forms.Panel()
         Me.lblEsc = New System.Windows.Forms.Label()
         Me.barReadFile = New System.Windows.Forms.ProgressBar()
         Me.lblErrorCount = New System.Windows.Forms.Label()
@@ -103,10 +100,22 @@ Partial Class frmMainForm
         Me.lblAccXY = New System.Windows.Forms.Label()
         Me.lblAccZ_Acceptable = New System.Windows.Forms.Label()
         Me.lblXY_Acceptable = New System.Windows.Forms.Label()
-        Me.Panel1.SuspendLayout()
+        Me.panVibrations = New System.Windows.Forms.Panel()
+        Me.panPowerRails = New System.Windows.Forms.Panel()
+        Me.panAnalysis = New System.Windows.Forms.Panel()
+        Me.panGraphButtons = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnVibrationChart = New System.Windows.Forms.Button()
+        Me.btnPowerChart = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.panAnalysisButtons.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartPowerRails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartVibrations, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panVibrations.SuspendLayout()
+        Me.panPowerRails.SuspendLayout()
+        Me.panAnalysis.SuspendLayout()
+        Me.panGraphButtons.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -125,7 +134,7 @@ Partial Class frmMainForm
         'lblCurrentVersion
         '
         Me.lblCurrentVersion.AutoSize = True
-        Me.lblCurrentVersion.Location = New System.Drawing.Point(896, 674)
+        Me.lblCurrentVersion.Location = New System.Drawing.Point(77, 589)
         Me.lblCurrentVersion.Name = "lblCurrentVersion"
         Me.lblCurrentVersion.Size = New System.Drawing.Size(54, 13)
         Me.lblCurrentVersion.TabIndex = 16
@@ -134,7 +143,7 @@ Partial Class frmMainForm
         'lblMyCurrentVersion
         '
         Me.lblMyCurrentVersion.AutoSize = True
-        Me.lblMyCurrentVersion.Location = New System.Drawing.Point(952, 674)
+        Me.lblMyCurrentVersion.Location = New System.Drawing.Point(144, 589)
         Me.lblMyCurrentVersion.Name = "lblMyCurrentVersion"
         Me.lblMyCurrentVersion.Size = New System.Drawing.Size(54, 13)
         Me.lblMyCurrentVersion.TabIndex = 17
@@ -146,10 +155,10 @@ Partial Class frmMainForm
         Me.richtxtLogAnalysis.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.richtxtLogAnalysis.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.richtxtLogAnalysis.ForeColor = System.Drawing.Color.White
-        Me.richtxtLogAnalysis.Location = New System.Drawing.Point(222, 87)
+        Me.richtxtLogAnalysis.Location = New System.Drawing.Point(3, 0)
         Me.richtxtLogAnalysis.Name = "richtxtLogAnalysis"
         Me.richtxtLogAnalysis.ReadOnly = True
-        Me.richtxtLogAnalysis.Size = New System.Drawing.Size(784, 605)
+        Me.richtxtLogAnalysis.Size = New System.Drawing.Size(778, 596)
         Me.richtxtLogAnalysis.TabIndex = 19
         Me.richtxtLogAnalysis.Text = ""
         Me.richtxtLogAnalysis.WordWrap = False
@@ -427,79 +436,35 @@ Partial Class frmMainForm
         Me.ToolTip1.SetToolTip(Me.chkboxSplitModeLandings, "Select Detailed Mode and Landings")
         Me.chkboxSplitModeLandings.UseVisualStyleBackColor = True
         '
-        'Panel1
+        'panAnalysisButtons
         '
-        Me.Panel1.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.left_back
-        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel1.Controls.Add(Me.lblWorkInProgress)
-        Me.Panel1.Controls.Add(Me.btnVibrationChart)
-        Me.Panel1.Controls.Add(Me.btnPowerChart)
-        Me.Panel1.Controls.Add(Me.lblEsc)
-        Me.Panel1.Controls.Add(Me.barReadFile)
-        Me.Panel1.Controls.Add(Me.chkboxAutoCommands)
-        Me.Panel1.Controls.Add(Me.chkboxParameterWarnings)
-        Me.Panel1.Controls.Add(Me.chkboxVibrations)
-        Me.Panel1.Controls.Add(Me.chkboxFlightDataTypes)
-        Me.Panel1.Controls.Add(Me.chkboxErrors)
-        Me.Panel1.Controls.Add(Me.lblErrorCount)
-        Me.Panel1.Controls.Add(Me.txtVibrationAltitude)
-        Me.Panel1.Controls.Add(Me.chkboxPM)
-        Me.Panel1.Controls.Add(Me.chkboxDU32)
-        Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.txtVibrationSpeed)
-        Me.Panel1.Controls.Add(Me.chkboxNonCriticalEvents)
-        Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.chkboxSplitModeLandings)
-        Me.Panel1.Controls.Add(Me.chkboxVibrationInFlight)
-        Me.Panel1.Controls.Add(Me.lblErrors)
-        Me.Panel1.Controls.Add(Me.lblErrorCountNo)
-        Me.Panel1.Location = New System.Drawing.Point(-9, 87)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(225, 602)
-        Me.Panel1.TabIndex = 24
-        '
-        'lblWorkInProgress
-        '
-        Me.lblWorkInProgress.AutoSize = True
-        Me.lblWorkInProgress.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblWorkInProgress.Location = New System.Drawing.Point(21, 115)
-        Me.lblWorkInProgress.Name = "lblWorkInProgress"
-        Me.lblWorkInProgress.Size = New System.Drawing.Size(170, 24)
-        Me.lblWorkInProgress.TabIndex = 49
-        Me.lblWorkInProgress.Text = "Work In Progress"
-        Me.lblWorkInProgress.Visible = False
-        '
-        'btnVibrationChart
-        '
-        Me.btnVibrationChart.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.menuback_B_R
-        Me.btnVibrationChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnVibrationChart.FlatAppearance.BorderSize = 0
-        Me.btnVibrationChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnVibrationChart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVibrationChart.Location = New System.Drawing.Point(21, 61)
-        Me.btnVibrationChart.Name = "btnVibrationChart"
-        Me.btnVibrationChart.Size = New System.Drawing.Size(177, 42)
-        Me.btnVibrationChart.TabIndex = 40
-        Me.btnVibrationChart.Text = "Vibrations"
-        Me.btnVibrationChart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnVibrationChart.UseVisualStyleBackColor = True
-        Me.btnVibrationChart.Visible = False
-        '
-        'btnPowerChart
-        '
-        Me.btnPowerChart.BackgroundImage = CType(resources.GetObject("btnPowerChart.BackgroundImage"), System.Drawing.Image)
-        Me.btnPowerChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnPowerChart.FlatAppearance.BorderSize = 0
-        Me.btnPowerChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPowerChart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPowerChart.Location = New System.Drawing.Point(21, 13)
-        Me.btnPowerChart.Name = "btnPowerChart"
-        Me.btnPowerChart.Size = New System.Drawing.Size(177, 42)
-        Me.btnPowerChart.TabIndex = 40
-        Me.btnPowerChart.Text = "Power Rails"
-        Me.btnPowerChart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnPowerChart.UseVisualStyleBackColor = True
-        Me.btnPowerChart.Visible = False
+        Me.panAnalysisButtons.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.left_back
+        Me.panAnalysisButtons.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panAnalysisButtons.Controls.Add(Me.lblEsc)
+        Me.panAnalysisButtons.Controls.Add(Me.barReadFile)
+        Me.panAnalysisButtons.Controls.Add(Me.lblMyCurrentVersion)
+        Me.panAnalysisButtons.Controls.Add(Me.chkboxAutoCommands)
+        Me.panAnalysisButtons.Controls.Add(Me.lblCurrentVersion)
+        Me.panAnalysisButtons.Controls.Add(Me.chkboxParameterWarnings)
+        Me.panAnalysisButtons.Controls.Add(Me.chkboxVibrations)
+        Me.panAnalysisButtons.Controls.Add(Me.chkboxFlightDataTypes)
+        Me.panAnalysisButtons.Controls.Add(Me.chkboxErrors)
+        Me.panAnalysisButtons.Controls.Add(Me.lblErrorCount)
+        Me.panAnalysisButtons.Controls.Add(Me.txtVibrationAltitude)
+        Me.panAnalysisButtons.Controls.Add(Me.chkboxPM)
+        Me.panAnalysisButtons.Controls.Add(Me.chkboxDU32)
+        Me.panAnalysisButtons.Controls.Add(Me.Label4)
+        Me.panAnalysisButtons.Controls.Add(Me.txtVibrationSpeed)
+        Me.panAnalysisButtons.Controls.Add(Me.chkboxNonCriticalEvents)
+        Me.panAnalysisButtons.Controls.Add(Me.Label3)
+        Me.panAnalysisButtons.Controls.Add(Me.chkboxSplitModeLandings)
+        Me.panAnalysisButtons.Controls.Add(Me.chkboxVibrationInFlight)
+        Me.panAnalysisButtons.Controls.Add(Me.lblErrors)
+        Me.panAnalysisButtons.Controls.Add(Me.lblErrorCountNo)
+        Me.panAnalysisButtons.Location = New System.Drawing.Point(-9, 87)
+        Me.panAnalysisButtons.Name = "panAnalysisButtons"
+        Me.panAnalysisButtons.Size = New System.Drawing.Size(225, 602)
+        Me.panAnalysisButtons.TabIndex = 24
         '
         'lblEsc
         '
@@ -677,7 +642,7 @@ Partial Class frmMainForm
         Legend1.Name = "Legend1"
         Legend1.Title = "Key"
         Me.chartPowerRails.Legends.Add(Legend1)
-        Me.chartPowerRails.Location = New System.Drawing.Point(212, 84)
+        Me.chartPowerRails.Location = New System.Drawing.Point(3, 3)
         Me.chartPowerRails.Name = "chartPowerRails"
         Series1.ChartArea = "Vcc"
         Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
@@ -730,67 +695,61 @@ Partial Class frmMainForm
         Me.chartPowerRails.Size = New System.Drawing.Size(794, 691)
         Me.chartPowerRails.TabIndex = 33
         Me.chartPowerRails.Text = "Chart1"
-        Me.chartPowerRails.Visible = False
         '
         'lblVcc
         '
         Me.lblVcc.AutoSize = True
         Me.lblVcc.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblVcc.ForeColor = System.Drawing.Color.Blue
-        Me.lblVcc.Location = New System.Drawing.Point(290, 100)
+        Me.lblVcc.Location = New System.Drawing.Point(86, 27)
         Me.lblVcc.Name = "lblVcc"
         Me.lblVcc.Size = New System.Drawing.Size(213, 26)
         Me.lblVcc.TabIndex = 34
         Me.lblVcc.Text = "Vcc - APM Voltage"
-        Me.lblVcc.Visible = False
         '
         'lblVolts
         '
         Me.lblVolts.AutoSize = True
         Me.lblVolts.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblVolts.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.lblVolts.Location = New System.Drawing.Point(290, 260)
+        Me.lblVolts.Location = New System.Drawing.Point(86, 188)
         Me.lblVolts.Name = "lblVolts"
         Me.lblVolts.Size = New System.Drawing.Size(265, 26)
         Me.lblVolts.TabIndex = 35
         Me.lblVolts.Text = "Volts - Main Flight Pack"
-        Me.lblVolts.Visible = False
         '
         'lblAmps
         '
         Me.lblAmps.AutoSize = True
         Me.lblAmps.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAmps.ForeColor = System.Drawing.Color.GreenYellow
-        Me.lblAmps.Location = New System.Drawing.Point(290, 404)
+        Me.lblAmps.Location = New System.Drawing.Point(86, 331)
         Me.lblAmps.Name = "lblAmps"
         Me.lblAmps.Size = New System.Drawing.Size(73, 26)
         Me.lblAmps.TabIndex = 36
         Me.lblAmps.Text = "Amps"
-        Me.lblAmps.Visible = False
         '
         'lblThrust
         '
         Me.lblThrust.AutoSize = True
         Me.lblThrust.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblThrust.ForeColor = System.Drawing.Color.Red
-        Me.lblThrust.Location = New System.Drawing.Point(290, 543)
+        Me.lblThrust.Location = New System.Drawing.Point(86, 470)
         Me.lblThrust.Name = "lblThrust"
         Me.lblThrust.Size = New System.Drawing.Size(78, 26)
         Me.lblThrust.TabIndex = 37
         Me.lblThrust.Text = "Thrust"
-        Me.lblThrust.Visible = False
         '
         'lblOSD
         '
         Me.lblOSD.AutoSize = True
         Me.lblOSD.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblOSD.ForeColor = System.Drawing.Color.GreenYellow
-        Me.lblOSD.Location = New System.Drawing.Point(878, 148)
+        Me.lblOSD.Location = New System.Drawing.Point(680, 77)
         Me.lblOSD.Name = "lblOSD"
         Me.lblOSD.Size = New System.Drawing.Size(119, 17)
         Me.lblOSD.TabIndex = 38
         Me.lblOSD.Text = "OSD Max 5.25v"
-        Me.lblOSD.Visible = False
         '
         'btnGraphs
         '
@@ -880,7 +839,7 @@ Partial Class frmMainForm
         Legend2.Name = "Legend1"
         Legend2.Title = "Key"
         Me.chartVibrations.Legends.Add(Legend2)
-        Me.chartVibrations.Location = New System.Drawing.Point(212, 84)
+        Me.chartVibrations.Location = New System.Drawing.Point(4, 3)
         Me.chartVibrations.Name = "chartVibrations"
         Series8.ChartArea = "AccXY"
         Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
@@ -949,126 +908,208 @@ Partial Class frmMainForm
         Me.chartVibrations.Size = New System.Drawing.Size(804, 685)
         Me.chartVibrations.TabIndex = 41
         Me.chartVibrations.Text = "Chart1"
-        Me.chartVibrations.Visible = False
         '
         'lblAbove
         '
         Me.lblAbove.AutoSize = True
         Me.lblAbove.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAbove.ForeColor = System.Drawing.Color.Green
-        Me.lblAbove.Location = New System.Drawing.Point(557, 404)
+        Me.lblAbove.Location = New System.Drawing.Point(359, 333)
         Me.lblAbove.Name = "lblAbove"
         Me.lblAbove.Size = New System.Drawing.Size(449, 26)
         Me.lblAbove.TabIndex = 48
         Me.lblAbove.Text = "Vibrations only Analysed when above 2m"
-        Me.lblAbove.Visible = False
         '
         'lblSpeed
         '
         Me.lblSpeed.AutoSize = True
         Me.lblSpeed.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSpeed.ForeColor = System.Drawing.Color.Red
-        Me.lblSpeed.Location = New System.Drawing.Point(290, 543)
+        Me.lblSpeed.Location = New System.Drawing.Point(92, 472)
         Me.lblSpeed.Name = "lblSpeed"
         Me.lblSpeed.Size = New System.Drawing.Size(80, 26)
         Me.lblSpeed.TabIndex = 47
         Me.lblSpeed.Text = "Speed"
-        Me.lblSpeed.Visible = False
         '
         'lblAltitude
         '
         Me.lblAltitude.AutoSize = True
         Me.lblAltitude.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAltitude.ForeColor = System.Drawing.Color.Green
-        Me.lblAltitude.Location = New System.Drawing.Point(290, 404)
+        Me.lblAltitude.Location = New System.Drawing.Point(92, 333)
         Me.lblAltitude.Name = "lblAltitude"
         Me.lblAltitude.Size = New System.Drawing.Size(93, 26)
         Me.lblAltitude.TabIndex = 46
         Me.lblAltitude.Text = "Altitude"
-        Me.lblAltitude.Visible = False
         '
         'lblAccZ
         '
         Me.lblAccZ.AutoSize = True
         Me.lblAccZ.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAccZ.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.lblAccZ.Location = New System.Drawing.Point(290, 260)
+        Me.lblAccZ.Location = New System.Drawing.Point(92, 189)
         Me.lblAccZ.Name = "lblAccZ"
         Me.lblAccZ.Size = New System.Drawing.Size(66, 26)
         Me.lblAccZ.TabIndex = 45
         Me.lblAccZ.Text = "AccZ"
-        Me.lblAccZ.Visible = False
         '
         'lblAccXY
         '
         Me.lblAccXY.AutoSize = True
         Me.lblAccXY.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAccXY.ForeColor = System.Drawing.Color.Blue
-        Me.lblAccXY.Location = New System.Drawing.Point(290, 100)
+        Me.lblAccXY.Location = New System.Drawing.Point(92, 29)
         Me.lblAccXY.Name = "lblAccXY"
         Me.lblAccXY.Size = New System.Drawing.Size(162, 26)
         Me.lblAccXY.TabIndex = 44
         Me.lblAccXY.Text = "AccX && AccY "
-        Me.lblAccXY.Visible = False
         '
         'lblAccZ_Acceptable
         '
         Me.lblAccZ_Acceptable.AutoSize = True
         Me.lblAccZ_Acceptable.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAccZ_Acceptable.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.lblAccZ_Acceptable.Location = New System.Drawing.Point(689, 260)
+        Me.lblAccZ_Acceptable.Location = New System.Drawing.Point(491, 189)
         Me.lblAccZ_Acceptable.Name = "lblAccZ_Acceptable"
         Me.lblAccZ_Acceptable.Size = New System.Drawing.Size(317, 26)
         Me.lblAccZ_Acceptable.TabIndex = 43
         Me.lblAccZ_Acceptable.Text = "Z Acceptable Range -15 ~ -5"
-        Me.lblAccZ_Acceptable.Visible = False
         '
         'lblXY_Acceptable
         '
         Me.lblXY_Acceptable.AutoSize = True
         Me.lblXY_Acceptable.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblXY_Acceptable.ForeColor = System.Drawing.Color.Blue
-        Me.lblXY_Acceptable.Location = New System.Drawing.Point(677, 100)
+        Me.lblXY_Acceptable.Location = New System.Drawing.Point(479, 29)
         Me.lblXY_Acceptable.Name = "lblXY_Acceptable"
         Me.lblXY_Acceptable.Size = New System.Drawing.Size(329, 26)
         Me.lblXY_Acceptable.TabIndex = 42
         Me.lblXY_Acceptable.Text = "XY Acceptable Range -3 ~ +3"
-        Me.lblXY_Acceptable.Visible = False
+        '
+        'panVibrations
+        '
+        Me.panVibrations.Controls.Add(Me.lblXY_Acceptable)
+        Me.panVibrations.Controls.Add(Me.lblAccXY)
+        Me.panVibrations.Controls.Add(Me.lblAccZ)
+        Me.panVibrations.Controls.Add(Me.lblOSD)
+        Me.panVibrations.Controls.Add(Me.lblSpeed)
+        Me.panVibrations.Controls.Add(Me.lblAccZ_Acceptable)
+        Me.panVibrations.Controls.Add(Me.lblAbove)
+        Me.panVibrations.Controls.Add(Me.lblAltitude)
+        Me.panVibrations.Controls.Add(Me.chartVibrations)
+        Me.panVibrations.Location = New System.Drawing.Point(480, 100)
+        Me.panVibrations.Name = "panVibrations"
+        Me.panVibrations.Size = New System.Drawing.Size(159, 156)
+        Me.panVibrations.TabIndex = 49
+        Me.panVibrations.Visible = False
+        '
+        'panPowerRails
+        '
+        Me.panPowerRails.Controls.Add(Me.lblAmps)
+        Me.panPowerRails.Controls.Add(Me.lblVolts)
+        Me.panPowerRails.Controls.Add(Me.lblThrust)
+        Me.panPowerRails.Controls.Add(Me.lblVcc)
+        Me.panPowerRails.Controls.Add(Me.chartPowerRails)
+        Me.panPowerRails.Location = New System.Drawing.Point(480, 269)
+        Me.panPowerRails.Name = "panPowerRails"
+        Me.panPowerRails.Size = New System.Drawing.Size(208, 161)
+        Me.panPowerRails.TabIndex = 50
+        Me.panPowerRails.Visible = False
+        '
+        'panAnalysis
+        '
+        Me.panAnalysis.Controls.Add(Me.richtxtLogAnalysis)
+        Me.panAnalysis.Location = New System.Drawing.Point(696, 106)
+        Me.panAnalysis.Name = "panAnalysis"
+        Me.panAnalysis.Size = New System.Drawing.Size(170, 155)
+        Me.panAnalysis.TabIndex = 51
+        Me.panAnalysis.Visible = False
+        '
+        'panGraphButtons
+        '
+        Me.panGraphButtons.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.left_back
+        Me.panGraphButtons.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panGraphButtons.Controls.Add(Me.Label1)
+        Me.panGraphButtons.Controls.Add(Me.btnVibrationChart)
+        Me.panGraphButtons.Controls.Add(Me.btnPowerChart)
+        Me.panGraphButtons.Controls.Add(Me.Label11)
+        Me.panGraphButtons.Location = New System.Drawing.Point(233, 87)
+        Me.panGraphButtons.Name = "panGraphButtons"
+        Me.panGraphButtons.Size = New System.Drawing.Size(225, 602)
+        Me.panGraphButtons.TabIndex = 52
+        Me.panGraphButtons.Visible = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(21, 115)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(170, 24)
+        Me.Label1.TabIndex = 49
+        Me.Label1.Text = "Work In Progress"
+        '
+        'btnVibrationChart
+        '
+        Me.btnVibrationChart.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.menuback_B_R
+        Me.btnVibrationChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnVibrationChart.FlatAppearance.BorderSize = 0
+        Me.btnVibrationChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnVibrationChart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVibrationChart.Location = New System.Drawing.Point(21, 61)
+        Me.btnVibrationChart.Name = "btnVibrationChart"
+        Me.btnVibrationChart.Size = New System.Drawing.Size(177, 42)
+        Me.btnVibrationChart.TabIndex = 40
+        Me.btnVibrationChart.Text = "Vibrations"
+        Me.btnVibrationChart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnVibrationChart.UseVisualStyleBackColor = True
+        '
+        'btnPowerChart
+        '
+        Me.btnPowerChart.BackgroundImage = CType(resources.GetObject("btnPowerChart.BackgroundImage"), System.Drawing.Image)
+        Me.btnPowerChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnPowerChart.FlatAppearance.BorderSize = 0
+        Me.btnPowerChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPowerChart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPowerChart.Location = New System.Drawing.Point(21, 12)
+        Me.btnPowerChart.Name = "btnPowerChart"
+        Me.btnPowerChart.Size = New System.Drawing.Size(177, 42)
+        Me.btnPowerChart.TabIndex = 40
+        Me.btnPowerChart.Text = "Power Rails"
+        Me.btnPowerChart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnPowerChart.UseVisualStyleBackColor = True
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.ForeColor = System.Drawing.Color.Red
+        Me.Label11.Location = New System.Drawing.Point(65, 522)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(0, 13)
+        Me.Label11.TabIndex = 23
+        Me.Label11.Visible = False
         '
         'frmMainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(1028, 688)
-        Me.Controls.Add(Me.lblXY_Acceptable)
-        Me.Controls.Add(Me.lblAccXY)
-        Me.Controls.Add(Me.lblSpeed)
-        Me.Controls.Add(Me.lblAbove)
-        Me.Controls.Add(Me.lblAltitude)
-        Me.Controls.Add(Me.lblAccZ)
-        Me.Controls.Add(Me.lblAccZ_Acceptable)
-        Me.Controls.Add(Me.lblVcc)
-        Me.Controls.Add(Me.lblOSD)
-        Me.Controls.Add(Me.lblThrust)
-        Me.Controls.Add(Me.lblAmps)
-        Me.Controls.Add(Me.lblVolts)
+        Me.ClientSize = New System.Drawing.Size(1162, 695)
+        Me.Controls.Add(Me.panGraphButtons)
+        Me.Controls.Add(Me.panVibrations)
+        Me.Controls.Add(Me.panPowerRails)
         Me.Controls.Add(Me.btnAnalysis)
         Me.Controls.Add(Me.btnGraphs)
         Me.Controls.Add(Me.btnDonate)
-        Me.Controls.Add(Me.lblMyCurrentVersion)
-        Me.Controls.Add(Me.lblCurrentVersion)
         Me.Controls.Add(Me.btnMCB)
         Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.btnCopyText)
         Me.Controls.Add(Me.btnAnalyze)
         Me.Controls.Add(Me.btnLoadLog)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.panAnalysisButtons)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.chartPowerRails)
-        Me.Controls.Add(Me.richtxtLogAnalysis)
-        Me.Controls.Add(Me.chartVibrations)
+        Me.Controls.Add(Me.panAnalysis)
         Me.Controls.Add(Me.MenuStrip1)
         Me.ForeColor = System.Drawing.Color.White
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1076,11 +1117,18 @@ Partial Class frmMainForm
         Me.Name = "frmMainForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "APM Flight Log Analysis"
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.panAnalysisButtons.ResumeLayout(False)
+        Me.panAnalysisButtons.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chartPowerRails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chartVibrations, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panVibrations.ResumeLayout(False)
+        Me.panVibrations.PerformLayout()
+        Me.panPowerRails.ResumeLayout(False)
+        Me.panPowerRails.PerformLayout()
+        Me.panAnalysis.ResumeLayout(False)
+        Me.panGraphButtons.ResumeLayout(False)
+        Me.panGraphButtons.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1108,7 +1156,7 @@ Partial Class frmMainForm
     Friend WithEvents chkboxPM As System.Windows.Forms.CheckBox
     Friend WithEvents chkboxVibrations As System.Windows.Forms.CheckBox
     Friend WithEvents chkboxAutoCommands As System.Windows.Forms.CheckBox
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents panAnalysisButtons As System.Windows.Forms.Panel
     Friend WithEvents btnLoadLog As System.Windows.Forms.Button
     Friend WithEvents btnAnalyze As System.Windows.Forms.Button
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
@@ -1126,8 +1174,6 @@ Partial Class frmMainForm
     Friend WithEvents lblThrust As System.Windows.Forms.Label
     Friend WithEvents lblOSD As System.Windows.Forms.Label
     Friend WithEvents btnGraphs As System.Windows.Forms.Button
-    Friend WithEvents btnVibrationChart As System.Windows.Forms.Button
-    Friend WithEvents btnPowerChart As System.Windows.Forms.Button
     Friend WithEvents btnAnalysis As System.Windows.Forms.Button
     Friend WithEvents chartVibrations As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents lblAbove As System.Windows.Forms.Label
@@ -1137,5 +1183,12 @@ Partial Class frmMainForm
     Friend WithEvents lblAccXY As System.Windows.Forms.Label
     Friend WithEvents lblAccZ_Acceptable As System.Windows.Forms.Label
     Friend WithEvents lblXY_Acceptable As System.Windows.Forms.Label
-    Friend WithEvents lblWorkInProgress As System.Windows.Forms.Label
+    Friend WithEvents panVibrations As System.Windows.Forms.Panel
+    Friend WithEvents panPowerRails As System.Windows.Forms.Panel
+    Friend WithEvents panAnalysis As System.Windows.Forms.Panel
+    Friend WithEvents panGraphButtons As System.Windows.Forms.Panel
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents btnVibrationChart As System.Windows.Forms.Button
+    Friend WithEvents btnPowerChart As System.Windows.Forms.Button
+    Friend WithEvents Label11 As System.Windows.Forms.Label
 End Class

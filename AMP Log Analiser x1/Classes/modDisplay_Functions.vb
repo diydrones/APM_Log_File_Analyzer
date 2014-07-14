@@ -573,47 +573,29 @@ Module modDisplay_Functions
     End Function
 
     Public Sub Chart_PowerRails_Visible(OnOff As Boolean)
-        frmMainForm.chartPowerRails.Visible = OnOff
-        frmMainForm.lblVcc.Visible = OnOff
-        frmMainForm.lblVolts.Visible = OnOff
-        frmMainForm.lblOSD.Visible = OnOff
-        frmMainForm.lblAmps.Visible = OnOff
-        frmMainForm.lblThrust.Visible = OnOff
+        frmMainForm.panPowerRails.Visible = OnOff
         frmMainForm.Refresh()
     End Sub
 
     Public Sub Chart_Vibrations_Visible(OnOff As Boolean)
-        frmMainForm.chartVibrations.Visible = OnOff
-        frmMainForm.lblAccXY.Visible = OnOff
-        frmMainForm.lblXY_Acceptable.Visible = OnOff
-        frmMainForm.lblAccZ.Visible = OnOff
-        frmMainForm.lblAccZ_Acceptable.Visible = OnOff
-        frmMainForm.lblAltitude.Visible = OnOff
-        frmMainForm.lblAbove.Visible = OnOff
-        frmMainForm.lblSpeed.Visible = OnOff
+        frmMainForm.panVibrations.Visible = OnOff
         frmMainForm.Refresh()
     End Sub
 
     Public Sub ButtonsCheckBoxes_Visible(OnOff As Boolean)
         frmMainForm.btnLoadLog.Visible = OnOff
-        frmMainForm.richtxtLogAnalysis.Visible = OnOff
-        frmMainForm.chkboxParameterWarnings.Visible = OnOff
-        frmMainForm.chkboxFlightDataTypes.Visible = OnOff
-        frmMainForm.chkboxNonCriticalEvents.Visible = OnOff
-        frmMainForm.chkboxSplitModeLandings.Visible = OnOff
-        frmMainForm.chkboxPM.Visible = OnOff
-        frmMainForm.chkboxDU32.Visible = OnOff
-        frmMainForm.chkboxErrors.Visible = OnOff
-        frmMainForm.chkboxVibrations.Visible = OnOff
-        frmMainForm.chkboxAutoCommands.Visible = OnOff
-        frmMainForm.btnPowerChart.Visible = Not OnOff
-        frmMainForm.btnVibrationChart.Visible = Not OnOff
-        frmMainForm.lblWorkInProgress.Visible = Not OnOff
+        frmMainForm.panAnalysis.Visible = OnOff
+        frmMainForm.panAnalysisButtons.Visible = Not OnOff
+        frmMainForm.panGraphButtons.Visible = OnOff
+
+        'frmMainForm.btnPowerChart.Visible = Not OnOff
+        'frmMainForm.btnVibrationChart.Visible = Not OnOff
+        'frmMainForm.lblWorkInProgress.Visible = Not OnOff
     End Sub
 
     Public Sub ButtonsCharting_Visible(OnOff As Boolean)
-        frmMainForm.btnPowerChart.Visible = OnOff
-        frmMainForm.btnVibrationChart.Visible = OnOff
+        frmMainForm.panAnalysisButtons.Visible = Not OnOff
+        frmMainForm.panGraphButtons.Visible = OnOff
         frmMainForm.btnAnalysis.Visible = OnOff
         frmMainForm.btnCopyText.Visible = Not OnOff
         frmMainForm.btnGraphs.Visible = Not OnOff
