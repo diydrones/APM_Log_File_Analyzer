@@ -66,13 +66,20 @@ Public Class frmMainForm
             PictureBox1.Visible = True
         End If
 
-
         'loads the form position
         RestorePosition(Me, "PMForm")
         ' Sets the culture to English GB
         Thread.CurrentThread.CurrentCulture = New CultureInfo("en-GB")
         ' Sets the UI culture to English GB
         Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-GB")
+
+        'Set up the panels, we leave them small in the WYSIWYG editor for easy of use.
+        panAnalysis.Location = New Point(222, 87) : panAnalysis.Size = New Point(784, 602)
+        panVibrations.Location = New Point(222, 87) : panVibrations.Size = New Point(784, 602)
+        panPowerRails.Location = New Point(222, 87) : panPowerRails.Size = New Point(784, 602)
+        panAnalysisButtons.Location = New Point(-9, 87) : panAnalysisButtons.Size = New Point(225, 602)
+        panGraphButtons.Location = New Point(-9, 87) : panGraphButtons.Size = New Point(225, 602)
+
 
         'Get the version numbers a run the update if not developing.
         CurrentPublishVersionNumber = GetCurrentDeploymentCurrentVersion()
@@ -255,7 +262,6 @@ Public Class frmMainForm
         Call Chart_Vibrations_Visible(True)
         Call Chart_PowerRails_Visible(False)
     End Sub
-
 
 End Class
 
