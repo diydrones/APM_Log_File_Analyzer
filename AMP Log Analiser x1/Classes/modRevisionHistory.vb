@@ -211,6 +211,9 @@
     '           Added the Power Rails Chart.
     '           Created the Charting buttons and altered the way they interact between the graphs and analysis window.
     '           It should now be simple to add many more charts with upto 4 charts per page!
+    '
+    'v1.0.3.6   14/07/2014 - Releasd on Server and  new first post upload, Normal = 321 / XP = 83
+    '           Placed the Buttons and Graphs into COntrols
 
 
 
