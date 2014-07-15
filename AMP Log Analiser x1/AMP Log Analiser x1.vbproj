@@ -223,7 +223,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="gLabel.dll" />
+    <Content Include="Resources\gLabel.dll" />
     <Content Include="Resources\AB.png" />
     <Content Include="Resources\CMBB.png" />
     <Content Include="Resources\CTB.png" />
