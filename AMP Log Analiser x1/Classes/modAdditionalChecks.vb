@@ -1,19 +1,6 @@
 ﻿Module modAdditionalChecks
     Public Sub Additional_Checks()
 
-        'It has been noted that it is possible for the AMP to believe it is being powered by a USB plug while in flight
-        'from ArduCopter firmware v3.1.2 then GPS glitches are disabled while USB connection is active.
-        'This issue is currently under investigation.
-        If Log_In_Flight = True And Log_DU32_USB = True And USB_Warning1 = False Then
-            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Error: APM believes USB is connected while in flight.")
-            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Error: This situation is currently under investigation by Robert Lefebvre (ArduPilot Developer)")
-            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Error: If flying when the ArduPilot believes you are connected to a USB power source then")
-            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Error: there ""could"" be a possibility that GPS Glitches are being ignored from v3.1.2 onwards.")
-            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Error: Follow ArduPilot Issue 1170 for updates, https://github.com/diydrones/ardupilot/issues/1170")
-            USB_Warning1 = True
-        End If
-
-
         'It is possible for the "Take_OFF" event to be missing from the log (found in 2014-06-01 07-13-53.log where AUTO has no Take_OFF)
         'This code checks to make sure the current in flight status makes sense
         If Log_Ground_BarAlt + 0.5 < Log_CTUN_BarAlt And Log_In_Flight = False And CTUN_ThrOut_40 = True Then

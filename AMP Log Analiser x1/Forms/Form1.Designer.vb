@@ -89,7 +89,6 @@ Partial Class frmMainForm
         Me.lblVolts = New System.Windows.Forms.Label()
         Me.lblAmps = New System.Windows.Forms.Label()
         Me.lblThrust = New System.Windows.Forms.Label()
-        Me.lblOSD = New System.Windows.Forms.Label()
         Me.btnGraphs = New System.Windows.Forms.Button()
         Me.btnAnalysis = New System.Windows.Forms.Button()
         Me.chartVibrations = New System.Windows.Forms.DataVisualization.Charting.Chart()
@@ -108,6 +107,7 @@ Partial Class frmMainForm
         Me.btnVibrationChart = New System.Windows.Forms.Button()
         Me.btnPowerChart = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblOSD = New System.Windows.Forms.Label()
         Me.panAnalysisButtons.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartPowerRails, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -740,17 +740,6 @@ Partial Class frmMainForm
         Me.lblThrust.TabIndex = 37
         Me.lblThrust.Text = "Thrust"
         '
-        'lblOSD
-        '
-        Me.lblOSD.AutoSize = True
-        Me.lblOSD.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblOSD.ForeColor = System.Drawing.Color.GreenYellow
-        Me.lblOSD.Location = New System.Drawing.Point(680, 77)
-        Me.lblOSD.Name = "lblOSD"
-        Me.lblOSD.Size = New System.Drawing.Size(119, 17)
-        Me.lblOSD.TabIndex = 38
-        Me.lblOSD.Text = "OSD Max 5.25v"
-        '
         'btnGraphs
         '
         Me.btnGraphs.BackgroundImage = CType(resources.GetObject("btnGraphs.BackgroundImage"), System.Drawing.Image)
@@ -1089,6 +1078,17 @@ Partial Class frmMainForm
         Me.Label11.TabIndex = 23
         Me.Label11.Visible = False
         '
+        'lblOSD
+        '
+        Me.lblOSD.AutoSize = True
+        Me.lblOSD.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblOSD.ForeColor = System.Drawing.Color.GreenYellow
+        Me.lblOSD.Location = New System.Drawing.Point(680, 77)
+        Me.lblOSD.Name = "lblOSD"
+        Me.lblOSD.Size = New System.Drawing.Size(119, 17)
+        Me.lblOSD.TabIndex = 38
+        Me.lblOSD.Text = "OSD Max 5.25v"
+        '
         'frmMainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1172,7 +1172,6 @@ Partial Class frmMainForm
     Friend WithEvents lblVolts As System.Windows.Forms.Label
     Friend WithEvents lblAmps As System.Windows.Forms.Label
     Friend WithEvents lblThrust As System.Windows.Forms.Label
-    Friend WithEvents lblOSD As System.Windows.Forms.Label
     Friend WithEvents btnGraphs As System.Windows.Forms.Button
     Friend WithEvents btnAnalysis As System.Windows.Forms.Button
     Friend WithEvents chartVibrations As System.Windows.Forms.DataVisualization.Charting.Chart
@@ -1191,4 +1190,5 @@ Partial Class frmMainForm
     Friend WithEvents btnVibrationChart As System.Windows.Forms.Button
     Friend WithEvents btnPowerChart As System.Windows.Forms.Button
     Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents lblOSD As System.Windows.Forms.Label
 End Class

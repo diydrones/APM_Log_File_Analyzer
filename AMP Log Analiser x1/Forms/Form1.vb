@@ -250,6 +250,9 @@ Public Class frmMainForm
 
     Private Sub btnGraphs_Click(sender As Object, e As EventArgs) Handles btnGraphs.Click
         Call ButtonsCheckBoxes_Visible(False)
+        If Me.chartVibrations.Series("AccZ").Points.Count = 0 Then
+            Me.chartVibrations.ChartAreas("AccZ").Visible = False
+        End If
         Call ButtonsCharting_Visible(True)
     End Sub
 
@@ -262,6 +265,7 @@ Public Class frmMainForm
         Call Chart_Vibrations_Visible(True)
         Call Chart_PowerRails_Visible(False)
     End Sub
+
 
 End Class
 
