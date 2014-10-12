@@ -100,6 +100,7 @@ Partial Class frmMainForm
         Me.lblAccZ_Acceptable = New System.Windows.Forms.Label()
         Me.lblXY_Acceptable = New System.Windows.Forms.Label()
         Me.panVibrations = New System.Windows.Forms.Panel()
+        Me.lblOSD = New System.Windows.Forms.Label()
         Me.panPowerRails = New System.Windows.Forms.Panel()
         Me.panAnalysis = New System.Windows.Forms.Panel()
         Me.panGraphButtons = New System.Windows.Forms.Panel()
@@ -107,7 +108,7 @@ Partial Class frmMainForm
         Me.btnVibrationChart = New System.Windows.Forms.Button()
         Me.btnPowerChart = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.lblOSD = New System.Windows.Forms.Label()
+        Me.panHelpButtons = New System.Windows.Forms.Panel()
         Me.panAnalysisButtons.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartPowerRails, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -116,6 +117,7 @@ Partial Class frmMainForm
         Me.panPowerRails.SuspendLayout()
         Me.panAnalysis.SuspendLayout()
         Me.panGraphButtons.SuspendLayout()
+        Me.panHelpButtons.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -153,9 +155,9 @@ Partial Class frmMainForm
         '
         Me.richtxtLogAnalysis.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(29, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.richtxtLogAnalysis.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.richtxtLogAnalysis.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.richtxtLogAnalysis.Font = New System.Drawing.Font("Courier New", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.richtxtLogAnalysis.ForeColor = System.Drawing.Color.White
-        Me.richtxtLogAnalysis.Location = New System.Drawing.Point(3, 0)
+        Me.richtxtLogAnalysis.Location = New System.Drawing.Point(0, 0)
         Me.richtxtLogAnalysis.Name = "richtxtLogAnalysis"
         Me.richtxtLogAnalysis.ReadOnly = True
         Me.richtxtLogAnalysis.Size = New System.Drawing.Size(778, 596)
@@ -178,7 +180,7 @@ Partial Class frmMainForm
         Me.btnDonate.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.DB
         Me.btnDonate.FlatAppearance.BorderSize = 0
         Me.btnDonate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDonate.Location = New System.Drawing.Point(732, 10)
+        Me.btnDonate.Location = New System.Drawing.Point(3, 3)
         Me.btnDonate.MaximumSize = New System.Drawing.Size(64, 68)
         Me.btnDonate.MinimumSize = New System.Drawing.Size(64, 68)
         Me.btnDonate.Name = "btnDonate"
@@ -192,7 +194,7 @@ Partial Class frmMainForm
         Me.btnMCB.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.CMBB
         Me.btnMCB.FlatAppearance.BorderSize = 0
         Me.btnMCB.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMCB.Location = New System.Drawing.Point(872, 10)
+        Me.btnMCB.Location = New System.Drawing.Point(143, 3)
         Me.btnMCB.MaximumSize = New System.Drawing.Size(64, 68)
         Me.btnMCB.MinimumSize = New System.Drawing.Size(64, 68)
         Me.btnMCB.Name = "btnMCB"
@@ -206,7 +208,7 @@ Partial Class frmMainForm
         Me.btnUpdate.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.UpdateB
         Me.btnUpdate.FlatAppearance.BorderSize = 0
         Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnUpdate.Location = New System.Drawing.Point(802, 10)
+        Me.btnUpdate.Location = New System.Drawing.Point(73, 3)
         Me.btnUpdate.MaximumSize = New System.Drawing.Size(64, 68)
         Me.btnUpdate.MinimumSize = New System.Drawing.Size(64, 68)
         Me.btnUpdate.Name = "btnUpdate"
@@ -220,7 +222,7 @@ Partial Class frmMainForm
         Me.btnHelp.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.HelpB
         Me.btnHelp.FlatAppearance.BorderSize = 0
         Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHelp.Location = New System.Drawing.Point(942, 10)
+        Me.btnHelp.Location = New System.Drawing.Point(213, 4)
         Me.btnHelp.MaximumSize = New System.Drawing.Size(64, 68)
         Me.btnHelp.MinimumSize = New System.Drawing.Size(64, 68)
         Me.btnHelp.Name = "btnHelp"
@@ -992,6 +994,17 @@ Partial Class frmMainForm
         Me.panVibrations.TabIndex = 49
         Me.panVibrations.Visible = False
         '
+        'lblOSD
+        '
+        Me.lblOSD.AutoSize = True
+        Me.lblOSD.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblOSD.ForeColor = System.Drawing.Color.GreenYellow
+        Me.lblOSD.Location = New System.Drawing.Point(680, 77)
+        Me.lblOSD.Name = "lblOSD"
+        Me.lblOSD.Size = New System.Drawing.Size(119, 17)
+        Me.lblOSD.TabIndex = 38
+        Me.lblOSD.Text = "OSD Max 5.25v"
+        '
         'panPowerRails
         '
         Me.panPowerRails.Controls.Add(Me.lblAmps)
@@ -1007,6 +1020,7 @@ Partial Class frmMainForm
         '
         'panAnalysis
         '
+        Me.panAnalysis.BackColor = System.Drawing.Color.Black
         Me.panAnalysis.Controls.Add(Me.richtxtLogAnalysis)
         Me.panAnalysis.Location = New System.Drawing.Point(696, 106)
         Me.panAnalysis.Name = "panAnalysis"
@@ -1078,32 +1092,29 @@ Partial Class frmMainForm
         Me.Label11.TabIndex = 23
         Me.Label11.Visible = False
         '
-        'lblOSD
+        'panHelpButtons
         '
-        Me.lblOSD.AutoSize = True
-        Me.lblOSD.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblOSD.ForeColor = System.Drawing.Color.GreenYellow
-        Me.lblOSD.Location = New System.Drawing.Point(680, 77)
-        Me.lblOSD.Name = "lblOSD"
-        Me.lblOSD.Size = New System.Drawing.Size(119, 17)
-        Me.lblOSD.TabIndex = 38
-        Me.lblOSD.Text = "OSD Max 5.25v"
+        Me.panHelpButtons.Controls.Add(Me.btnDonate)
+        Me.panHelpButtons.Controls.Add(Me.btnUpdate)
+        Me.panHelpButtons.Controls.Add(Me.btnMCB)
+        Me.panHelpButtons.Controls.Add(Me.btnHelp)
+        Me.panHelpButtons.Location = New System.Drawing.Point(714, 6)
+        Me.panHelpButtons.Name = "panHelpButtons"
+        Me.panHelpButtons.Size = New System.Drawing.Size(280, 75)
+        Me.panHelpButtons.TabIndex = 53
         '
         'frmMainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(1162, 695)
+        Me.ClientSize = New System.Drawing.Size(1006, 695)
+        Me.Controls.Add(Me.panHelpButtons)
         Me.Controls.Add(Me.panGraphButtons)
         Me.Controls.Add(Me.panVibrations)
         Me.Controls.Add(Me.panPowerRails)
         Me.Controls.Add(Me.btnAnalysis)
         Me.Controls.Add(Me.btnGraphs)
-        Me.Controls.Add(Me.btnDonate)
-        Me.Controls.Add(Me.btnMCB)
-        Me.Controls.Add(Me.btnUpdate)
-        Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.btnCopyText)
         Me.Controls.Add(Me.btnAnalyze)
         Me.Controls.Add(Me.btnLoadLog)
@@ -1129,6 +1140,7 @@ Partial Class frmMainForm
         Me.panAnalysis.ResumeLayout(False)
         Me.panGraphButtons.ResumeLayout(False)
         Me.panGraphButtons.PerformLayout()
+        Me.panHelpButtons.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1191,4 +1203,5 @@ Partial Class frmMainForm
     Friend WithEvents btnPowerChart As System.Windows.Forms.Button
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents lblOSD As System.Windows.Forms.Label
+    Friend WithEvents panHelpButtons As System.Windows.Forms.Panel
 End Class

@@ -67,18 +67,32 @@ Public Class frmMainForm
         End If
 
         'loads the form position
-        RestorePosition(Me, "PMForm")
+
+        'This has been commeted out as it does not work so well with the Anchor method.
+        'RestorePosition(Me, "PMForm")
+
         ' Sets the culture to English GB
         Thread.CurrentThread.CurrentCulture = New CultureInfo("en-GB")
         ' Sets the UI culture to English GB
         Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-GB")
 
+        'Setup the initial Screen Size so the anchor can work correctly.
+        Me.Location = New Point(0, 0)
+        Me.Size = New Point(1022, 733)
+
         'Set up the panels, we leave them small in the WYSIWYG editor for easy of use.
-        panAnalysis.Location = New Point(222, 87) : panAnalysis.Size = New Point(784, 602)
-        panVibrations.Location = New Point(222, 87) : panVibrations.Size = New Point(784, 602)
-        panPowerRails.Location = New Point(222, 87) : panPowerRails.Size = New Point(784, 602)
-        panAnalysisButtons.Location = New Point(-9, 87) : panAnalysisButtons.Size = New Point(225, 602)
-        panGraphButtons.Location = New Point(-9, 87) : panGraphButtons.Size = New Point(225, 602)
+        panAnalysis.Location = New Point(222, 87) : panAnalysis.Size = New Point(784, 602) : panAnalysis.Anchor = AnchorStyles.Left Or AnchorStyles.Bottom Or AnchorStyles.Top Or AnchorStyles.Right
+        panVibrations.Location = New Point(222, 87) : panVibrations.Size = New Point(784, 602) : panVibrations.Anchor = AnchorStyles.Left Or AnchorStyles.Bottom Or AnchorStyles.Top Or AnchorStyles.Right
+        panPowerRails.Location = New Point(222, 87) : panPowerRails.Size = New Point(784, 602) : panPowerRails.Anchor = AnchorStyles.Left Or AnchorStyles.Bottom Or AnchorStyles.Top Or AnchorStyles.Right
+        panAnalysisButtons.Location = New Point(-9, 87) : panAnalysisButtons.Size = New Point(225, 602) : panAnalysisButtons.Anchor = AnchorStyles.Left Or AnchorStyles.Top
+        panGraphButtons.Location = New Point(-9, 87) : panGraphButtons.Size = New Point(225, 602) : panGraphButtons.Anchor = AnchorStyles.Left Or AnchorStyles.Top
+        panHelpButtons.Location = New Point(714, 6) : panHelpButtons.Size = New Point(280, 75) : panHelpButtons.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+
+        'Set up the Resizeing of the Analysis TextBox
+        richtxtLogAnalysis.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+        chartVibrations.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+        chartPowerRails.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+
 
 
         'Get the version numbers a run the update if not developing.

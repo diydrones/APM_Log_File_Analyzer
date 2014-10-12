@@ -80,17 +80,14 @@
                     If Log_PM_I2CErr <> 0 Then
                         WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": I2C Error: At least one I2C error has been detected.")
                         WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": I2C Error: Current Value of PM Parameter PM_INSErr is " & Log_PM_I2CErr)
-                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": I2C Error: Please upload your log here: http://www.rcgroups.com/forums/showthread.php?t=2151318&pp=50")
                         Debug.Print("I2C Error: At least one I2C error has been detected.")
                     End If
 
                     If Log_PM_INSErr <> 0 Then
-                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": INS Error: At least one initialisation error has been detected.")
-                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": INS Error: Possible 3.3v Regulator issues!")
+                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": INS Error: At least one unknown initialisation error has been detected.")
                         WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": INS Error: Current Value of PM Parameter PM_INSErr is " & Log_PM_INSErr)
-                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": INS Error: Please upload your log here: http://www.rcgroups.com/forums/showthread.php?t=2151318&pp=50")
-                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": INS Error: Please refer to this thread (page 11):")
-                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": INS Error: http://diydrones.com/forum/topics/ac3-1-rc5-spi-speed-problem?id=705844%3ATopic%3A1457156&page=1#comments")
+                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": INS Error: This can sometimes be writen at the end of the log if the APM")
+                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": INS Error: was disconnected from power before being disabled / disconnected.")
                         Debug.Print("INS Error: Current Value of PM Parameter Log_PM_INSErr is " & Log_PM_INSErr)
                     End If
 
