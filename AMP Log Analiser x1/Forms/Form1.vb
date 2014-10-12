@@ -266,5 +266,6 @@ Public Class frmMainForm
         Call Chart_PowerRails_Visible(False)
     End Sub
 
+
 End Class
 

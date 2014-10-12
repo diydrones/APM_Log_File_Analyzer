@@ -137,8 +137,8 @@
                         End If
                     End If
 
-                    If Log_DU32_SimpleMode <> (((Log_DU32_Value And (2 ^ 1)) > 0) + ((Log_DU32_Value And (2 ^ 2)) > 0)) Then
-                        Log_DU32_SimpleMode = (((Log_DU32_Value And (2 ^ 1)) > 0) + ((Log_DU32_Value And (2 ^ 2)) > 0))
+                    If Log_DU32_SimpleMode <> (((Log_DU32_Value And (2 ^ 1)) > 0) + ((Log_DU32_Value And (2 ^ 2)))) Then
+                        Log_DU32_SimpleMode = (((Log_DU32_Value And (2 ^ 1)) > 0) + ((Log_DU32_Value And (2 ^ 2))))
                         If Log_DU32_SimpleMode = 0 Then
                             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Simple Mode is Disabled")
                         ElseIf Log_DU32_SimpleMode = -1 Then
@@ -182,8 +182,8 @@
                         End If
 
 
-                        If Log_DU32_CH7_Switch <> (((Log_DU32_Value And (2 ^ 9)) > 0) + ((Log_DU32_Value And (2 ^ 10)) > 0)) Then
-                            Log_DU32_CH7_Switch = (((Log_DU32_Value And (2 ^ 9)) > 0) + ((Log_DU32_Value And (2 ^ 10)) > 0))
+                        If Log_DU32_CH7_Switch <> (((Log_DU32_Value And (2 ^ 9)) > 0) + ((Log_DU32_Value And (2 ^ 10)))) Then
+                            Log_DU32_CH7_Switch = (((Log_DU32_Value And (2 ^ 9)) > 0) + ((Log_DU32_Value And (2 ^ 10))))
                             If Log_DU32_CH7_Switch = 0 Then
                                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 7 Switch is Low.")
                             ElseIf Log_DU32_CH7_Switch = -1 Then
@@ -193,8 +193,8 @@
                             End If
                         End If
 
-                        If Log_DU32_CH8_Switch <> (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12)) > 0)) Then
-                            Log_DU32_CH8_Switch = (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12)) > 0))
+                        If Log_DU32_CH8_Switch <> (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12)))) Then
+                            Log_DU32_CH8_Switch = (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12))))
                             If Log_DU32_CH8_Switch = 0 Then
                                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 8 Switch is Low.")
                             ElseIf Log_DU32_CH8_Switch = -1 Then
@@ -232,8 +232,18 @@
                         End If
 
 
-                        If Log_DU32_CH7_Switch <> (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12)) > 0)) Then
-                            Log_DU32_CH7_Switch = (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12)) > 0))
+                        ' ***************************************************************************
+                        ' *** Testing the BitWise Operation                                       ***
+                        ' *** Answer will be 0 (both bits zero), -1 (low bit 1), >0 (high bit 1)  ***
+                        ' *** NOTE:  1 & 1 is not allowed here!!                                  ***
+                        ' ***************************************************************************
+                        'WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Testing: CH8 value (Bit13) " & (Log_DU32_Value And (2 ^ 13)) & "   (Bit14) " & (Log_DU32_Value And (2 ^ 14)))
+                        'WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Testing: CH8 value = " & (((Log_DU32_Value And (2 ^ 13)) > 0) + ((Log_DU32_Value And (2 ^ 14)))))
+                        'WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Testing: CH8 value (Bit13)  " & (Log_DU32_Value And 2 ^ 13) / (2 ^ 13) & "   (Bit14) " & (Log_DU32_Value And 2 ^ 14) / (2 ^ 14))
+
+
+                        If Log_DU32_CH7_Switch <> (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12)))) Then
+                            Log_DU32_CH7_Switch = (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12))))
                             If Log_DU32_CH7_Switch = 0 Then
                                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 7 Switch is Low.")
                             ElseIf Log_DU32_CH7_Switch = -1 Then
@@ -243,8 +253,9 @@
                             End If
                         End If
 
-                        If Log_DU32_CH8_Switch <> (((Log_DU32_Value And (2 ^ 13)) > 0) + ((Log_DU32_Value And (2 ^ 14)) > 0)) Then
-                            Log_DU32_CH8_Switch = (((Log_DU32_Value And (2 ^ 13)) > 0) + ((Log_DU32_Value And (2 ^ 14)) > 0))
+
+                        If Log_DU32_CH8_Switch <> (((Log_DU32_Value And (2 ^ 13)) > 0) + ((Log_DU32_Value And (2 ^ 14)))) Then
+                            Log_DU32_CH8_Switch = (((Log_DU32_Value And (2 ^ 13)) > 0) + ((Log_DU32_Value And (2 ^ 14))))
                             If Log_DU32_CH8_Switch = 0 Then
                                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 8 Switch is Low.")
                             ElseIf Log_DU32_CH8_Switch = -1 Then
