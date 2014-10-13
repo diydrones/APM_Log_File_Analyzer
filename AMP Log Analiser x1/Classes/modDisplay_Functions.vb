@@ -5,9 +5,9 @@ Module modDisplay_Functions
         'review the contents of the text that needs to be written.
         Dim txtColor As Color
         txtColor = Color.White
-        If InStr(LineText, "WARNING:") Then txtColor = Color.Red
-        If InStr(LineText, "ERROR:") Then txtColor = Color.Red
-        If InStr(LineText, "Error:") Then txtColor = Color.Red
+        If InStr(LineText, "WARNING:") Then txtColor = Color.OrangeRed
+        If InStr(LineText, "ERROR:") Then txtColor = Color.OrangeRed
+        If InStr(LineText, "Error:") Then txtColor = Color.OrangeRed
         If InStr(LineText, "Warning:") Then txtColor = Color.Orange
         If InStr(LineText, "Mode") Then txtColor = Color.Aqua
         If InStr(LineText, "Flight Time") Then txtColor = Color.Aqua
@@ -587,6 +587,7 @@ Module modDisplay_Functions
         frmMainForm.panAnalysis.Visible = OnOff
         frmMainForm.panAnalysisButtons.Visible = Not OnOff
         frmMainForm.panGraphButtons.Visible = OnOff
+        frmMainForm.btnParameters.Visible = OnOff
 
         'frmMainForm.btnPowerChart.Visible = Not OnOff
         'frmMainForm.btnVibrationChart.Visible = Not OnOff
@@ -600,6 +601,12 @@ Module modDisplay_Functions
         frmMainForm.btnCopyText.Visible = Not OnOff
         frmMainForm.btnGraphs.Visible = Not OnOff
         frmMainForm.btnAnalyze.Visible = Not OnOff
+        'frmMainForm.btnParameters.Visible = Not OnOff
+    End Sub
 
+    Public Sub ShowParametersForm()
+        frmParameters.Show()
+        ParametersVisible = Not ParametersVisible
+        frmParameters.Visible = ParametersVisible
     End Sub
 End Module

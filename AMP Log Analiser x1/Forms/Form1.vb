@@ -60,10 +60,10 @@ Public Class frmMainForm
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If FileOpened = True Then
             btnAnalyze.Visible = True
-            PictureBox1.Visible = False
+            picClickButton.Visible = False
         ElseIf FileOpened = False Then
             btnAnalyze.Visible = False
-            PictureBox1.Visible = True
+            picClickButton.Visible = True
         End If
 
         'loads the form position
@@ -77,8 +77,12 @@ Public Class frmMainForm
         Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-GB")
 
         'Setup the initial Screen Size so the anchor can work correctly.
-        Me.Location = New Point(0, 0)
-        Me.Size = New Point(1022, 733)
+        Me.Location = New Point(0, 0) : Me.Size = New Point(1022, 733)
+        richtxtLogAnalysis.Location = New Point(0, 0) : richtxtLogAnalysis.Size = New Point(781, 602)
+        chartVibrations.Location = New Point(4, 3) : chartVibrations.Size = New Point(804, 685)
+        chartPowerRails.Location = New Point(3, 3) : chartPowerRails.Size = New Point(794, 691)
+        picClickButton.Location = New Point(82, 10) : picClickButton.Size = New Point(261, 66)
+
 
         'Set up the panels, we leave them small in the WYSIWYG editor for easy of use.
         panAnalysis.Location = New Point(222, 87) : panAnalysis.Size = New Point(784, 602) : panAnalysis.Anchor = AnchorStyles.Left Or AnchorStyles.Bottom Or AnchorStyles.Top Or AnchorStyles.Right
@@ -230,6 +234,9 @@ Public Class frmMainForm
     Private Sub btnAnalyze_Click(sender As Object, e As EventArgs) Handles btnAnalyze.Click
         If strLogPathFileName <> "" Then
             richtxtLogAnalysis.Clear()
+            frmParameters.lstboxParameters.Items.Clear()
+            'chartVibrations.ChartAreas.Clear()
+            'chartPowerRails.ChartAreas.Clear()
             lblEsc.Visible = True
             Call ReadFile(strLogPathFileName)
             lblEsc.Visible = False
@@ -281,5 +288,12 @@ Public Class frmMainForm
     End Sub
 
 
+    Private Sub frmMainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        frmParameters.Close()
+    End Sub
+
+    Private Sub btnParameters_Click(sender As Object, e As EventArgs) Handles btnParameters.Click
+        Call ShowParametersForm()
+    End Sub
 End Class
 

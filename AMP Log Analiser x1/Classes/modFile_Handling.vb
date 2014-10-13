@@ -334,10 +334,10 @@ Module modFile_Handling
             Debug.Print("Open File Completed." & vbNewLine)
             If FileOpened = True Then
                 .btnAnalyze.Visible = True
-                .PictureBox1.Visible = False
+                .picClickButton.Visible = False
             ElseIf FileOpened = False Then
                 .btnAnalyze.Visible = False
-                .PictureBox1.Visible = True
+                .picClickButton.Visible = True
             End If
         End With
     End Sub
