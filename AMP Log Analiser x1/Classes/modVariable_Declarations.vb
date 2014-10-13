@@ -3,7 +3,7 @@ Imports System.Deployment.Application
 
 Module modVariable_Declarations
 
-    Public MyCurrentVersionNumber As String = "v1.0.3.8"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v1.0.3.9"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""               'frmMainForm.PublishedVers()                 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
 
@@ -40,7 +40,7 @@ Module modVariable_Declarations
     Public TotalDataLines As Integer = 0                    'Holds the Total Number of Data Lines in the current log.
     Public ErrorCount As Integer = 0                        'Counts the number of errors found in the logs.
     Public ESCPress As Boolean = False                      'True if Escape is pressed
-
+    Public ParametersVisible As Boolean = False             'True if Parameters window is currently displayed.
 
     'Declare the .ini Variables
     Public BATTERY_CAPACITY As Integer = 5000               'Holds the Models Battery Capacity

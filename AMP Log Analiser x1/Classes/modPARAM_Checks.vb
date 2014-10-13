@@ -20,6 +20,10 @@
                 Else
                     Param = DataArray(1)
                     Value = Val(DataArray(2))
+
+                    'Write the parameter found to the Parameter List Box
+                    frmParameters.lstboxParameters.Items.Add(Param & "  =  " & Value)
+
                     'Check that ACRO mode will try to self level.
                     If Param = "ACRO_TRAINER" And Val(Value) <> 2 Then
                         Call WriteParamHeader()

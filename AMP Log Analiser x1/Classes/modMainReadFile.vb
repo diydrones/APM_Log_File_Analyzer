@@ -5,6 +5,7 @@
             .btnAnalyze.Visible = False
             .btnGraphs.Visible = False
             .btnCopyText.Visible = False
+            .btnParameters.Visible = False
             'Initialise the Variables for Reading the Variables
             Dim objReader As New System.IO.StreamReader(strLogFileName)
 
@@ -141,8 +142,10 @@
                         .lblEsc.Visible = False
                         .btnGraphs.Visible = True
                         .btnCopyText.Visible = True
+                        .btnParameters.Visible = True
                         Exit Sub
                     End If
+
 
                     'Catch Any Errors
                 Catch
@@ -194,7 +197,7 @@
             'show the required buttons
             frmMainForm.btnGraphs.Visible = True
             frmMainForm.btnCopyText.Visible = True
-
+            frmMainForm.btnParameters.Visible = True
         End With
     End Sub
 
