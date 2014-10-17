@@ -3,7 +3,7 @@ Imports System.Deployment.Application
 
 Module modVariable_Declarations
 
-    Public MyCurrentVersionNumber As String = "v1.0.3.9"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v1.0.4.0"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""               'frmMainForm.PublishedVers()                 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
 
@@ -19,6 +19,8 @@ Module modVariable_Declarations
 
 
     'Declare the Main Program Variables
+    Public CodeTimerStart As Double                         'Use CodeTimerStart = Format(Now, "ffff") at the start of a process.
+    'Then If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("CMD Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms") at the end
     Public LogAnalysisHeader As Boolean = False             'True once the header has been written to the screen.
     Public BaseDate As Date = "06 Jan 1980"
     Public DataLine As Single = 0                           'Line Number of File being Processed.

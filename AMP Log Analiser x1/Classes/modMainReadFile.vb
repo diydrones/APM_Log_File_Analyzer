@@ -2,10 +2,8 @@
     Public Sub ReadFile(ByVal strLogFileName As String)
 
         With frmMainForm
-            .btnAnalyze.Visible = False
-            .btnGraphs.Visible = False
-            .btnCopyText.Visible = False
-            .btnParameters.Visible = False
+
+            '.WindowState = FormWindowState.Minimized
             'Initialise the Variables for Reading the Variables
             Dim objReader As New System.IO.StreamReader(strLogFileName)
 
@@ -86,43 +84,69 @@
                     'Debug.Print("DATA: " & DataArray(0).PadRight(5) & " Flying: " & Log_In_Flight & " -- Dist_From_Launch: " & Format(Dist_From_Launch * 1000, "0.00") & " -- Mode_Min_Dist_From_Launch: " & Format(Mode_Min_Dist_From_Launch * 1000, "0.00") & " -- Mode_Max_Dist_From_Launch: " & Format(Mode_Max_Dist_From_Launch * 1000, "0.00"))
 
                     'Parameter Checks
+                    CodeTimerStart = Format(Now, "ffff")
                     Call Parameter_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Parameter Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'EV Checks
+                    CodeTimerStart = Format(Now, "ffff")
                     Call EV_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("EV Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'Error Checks
+                    CodeTimerStart = Format(Now, "ffff")
                     Call ERROR_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("ERROR Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'Mode Checks
+                    CodeTimerStart = Format(Now, "ffff")
                     Call Mode_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Mode Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'CURR Checks
+                    CodeTimerStart = Format(Now, "ffff")
                     Call CURR_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Current Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'CTUN Checks
+                    CodeTimerStart = Format(Now, "ffff")
                     Call CTUN_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("CTUN Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'GPS Checks
+                    CodeTimerStart = Format(Now, "ffff")
                     Call GPS_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("GPS Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'IMU Checks - Vibration
+                    CodeTimerStart = Format(Now, "ffff")
                     Call IMU_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("IMU Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'ATT Checks, Roll and Pitch
+                    CodeTimerStart = Format(Now, "ffff")
                     Call ATT_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("ATT Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'PM Checks, process manager timings
+                    CodeTimerStart = Format(Now, "ffff")
                     Call PM_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("PM Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'DU32 Checks
+                    CodeTimerStart = Format(Now, "ffff")
                     Call DU32_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("DU32 Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'CMD Checks
+                    CodeTimerStart = Format(Now, "ffff")
                     Call CMD_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("CMD Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'Additional Checks not related to any one log data type
+                    CodeTimerStart = Format(Now, "ffff")
                     Call Additional_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Additional Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
 
                     'This keep log of how long we have been in this mode, note that this includes ground time!
                     Log_Current_Mode_Time = DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
@@ -194,10 +218,7 @@
 
             Debug.Print("Sub ReadFile Completed" & vbNewLine)
 
-            'show the required buttons
-            frmMainForm.btnGraphs.Visible = True
-            frmMainForm.btnCopyText.Visible = True
-            frmMainForm.btnParameters.Visible = True
+            '.WindowState = FormWindowState.Normal
         End With
     End Sub
 

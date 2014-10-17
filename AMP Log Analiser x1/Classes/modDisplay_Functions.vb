@@ -596,12 +596,19 @@ Module modDisplay_Functions
 
     Public Sub ButtonsCharting_Visible(OnOff As Boolean)
         frmMainForm.panAnalysisButtons.Visible = Not OnOff
+
+        'Graph Button Handling.
         frmMainForm.panGraphButtons.Visible = OnOff
+        'Enable each button if data is available.
+        If OnOff = True Then 'only valid if we are displaying graph buttons.
+            If IMU_Logging = True Then frmMainForm.btnVibrationChart.Enabled = True Else frmMainForm.btnVibrationChart.Enabled = False
+            If CURR_Logging = True Then frmMainForm.btnPowerChart.Enabled = True Else frmMainForm.btnPowerChart.Enabled = False
+        End If
+
         frmMainForm.btnAnalysis.Visible = OnOff
         frmMainForm.btnCopyText.Visible = Not OnOff
         frmMainForm.btnGraphs.Visible = Not OnOff
         frmMainForm.btnAnalyze.Visible = Not OnOff
-        'frmMainForm.btnParameters.Visible = Not OnOff
     End Sub
 
     Public Sub ShowParametersForm()

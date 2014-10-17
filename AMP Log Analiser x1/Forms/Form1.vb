@@ -79,9 +79,22 @@ Public Class frmMainForm
         'Setup the initial Screen Size so the anchor can work correctly.
         Me.Location = New Point(0, 0) : Me.Size = New Point(1022, 733)
         richtxtLogAnalysis.Location = New Point(0, 0) : richtxtLogAnalysis.Size = New Point(781, 602)
-        chartVibrations.Location = New Point(4, 3) : chartVibrations.Size = New Point(804, 685)
+        chartVibrations.Location = New Point(3, 3) : chartVibrations.Size = New Point(794, 691)
         chartPowerRails.Location = New Point(3, 3) : chartPowerRails.Size = New Point(794, 691)
         picClickButton.Location = New Point(82, 10) : picClickButton.Size = New Point(261, 66)
+        lblAccXY.Location = New Point(92, 29)
+        lblXY_Acceptable.Location = New Point(450, 29)
+        lblAccZ.Location = New Point(92, 180)
+        lblAccZ_Acceptable.Location = New Point(460, 180)
+        lblAltitude.Location = New Point(92, 333)
+        lblAbove.Location = New Point(328, 333)
+        lblVcc.Location = New Point(86, 27)
+        lblVolts.Location = New Point(86, 188)
+        lblAmps.Location = New Point(86, 331)
+        lblThrust.Location = New Point(86, 470)
+        lblOSD.Location = New Point(650, 60)
+
+
 
 
         'Set up the panels, we leave them small in the WYSIWYG editor for easy of use.
@@ -91,12 +104,32 @@ Public Class frmMainForm
         panAnalysisButtons.Location = New Point(-9, 87) : panAnalysisButtons.Size = New Point(225, 602) : panAnalysisButtons.Anchor = AnchorStyles.Left Or AnchorStyles.Top
         panGraphButtons.Location = New Point(-9, 87) : panGraphButtons.Size = New Point(225, 602) : panGraphButtons.Anchor = AnchorStyles.Left Or AnchorStyles.Top
         panHelpButtons.Location = New Point(714, 6) : panHelpButtons.Size = New Point(280, 75) : panHelpButtons.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Me.panPowerRails.Controls.Add(chartPowerRails)
+        Me.panVibrations.Controls.Add(chartVibrations)
+        Me.panAnalysis.Controls.Add(richtxtLogAnalysis)
+        Me.panVibrations.Controls.Add(lblAccXY) : lblAccXY.BringToFront()
+        Me.panVibrations.Controls.Add(lblAccZ) : lblAccZ.BringToFront()
+        Me.panVibrations.Controls.Add(lblAltitude) : lblAltitude.BringToFront()
+        Me.panVibrations.Controls.Add(lblAbove) : lblAbove.BringToFront()
+        Me.panVibrations.Controls.Add(lblXY_Acceptable) : lblXY_Acceptable.BringToFront()
+        Me.panVibrations.Controls.Add(lblAccZ_Acceptable) : lblAccZ_Acceptable.BringToFront()
+        Me.panPowerRails.Controls.Add(lblVcc) : lblVcc.BringToFront()
+        Me.panPowerRails.Controls.Add(lblVolts) : lblVolts.BringToFront()
+        Me.panPowerRails.Controls.Add(lblAmps) : lblAmps.BringToFront()
+        Me.panPowerRails.Controls.Add(lblThrust) : lblThrust.BringToFront()
+        Me.panPowerRails.Controls.Add(lblOSD) : lblOSD.BringToFront()
 
-        'Set up the Resizeing of the Analysis TextBox
+
+
+        'Set up the resizeing anchors
         richtxtLogAnalysis.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
         chartVibrations.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
         chartPowerRails.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
-
+        lblOSD.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+        'lblOSD.Dock = DockStyle.Right Or DockStyle.Top Or DockStyle.Bottom
+        lblXY_Acceptable.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+        lblAccZ_Acceptable.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+        lblAbove.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
 
 
         'Get the version numbers a run the update if not developing.
@@ -233,13 +266,36 @@ Public Class frmMainForm
     End Sub
     Private Sub btnAnalyze_Click(sender As Object, e As EventArgs) Handles btnAnalyze.Click
         If strLogPathFileName <> "" Then
+
+            'Update the available button on the window.
+            btnAnalyze.Visible = False
+            btnGraphs.Visible = False
+            btnCopyText.Visible = False
+            btnParameters.Visible = False
+
+            'Clear down all the old data.
             richtxtLogAnalysis.Clear()
             frmParameters.lstboxParameters.Items.Clear()
-            'chartVibrations.ChartAreas.Clear()
-            'chartPowerRails.ChartAreas.Clear()
+            'chartVibrations.Series(0).Points.Clear()
+            'chartPowerRails.Series(0).Points.Clear()
+            chartPowerRails.Series("Vcc").Points.Clear()
+            chartPowerRails.Series("Volts").Points.Clear()
+            chartPowerRails.Series("Amps").Points.Clear()
+            chartPowerRails.Series("Thrust").Points.Clear()
+            chartPowerRails.Series("VccLowLine").Points.Clear()
+            chartPowerRails.Series("VccHighLine").Points.Clear()
+            chartPowerRails.Series("VccOSDLine").Points.Clear()
+
             lblEsc.Visible = True
             Call ReadFile(strLogPathFileName)
             lblEsc.Visible = False
+
+            'Update the available button on the window.
+            btnGraphs.Visible = True
+            btnCopyText.Visible = True
+            btnParameters.Visible = True
+
+
         Else
             MsgBox("Please Select a Valid APM Log File first!", MsgBoxStyle.Exclamation & vbOKOnly, "APM Log Error")
         End If
