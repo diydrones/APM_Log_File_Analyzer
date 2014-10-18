@@ -30,7 +30,7 @@
                     Log_Mode_Sum_Volt = Log_Mode_Sum_Volt + Value3
                 End If
 
-
+                ' Update the Chart
                 frmMainForm.chartPowerRails.Series("Vcc").Points.AddY(Value5 / 1000)
                 frmMainForm.chartPowerRails.Series("Volts").Points.AddY(Value3 / 100)
                 frmMainForm.chartPowerRails.Series("Amps").Points.AddY(Value4 / 100)

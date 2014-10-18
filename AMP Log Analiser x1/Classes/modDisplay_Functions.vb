@@ -582,6 +582,12 @@ Module modDisplay_Functions
         frmMainForm.Refresh()
     End Sub
 
+    Public Sub Chart_GPS_Visible(OnOff As Boolean)
+        frmMainForm.panGPS.Visible = OnOff
+        frmMainForm.Refresh()
+    End Sub
+
+
     Public Sub ButtonsCheckBoxes_Visible(OnOff As Boolean)
         frmMainForm.btnLoadLog.Visible = OnOff
         frmMainForm.panAnalysis.Visible = OnOff

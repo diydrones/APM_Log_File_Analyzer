@@ -141,6 +141,23 @@ Module modGPS_Checks
                 End If
 
 
+                ' Update the Chart
+                frmMainForm.chartGPS.Series("Status").Points.AddY(Log_GPS_Status)
+                If Log_GPS_HDop >= 5 Then ' Chart Control (Max Entry)
+                    frmMainForm.chartGPS.Series("HDop").Points.AddY(4)
+                Else
+                    frmMainForm.chartGPS.Series("HDop").Points.AddY(Log_GPS_HDop)
+                End If
+                frmMainForm.chartGPS.Series("Satellites").Points.AddY(Log_GPS_NSats)
+                frmMainForm.chartGPS.Series("Speed").Points.AddY(Log_GPS_Spd)
+
+                ' Add the min / max lines
+                frmMainForm.chartGPS.Series("StatusOKLine").Points.AddY(2.9)
+                frmMainForm.chartGPS.Series("HDopMinLine").Points.AddY(2)
+                frmMainForm.chartGPS.Series("SatellitesMinLine").Points.AddY(8)
+                'frmMainForm.chartPowerRails.Series("SpeedAvgLine").Points.AddY(5.25)
+
+
                 'Debug.Print(vbNewLine)
                 'Debug.Print(vbNewLine)
                 'Debug.Print("Debug GPS Data Variables:-")
