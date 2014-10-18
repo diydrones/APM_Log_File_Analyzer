@@ -11,6 +11,7 @@ Imports System.Runtime.InteropServices
 Imports System.Drawing.Printing
 
 
+
 Public Class frmMainForm
 
 #Region "     Form Position Code Start & Constants "
@@ -58,6 +59,9 @@ Public Class frmMainForm
 #End Region
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        frmMainFormHandle = Me.Handle()
+
         If FileOpened = True Then
             btnAnalyze.Visible = True
             picClickButton.Visible = False
@@ -351,5 +355,10 @@ Public Class frmMainForm
     Private Sub btnParameters_Click(sender As Object, e As EventArgs) Handles btnParameters.Click
         Call ShowParametersForm()
     End Sub
+
+
+
+
+
 End Class
 

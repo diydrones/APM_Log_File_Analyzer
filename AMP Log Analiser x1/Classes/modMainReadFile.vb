@@ -1,9 +1,17 @@
-﻿Module modMainReadFile
+﻿
+Imports Microsoft.WindowsAPICodePack
+Imports Microsoft.WindowsAPICodePack.Taskbar
+
+Module modMainReadFile
+
     Public Sub ReadFile(ByVal strLogFileName As String)
 
         With frmMainForm
 
-            '.WindowState = FormWindowState.Minimized
+            CodeTimerStart2 = Format(Now, "ss")
+            .WindowState = FormWindowState.Minimized
+
+
             'Initialise the Variables for Reading the Variables
             Dim objReader As New System.IO.StreamReader(strLogFileName)
 
@@ -46,6 +54,10 @@
                 .barReadFile.Value = (DataLine / TotalDataLines) * 100
                 .barReadFile.Refresh()
 
+                'Update the TaskBar Progress Bar
+                TaskbarManager.Instance.SetProgressValue(DataLine, TotalDataLines, frmMainFormHandle)
+
+
                 Data = objReader.ReadLine()
                 'Debug.Print("Processing:- " & Str(DataLine) & ": " & Data)
                 ' Split the data into the DataArray()
@@ -77,7 +89,9 @@
                 Try
 
                     ' Write Log Analysis Header.
+                    CodeTimerStart = Format(Now, "ffff")
                     Call WriteLogFileHeader()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("WriteLogFileHeader = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'Debug.Print("DATA: " & DataArray(0).PadRight(5) & " Flying: " & Log_In_Flight & " -- Mode_In_Flight_Start_Time: " & Mode_In_Flight_Start_Time & " -- Log_Current_Mode_Flight_Time (Flying Only): " & Log_Current_Mode_Flight_Time & " -- Log_Current_Flight_Time: " & Log_Current_Flight_Time & " -- Log_Total_Flight_Time: " & Log_Total_Flight_Time & " -- Log_Current_Mode_Time: " & Log_Current_Mode_Time)
                     'Debug.Print("DATA: " & DataArray(0).PadRight(5) & " Flying: " & Log_In_Flight & " -- Log_CTUN_ThrOut: " & Log_CTUN_ThrOut & " -- CTUN_ThrottleUp: " & CTUN_ThrottleUp & " -- Log_Ground_BarAlt: " & Log_Ground_BarAlt & " -- Log_CTUN_BarAlt: " & Log_CTUN_BarAlt & " -- Log_Armed_BarAlt: " & Log_Armed_BarAlt & " -- Log_Disarmed_BarAlt: " & Log_Disarmed_BarAlt)
@@ -86,69 +100,69 @@
                     'Parameter Checks
                     CodeTimerStart = Format(Now, "ffff")
                     Call Parameter_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Parameter Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Parameter Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'EV Checks
                     CodeTimerStart = Format(Now, "ffff")
                     Call EV_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("EV Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("EV Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'Error Checks
                     CodeTimerStart = Format(Now, "ffff")
                     Call ERROR_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("ERROR Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("ERROR Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'Mode Checks
                     CodeTimerStart = Format(Now, "ffff")
                     Call Mode_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Mode Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Mode Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'CURR Checks
                     CodeTimerStart = Format(Now, "ffff")
                     Call CURR_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Current Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Current Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'CTUN Checks
                     CodeTimerStart = Format(Now, "ffff")
                     Call CTUN_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("CTUN Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("CTUN Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'GPS Checks
                     CodeTimerStart = Format(Now, "ffff")
                     Call GPS_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("GPS Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("GPS Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'IMU Checks - Vibration
                     CodeTimerStart = Format(Now, "ffff")
                     Call IMU_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("IMU Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("IMU Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'ATT Checks, Roll and Pitch
                     CodeTimerStart = Format(Now, "ffff")
                     Call ATT_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("ATT Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("ATT Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'PM Checks, process manager timings
                     CodeTimerStart = Format(Now, "ffff")
                     Call PM_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("PM Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("PM Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'DU32 Checks
                     CodeTimerStart = Format(Now, "ffff")
                     Call DU32_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("DU32 Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("DU32 Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'CMD Checks
                     CodeTimerStart = Format(Now, "ffff")
                     Call CMD_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("CMD Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("CMD Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'Additional Checks not related to any one log data type
                     CodeTimerStart = Format(Now, "ffff")
                     Call Additional_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Additional Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms")
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Additional Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
-                    'This keep log of how long we have been in this mode, note that this includes ground time!
+                    'This keeps log of how long we have been in this mode, note that this includes ground time!
                     Log_Current_Mode_Time = DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
 
                     'Check the DEVELOPER OPTION not to read all the file, i.e. brown out detection
@@ -218,7 +232,13 @@
 
             Debug.Print("Sub ReadFile Completed" & vbNewLine)
 
-            '.WindowState = FormWindowState.Normal
+            .WindowState = FormWindowState.Normal
+            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress, frmMainFormHandle)
+            frmMainForm.richtxtLogAnalysis.HideSelection = False
+            frmMainForm.richtxtLogAnalysis.SelectionStart = 0
+            frmMainForm.richtxtLogAnalysis.HideSelection = True
+            Debug.Print("Total Time = T" & CodeTimerStart2 - Format(Now, "ss") & " Seconds")
+
         End With
     End Sub
 

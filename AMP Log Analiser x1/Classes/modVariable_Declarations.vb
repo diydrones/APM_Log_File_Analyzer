@@ -20,7 +20,8 @@ Module modVariable_Declarations
 
     'Declare the Main Program Variables
     Public CodeTimerStart As Double                         'Use CodeTimerStart = Format(Now, "ffff") at the start of a process.
-    'Then If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("CMD Checks = " & CodeTimerStart - Format(Now, "ffff") & "ms") at the end
+    'Then If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Parameter Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs") at the end
+    Public CodeTimerStart2 As Double
     Public LogAnalysisHeader As Boolean = False             'True once the header has been written to the screen.
     Public BaseDate As Date = "06 Jan 1980"
     Public DataLine As Single = 0                           'Line Number of File being Processed.
@@ -43,6 +44,7 @@ Module modVariable_Declarations
     Public ErrorCount As Integer = 0                        'Counts the number of errors found in the logs.
     Public ESCPress As Boolean = False                      'True if Escape is pressed
     Public ParametersVisible As Boolean = False             'True if Parameters window is currently displayed.
+    Public frmMainFormHandle As Double = 0                  ' The Handle of the main form.
 
     'Declare the .ini Variables
     Public BATTERY_CAPACITY As Integer = 5000               'Holds the Models Battery Capacity
