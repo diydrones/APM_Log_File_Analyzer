@@ -9,8 +9,10 @@ Module modMainReadFile
         With frmMainForm
 
             CodeTimerStart2 = Format(Now, "ss")
-            .WindowState = FormWindowState.Minimized
 
+            If osVer.Major >= 6 And osVer.Minor >= 1 Then 'Only allowed in Windows 7 or above
+                .WindowState = FormWindowState.Minimized
+            End If
 
             'Initialise the Variables for Reading the Variables
             Dim objReader As New System.IO.StreamReader(strLogFileName)
@@ -55,8 +57,9 @@ Module modMainReadFile
                 .barReadFile.Refresh()
 
                 'Update the TaskBar Progress Bar
-                TaskbarManager.Instance.SetProgressValue(DataLine, TotalDataLines, frmMainFormHandle)
-
+                If osVer.Major >= 6 And osVer.Minor >= 1 Then 'Only allowed in Windows 7 or above
+                    TaskbarManager.Instance.SetProgressValue(DataLine, TotalDataLines, frmMainFormHandle)
+                End If
 
                 Data = objReader.ReadLine()
                 'Debug.Print("Processing:- " & Str(DataLine) & ": " & Data)
@@ -232,11 +235,15 @@ Module modMainReadFile
 
             Debug.Print("Sub ReadFile Completed" & vbNewLine)
 
-            .WindowState = FormWindowState.Normal
-            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress, frmMainFormHandle)
-            frmMainForm.richtxtLogAnalysis.HideSelection = False
-            frmMainForm.richtxtLogAnalysis.SelectionStart = 0
-            frmMainForm.richtxtLogAnalysis.HideSelection = True
+            'Restore the form and complete the task bar progress
+            If osVer.Major >= 6 And osVer.Minor >= 1 Then 'Only allowed in Windows 7 or above
+                .WindowState = FormWindowState.Normal
+                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress, frmMainFormHandle)
+                frmMainForm.richtxtLogAnalysis.HideSelection = False
+                frmMainForm.richtxtLogAnalysis.SelectionStart = 0
+                frmMainForm.richtxtLogAnalysis.HideSelection = True
+            End If
+
             Debug.Print("Total Time = T" & CodeTimerStart2 - Format(Now, "ss") & " Seconds")
 
         End With

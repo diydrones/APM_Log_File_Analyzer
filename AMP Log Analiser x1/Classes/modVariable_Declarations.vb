@@ -3,7 +3,7 @@ Imports System.Deployment.Application
 
 Module modVariable_Declarations
 
-    Public MyCurrentVersionNumber As String = "v1.0.4.2"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v1.0.4.3"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""               'frmMainForm.PublishedVers()                 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
 
@@ -19,6 +19,7 @@ Module modVariable_Declarations
 
 
     'Declare the Main Program Variables
+    Public osVer As Version = Environment.OSVersion.Version 'Detect Windows Environment.
     Public CodeTimerStart As Double                         'Use CodeTimerStart = Format(Now, "ffff") at the start of a process.
     'Then If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Parameter Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs") at the end
     Public CodeTimerStart2 As Double
