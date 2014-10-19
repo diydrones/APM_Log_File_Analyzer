@@ -21,6 +21,18 @@
                     '& " : PicthIn and Pitch = " & Format(Log_ATT_PitchIn - Log_ATT_Pitch, "000000") _
                     '& " Max = " & TempMaxPitchDiff)
                 End If
+
+                ' Update the Chart
+                frmMainForm.chartAttitude.Series("RollIn").Points.AddY(Log_ATT_RollIn)
+                frmMainForm.chartAttitude.Series("Roll").Points.AddY(Log_ATT_Roll)
+                frmMainForm.chartAttitude.Series("NavRoll").Points.AddY(Log_NTUN_DRol)
+                frmMainForm.chartAttitude.Series("PitchIn").Points.AddY(Log_ATT_PitchIn)
+                frmMainForm.chartAttitude.Series("Pitch").Points.AddY(Log_ATT_Pitch)
+                frmMainForm.chartAttitude.Series("NavPitch").Points.AddY(Log_NTUN_DPit)
+                frmMainForm.chartAttitude.Series("YawIn").Points.AddY(Log_ATT_YawIn)
+                frmMainForm.chartAttitude.Series("Yaw").Points.AddY(Log_ATT_Yaw)
+                frmMainForm.chartAttitude.Series("NavYaw").Points.AddY(Log_ATT_NavYaw)
+
             End If
         End If
 

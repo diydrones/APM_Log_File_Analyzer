@@ -3,7 +3,7 @@ Imports System.Deployment.Application
 
 Module modVariable_Declarations
 
-    Public MyCurrentVersionNumber As String = "v1.0.4.3"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v1.0.4.4"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""               'frmMainForm.PublishedVers()                 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
 
@@ -78,6 +78,20 @@ Module modVariable_Declarations
     Public Thr_Min As Integer = 0                           'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
     Public Mot_Spin_Armed As Integer = 0                    'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
     Public Log_Battery_Capacity As Integer                  'Battery Capacity as found in the APM Parameter Settings.
+
+    'Delcare the NTUN Variables
+    Public Log_NTUN_WPDst As Single = 0
+    Public Log_NTUN_WPBrg As Single = 0
+    Public Log_NTUN_PErX As Single = 0
+    Public Log_NTUN_PErY As Single = 0
+    Public Log_NTUN_DVelX As Single = 0
+    Public Log_NTUN_DVelY As Single = 0
+    Public Log_NTUN_VelX As Single = 0
+    Public Log_NTUN_VelY As Single = 0
+    Public Log_NTUN_DAcX As Single = 0
+    Public Log_NTUN_DAcY As Single = 0
+    Public Log_NTUN_DRol As Single = 0                      'Navigator Roll In
+    Public Log_NTUN_DPit As Single = 0                      'Navigator Pitch In
 
     'Delcare the INAV Variables
     Public Log_INAV_Home_GLat As Double = 0                 'Hold where the APM considers home to be.
