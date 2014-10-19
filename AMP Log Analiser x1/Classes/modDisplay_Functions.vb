@@ -587,6 +587,11 @@ Module modDisplay_Functions
         frmMainForm.Refresh()
     End Sub
 
+    Public Sub Chart_Attitude_Visible(OnOff As Boolean)
+        frmMainForm.panAttitude.Visible = OnOff
+        frmMainForm.Refresh()
+    End Sub
+
 
     Public Sub ButtonsCheckBoxes_Visible(OnOff As Boolean)
         frmMainForm.btnLoadLog.Visible = OnOff

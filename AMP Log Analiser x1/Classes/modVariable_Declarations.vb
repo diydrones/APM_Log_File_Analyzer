@@ -3,7 +3,7 @@ Imports System.Deployment.Application
 
 Module modVariable_Declarations
 
-    Public MyCurrentVersionNumber As String = "v1.0.4.3"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v1.0.4.4"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""               'frmMainForm.PublishedVers()                 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
 
@@ -78,6 +78,20 @@ Module modVariable_Declarations
     Public Thr_Min As Integer = 0                           'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
     Public Mot_Spin_Armed As Integer = 0                    'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
     Public Log_Battery_Capacity As Integer                  'Battery Capacity as found in the APM Parameter Settings.
+
+    'Delcare the NTUN Variables
+    Public Log_NTUN_WPDst As Single = 0
+    Public Log_NTUN_WPBrg As Single = 0
+    Public Log_NTUN_PErX As Single = 0
+    Public Log_NTUN_PErY As Single = 0
+    Public Log_NTUN_DVelX As Single = 0
+    Public Log_NTUN_DVelY As Single = 0
+    Public Log_NTUN_VelX As Single = 0
+    Public Log_NTUN_VelY As Single = 0
+    Public Log_NTUN_DAcX As Single = 0
+    Public Log_NTUN_DAcY As Single = 0
+    Public Log_NTUN_DRol As Single = 0                      'Navigator Roll In
+    Public Log_NTUN_DPit As Single = 0                      'Navigator Pitch In
 
     'Delcare the INAV Variables
     Public Log_INAV_Home_GLat As Double = 0                 'Hold where the APM considers home to be.
@@ -190,6 +204,14 @@ Module modVariable_Declarations
     Public Log_Maximum_Altitude As Integer = 0              'Holds the Maximum Altitude detected during the flight from the log.
     Public Log_CTUN_BarAlt As Single = 0                    'Holds the Current Barometer Altitude recorded in the log.
     Public Log_CTUN_ThrOut As Integer = 0                   'Holds the Current ThrOut recorded in the log from the CTUN data line.
+    Public Log_CTUN_ThrIn As Single = 0
+    Public Log_CTUN_SonAlt As Single = 0
+    Public Log_CTUN_WPAlt As Single = 0
+    Public Log_CTUN_DesSonAlt As Single = 0
+    Public Log_CTUN_AngBst As Single = 0
+    Public Log_CTUN_CRate As Single = 0
+    Public Log_CTUN_DCRate As Single = 0
+
     Public Log_CTUN_DLs As Integer = 0                      'Counts the number of datalines found in the Log for CTUN results, for working out averages
     Public Log_CTUN_DLs_for_Mode As Integer = 0             'Counts the number of datalines found in the Log for CTUN results during each mode, for working out averages
     Public Log_Mode_Min_BarAlt As Integer = 99999           'Holds the Minimum BarAlt recorded in the log during flight in this mode.

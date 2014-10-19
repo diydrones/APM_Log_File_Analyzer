@@ -140,44 +140,74 @@ Public Class frmMainForm
         Me.panGPS.Controls.Add(chartGPS)
         chartGPS.Location = New Point(3, 3) : chartGPS.Size = New Point(794, 691)
         chartGPS.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
-        Me.panGPS.Controls.Add(lblChart1Header) : lblChart1Header.BringToFront()
-        lblChart1Header.Location = New Point(86, 5)
-        lblChart1Header.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
-        lblChart1Header.Text = "GPS - Status"
-        Me.panGPS.Controls.Add(lblChart2Header) : lblChart2Header.BringToFront()
-        lblChart2Header.Location = New Point(86, 150)
-        lblChart2Header.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
-        lblChart2Header.Text = "GPS - HDop"
-        Me.panGPS.Controls.Add(lblChart3Header) : lblChart3Header.BringToFront()
-        lblChart3Header.Location = New Point(86, 295)
-        lblChart3Header.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
-        lblChart3Header.Text = "GPS - Satellites"
-        Me.panGPS.Controls.Add(lblChart4Header) : lblChart4Header.BringToFront()
-        lblChart4Header.Location = New Point(86, 440)
-        lblChart4Header.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
-        lblChart4Header.Text = "Ground Speed (m/s)"
+        Me.panGPS.Controls.Add(lblGPSChart1Header) : lblGPSChart1Header.BringToFront()
+        lblGPSChart1Header.Location = New Point(86, 5)
+        lblGPSChart1Header.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+        lblGPSChart1Header.Text = "GPS - Status"
+        Me.panGPS.Controls.Add(lblGPSChart2Header) : lblGPSChart2Header.BringToFront()
+        lblGPSChart2Header.Location = New Point(86, 150)
+        lblGPSChart2Header.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+        lblGPSChart2Header.Text = "GPS - HDop"
+        Me.panGPS.Controls.Add(lblGPSChart3Header) : lblGPSChart3Header.BringToFront()
+        lblGPSChart3Header.Location = New Point(86, 295)
+        lblGPSChart3Header.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+        lblGPSChart3Header.Text = "GPS - Satellites"
+        Me.panGPS.Controls.Add(lblGPSChart4Header) : lblGPSChart4Header.BringToFront()
+        lblGPSChart4Header.Location = New Point(86, 440)
+        lblGPSChart4Header.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+        lblGPSChart4Header.Text = "Ground Speed (m/s)"
         'Add any additional Labels here for this chart.
-        Me.panGPS.Controls.Add(lblChart1Status0) : lblChart1Status0.BringToFront()
-        lblChart1Status0.Location = New Point(650, 127)
-        lblChart1Status0.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
-        Me.panGPS.Controls.Add(lblChart1Status1) : lblChart1Status1.BringToFront()
-        lblChart1Status1.Location = New Point(650, 89)
-        lblChart1Status1.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
-        Me.panGPS.Controls.Add(lblChart1Status2) : lblChart1Status2.BringToFront()
-        lblChart1Status2.Location = New Point(650, 51)
-        lblChart1Status2.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
-        Me.panGPS.Controls.Add(lblChart1Status3) : lblChart1Status3.BringToFront()
-        lblChart1Status3.Location = New Point(650, 13)
-        lblChart1Status3.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
-        Me.panGPS.Controls.Add(picTickStraight) : picTickStraight.BringToFront()
-        picTickStraight.Location = New Point(3, 22)
-        picTickStraight.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
-        Me.panGPS.Controls.Add(picTickDown) : picTickDown.BringToFront()
-        picTickDown.Location = New Point(3, 175)
-        picTickDown.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
-        Me.panGPS.Controls.Add(picTickUp) : picTickUp.BringToFront()
-        picTickUp.Location = New Point(3, 367)
-        picTickUp.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panGPS.Controls.Add(lblGPSChart1Status0) : lblGPSChart1Status0.BringToFront()
+        lblGPSChart1Status0.Location = New Point(650, 127)
+        lblGPSChart1Status0.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panGPS.Controls.Add(lblGPSChart1Status1) : lblGPSChart1Status1.BringToFront()
+        lblGPSChart1Status1.Location = New Point(650, 89)
+        lblGPSChart1Status1.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panGPS.Controls.Add(lblGPSChart1Status2) : lblGPSChart1Status2.BringToFront()
+        lblGPSChart1Status2.Location = New Point(650, 51)
+        lblGPSChart1Status2.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panGPS.Controls.Add(lblGPSChart1Status3) : lblGPSChart1Status3.BringToFront()
+        lblGPSChart1Status3.Location = New Point(650, 13)
+        lblGPSChart1Status3.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panGPS.Controls.Add(picGPSTickStraight) : picGPSTickStraight.BringToFront()
+        picGPSTickStraight.Location = New Point(3, 22)
+        picGPSTickStraight.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panGPS.Controls.Add(picGPSTickDown) : picGPSTickDown.BringToFront()
+        picGPSTickDown.Location = New Point(3, 175)
+        picGPSTickDown.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panGPS.Controls.Add(picGPSTickUp) : picGPSTickUp.BringToFront()
+        picGPSTickUp.Location = New Point(3, 367)
+        picGPSTickUp.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+
+
+        'Setup the Attitude Chart Panel.
+        panAttitude.Location = New Point(222, 87) : panAttitude.Size = New Point(784, 602) : panAttitude.Anchor = AnchorStyles.Left Or AnchorStyles.Bottom Or AnchorStyles.Top Or AnchorStyles.Right
+        Me.panAttitude.Controls.Add(chartAttitude)
+        chartAttitude.Location = New Point(3, 3) : chartAttitude.Size = New Point(794, 691)
+        chartAttitude.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+        Me.panAttitude.Controls.Add(lblAttitudeChart1Header) : lblAttitudeChart1Header.BringToFront()
+        lblAttitudeChart1Header.Location = New Point(86, 5)
+        lblAttitudeChart1Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
+        lblAttitudeChart1Header.Text = "Attitude - Roll"
+        Me.panAttitude.Controls.Add(lblAttitudeChart2Header) : lblAttitudeChart2Header.BringToFront()
+        lblAttitudeChart2Header.Location = New Point(86, 150)
+        lblAttitudeChart2Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
+        lblAttitudeChart2Header.Text = "Attitude - Pitch"
+        Me.panAttitude.Controls.Add(lblAttitudeChart3Header) : lblAttitudeChart3Header.BringToFront()
+        lblAttitudeChart3Header.Location = New Point(86, 295)
+        lblAttitudeChart3Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
+        lblAttitudeChart3Header.Text = "Attitude - Yaw"
+        Me.panAttitude.Controls.Add(lblAttitudeChart4Header) : lblAttitudeChart4Header.BringToFront()
+        lblAttitudeChart4Header.Location = New Point(86, 440)
+        lblAttitudeChart4Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
+        lblAttitudeChart4Header.Text = "Attitude - Climb Rate"
+        'Add any additional Labels here for this chart.
+        Me.panAttitude.Controls.Add(picAttitudeInfo0) : picAttitudeInfo0.BringToFront()
+        picAttitudeInfo0.Location = New Point(0, 22)
+        picAttitudeInfo0.Anchor = AnchorStyles.Left Or AnchorStyles.Top
+
+
+
 
         ' ### DO NOT FORGET TO CLEAR NEW GRAPHS WHEN THE ANALYZE BUTTON IS PRESSED!
 
@@ -351,6 +381,17 @@ Public Class frmMainForm
             chartGPS.Series("SatellitesMinLine").Points.Clear()
             chartGPS.Series("Speed").Points.Clear()
             chartGPS.Series("SpeedAvgLine").Points.Clear()
+            chartAttitude.Series("Roll").Points.Clear()
+            chartAttitude.Series("RollIn").Points.Clear()
+            chartAttitude.Series("NavRoll").Points.Clear()
+            chartAttitude.Series("Pitch").Points.Clear()
+            chartAttitude.Series("PitchIn").Points.Clear()
+            chartAttitude.Series("NavPitch").Points.Clear()
+            chartAttitude.Series("Yaw").Points.Clear()
+            chartAttitude.Series("YawIn").Points.Clear()
+            chartAttitude.Series("NavYaw").Points.Clear()
+            chartAttitude.Series("ClimbIn").Points.Clear()
+            chartAttitude.Series("NavClimb").Points.Clear()
 
             lblEsc.Visible = True
             Call ReadFile(strLogPathFileName)
@@ -390,13 +431,14 @@ Public Class frmMainForm
         Call Chart_PowerRails_Visible(False)
         Call Chart_Vibrations_Visible(False)
         Call Chart_GPS_Visible(False)
+        Call Chart_Attitude_Visible(False)
     End Sub
 
     Private Sub btnGraphs_Click(sender As Object, e As EventArgs) Handles btnGraphs.Click
         Call ButtonsCheckBoxes_Visible(False)
-        If Me.chartVibrations.Series("AccZ").Points.Count = 0 Then
-            Me.chartVibrations.ChartAreas("AccZ").Visible = False
-        End If
+        'If Me.chartVibrations.Series("AccZ").Points.Count = 0 Then
+        '    Me.chartVibrations.ChartAreas("AccZ").Visible = False
+        'End If
         Call ButtonsCharting_Visible(True)
     End Sub
 
@@ -404,18 +446,28 @@ Public Class frmMainForm
         Call Chart_Vibrations_Visible(False)
         Call Chart_PowerRails_Visible(True)
         Call Chart_GPS_Visible(False)
+        Call Chart_Attitude_Visible(False)
     End Sub
 
     Private Sub btnVibrationChart_Click(sender As Object, e As EventArgs) Handles btnVibrationChart.Click
         Call Chart_Vibrations_Visible(True)
         Call Chart_PowerRails_Visible(False)
         Call Chart_GPS_Visible(False)
+        Call Chart_Attitude_Visible(False)
     End Sub
 
     Private Sub btnGPS_Click(sender As Object, e As EventArgs) Handles btnGPS.Click
         Call Chart_Vibrations_Visible(False)
         Call Chart_PowerRails_Visible(False)
         Call Chart_GPS_Visible(True)
+        Call Chart_Attitude_Visible(False)
+    End Sub
+
+    Private Sub btnAttitude_Click(sender As Object, e As EventArgs) Handles btnAttitude.Click
+        Call Chart_Vibrations_Visible(False)
+        Call Chart_PowerRails_Visible(False)
+        Call Chart_GPS_Visible(False)
+        Call Chart_Attitude_Visible(True)
     End Sub
 
     Private Sub frmMainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -425,7 +477,6 @@ Public Class frmMainForm
     Private Sub btnParameters_Click(sender As Object, e As EventArgs) Handles btnParameters.Click
         Call ShowParametersForm()
     End Sub
-
 
 End Class
 

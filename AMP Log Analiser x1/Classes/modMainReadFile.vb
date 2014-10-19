@@ -140,6 +140,11 @@ Module modMainReadFile
                     Call IMU_Checks()
                     If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("IMU Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
+                    'NTUN Checks, Navigation Data - MUST CALL BEFORE ATT due to Charting Data
+                    CodeTimerStart = Format(Now, "ffff")
+                    Call NTUN_Checks()
+                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("NTUN Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
+
                     'ATT Checks, Roll and Pitch
                     CodeTimerStart = Format(Now, "ffff")
                     Call ATT_Checks()

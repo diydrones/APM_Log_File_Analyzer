@@ -140,6 +140,7 @@
     <Compile Include="Classes\modIMU_Checks.vb" />
     <Compile Include="Classes\modMainReadFile.vb" />
     <Compile Include="Classes\modMODE_Checks.vb" />
+    <Compile Include="Classes\modNTUN_Checks.vb" />
     <Compile Include="Classes\modOther_Functions.vb" />
     <Compile Include="Classes\modPARAM_Checks.vb" />
     <Compile Include="Classes\modPM_Checks.vb" />

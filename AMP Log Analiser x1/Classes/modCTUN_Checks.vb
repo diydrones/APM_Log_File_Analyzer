@@ -3,13 +3,21 @@
         If DataArray(0) = "CTUN" Then
             'An CTUN value should have only 9 pieces of numeric data!
             If ReadFileResilienceCheck(9) = True Then
+                Log_CTUN_ThrIn = Val(DataArray(1))
+                Log_CTUN_SonAlt = Val(DataArray(2))
                 Log_CTUN_BarAlt = Val(DataArray(3))
+                Log_CTUN_WPAlt = Val(DataArray(4))
+                Log_CTUN_DesSonAlt = Val(DataArray(5))
+                Log_CTUN_AngBst = Val(DataArray(6))
+                Log_CTUN_CRate = Val(DataArray(7))
                 Log_CTUN_ThrOut = Val(DataArray(8))
+                Log_CTUN_DCRate = Val(DataArray(9))
+
+
                 'Capture Throttle up based on CTUN.
                 If Log_CTUN_ThrOut > 0 And CTUN_ThrottleUp = False Then
                     CTUN_ThrottleUp = True
                     'Log_Armed_BarAlt = Log_CTUN_BarAlt
-
                 End If
 
                 'Capture Throttle % based on CTUN.
@@ -84,9 +92,7 @@
                 'Debug.Print("First_GPS_Lng = " & First_GPS_Lng)
                 'Debug.Print(vbNewLine)
                 'Debug.Print(vbNewLine) '### Debug Code Here ###
-
             End If
         End If
-
     End Sub
 End Module

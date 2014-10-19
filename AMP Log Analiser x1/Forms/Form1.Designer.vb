@@ -24,45 +24,61 @@ Partial Class frmMainForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMainForm))
-        Dim ChartArea25 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea26 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea27 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea28 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend7 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series49 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series50 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series51 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series52 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series53 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series54 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series55 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea29 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea30 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea31 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea32 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend8 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series56 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series57 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series58 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series59 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series60 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series61 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series62 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series63 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series64 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea33 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea34 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea35 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim ChartArea36 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend9 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series65 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series66 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series67 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series68 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series69 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series70 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series71 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim Series72 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series5 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series7 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea5 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea6 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea7 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea8 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series8 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series9 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series10 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series11 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series12 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series13 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series14 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series15 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series16 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea9 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea10 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea11 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea12 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series17 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series18 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series19 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series20 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series21 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series22 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series23 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series24 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea13 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea14 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea15 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea16 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series25 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series26 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series27 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series28 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series29 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series30 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series31 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series32 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series33 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series34 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series35 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OpenFD = New System.Windows.Forms.OpenFileDialog()
         Me.lblCurrentVersion = New System.Windows.Forms.Label()
@@ -117,6 +133,7 @@ Partial Class frmMainForm
         Me.lblOSD = New System.Windows.Forms.Label()
         Me.panAnalysis = New System.Windows.Forms.Panel()
         Me.panGraphButtons = New System.Windows.Forms.Panel()
+        Me.btnAttitude = New System.Windows.Forms.Button()
         Me.btnGPS = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnVibrationChart = New System.Windows.Forms.Button()
@@ -125,18 +142,25 @@ Partial Class frmMainForm
         Me.panHelpButtons = New System.Windows.Forms.Panel()
         Me.btnParameters = New System.Windows.Forms.Button()
         Me.panGPS = New System.Windows.Forms.Panel()
-        Me.lblChart1Header = New System.Windows.Forms.Label()
-        Me.lblChart1Status0 = New System.Windows.Forms.Label()
-        Me.lblChart3Header = New System.Windows.Forms.Label()
-        Me.lblChart2Header = New System.Windows.Forms.Label()
-        Me.lblChart4Header = New System.Windows.Forms.Label()
+        Me.picGPSTickStraight = New System.Windows.Forms.PictureBox()
+        Me.picGPSTickDown = New System.Windows.Forms.PictureBox()
+        Me.picGPSTickUp = New System.Windows.Forms.PictureBox()
+        Me.lblGPSChart1Status3 = New System.Windows.Forms.Label()
+        Me.lblGPSChart1Status2 = New System.Windows.Forms.Label()
+        Me.lblGPSChart1Status1 = New System.Windows.Forms.Label()
+        Me.lblGPSChart1Header = New System.Windows.Forms.Label()
+        Me.lblGPSChart1Status0 = New System.Windows.Forms.Label()
+        Me.lblGPSChart3Header = New System.Windows.Forms.Label()
+        Me.lblGPSChart2Header = New System.Windows.Forms.Label()
+        Me.lblGPSChart4Header = New System.Windows.Forms.Label()
         Me.chartGPS = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.lblChart1Status1 = New System.Windows.Forms.Label()
-        Me.lblChart1Status2 = New System.Windows.Forms.Label()
-        Me.lblChart1Status3 = New System.Windows.Forms.Label()
-        Me.picTickUp = New System.Windows.Forms.PictureBox()
-        Me.picTickDown = New System.Windows.Forms.PictureBox()
-        Me.picTickStraight = New System.Windows.Forms.PictureBox()
+        Me.panAttitude = New System.Windows.Forms.Panel()
+        Me.picAttitudeInfo0 = New System.Windows.Forms.PictureBox()
+        Me.lblAttitudeChart1Header = New System.Windows.Forms.Label()
+        Me.lblAttitudeChart3Header = New System.Windows.Forms.Label()
+        Me.lblAttitudeChart2Header = New System.Windows.Forms.Label()
+        Me.lblAttitudeChart4Header = New System.Windows.Forms.Label()
+        Me.chartAttitude = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.panAnalysisButtons.SuspendLayout()
         CType(Me.picClickButton, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartPowerRails, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -147,10 +171,13 @@ Partial Class frmMainForm
         Me.panGraphButtons.SuspendLayout()
         Me.panHelpButtons.SuspendLayout()
         Me.panGPS.SuspendLayout()
+        CType(Me.picGPSTickStraight, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picGPSTickDown, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picGPSTickUp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartGPS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picTickUp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picTickDown, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picTickStraight, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panAttitude.SuspendLayout()
+        CType(Me.picAttitudeInfo0, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chartAttitude, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -607,130 +634,130 @@ Partial Class frmMainForm
         'chartPowerRails
         '
         Me.chartPowerRails.BackColor = System.Drawing.Color.Transparent
-        ChartArea25.AxisX.LabelStyle.Enabled = False
-        ChartArea25.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Maroon
-        ChartArea25.AxisX.MajorTickMark.Interval = 10.0R
-        ChartArea25.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
-        ChartArea25.AxisX.Minimum = 0.0R
-        ChartArea25.AxisY.Interval = 0.2R
-        ChartArea25.AxisY.IsLabelAutoFit = False
-        ChartArea25.AxisY.IsStartedFromZero = False
-        ChartArea25.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
-        ChartArea25.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea25.AxisY.LineColor = System.Drawing.Color.Maroon
-        ChartArea25.AxisY.MajorGrid.Interval = 0.2R
-        ChartArea25.AxisY.MajorTickMark.Interval = 1.0R
-        ChartArea25.AxisY.Maximum = 5.8R
-        ChartArea25.AxisY.Minimum = 4.2R
-        ChartArea25.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea25.Name = "Vcc"
-        ChartArea25.Position.Auto = False
-        ChartArea25.Position.Height = 19.0!
-        ChartArea25.Position.Width = 95.0!
-        ChartArea25.Position.X = 3.0!
-        ChartArea25.Position.Y = 3.0!
-        ChartArea26.AlignWithChartArea = "Vcc"
-        ChartArea26.AxisX.LabelStyle.Enabled = False
-        ChartArea26.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea26.AxisX.MajorTickMark.Interval = 10.0R
-        ChartArea26.AxisX.Minimum = 0.0R
-        ChartArea26.AxisY.Interval = 1.0R
-        ChartArea26.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea26.AxisY.MajorGrid.Interval = 1.0R
-        ChartArea26.AxisY.MajorTickMark.Interval = 1.0R
-        ChartArea26.AxisY.Maximum = 17.5R
-        ChartArea26.AxisY.Minimum = 7.5R
-        ChartArea26.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea26.Name = "Volts"
-        ChartArea26.Position.Auto = False
-        ChartArea26.Position.Height = 20.0!
-        ChartArea26.Position.Width = 96.0!
-        ChartArea26.Position.X = 2.0!
-        ChartArea26.Position.Y = 26.0!
-        ChartArea27.AlignWithChartArea = "Vcc"
-        ChartArea27.AxisX.LabelStyle.Enabled = False
-        ChartArea27.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea27.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea27.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea27.Name = "Amps"
-        ChartArea27.Position.Auto = False
-        ChartArea27.Position.Height = 20.0!
-        ChartArea27.Position.Width = 95.0!
-        ChartArea27.Position.X = 3.0!
-        ChartArea27.Position.Y = 47.0!
-        ChartArea28.AlignWithChartArea = "Vcc"
-        ChartArea28.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea28.AxisY.IsLabelAutoFit = False
-        ChartArea28.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
-        ChartArea28.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea28.AxisY.Maximum = 1200.0R
-        ChartArea28.AxisY.Minimum = 0.0R
-        ChartArea28.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea28.Name = "Thrust"
-        ChartArea28.Position.Auto = False
-        ChartArea28.Position.Height = 20.0!
-        ChartArea28.Position.Width = 96.0!
-        ChartArea28.Position.X = 2.0!
-        ChartArea28.Position.Y = 67.0!
-        Me.chartPowerRails.ChartAreas.Add(ChartArea25)
-        Me.chartPowerRails.ChartAreas.Add(ChartArea26)
-        Me.chartPowerRails.ChartAreas.Add(ChartArea27)
-        Me.chartPowerRails.ChartAreas.Add(ChartArea28)
-        Legend7.Enabled = False
-        Legend7.IsDockedInsideChartArea = False
-        Legend7.Name = "Legend1"
-        Legend7.Title = "Key"
-        Me.chartPowerRails.Legends.Add(Legend7)
+        ChartArea1.AxisX.LabelStyle.Enabled = False
+        ChartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Maroon
+        ChartArea1.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea1.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
+        ChartArea1.AxisX.Minimum = 0.0R
+        ChartArea1.AxisY.Interval = 0.2R
+        ChartArea1.AxisY.IsLabelAutoFit = False
+        ChartArea1.AxisY.IsStartedFromZero = False
+        ChartArea1.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
+        ChartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea1.AxisY.LineColor = System.Drawing.Color.Maroon
+        ChartArea1.AxisY.MajorGrid.Interval = 0.2R
+        ChartArea1.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea1.AxisY.Maximum = 5.8R
+        ChartArea1.AxisY.Minimum = 4.2R
+        ChartArea1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea1.Name = "Vcc"
+        ChartArea1.Position.Auto = False
+        ChartArea1.Position.Height = 19.0!
+        ChartArea1.Position.Width = 95.0!
+        ChartArea1.Position.X = 3.0!
+        ChartArea1.Position.Y = 3.0!
+        ChartArea2.AlignWithChartArea = "Vcc"
+        ChartArea2.AxisX.LabelStyle.Enabled = False
+        ChartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea2.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea2.AxisX.Minimum = 0.0R
+        ChartArea2.AxisY.Interval = 1.0R
+        ChartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea2.AxisY.MajorGrid.Interval = 1.0R
+        ChartArea2.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea2.AxisY.Maximum = 17.5R
+        ChartArea2.AxisY.Minimum = 7.5R
+        ChartArea2.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea2.Name = "Volts"
+        ChartArea2.Position.Auto = False
+        ChartArea2.Position.Height = 20.0!
+        ChartArea2.Position.Width = 96.0!
+        ChartArea2.Position.X = 2.0!
+        ChartArea2.Position.Y = 26.0!
+        ChartArea3.AlignWithChartArea = "Vcc"
+        ChartArea3.AxisX.LabelStyle.Enabled = False
+        ChartArea3.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea3.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea3.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea3.Name = "Amps"
+        ChartArea3.Position.Auto = False
+        ChartArea3.Position.Height = 20.0!
+        ChartArea3.Position.Width = 95.0!
+        ChartArea3.Position.X = 3.0!
+        ChartArea3.Position.Y = 47.0!
+        ChartArea4.AlignWithChartArea = "Vcc"
+        ChartArea4.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea4.AxisY.IsLabelAutoFit = False
+        ChartArea4.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
+        ChartArea4.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea4.AxisY.Maximum = 1200.0R
+        ChartArea4.AxisY.Minimum = 0.0R
+        ChartArea4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea4.Name = "Thrust"
+        ChartArea4.Position.Auto = False
+        ChartArea4.Position.Height = 20.0!
+        ChartArea4.Position.Width = 96.0!
+        ChartArea4.Position.X = 2.0!
+        ChartArea4.Position.Y = 67.0!
+        Me.chartPowerRails.ChartAreas.Add(ChartArea1)
+        Me.chartPowerRails.ChartAreas.Add(ChartArea2)
+        Me.chartPowerRails.ChartAreas.Add(ChartArea3)
+        Me.chartPowerRails.ChartAreas.Add(ChartArea4)
+        Legend1.Enabled = False
+        Legend1.IsDockedInsideChartArea = False
+        Legend1.Name = "Legend1"
+        Legend1.Title = "Key"
+        Me.chartPowerRails.Legends.Add(Legend1)
         Me.chartPowerRails.Location = New System.Drawing.Point(0, 0)
         Me.chartPowerRails.Name = "chartPowerRails"
-        Series49.ChartArea = "Vcc"
-        Series49.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series49.Color = System.Drawing.Color.Red
-        Series49.Legend = "Legend1"
-        Series49.Name = "Vcc"
-        Series50.BorderWidth = 3
-        Series50.ChartArea = "Vcc"
-        Series50.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series50.Color = System.Drawing.Color.Blue
-        Series50.IsVisibleInLegend = False
-        Series50.Legend = "Legend1"
-        Series50.Name = "VccHighLine"
-        Series51.BorderWidth = 3
-        Series51.ChartArea = "Vcc"
-        Series51.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series51.Color = System.Drawing.Color.Blue
-        Series51.IsVisibleInLegend = False
-        Series51.Legend = "Legend1"
-        Series51.Name = "VccLowLine"
-        Series52.ChartArea = "Vcc"
-        Series52.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series52.Color = System.Drawing.Color.OliveDrab
-        Series52.Legend = "Legend1"
-        Series52.Name = "VccOSDLine"
-        Series53.ChartArea = "Volts"
-        Series53.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series53.Color = System.Drawing.Color.Blue
-        Series53.Legend = "Legend1"
-        Series53.Name = "Volts"
-        Series54.ChartArea = "Amps"
-        Series54.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series54.Color = System.Drawing.Color.Fuchsia
-        Series54.IsVisibleInLegend = False
-        Series54.Legend = "Legend1"
-        Series54.Name = "Amps"
-        Series55.ChartArea = "Thrust"
-        Series55.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series55.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Series55.IsVisibleInLegend = False
-        Series55.Legend = "Legend1"
-        Series55.Name = "Thrust"
-        Me.chartPowerRails.Series.Add(Series49)
-        Me.chartPowerRails.Series.Add(Series50)
-        Me.chartPowerRails.Series.Add(Series51)
-        Me.chartPowerRails.Series.Add(Series52)
-        Me.chartPowerRails.Series.Add(Series53)
-        Me.chartPowerRails.Series.Add(Series54)
-        Me.chartPowerRails.Series.Add(Series55)
+        Series1.ChartArea = "Vcc"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series1.Color = System.Drawing.Color.Red
+        Series1.Legend = "Legend1"
+        Series1.Name = "Vcc"
+        Series2.BorderWidth = 3
+        Series2.ChartArea = "Vcc"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series2.Color = System.Drawing.Color.Blue
+        Series2.IsVisibleInLegend = False
+        Series2.Legend = "Legend1"
+        Series2.Name = "VccHighLine"
+        Series3.BorderWidth = 3
+        Series3.ChartArea = "Vcc"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series3.Color = System.Drawing.Color.Blue
+        Series3.IsVisibleInLegend = False
+        Series3.Legend = "Legend1"
+        Series3.Name = "VccLowLine"
+        Series4.ChartArea = "Vcc"
+        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series4.Color = System.Drawing.Color.OliveDrab
+        Series4.Legend = "Legend1"
+        Series4.Name = "VccOSDLine"
+        Series5.ChartArea = "Volts"
+        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series5.Color = System.Drawing.Color.Blue
+        Series5.Legend = "Legend1"
+        Series5.Name = "Volts"
+        Series6.ChartArea = "Amps"
+        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series6.Color = System.Drawing.Color.Fuchsia
+        Series6.IsVisibleInLegend = False
+        Series6.Legend = "Legend1"
+        Series6.Name = "Amps"
+        Series7.ChartArea = "Thrust"
+        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series7.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Series7.IsVisibleInLegend = False
+        Series7.Legend = "Legend1"
+        Series7.Name = "Thrust"
+        Me.chartPowerRails.Series.Add(Series1)
+        Me.chartPowerRails.Series.Add(Series2)
+        Me.chartPowerRails.Series.Add(Series3)
+        Me.chartPowerRails.Series.Add(Series4)
+        Me.chartPowerRails.Series.Add(Series5)
+        Me.chartPowerRails.Series.Add(Series6)
+        Me.chartPowerRails.Series.Add(Series7)
         Me.chartPowerRails.Size = New System.Drawing.Size(104, 66)
         Me.chartPowerRails.TabIndex = 33
         Me.chartPowerRails.Text = "Chart1"
@@ -805,148 +832,148 @@ Partial Class frmMainForm
         'chartVibrations
         '
         Me.chartVibrations.BackColor = System.Drawing.Color.Transparent
-        ChartArea29.AxisX.LabelStyle.Enabled = False
-        ChartArea29.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea29.AxisX.MajorTickMark.Interval = 10.0R
-        ChartArea29.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
-        ChartArea29.AxisX.Minimum = 0.0R
-        ChartArea29.AxisY.IsStartedFromZero = False
-        ChartArea29.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea29.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea29.AxisY.MajorGrid.Interval = 1.0R
-        ChartArea29.AxisY.MajorTickMark.Interval = 1.0R
-        ChartArea29.AxisY.Maximum = 5.0R
-        ChartArea29.AxisY.Minimum = -5.0R
-        ChartArea29.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea29.Name = "AccXY"
-        ChartArea29.Position.Auto = False
-        ChartArea29.Position.Height = 19.0!
-        ChartArea29.Position.Width = 93.0!
-        ChartArea29.Position.X = 4.0!
-        ChartArea29.Position.Y = 3.0!
-        ChartArea30.AlignWithChartArea = "AccXY"
-        ChartArea30.AxisX.LabelStyle.Enabled = False
-        ChartArea30.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea30.AxisX.MajorTickMark.Interval = 10.0R
-        ChartArea30.AxisX.Minimum = 0.0R
-        ChartArea30.AxisY.Interval = 1.0R
-        ChartArea30.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea30.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea30.AxisY.LabelStyle.Interval = 2.0R
-        ChartArea30.AxisY.MajorGrid.Interval = 1.0R
-        ChartArea30.AxisY.MajorTickMark.Interval = 1.0R
-        ChartArea30.AxisY.Maximum = -3.0R
-        ChartArea30.AxisY.Minimum = -17.0R
-        ChartArea30.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea30.Name = "AccZ"
-        ChartArea30.Position.Auto = False
-        ChartArea30.Position.Height = 20.0!
-        ChartArea30.Position.Width = 94.0!
-        ChartArea30.Position.X = 3.0!
-        ChartArea30.Position.Y = 26.0!
-        ChartArea31.AlignWithChartArea = "AccXY"
-        ChartArea31.AxisX.LabelStyle.Enabled = False
-        ChartArea31.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea31.AxisY.IsLabelAutoFit = False
-        ChartArea31.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea31.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea31.AxisY.LabelStyle.Format = "0000"
-        ChartArea31.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea31.Name = "Altitude"
-        ChartArea31.Position.Auto = False
-        ChartArea31.Position.Height = 20.0!
-        ChartArea31.Position.Width = 93.0!
-        ChartArea31.Position.X = 4.0!
-        ChartArea31.Position.Y = 47.0!
-        ChartArea32.AlignWithChartArea = "AccXY"
-        ChartArea32.AxisX.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea32.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea32.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea32.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea32.AxisY.LabelStyle.Format = "00"
-        ChartArea32.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea32.Name = "Speed"
-        ChartArea32.Position.Auto = False
-        ChartArea32.Position.Height = 20.0!
-        ChartArea32.Position.Width = 93.0!
-        ChartArea32.Position.X = 4.0!
-        ChartArea32.Position.Y = 67.0!
-        Me.chartVibrations.ChartAreas.Add(ChartArea29)
-        Me.chartVibrations.ChartAreas.Add(ChartArea30)
-        Me.chartVibrations.ChartAreas.Add(ChartArea31)
-        Me.chartVibrations.ChartAreas.Add(ChartArea32)
-        Legend8.Enabled = False
-        Legend8.IsDockedInsideChartArea = False
-        Legend8.Name = "Legend1"
-        Legend8.Title = "Key"
-        Me.chartVibrations.Legends.Add(Legend8)
+        ChartArea5.AxisX.LabelStyle.Enabled = False
+        ChartArea5.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea5.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea5.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
+        ChartArea5.AxisX.Minimum = 0.0R
+        ChartArea5.AxisY.IsStartedFromZero = False
+        ChartArea5.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea5.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea5.AxisY.MajorGrid.Interval = 1.0R
+        ChartArea5.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea5.AxisY.Maximum = 5.0R
+        ChartArea5.AxisY.Minimum = -5.0R
+        ChartArea5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea5.Name = "AccXY"
+        ChartArea5.Position.Auto = False
+        ChartArea5.Position.Height = 19.0!
+        ChartArea5.Position.Width = 93.0!
+        ChartArea5.Position.X = 4.0!
+        ChartArea5.Position.Y = 3.0!
+        ChartArea6.AlignWithChartArea = "AccXY"
+        ChartArea6.AxisX.LabelStyle.Enabled = False
+        ChartArea6.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea6.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea6.AxisX.Minimum = 0.0R
+        ChartArea6.AxisY.Interval = 1.0R
+        ChartArea6.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea6.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea6.AxisY.LabelStyle.Interval = 2.0R
+        ChartArea6.AxisY.MajorGrid.Interval = 1.0R
+        ChartArea6.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea6.AxisY.Maximum = -3.0R
+        ChartArea6.AxisY.Minimum = -17.0R
+        ChartArea6.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea6.Name = "AccZ"
+        ChartArea6.Position.Auto = False
+        ChartArea6.Position.Height = 20.0!
+        ChartArea6.Position.Width = 94.0!
+        ChartArea6.Position.X = 3.0!
+        ChartArea6.Position.Y = 26.0!
+        ChartArea7.AlignWithChartArea = "AccXY"
+        ChartArea7.AxisX.LabelStyle.Enabled = False
+        ChartArea7.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea7.AxisY.IsLabelAutoFit = False
+        ChartArea7.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea7.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea7.AxisY.LabelStyle.Format = "0000"
+        ChartArea7.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea7.Name = "Altitude"
+        ChartArea7.Position.Auto = False
+        ChartArea7.Position.Height = 20.0!
+        ChartArea7.Position.Width = 93.0!
+        ChartArea7.Position.X = 4.0!
+        ChartArea7.Position.Y = 47.0!
+        ChartArea8.AlignWithChartArea = "AccXY"
+        ChartArea8.AxisX.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea8.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea8.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea8.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea8.AxisY.LabelStyle.Format = "00"
+        ChartArea8.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea8.Name = "Speed"
+        ChartArea8.Position.Auto = False
+        ChartArea8.Position.Height = 20.0!
+        ChartArea8.Position.Width = 93.0!
+        ChartArea8.Position.X = 4.0!
+        ChartArea8.Position.Y = 67.0!
+        Me.chartVibrations.ChartAreas.Add(ChartArea5)
+        Me.chartVibrations.ChartAreas.Add(ChartArea6)
+        Me.chartVibrations.ChartAreas.Add(ChartArea7)
+        Me.chartVibrations.ChartAreas.Add(ChartArea8)
+        Legend2.Enabled = False
+        Legend2.IsDockedInsideChartArea = False
+        Legend2.Name = "Legend1"
+        Legend2.Title = "Key"
+        Me.chartVibrations.Legends.Add(Legend2)
         Me.chartVibrations.Location = New System.Drawing.Point(0, 0)
         Me.chartVibrations.Name = "chartVibrations"
-        Series56.ChartArea = "AccXY"
-        Series56.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series56.Color = System.Drawing.Color.Red
-        Series56.Legend = "Legend1"
-        Series56.Name = "AccX"
-        Series57.ChartArea = "AccXY"
-        Series57.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series57.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Series57.Legend = "Legend1"
-        Series57.Name = "AccY"
-        Series58.BorderWidth = 3
-        Series58.ChartArea = "AccXY"
-        Series58.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series58.Color = System.Drawing.Color.Blue
-        Series58.IsVisibleInLegend = False
-        Series58.Legend = "Legend1"
-        Series58.Name = "XYHighLine"
-        Series59.BorderWidth = 3
-        Series59.ChartArea = "AccXY"
-        Series59.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series59.Color = System.Drawing.Color.Blue
-        Series59.IsVisibleInLegend = False
-        Series59.Legend = "Legend1"
-        Series59.Name = "XYLowLine"
-        Series60.ChartArea = "AccZ"
-        Series60.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series60.Color = System.Drawing.Color.Blue
-        Series60.Legend = "Legend1"
-        Series60.Name = "AccZ"
-        Series60.YValuesPerPoint = 2
-        Series61.BorderWidth = 3
-        Series61.ChartArea = "AccZ"
-        Series61.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series61.Color = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Series61.IsVisibleInLegend = False
-        Series61.Legend = "Legend1"
-        Series61.Name = "ZHighLine"
-        Series62.BorderWidth = 3
-        Series62.ChartArea = "AccZ"
-        Series62.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series62.Color = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Series62.IsVisibleInLegend = False
-        Series62.Legend = "Legend1"
-        Series62.Name = "ZLowLine"
-        Series63.ChartArea = "Altitude"
-        Series63.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series63.Color = System.Drawing.Color.Fuchsia
-        Series63.IsVisibleInLegend = False
-        Series63.Legend = "Legend1"
-        Series63.Name = "Altitude"
-        Series64.ChartArea = "Speed"
-        Series64.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series64.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Series64.IsVisibleInLegend = False
-        Series64.Legend = "Legend1"
-        Series64.Name = "Speed"
-        Me.chartVibrations.Series.Add(Series56)
-        Me.chartVibrations.Series.Add(Series57)
-        Me.chartVibrations.Series.Add(Series58)
-        Me.chartVibrations.Series.Add(Series59)
-        Me.chartVibrations.Series.Add(Series60)
-        Me.chartVibrations.Series.Add(Series61)
-        Me.chartVibrations.Series.Add(Series62)
-        Me.chartVibrations.Series.Add(Series63)
-        Me.chartVibrations.Series.Add(Series64)
+        Series8.ChartArea = "AccXY"
+        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series8.Color = System.Drawing.Color.Red
+        Series8.Legend = "Legend1"
+        Series8.Name = "AccX"
+        Series9.ChartArea = "AccXY"
+        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series9.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Series9.Legend = "Legend1"
+        Series9.Name = "AccY"
+        Series10.BorderWidth = 3
+        Series10.ChartArea = "AccXY"
+        Series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series10.Color = System.Drawing.Color.Blue
+        Series10.IsVisibleInLegend = False
+        Series10.Legend = "Legend1"
+        Series10.Name = "XYHighLine"
+        Series11.BorderWidth = 3
+        Series11.ChartArea = "AccXY"
+        Series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series11.Color = System.Drawing.Color.Blue
+        Series11.IsVisibleInLegend = False
+        Series11.Legend = "Legend1"
+        Series11.Name = "XYLowLine"
+        Series12.ChartArea = "AccZ"
+        Series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series12.Color = System.Drawing.Color.Blue
+        Series12.Legend = "Legend1"
+        Series12.Name = "AccZ"
+        Series12.YValuesPerPoint = 2
+        Series13.BorderWidth = 3
+        Series13.ChartArea = "AccZ"
+        Series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series13.Color = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Series13.IsVisibleInLegend = False
+        Series13.Legend = "Legend1"
+        Series13.Name = "ZHighLine"
+        Series14.BorderWidth = 3
+        Series14.ChartArea = "AccZ"
+        Series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series14.Color = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Series14.IsVisibleInLegend = False
+        Series14.Legend = "Legend1"
+        Series14.Name = "ZLowLine"
+        Series15.ChartArea = "Altitude"
+        Series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series15.Color = System.Drawing.Color.Fuchsia
+        Series15.IsVisibleInLegend = False
+        Series15.Legend = "Legend1"
+        Series15.Name = "Altitude"
+        Series16.ChartArea = "Speed"
+        Series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series16.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Series16.IsVisibleInLegend = False
+        Series16.Legend = "Legend1"
+        Series16.Name = "Speed"
+        Me.chartVibrations.Series.Add(Series8)
+        Me.chartVibrations.Series.Add(Series9)
+        Me.chartVibrations.Series.Add(Series10)
+        Me.chartVibrations.Series.Add(Series11)
+        Me.chartVibrations.Series.Add(Series12)
+        Me.chartVibrations.Series.Add(Series13)
+        Me.chartVibrations.Series.Add(Series14)
+        Me.chartVibrations.Series.Add(Series15)
+        Me.chartVibrations.Series.Add(Series16)
         Me.chartVibrations.Size = New System.Drawing.Size(100, 81)
         Me.chartVibrations.TabIndex = 41
         Me.chartVibrations.Text = "Chart1"
@@ -1083,6 +1110,7 @@ Partial Class frmMainForm
         '
         Me.panGraphButtons.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.left_back
         Me.panGraphButtons.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panGraphButtons.Controls.Add(Me.btnAttitude)
         Me.panGraphButtons.Controls.Add(Me.btnGPS)
         Me.panGraphButtons.Controls.Add(Me.Label1)
         Me.panGraphButtons.Controls.Add(Me.btnVibrationChart)
@@ -1093,6 +1121,21 @@ Partial Class frmMainForm
         Me.panGraphButtons.Size = New System.Drawing.Size(225, 602)
         Me.panGraphButtons.TabIndex = 52
         Me.panGraphButtons.Visible = False
+        '
+        'btnAttitude
+        '
+        Me.btnAttitude.BackgroundImage = CType(resources.GetObject("btnAttitude.BackgroundImage"), System.Drawing.Image)
+        Me.btnAttitude.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnAttitude.FlatAppearance.BorderSize = 0
+        Me.btnAttitude.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAttitude.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAttitude.Location = New System.Drawing.Point(21, 164)
+        Me.btnAttitude.Name = "btnAttitude"
+        Me.btnAttitude.Size = New System.Drawing.Size(177, 42)
+        Me.btnAttitude.TabIndex = 51
+        Me.btnAttitude.Text = "Attitude"
+        Me.btnAttitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAttitude.UseVisualStyleBackColor = True
         '
         'btnGPS
         '
@@ -1113,7 +1156,7 @@ Partial Class frmMainForm
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(17, 190)
+        Me.Label1.Location = New System.Drawing.Point(17, 234)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(170, 24)
         Me.Label1.TabIndex = 49
@@ -1185,286 +1228,509 @@ Partial Class frmMainForm
         '
         'panGPS
         '
-        Me.panGPS.Controls.Add(Me.picTickStraight)
-        Me.panGPS.Controls.Add(Me.picTickDown)
-        Me.panGPS.Controls.Add(Me.picTickUp)
-        Me.panGPS.Controls.Add(Me.lblChart1Status3)
-        Me.panGPS.Controls.Add(Me.lblChart1Status2)
-        Me.panGPS.Controls.Add(Me.lblChart1Status1)
-        Me.panGPS.Controls.Add(Me.lblChart1Header)
-        Me.panGPS.Controls.Add(Me.lblChart1Status0)
-        Me.panGPS.Controls.Add(Me.lblChart3Header)
-        Me.panGPS.Controls.Add(Me.lblChart2Header)
-        Me.panGPS.Controls.Add(Me.lblChart4Header)
+        Me.panGPS.Controls.Add(Me.picGPSTickStraight)
+        Me.panGPS.Controls.Add(Me.picGPSTickDown)
+        Me.panGPS.Controls.Add(Me.picGPSTickUp)
+        Me.panGPS.Controls.Add(Me.lblGPSChart1Status3)
+        Me.panGPS.Controls.Add(Me.lblGPSChart1Status2)
+        Me.panGPS.Controls.Add(Me.lblGPSChart1Status1)
+        Me.panGPS.Controls.Add(Me.lblGPSChart1Header)
+        Me.panGPS.Controls.Add(Me.lblGPSChart1Status0)
+        Me.panGPS.Controls.Add(Me.lblGPSChart3Header)
+        Me.panGPS.Controls.Add(Me.lblGPSChart2Header)
+        Me.panGPS.Controls.Add(Me.lblGPSChart4Header)
         Me.panGPS.Controls.Add(Me.chartGPS)
-        Me.panGPS.Location = New System.Drawing.Point(220, 70)
+        Me.panGPS.Location = New System.Drawing.Point(827, 251)
         Me.panGPS.Name = "panGPS"
-        Me.panGPS.Size = New System.Drawing.Size(474, 376)
+        Me.panGPS.Size = New System.Drawing.Size(167, 152)
         Me.panGPS.TabIndex = 55
         Me.panGPS.Visible = False
         '
-        'lblChart1Header
+        'picGPSTickStraight
         '
-        Me.lblChart1Header.AutoSize = True
-        Me.lblChart1Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChart1Header.ForeColor = System.Drawing.Color.Lime
-        Me.lblChart1Header.Location = New System.Drawing.Point(86, 27)
-        Me.lblChart1Header.Name = "lblChart1Header"
-        Me.lblChart1Header.Size = New System.Drawing.Size(152, 26)
-        Me.lblChart1Header.TabIndex = 34
-        Me.lblChart1Header.Text = "GPS - Status"
+        Me.picGPSTickStraight.BackColor = System.Drawing.Color.Black
+        Me.picGPSTickStraight.Image = CType(resources.GetObject("picGPSTickStraight.Image"), System.Drawing.Image)
+        Me.picGPSTickStraight.Location = New System.Drawing.Point(3, 58)
+        Me.picGPSTickStraight.Name = "picGPSTickStraight"
+        Me.picGPSTickStraight.Size = New System.Drawing.Size(41, 29)
+        Me.picGPSTickStraight.TabIndex = 45
+        Me.picGPSTickStraight.TabStop = False
         '
-        'lblChart1Status0
+        'picGPSTickDown
         '
-        Me.lblChart1Status0.AutoSize = True
-        Me.lblChart1Status0.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChart1Status0.ForeColor = System.Drawing.Color.Lime
-        Me.lblChart1Status0.Location = New System.Drawing.Point(106, 160)
-        Me.lblChart1Status0.Name = "lblChart1Status0"
-        Me.lblChart1Status0.Size = New System.Drawing.Size(91, 17)
-        Me.lblChart1Status0.TabIndex = 39
-        Me.lblChart1Status0.Text = "0 = no GPS"
+        Me.picGPSTickDown.BackColor = System.Drawing.Color.Black
+        Me.picGPSTickDown.Image = CType(resources.GetObject("picGPSTickDown.Image"), System.Drawing.Image)
+        Me.picGPSTickDown.Location = New System.Drawing.Point(3, 120)
+        Me.picGPSTickDown.Name = "picGPSTickDown"
+        Me.picGPSTickDown.Size = New System.Drawing.Size(41, 29)
+        Me.picGPSTickDown.TabIndex = 44
+        Me.picGPSTickDown.TabStop = False
         '
-        'lblChart3Header
+        'picGPSTickUp
         '
-        Me.lblChart3Header.AutoSize = True
-        Me.lblChart3Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChart3Header.ForeColor = System.Drawing.Color.Lime
-        Me.lblChart3Header.Location = New System.Drawing.Point(86, 331)
-        Me.lblChart3Header.Name = "lblChart3Header"
-        Me.lblChart3Header.Size = New System.Drawing.Size(183, 26)
-        Me.lblChart3Header.TabIndex = 36
-        Me.lblChart3Header.Text = "GPS - Satellites"
+        Me.picGPSTickUp.BackColor = System.Drawing.Color.Black
+        Me.picGPSTickUp.Image = CType(resources.GetObject("picGPSTickUp.Image"), System.Drawing.Image)
+        Me.picGPSTickUp.Location = New System.Drawing.Point(3, 174)
+        Me.picGPSTickUp.Name = "picGPSTickUp"
+        Me.picGPSTickUp.Size = New System.Drawing.Size(41, 29)
+        Me.picGPSTickUp.TabIndex = 43
+        Me.picGPSTickUp.TabStop = False
         '
-        'lblChart2Header
+        'lblGPSChart1Status3
         '
-        Me.lblChart2Header.AutoSize = True
-        Me.lblChart2Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChart2Header.ForeColor = System.Drawing.Color.Lime
-        Me.lblChart2Header.Location = New System.Drawing.Point(86, 188)
-        Me.lblChart2Header.Name = "lblChart2Header"
-        Me.lblChart2Header.Size = New System.Drawing.Size(144, 26)
-        Me.lblChart2Header.TabIndex = 35
-        Me.lblChart2Header.Text = "GPS - HDop"
+        Me.lblGPSChart1Status3.AutoSize = True
+        Me.lblGPSChart1Status3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGPSChart1Status3.ForeColor = System.Drawing.Color.Lime
+        Me.lblGPSChart1Status3.Location = New System.Drawing.Point(106, 70)
+        Me.lblGPSChart1Status3.Name = "lblGPSChart1Status3"
+        Me.lblGPSChart1Status3.Size = New System.Drawing.Size(130, 17)
+        Me.lblGPSChart1Status3.TabIndex = 42
+        Me.lblGPSChart1Status3.Text = "3 = GPS (3D Fix)"
         '
-        'lblChart4Header
+        'lblGPSChart1Status2
         '
-        Me.lblChart4Header.AutoSize = True
-        Me.lblChart4Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChart4Header.ForeColor = System.Drawing.Color.Lime
-        Me.lblChart4Header.Location = New System.Drawing.Point(86, 470)
-        Me.lblChart4Header.Name = "lblChart4Header"
-        Me.lblChart4Header.Size = New System.Drawing.Size(165, 26)
-        Me.lblChart4Header.TabIndex = 37
-        Me.lblChart4Header.Text = "Ground Speed"
+        Me.lblGPSChart1Status2.AutoSize = True
+        Me.lblGPSChart1Status2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGPSChart1Status2.ForeColor = System.Drawing.Color.Lime
+        Me.lblGPSChart1Status2.Location = New System.Drawing.Point(106, 99)
+        Me.lblGPSChart1Status2.Name = "lblGPSChart1Status2"
+        Me.lblGPSChart1Status2.Size = New System.Drawing.Size(126, 17)
+        Me.lblGPSChart1Status2.TabIndex = 41
+        Me.lblGPSChart1Status2.Text = "2 = GPS (2D fix)"
+        '
+        'lblGPSChart1Status1
+        '
+        Me.lblGPSChart1Status1.AutoSize = True
+        Me.lblGPSChart1Status1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGPSChart1Status1.ForeColor = System.Drawing.Color.Lime
+        Me.lblGPSChart1Status1.Location = New System.Drawing.Point(106, 132)
+        Me.lblGPSChart1Status1.Name = "lblGPSChart1Status1"
+        Me.lblGPSChart1Status1.Size = New System.Drawing.Size(124, 17)
+        Me.lblGPSChart1Status1.TabIndex = 40
+        Me.lblGPSChart1Status1.Text = "1 = GPS (no fix)"
+        '
+        'lblGPSChart1Header
+        '
+        Me.lblGPSChart1Header.AutoSize = True
+        Me.lblGPSChart1Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGPSChart1Header.ForeColor = System.Drawing.Color.Lime
+        Me.lblGPSChart1Header.Location = New System.Drawing.Point(86, 27)
+        Me.lblGPSChart1Header.Name = "lblGPSChart1Header"
+        Me.lblGPSChart1Header.Size = New System.Drawing.Size(152, 26)
+        Me.lblGPSChart1Header.TabIndex = 34
+        Me.lblGPSChart1Header.Text = "GPS - Status"
+        '
+        'lblGPSChart1Status0
+        '
+        Me.lblGPSChart1Status0.AutoSize = True
+        Me.lblGPSChart1Status0.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGPSChart1Status0.ForeColor = System.Drawing.Color.Lime
+        Me.lblGPSChart1Status0.Location = New System.Drawing.Point(106, 160)
+        Me.lblGPSChart1Status0.Name = "lblGPSChart1Status0"
+        Me.lblGPSChart1Status0.Size = New System.Drawing.Size(91, 17)
+        Me.lblGPSChart1Status0.TabIndex = 39
+        Me.lblGPSChart1Status0.Text = "0 = no GPS"
+        '
+        'lblGPSChart3Header
+        '
+        Me.lblGPSChart3Header.AutoSize = True
+        Me.lblGPSChart3Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGPSChart3Header.ForeColor = System.Drawing.Color.Lime
+        Me.lblGPSChart3Header.Location = New System.Drawing.Point(86, 331)
+        Me.lblGPSChart3Header.Name = "lblGPSChart3Header"
+        Me.lblGPSChart3Header.Size = New System.Drawing.Size(183, 26)
+        Me.lblGPSChart3Header.TabIndex = 36
+        Me.lblGPSChart3Header.Text = "GPS - Satellites"
+        '
+        'lblGPSChart2Header
+        '
+        Me.lblGPSChart2Header.AutoSize = True
+        Me.lblGPSChart2Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGPSChart2Header.ForeColor = System.Drawing.Color.Lime
+        Me.lblGPSChart2Header.Location = New System.Drawing.Point(86, 188)
+        Me.lblGPSChart2Header.Name = "lblGPSChart2Header"
+        Me.lblGPSChart2Header.Size = New System.Drawing.Size(144, 26)
+        Me.lblGPSChart2Header.TabIndex = 35
+        Me.lblGPSChart2Header.Text = "GPS - HDop"
+        '
+        'lblGPSChart4Header
+        '
+        Me.lblGPSChart4Header.AutoSize = True
+        Me.lblGPSChart4Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblGPSChart4Header.ForeColor = System.Drawing.Color.Lime
+        Me.lblGPSChart4Header.Location = New System.Drawing.Point(86, 470)
+        Me.lblGPSChart4Header.Name = "lblGPSChart4Header"
+        Me.lblGPSChart4Header.Size = New System.Drawing.Size(165, 26)
+        Me.lblGPSChart4Header.TabIndex = 37
+        Me.lblGPSChart4Header.Text = "Ground Speed"
         '
         'chartGPS
         '
         Me.chartGPS.BackColor = System.Drawing.Color.Transparent
-        ChartArea33.AxisX.LabelStyle.Enabled = False
-        ChartArea33.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Maroon
-        ChartArea33.AxisX.MajorTickMark.Interval = 10.0R
-        ChartArea33.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
-        ChartArea33.AxisX.Minimum = 0.0R
-        ChartArea33.AxisY.Interval = 1.0R
-        ChartArea33.AxisY.IsLabelAutoFit = False
-        ChartArea33.AxisY.IsStartedFromZero = False
-        ChartArea33.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
-        ChartArea33.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
-        ChartArea33.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea33.AxisY.LineColor = System.Drawing.Color.Maroon
-        ChartArea33.AxisY.MajorGrid.Interval = 0.2R
-        ChartArea33.AxisY.MajorTickMark.Interval = 1.0R
-        ChartArea33.AxisY.Maximum = 3.0R
-        ChartArea33.AxisY.Minimum = 0.0R
-        ChartArea33.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea33.Name = "Status"
-        ChartArea33.Position.Auto = False
-        ChartArea33.Position.Height = 19.0!
-        ChartArea33.Position.Width = 95.0!
-        ChartArea33.Position.X = 3.0!
-        ChartArea33.Position.Y = 3.0!
-        ChartArea34.AlignWithChartArea = "Status"
-        ChartArea34.AxisX.LabelStyle.Enabled = False
-        ChartArea34.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea34.AxisX.MajorTickMark.Interval = 10.0R
-        ChartArea34.AxisX.Minimum = 0.0R
-        ChartArea34.AxisY.Interval = 0.5R
-        ChartArea34.AxisY.IsLabelAutoFit = False
-        ChartArea34.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
-        ChartArea34.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea34.AxisY.MajorGrid.Interval = 1.0R
-        ChartArea34.AxisY.MajorTickMark.Interval = 1.0R
-        ChartArea34.AxisY.Minimum = 0.0R
-        ChartArea34.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea34.Name = "HDop"
-        ChartArea34.Position.Auto = False
-        ChartArea34.Position.Height = 19.0!
-        ChartArea34.Position.Width = 96.0!
-        ChartArea34.Position.X = 2.0!
-        ChartArea34.Position.Y = 24.0!
-        ChartArea35.AlignWithChartArea = "Status"
-        ChartArea35.AxisX.LabelStyle.Enabled = False
-        ChartArea35.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea35.AxisX.LabelStyle.Interval = 1.0R
-        ChartArea35.AxisY.Interval = 2.0R
-        ChartArea35.AxisY.IsLabelAutoFit = False
-        ChartArea35.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
-        ChartArea35.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea35.AxisY.Minimum = 0.0R
-        ChartArea35.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea35.Name = "Satellites"
-        ChartArea35.Position.Auto = False
-        ChartArea35.Position.Height = 19.0!
-        ChartArea35.Position.Width = 95.0!
-        ChartArea35.Position.X = 3.0!
-        ChartArea35.Position.Y = 45.0!
-        ChartArea36.AlignWithChartArea = "Status"
-        ChartArea36.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea36.AxisY.Interval = 5.0R
-        ChartArea36.AxisY.IsLabelAutoFit = False
-        ChartArea36.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea36.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea36.AxisY.Minimum = 0.0R
-        ChartArea36.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea36.Name = "Speed"
-        ChartArea36.Position.Auto = False
-        ChartArea36.Position.Height = 19.0!
-        ChartArea36.Position.Width = 96.0!
-        ChartArea36.Position.X = 2.0!
-        ChartArea36.Position.Y = 66.0!
-        Me.chartGPS.ChartAreas.Add(ChartArea33)
-        Me.chartGPS.ChartAreas.Add(ChartArea34)
-        Me.chartGPS.ChartAreas.Add(ChartArea35)
-        Me.chartGPS.ChartAreas.Add(ChartArea36)
-        Legend9.Enabled = False
-        Legend9.IsDockedInsideChartArea = False
-        Legend9.Name = "Legend1"
-        Legend9.Title = "Key"
-        Me.chartGPS.Legends.Add(Legend9)
+        ChartArea9.AxisX.LabelStyle.Enabled = False
+        ChartArea9.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Maroon
+        ChartArea9.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea9.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
+        ChartArea9.AxisX.Minimum = 0.0R
+        ChartArea9.AxisY.Interval = 1.0R
+        ChartArea9.AxisY.IsLabelAutoFit = False
+        ChartArea9.AxisY.IsStartedFromZero = False
+        ChartArea9.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
+        ChartArea9.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
+        ChartArea9.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea9.AxisY.LineColor = System.Drawing.Color.Maroon
+        ChartArea9.AxisY.MajorGrid.Interval = 0.2R
+        ChartArea9.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea9.AxisY.Maximum = 3.0R
+        ChartArea9.AxisY.Minimum = 0.0R
+        ChartArea9.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea9.Name = "Status"
+        ChartArea9.Position.Auto = False
+        ChartArea9.Position.Height = 19.0!
+        ChartArea9.Position.Width = 95.0!
+        ChartArea9.Position.X = 3.0!
+        ChartArea9.Position.Y = 3.0!
+        ChartArea10.AlignWithChartArea = "Status"
+        ChartArea10.AxisX.LabelStyle.Enabled = False
+        ChartArea10.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea10.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea10.AxisX.Minimum = 0.0R
+        ChartArea10.AxisY.Interval = 0.5R
+        ChartArea10.AxisY.IsLabelAutoFit = False
+        ChartArea10.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
+        ChartArea10.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea10.AxisY.MajorGrid.Interval = 1.0R
+        ChartArea10.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea10.AxisY.Minimum = 0.0R
+        ChartArea10.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea10.Name = "HDop"
+        ChartArea10.Position.Auto = False
+        ChartArea10.Position.Height = 19.0!
+        ChartArea10.Position.Width = 96.0!
+        ChartArea10.Position.X = 2.0!
+        ChartArea10.Position.Y = 24.0!
+        ChartArea11.AlignWithChartArea = "Status"
+        ChartArea11.AxisX.LabelStyle.Enabled = False
+        ChartArea11.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea11.AxisX.LabelStyle.Interval = 1.0R
+        ChartArea11.AxisY.Interval = 2.0R
+        ChartArea11.AxisY.IsLabelAutoFit = False
+        ChartArea11.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
+        ChartArea11.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea11.AxisY.Minimum = 0.0R
+        ChartArea11.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea11.Name = "Satellites"
+        ChartArea11.Position.Auto = False
+        ChartArea11.Position.Height = 19.0!
+        ChartArea11.Position.Width = 95.0!
+        ChartArea11.Position.X = 3.0!
+        ChartArea11.Position.Y = 45.0!
+        ChartArea12.AlignWithChartArea = "Status"
+        ChartArea12.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea12.AxisY.Interval = 5.0R
+        ChartArea12.AxisY.IsLabelAutoFit = False
+        ChartArea12.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea12.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea12.AxisY.Minimum = 0.0R
+        ChartArea12.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea12.Name = "Speed"
+        ChartArea12.Position.Auto = False
+        ChartArea12.Position.Height = 19.0!
+        ChartArea12.Position.Width = 96.0!
+        ChartArea12.Position.X = 2.0!
+        ChartArea12.Position.Y = 66.0!
+        Me.chartGPS.ChartAreas.Add(ChartArea9)
+        Me.chartGPS.ChartAreas.Add(ChartArea10)
+        Me.chartGPS.ChartAreas.Add(ChartArea11)
+        Me.chartGPS.ChartAreas.Add(ChartArea12)
+        Legend3.Enabled = False
+        Legend3.IsDockedInsideChartArea = False
+        Legend3.Name = "Legend1"
+        Legend3.Title = "Key"
+        Me.chartGPS.Legends.Add(Legend3)
         Me.chartGPS.Location = New System.Drawing.Point(0, 0)
         Me.chartGPS.Name = "chartGPS"
-        Series65.BackImageTransparentColor = System.Drawing.Color.Transparent
-        Series65.ChartArea = "Status"
-        Series65.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area
-        Series65.Color = System.Drawing.Color.Red
-        Series65.Legend = "Legend1"
-        Series65.Name = "Status"
-        Series66.BorderWidth = 3
-        Series66.ChartArea = "Status"
-        Series66.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series66.Color = System.Drawing.Color.Blue
-        Series66.Legend = "Legend1"
-        Series66.Name = "StatusOKLine"
-        Series67.ChartArea = "HDop"
-        Series67.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area
-        Series67.Color = System.Drawing.Color.Red
-        Series67.Legend = "Legend1"
-        Series67.Name = "HDop"
-        Series68.BorderWidth = 3
-        Series68.ChartArea = "HDop"
-        Series68.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series68.Color = System.Drawing.Color.Blue
-        Series68.IsVisibleInLegend = False
-        Series68.Legend = "Legend1"
-        Series68.Name = "HDopMinLine"
-        Series69.ChartArea = "Satellites"
-        Series69.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area
-        Series69.Color = System.Drawing.Color.Red
-        Series69.IsVisibleInLegend = False
-        Series69.Legend = "Legend1"
-        Series69.Name = "Satellites"
-        Series70.BorderWidth = 3
-        Series70.ChartArea = "Satellites"
-        Series70.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series70.Color = System.Drawing.Color.Blue
-        Series70.IsVisibleInLegend = False
-        Series70.Legend = "Legend1"
-        Series70.Name = "SatellitesMinLine"
-        Series71.ChartArea = "Speed"
-        Series71.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area
-        Series71.Color = System.Drawing.Color.Red
-        Series71.IsVisibleInLegend = False
-        Series71.Legend = "Legend1"
-        Series71.Name = "Speed"
-        Series72.ChartArea = "Speed"
-        Series72.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series72.Legend = "Legend1"
-        Series72.Name = "SpeedAvgLine"
-        Me.chartGPS.Series.Add(Series65)
-        Me.chartGPS.Series.Add(Series66)
-        Me.chartGPS.Series.Add(Series67)
-        Me.chartGPS.Series.Add(Series68)
-        Me.chartGPS.Series.Add(Series69)
-        Me.chartGPS.Series.Add(Series70)
-        Me.chartGPS.Series.Add(Series71)
-        Me.chartGPS.Series.Add(Series72)
+        Series17.BackImageTransparentColor = System.Drawing.Color.Transparent
+        Series17.ChartArea = "Status"
+        Series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area
+        Series17.Color = System.Drawing.Color.Red
+        Series17.Legend = "Legend1"
+        Series17.Name = "Status"
+        Series18.BorderWidth = 3
+        Series18.ChartArea = "Status"
+        Series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series18.Color = System.Drawing.Color.Blue
+        Series18.Legend = "Legend1"
+        Series18.Name = "StatusOKLine"
+        Series19.ChartArea = "HDop"
+        Series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area
+        Series19.Color = System.Drawing.Color.Red
+        Series19.Legend = "Legend1"
+        Series19.Name = "HDop"
+        Series20.BorderWidth = 3
+        Series20.ChartArea = "HDop"
+        Series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series20.Color = System.Drawing.Color.Blue
+        Series20.IsVisibleInLegend = False
+        Series20.Legend = "Legend1"
+        Series20.Name = "HDopMinLine"
+        Series21.ChartArea = "Satellites"
+        Series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area
+        Series21.Color = System.Drawing.Color.Red
+        Series21.IsVisibleInLegend = False
+        Series21.Legend = "Legend1"
+        Series21.Name = "Satellites"
+        Series22.BorderWidth = 3
+        Series22.ChartArea = "Satellites"
+        Series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series22.Color = System.Drawing.Color.Blue
+        Series22.IsVisibleInLegend = False
+        Series22.Legend = "Legend1"
+        Series22.Name = "SatellitesMinLine"
+        Series23.ChartArea = "Speed"
+        Series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area
+        Series23.Color = System.Drawing.Color.Red
+        Series23.IsVisibleInLegend = False
+        Series23.Legend = "Legend1"
+        Series23.Name = "Speed"
+        Series24.ChartArea = "Speed"
+        Series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series24.Legend = "Legend1"
+        Series24.Name = "SpeedAvgLine"
+        Me.chartGPS.Series.Add(Series17)
+        Me.chartGPS.Series.Add(Series18)
+        Me.chartGPS.Series.Add(Series19)
+        Me.chartGPS.Series.Add(Series20)
+        Me.chartGPS.Series.Add(Series21)
+        Me.chartGPS.Series.Add(Series22)
+        Me.chartGPS.Series.Add(Series23)
+        Me.chartGPS.Series.Add(Series24)
         Me.chartGPS.Size = New System.Drawing.Size(104, 66)
         Me.chartGPS.TabIndex = 33
         Me.chartGPS.Text = "Chart1"
         '
-        'lblChart1Status1
+        'panAttitude
         '
-        Me.lblChart1Status1.AutoSize = True
-        Me.lblChart1Status1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChart1Status1.ForeColor = System.Drawing.Color.Lime
-        Me.lblChart1Status1.Location = New System.Drawing.Point(106, 132)
-        Me.lblChart1Status1.Name = "lblChart1Status1"
-        Me.lblChart1Status1.Size = New System.Drawing.Size(124, 17)
-        Me.lblChart1Status1.TabIndex = 40
-        Me.lblChart1Status1.Text = "1 = GPS (no fix)"
+        Me.panAttitude.Controls.Add(Me.picAttitudeInfo0)
+        Me.panAttitude.Controls.Add(Me.lblAttitudeChart1Header)
+        Me.panAttitude.Controls.Add(Me.lblAttitudeChart3Header)
+        Me.panAttitude.Controls.Add(Me.lblAttitudeChart2Header)
+        Me.panAttitude.Controls.Add(Me.lblAttitudeChart4Header)
+        Me.panAttitude.Controls.Add(Me.chartAttitude)
+        Me.panAttitude.Location = New System.Drawing.Point(182, 81)
+        Me.panAttitude.Name = "panAttitude"
+        Me.panAttitude.Size = New System.Drawing.Size(709, 541)
+        Me.panAttitude.TabIndex = 56
+        Me.panAttitude.Visible = False
         '
-        'lblChart1Status2
+        'picAttitudeInfo0
         '
-        Me.lblChart1Status2.AutoSize = True
-        Me.lblChart1Status2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChart1Status2.ForeColor = System.Drawing.Color.Lime
-        Me.lblChart1Status2.Location = New System.Drawing.Point(106, 99)
-        Me.lblChart1Status2.Name = "lblChart1Status2"
-        Me.lblChart1Status2.Size = New System.Drawing.Size(126, 17)
-        Me.lblChart1Status2.TabIndex = 41
-        Me.lblChart1Status2.Text = "2 = GPS (2D fix)"
+        Me.picAttitudeInfo0.Image = CType(resources.GetObject("picAttitudeInfo0.Image"), System.Drawing.Image)
+        Me.picAttitudeInfo0.Location = New System.Drawing.Point(14, 67)
+        Me.picAttitudeInfo0.Name = "picAttitudeInfo0"
+        Me.picAttitudeInfo0.Size = New System.Drawing.Size(63, 90)
+        Me.picAttitudeInfo0.TabIndex = 43
+        Me.picAttitudeInfo0.TabStop = False
         '
-        'lblChart1Status3
+        'lblAttitudeChart1Header
         '
-        Me.lblChart1Status3.AutoSize = True
-        Me.lblChart1Status3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblChart1Status3.ForeColor = System.Drawing.Color.Lime
-        Me.lblChart1Status3.Location = New System.Drawing.Point(106, 70)
-        Me.lblChart1Status3.Name = "lblChart1Status3"
-        Me.lblChart1Status3.Size = New System.Drawing.Size(130, 17)
-        Me.lblChart1Status3.TabIndex = 42
-        Me.lblChart1Status3.Text = "3 = GPS (3D Fix)"
+        Me.lblAttitudeChart1Header.AutoSize = True
+        Me.lblAttitudeChart1Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAttitudeChart1Header.ForeColor = System.Drawing.Color.Lime
+        Me.lblAttitudeChart1Header.Location = New System.Drawing.Point(86, 27)
+        Me.lblAttitudeChart1Header.Name = "lblAttitudeChart1Header"
+        Me.lblAttitudeChart1Header.Size = New System.Drawing.Size(158, 26)
+        Me.lblAttitudeChart1Header.TabIndex = 34
+        Me.lblAttitudeChart1Header.Text = "Attitude - Roll"
         '
-        'picTickUp
+        'lblAttitudeChart3Header
         '
-        Me.picTickUp.BackColor = System.Drawing.Color.Black
-        Me.picTickUp.Image = CType(resources.GetObject("picTickUp.Image"), System.Drawing.Image)
-        Me.picTickUp.Location = New System.Drawing.Point(3, 174)
-        Me.picTickUp.Name = "picTickUp"
-        Me.picTickUp.Size = New System.Drawing.Size(41, 29)
-        Me.picTickUp.TabIndex = 43
-        Me.picTickUp.TabStop = False
+        Me.lblAttitudeChart3Header.AutoSize = True
+        Me.lblAttitudeChart3Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAttitudeChart3Header.ForeColor = System.Drawing.Color.Lime
+        Me.lblAttitudeChart3Header.Location = New System.Drawing.Point(86, 331)
+        Me.lblAttitudeChart3Header.Name = "lblAttitudeChart3Header"
+        Me.lblAttitudeChart3Header.Size = New System.Drawing.Size(163, 26)
+        Me.lblAttitudeChart3Header.TabIndex = 36
+        Me.lblAttitudeChart3Header.Text = "Attitude - Yaw"
         '
-        'picTickDown
+        'lblAttitudeChart2Header
         '
-        Me.picTickDown.BackColor = System.Drawing.Color.Black
-        Me.picTickDown.Image = CType(resources.GetObject("picTickDown.Image"), System.Drawing.Image)
-        Me.picTickDown.Location = New System.Drawing.Point(3, 120)
-        Me.picTickDown.Name = "picTickDown"
-        Me.picTickDown.Size = New System.Drawing.Size(41, 29)
-        Me.picTickDown.TabIndex = 44
-        Me.picTickDown.TabStop = False
+        Me.lblAttitudeChart2Header.AutoSize = True
+        Me.lblAttitudeChart2Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAttitudeChart2Header.ForeColor = System.Drawing.Color.Lime
+        Me.lblAttitudeChart2Header.Location = New System.Drawing.Point(86, 188)
+        Me.lblAttitudeChart2Header.Name = "lblAttitudeChart2Header"
+        Me.lblAttitudeChart2Header.Size = New System.Drawing.Size(170, 26)
+        Me.lblAttitudeChart2Header.TabIndex = 35
+        Me.lblAttitudeChart2Header.Text = "Attitude - Pitch"
         '
-        'picTickStraight
+        'lblAttitudeChart4Header
         '
-        Me.picTickStraight.BackColor = System.Drawing.Color.Black
-        Me.picTickStraight.Image = CType(resources.GetObject("picTickStraight.Image"), System.Drawing.Image)
-        Me.picTickStraight.Location = New System.Drawing.Point(3, 58)
-        Me.picTickStraight.Name = "picTickStraight"
-        Me.picTickStraight.Size = New System.Drawing.Size(41, 29)
-        Me.picTickStraight.TabIndex = 45
-        Me.picTickStraight.TabStop = False
+        Me.lblAttitudeChart4Header.AutoSize = True
+        Me.lblAttitudeChart4Header.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAttitudeChart4Header.ForeColor = System.Drawing.Color.Lime
+        Me.lblAttitudeChart4Header.Location = New System.Drawing.Point(86, 470)
+        Me.lblAttitudeChart4Header.Name = "lblAttitudeChart4Header"
+        Me.lblAttitudeChart4Header.Size = New System.Drawing.Size(111, 26)
+        Me.lblAttitudeChart4Header.TabIndex = 37
+        Me.lblAttitudeChart4Header.Text = "Not Used"
+        '
+        'chartAttitude
+        '
+        Me.chartAttitude.BackColor = System.Drawing.Color.Transparent
+        ChartArea13.AxisX.LabelStyle.Enabled = False
+        ChartArea13.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Maroon
+        ChartArea13.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea13.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
+        ChartArea13.AxisX.Minimum = 0.0R
+        ChartArea13.AxisY.IsLabelAutoFit = False
+        ChartArea13.AxisY.IsStartedFromZero = False
+        ChartArea13.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
+        ChartArea13.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
+        ChartArea13.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea13.AxisY.LineColor = System.Drawing.Color.Maroon
+        ChartArea13.AxisY.MajorGrid.Interval = 0.0R
+        ChartArea13.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea13.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea13.Name = "Roll"
+        ChartArea13.Position.Auto = False
+        ChartArea13.Position.Height = 19.0!
+        ChartArea13.Position.Width = 92.0!
+        ChartArea13.Position.X = 5.0!
+        ChartArea13.Position.Y = 3.0!
+        ChartArea14.AlignWithChartArea = "Roll"
+        ChartArea14.AxisX.LabelStyle.Enabled = False
+        ChartArea14.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea14.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea14.AxisX.Minimum = 0.0R
+        ChartArea14.AxisY.IsLabelAutoFit = False
+        ChartArea14.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
+        ChartArea14.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea14.AxisY.MajorGrid.Interval = 0.0R
+        ChartArea14.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea14.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea14.Name = "Pitch"
+        ChartArea14.Position.Auto = False
+        ChartArea14.Position.Height = 19.0!
+        ChartArea14.Position.Width = 92.0!
+        ChartArea14.Position.X = 5.0!
+        ChartArea14.Position.Y = 24.0!
+        ChartArea15.AlignWithChartArea = "Roll"
+        ChartArea15.AxisX.LabelStyle.Enabled = False
+        ChartArea15.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea15.AxisX.LabelStyle.Interval = 1.0R
+        ChartArea15.AxisY.IsLabelAutoFit = False
+        ChartArea15.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
+        ChartArea15.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea15.AxisY.MajorGrid.Interval = 0.0R
+        ChartArea15.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea15.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea15.Name = "Yaw"
+        ChartArea15.Position.Auto = False
+        ChartArea15.Position.Height = 19.0!
+        ChartArea15.Position.Width = 92.0!
+        ChartArea15.Position.X = 5.0!
+        ChartArea15.Position.Y = 45.0!
+        ChartArea16.AlignWithChartArea = "Roll"
+        ChartArea16.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea16.AxisY.IsLabelAutoFit = False
+        ChartArea16.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea16.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea16.AxisY.MajorGrid.Interval = 0.0R
+        ChartArea16.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea16.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea16.Name = "Climb Rate"
+        ChartArea16.Position.Auto = False
+        ChartArea16.Position.Height = 19.0!
+        ChartArea16.Position.Width = 92.0!
+        ChartArea16.Position.X = 5.0!
+        ChartArea16.Position.Y = 66.0!
+        Me.chartAttitude.ChartAreas.Add(ChartArea13)
+        Me.chartAttitude.ChartAreas.Add(ChartArea14)
+        Me.chartAttitude.ChartAreas.Add(ChartArea15)
+        Me.chartAttitude.ChartAreas.Add(ChartArea16)
+        Legend4.Enabled = False
+        Legend4.IsDockedInsideChartArea = False
+        Legend4.Name = "Legend1"
+        Legend4.Title = "Key"
+        Me.chartAttitude.Legends.Add(Legend4)
+        Me.chartAttitude.Location = New System.Drawing.Point(0, 0)
+        Me.chartAttitude.Name = "chartAttitude"
+        Series25.BackImageTransparentColor = System.Drawing.Color.Transparent
+        Series25.ChartArea = "Roll"
+        Series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series25.Color = System.Drawing.Color.Red
+        Series25.Legend = "Legend1"
+        Series25.Name = "RollIn"
+        Series26.ChartArea = "Roll"
+        Series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series26.Color = System.Drawing.Color.Blue
+        Series26.Legend = "Legend1"
+        Series26.Name = "Roll"
+        Series27.ChartArea = "Roll"
+        Series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series27.Color = System.Drawing.Color.Green
+        Series27.Legend = "Legend1"
+        Series27.Name = "NavRoll"
+        Series28.ChartArea = "Pitch"
+        Series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series28.Color = System.Drawing.Color.Red
+        Series28.Legend = "Legend1"
+        Series28.Name = "PitchIn"
+        Series29.ChartArea = "Pitch"
+        Series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series29.Color = System.Drawing.Color.Blue
+        Series29.IsVisibleInLegend = False
+        Series29.Legend = "Legend1"
+        Series29.Name = "Pitch"
+        Series30.ChartArea = "Pitch"
+        Series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series30.Color = System.Drawing.Color.Green
+        Series30.Legend = "Legend1"
+        Series30.Name = "NavPitch"
+        Series31.ChartArea = "Yaw"
+        Series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series31.Color = System.Drawing.Color.Red
+        Series31.IsVisibleInLegend = False
+        Series31.Legend = "Legend1"
+        Series31.Name = "YawIn"
+        Series32.ChartArea = "Yaw"
+        Series32.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series32.Color = System.Drawing.Color.Blue
+        Series32.IsVisibleInLegend = False
+        Series32.Legend = "Legend1"
+        Series32.Name = "Yaw"
+        Series33.ChartArea = "Yaw"
+        Series33.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series33.Color = System.Drawing.Color.Green
+        Series33.IsVisibleInLegend = False
+        Series33.Legend = "Legend1"
+        Series33.Name = "NavYaw"
+        Series34.ChartArea = "Climb Rate"
+        Series34.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series34.Color = System.Drawing.Color.Red
+        Series34.Legend = "Legend1"
+        Series34.Name = "ClimbIn"
+        Series35.ChartArea = "Climb Rate"
+        Series35.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series35.Color = System.Drawing.Color.Green
+        Series35.Legend = "Legend1"
+        Series35.Name = "NavClimb"
+        Me.chartAttitude.Series.Add(Series25)
+        Me.chartAttitude.Series.Add(Series26)
+        Me.chartAttitude.Series.Add(Series27)
+        Me.chartAttitude.Series.Add(Series28)
+        Me.chartAttitude.Series.Add(Series29)
+        Me.chartAttitude.Series.Add(Series30)
+        Me.chartAttitude.Series.Add(Series31)
+        Me.chartAttitude.Series.Add(Series32)
+        Me.chartAttitude.Series.Add(Series33)
+        Me.chartAttitude.Series.Add(Series34)
+        Me.chartAttitude.Series.Add(Series35)
+        Me.chartAttitude.Size = New System.Drawing.Size(104, 66)
+        Me.chartAttitude.TabIndex = 33
+        Me.chartAttitude.Text = "Chart1"
         '
         'frmMainForm
         '
@@ -1472,6 +1738,7 @@ Partial Class frmMainForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(1006, 695)
+        Me.Controls.Add(Me.panAttitude)
         Me.Controls.Add(Me.panGPS)
         Me.Controls.Add(Me.btnParameters)
         Me.Controls.Add(Me.panHelpButtons)
@@ -1508,10 +1775,14 @@ Partial Class frmMainForm
         Me.panHelpButtons.ResumeLayout(False)
         Me.panGPS.ResumeLayout(False)
         Me.panGPS.PerformLayout()
+        CType(Me.picGPSTickStraight, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picGPSTickDown, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picGPSTickUp, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chartGPS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picTickUp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picTickDown, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picTickStraight, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panAttitude.ResumeLayout(False)
+        Me.panAttitude.PerformLayout()
+        CType(Me.picAttitudeInfo0, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chartAttitude, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1577,17 +1848,25 @@ Partial Class frmMainForm
     Friend WithEvents btnParameters As System.Windows.Forms.Button
     Friend WithEvents lblOSD As System.Windows.Forms.Label
     Friend WithEvents panGPS As System.Windows.Forms.Panel
-    Friend WithEvents lblChart1Header As System.Windows.Forms.Label
-    Friend WithEvents lblChart1Status0 As System.Windows.Forms.Label
-    Friend WithEvents lblChart3Header As System.Windows.Forms.Label
-    Friend WithEvents lblChart2Header As System.Windows.Forms.Label
-    Friend WithEvents lblChart4Header As System.Windows.Forms.Label
+    Friend WithEvents lblGPSChart1Header As System.Windows.Forms.Label
+    Friend WithEvents lblGPSChart1Status0 As System.Windows.Forms.Label
+    Friend WithEvents lblGPSChart3Header As System.Windows.Forms.Label
+    Friend WithEvents lblGPSChart2Header As System.Windows.Forms.Label
+    Friend WithEvents lblGPSChart4Header As System.Windows.Forms.Label
     Friend WithEvents chartGPS As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents btnGPS As System.Windows.Forms.Button
-    Friend WithEvents lblChart1Status3 As System.Windows.Forms.Label
-    Friend WithEvents lblChart1Status2 As System.Windows.Forms.Label
-    Friend WithEvents lblChart1Status1 As System.Windows.Forms.Label
-    Friend WithEvents picTickStraight As System.Windows.Forms.PictureBox
-    Friend WithEvents picTickDown As System.Windows.Forms.PictureBox
-    Friend WithEvents picTickUp As System.Windows.Forms.PictureBox
+    Friend WithEvents lblGPSChart1Status3 As System.Windows.Forms.Label
+    Friend WithEvents lblGPSChart1Status2 As System.Windows.Forms.Label
+    Friend WithEvents lblGPSChart1Status1 As System.Windows.Forms.Label
+    Friend WithEvents picGPSTickStraight As System.Windows.Forms.PictureBox
+    Friend WithEvents picGPSTickDown As System.Windows.Forms.PictureBox
+    Friend WithEvents picGPSTickUp As System.Windows.Forms.PictureBox
+    Friend WithEvents panAttitude As System.Windows.Forms.Panel
+    Friend WithEvents lblAttitudeChart1Header As System.Windows.Forms.Label
+    Friend WithEvents lblAttitudeChart3Header As System.Windows.Forms.Label
+    Friend WithEvents lblAttitudeChart2Header As System.Windows.Forms.Label
+    Friend WithEvents lblAttitudeChart4Header As System.Windows.Forms.Label
+    Friend WithEvents chartAttitude As System.Windows.Forms.DataVisualization.Charting.Chart
+    Friend WithEvents btnAttitude As System.Windows.Forms.Button
+    Friend WithEvents picAttitudeInfo0 As System.Windows.Forms.PictureBox
 End Class
