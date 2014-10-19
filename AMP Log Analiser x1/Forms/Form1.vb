@@ -200,9 +200,7 @@ Public Class frmMainForm
         Me.panAttitude.Controls.Add(lblAttitudeChart4Header) : lblAttitudeChart4Header.BringToFront()
         lblAttitudeChart4Header.Location = New Point(86, 440)
         lblAttitudeChart4Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
-        lblAttitudeChart4Header.Text = "Not Used" : lblAttitudeChart4Header.Visible = False
-
-
+        lblAttitudeChart4Header.Text = "Attitude - Climb Rate"
         'Add any additional Labels here for this chart.
         Me.panAttitude.Controls.Add(picAttitudeInfo0) : picAttitudeInfo0.BringToFront()
         picAttitudeInfo0.Location = New Point(0, 22)
@@ -385,11 +383,15 @@ Public Class frmMainForm
             chartGPS.Series("SpeedAvgLine").Points.Clear()
             chartAttitude.Series("Roll").Points.Clear()
             chartAttitude.Series("RollIn").Points.Clear()
+            chartAttitude.Series("NavRoll").Points.Clear()
             chartAttitude.Series("Pitch").Points.Clear()
             chartAttitude.Series("PitchIn").Points.Clear()
+            chartAttitude.Series("NavPitch").Points.Clear()
             chartAttitude.Series("Yaw").Points.Clear()
             chartAttitude.Series("YawIn").Points.Clear()
             chartAttitude.Series("NavYaw").Points.Clear()
+            chartAttitude.Series("ClimbIn").Points.Clear()
+            chartAttitude.Series("NavClimb").Points.Clear()
 
             lblEsc.Visible = True
             Call ReadFile(strLogPathFileName)

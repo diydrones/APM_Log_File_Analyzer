@@ -204,6 +204,14 @@ Module modVariable_Declarations
     Public Log_Maximum_Altitude As Integer = 0              'Holds the Maximum Altitude detected during the flight from the log.
     Public Log_CTUN_BarAlt As Single = 0                    'Holds the Current Barometer Altitude recorded in the log.
     Public Log_CTUN_ThrOut As Integer = 0                   'Holds the Current ThrOut recorded in the log from the CTUN data line.
+    Public Log_CTUN_ThrIn As Single = 0
+    Public Log_CTUN_SonAlt As Single = 0
+    Public Log_CTUN_WPAlt As Single = 0
+    Public Log_CTUN_DesSonAlt As Single = 0
+    Public Log_CTUN_AngBst As Single = 0
+    Public Log_CTUN_CRate As Single = 0
+    Public Log_CTUN_DCRate As Single = 0
+
     Public Log_CTUN_DLs As Integer = 0                      'Counts the number of datalines found in the Log for CTUN results, for working out averages
     Public Log_CTUN_DLs_for_Mode As Integer = 0             'Counts the number of datalines found in the Log for CTUN results during each mode, for working out averages
     Public Log_Mode_Min_BarAlt As Integer = 99999           'Holds the Minimum BarAlt recorded in the log during flight in this mode.

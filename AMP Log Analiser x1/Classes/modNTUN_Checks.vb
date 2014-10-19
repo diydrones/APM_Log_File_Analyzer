@@ -16,11 +16,7 @@
                 Log_NTUN_DAcY = Val(DataArray(10))
                 Log_NTUN_DRol = Val(DataArray(11))
                 Log_NTUN_DPit = Val(DataArray(12))
-
-
-
             End If
         End If
-
     End Sub
 End Module

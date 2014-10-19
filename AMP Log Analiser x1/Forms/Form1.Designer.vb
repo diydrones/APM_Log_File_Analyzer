@@ -77,6 +77,8 @@ Partial Class frmMainForm
         Dim Series31 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim Series32 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim Series33 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series34 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series35 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OpenFD = New System.Windows.Forms.OpenFileDialog()
         Me.lblCurrentVersion = New System.Windows.Forms.Label()
@@ -153,12 +155,12 @@ Partial Class frmMainForm
         Me.lblGPSChart4Header = New System.Windows.Forms.Label()
         Me.chartGPS = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.panAttitude = New System.Windows.Forms.Panel()
+        Me.picAttitudeInfo0 = New System.Windows.Forms.PictureBox()
         Me.lblAttitudeChart1Header = New System.Windows.Forms.Label()
         Me.lblAttitudeChart3Header = New System.Windows.Forms.Label()
         Me.lblAttitudeChart2Header = New System.Windows.Forms.Label()
         Me.lblAttitudeChart4Header = New System.Windows.Forms.Label()
         Me.chartAttitude = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.picAttitudeInfo0 = New System.Windows.Forms.PictureBox()
         Me.panAnalysisButtons.SuspendLayout()
         CType(Me.picClickButton, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartPowerRails, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -174,8 +176,8 @@ Partial Class frmMainForm
         CType(Me.picGPSTickUp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartGPS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panAttitude.SuspendLayout()
-        CType(Me.chartAttitude, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picAttitudeInfo0, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chartAttitude, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -1521,6 +1523,15 @@ Partial Class frmMainForm
         Me.panAttitude.TabIndex = 56
         Me.panAttitude.Visible = False
         '
+        'picAttitudeInfo0
+        '
+        Me.picAttitudeInfo0.Image = CType(resources.GetObject("picAttitudeInfo0.Image"), System.Drawing.Image)
+        Me.picAttitudeInfo0.Location = New System.Drawing.Point(14, 67)
+        Me.picAttitudeInfo0.Name = "picAttitudeInfo0"
+        Me.picAttitudeInfo0.Size = New System.Drawing.Size(63, 90)
+        Me.picAttitudeInfo0.TabIndex = 43
+        Me.picAttitudeInfo0.TabStop = False
+        '
         'lblAttitudeChart1Header
         '
         Me.lblAttitudeChart1Header.AutoSize = True
@@ -1623,21 +1634,18 @@ Partial Class frmMainForm
         ChartArea15.Position.Y = 45.0!
         ChartArea16.AlignWithChartArea = "Roll"
         ChartArea16.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea16.AxisY.Interval = 5.0R
         ChartArea16.AxisY.IsLabelAutoFit = False
         ChartArea16.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         ChartArea16.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea16.AxisY.MajorGrid.Interval = 0.0R
         ChartArea16.AxisY.MajorTickMark.Interval = 0.0R
-        ChartArea16.AxisY.Minimum = 0.0R
         ChartArea16.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        ChartArea16.Name = "Not Used"
+        ChartArea16.Name = "Climb Rate"
         ChartArea16.Position.Auto = False
         ChartArea16.Position.Height = 19.0!
         ChartArea16.Position.Width = 92.0!
         ChartArea16.Position.X = 5.0!
         ChartArea16.Position.Y = 66.0!
-        ChartArea16.Visible = False
         Me.chartAttitude.ChartAreas.Add(ChartArea13)
         Me.chartAttitude.ChartAreas.Add(ChartArea14)
         Me.chartAttitude.ChartAreas.Add(ChartArea15)
@@ -1699,6 +1707,16 @@ Partial Class frmMainForm
         Series33.IsVisibleInLegend = False
         Series33.Legend = "Legend1"
         Series33.Name = "NavYaw"
+        Series34.ChartArea = "Climb Rate"
+        Series34.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series34.Color = System.Drawing.Color.Red
+        Series34.Legend = "Legend1"
+        Series34.Name = "ClimbIn"
+        Series35.ChartArea = "Climb Rate"
+        Series35.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series35.Color = System.Drawing.Color.Green
+        Series35.Legend = "Legend1"
+        Series35.Name = "NavClimb"
         Me.chartAttitude.Series.Add(Series25)
         Me.chartAttitude.Series.Add(Series26)
         Me.chartAttitude.Series.Add(Series27)
@@ -1708,18 +1726,11 @@ Partial Class frmMainForm
         Me.chartAttitude.Series.Add(Series31)
         Me.chartAttitude.Series.Add(Series32)
         Me.chartAttitude.Series.Add(Series33)
+        Me.chartAttitude.Series.Add(Series34)
+        Me.chartAttitude.Series.Add(Series35)
         Me.chartAttitude.Size = New System.Drawing.Size(104, 66)
         Me.chartAttitude.TabIndex = 33
         Me.chartAttitude.Text = "Chart1"
-        '
-        'picAttitudeInfo0
-        '
-        Me.picAttitudeInfo0.Image = CType(resources.GetObject("picAttitudeInfo0.Image"), System.Drawing.Image)
-        Me.picAttitudeInfo0.Location = New System.Drawing.Point(14, 67)
-        Me.picAttitudeInfo0.Name = "picAttitudeInfo0"
-        Me.picAttitudeInfo0.Size = New System.Drawing.Size(63, 90)
-        Me.picAttitudeInfo0.TabIndex = 43
-        Me.picAttitudeInfo0.TabStop = False
         '
         'frmMainForm
         '
@@ -1770,8 +1781,8 @@ Partial Class frmMainForm
         CType(Me.chartGPS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panAttitude.ResumeLayout(False)
         Me.panAttitude.PerformLayout()
-        CType(Me.chartAttitude, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picAttitudeInfo0, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chartAttitude, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

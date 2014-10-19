@@ -32,7 +32,8 @@
                 frmMainForm.chartAttitude.Series("YawIn").Points.AddY(Log_ATT_YawIn)
                 frmMainForm.chartAttitude.Series("Yaw").Points.AddY(Log_ATT_Yaw)
                 frmMainForm.chartAttitude.Series("NavYaw").Points.AddY(Log_ATT_NavYaw)
-
+                frmMainForm.chartAttitude.Series("ClimbIn").Points.AddY(Log_CTUN_CRate)
+                frmMainForm.chartAttitude.Series("NavClimb").Points.AddY(Log_CTUN_DCRate)
             End If
         End If
 
