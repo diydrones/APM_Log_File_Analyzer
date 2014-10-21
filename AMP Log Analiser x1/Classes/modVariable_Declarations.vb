@@ -3,7 +3,7 @@ Imports System.Deployment.Application
 
 Module modVariable_Declarations
 
-    Public MyCurrentVersionNumber As String = "v1.0.4.5"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v1.0.4.6"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""               'frmMainForm.PublishedVers()                 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
 
@@ -21,7 +21,7 @@ Module modVariable_Declarations
     'Declare the Main Program Variables
     Public osVer As Version = Environment.OSVersion.Version 'Detect Windows Environment.
     Public CodeTimerStart As Double                         'Use CodeTimerStart = Format(Now, "ffff") at the start of a process.
-    'Then If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Parameter Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs") at the end
+    'Then If Format(Now, "ffff") - CodeTimerStart > 1 Then Debug.Print("Parameter Checks = " & Format(Now, "ffff") - CodeTimerStart & "μs") at the end
     Public CodeTimerStart2 As Double
     Public LogAnalysisHeader As Boolean = False             'True once the header has been written to the screen.
     Public BaseDate As Date = "06 Jan 1980"
@@ -46,6 +46,7 @@ Module modVariable_Declarations
     Public ESCPress As Boolean = False                      'True if Escape is pressed
     Public ParametersVisible As Boolean = False             'True if Parameters window is currently displayed.
     Public frmMainFormHandle As Double = 0                  ' The Handle of the main form.
+    Public PercentageComplete As Integer                    ' Holds the percentage complete to update the progress bar (speeds up code)
 
     'Declare the .ini Variables
     Public BATTERY_CAPACITY As Integer = 5000               'Holds the Models Battery Capacity

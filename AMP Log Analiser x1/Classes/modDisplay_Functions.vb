@@ -2,6 +2,9 @@
 Module modDisplay_Functions
 
     Sub WriteTextLog(ByVal LineText As String)
+        'set the timer.
+        CodeTimerStart = Format(Now, "ffff")
+
         'review the contents of the text that needs to be written.
         Dim txtColor As Color
         txtColor = Color.White
@@ -15,13 +18,15 @@ Module modDisplay_Functions
         If InStr(LineText, "Information") Then txtColor = Color.LightGreen
         If InStr(LineText, "***") Then txtColor = Color.LightGreen
 
-        With frmMainForm
-            .richtxtLogAnalysis.SelectionStart = .richtxtLogAnalysis.Text.Length
-            .richtxtLogAnalysis.SelectionColor = txtColor
-            .richtxtLogAnalysis.AppendText(LineText & vbNewLine)
-            .richtxtLogAnalysis.Refresh()
-            .richtxtLogAnalysis.SelectionColor = Color.Black
+        With frmMainForm.richtxtLogAnalysis
+            .SelectionStart = .Text.Length
+            .SelectionColor = txtColor
+            .AppendText(LineText & vbNewLine)
+            .Refresh()
+            My.Application.DoEvents()
+            .SelectionColor = Color.Black
         End With
+        If Format(Now, "ffff") - CodeTimerStart > 10 Then Debug.Print("WriteTextLog = " & Format(Now, "ffff") - CodeTimerStart & "μs")
     End Sub
 
     Function FormatTextLogValuesFlying(ByVal Range As String, ByVal Alt As String, ByVal Spd As String, ByVal Dist As String, ByVal DistHome As String, ByVal GPS_Sats As String, ByVal GPS_Hdop As String, ByVal Efficiency As String) As String

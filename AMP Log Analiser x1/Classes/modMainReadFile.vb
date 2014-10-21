@@ -11,7 +11,7 @@ Module modMainReadFile
             CodeTimerStart2 = Format(Now, "ss")
 
             If osVer.Major >= 6 And osVer.Minor >= 1 Then 'Only allowed in Windows 7 or above
-                .WindowState = FormWindowState.Minimized
+                '.WindowState = FormWindowState.Minimized
             End If
 
             'Initialise the Variables for Reading the Variables
@@ -43,19 +43,23 @@ Module modMainReadFile
             .barReadFile.Visible = True
             .richtxtLogAnalysis.Focus()
             Do While objReader.Peek() <> -1
+
+                CodeTimerStart = Format(Now, "ffff")
+
                 DataArrayCounter = 0
                 DataSplit = ""
                 Array.Clear(DataArray, 0, DataArray.Length)
 
                 DataLine = DataLine + 1
                 'Update progress bar, note -1 and back again keeps it updaing real time!
-                .barReadFile.Value = (DataLine / TotalDataLines) * 100
-                .barReadFile.Refresh()
-                If (DataLine / TotalDataLines) * 100 > 1 Then .barReadFile.Value = ((DataLine / TotalDataLines) * 100) - 1
-                .barReadFile.Refresh()
-                .barReadFile.Value = (DataLine / TotalDataLines) * 100
-                .barReadFile.Refresh()
-
+                PercentageComplete = (DataLine / TotalDataLines) * 100
+                '.barReadFile.Value = PercentageComplete
+                '.barReadFile.Refresh()
+                'If PercentageComplete Then .barReadFile.Value = PercentageComplete - 1
+                '.barReadFile.Refresh()
+                .barReadFile.Value = PercentageComplete
+                '.barReadFile.Refresh()
+                'My.Application.DoEvents()
                 'Update the TaskBar Progress Bar
                 If osVer.Major >= 6 And osVer.Minor >= 1 Then 'Only allowed in Windows 7 or above
                     TaskbarManager.Instance.SetProgressValue(DataLine, TotalDataLines, frmMainFormHandle)
@@ -86,89 +90,63 @@ Module modMainReadFile
                 DataArray(DataArrayCounter) = DataSplit
                 'Debug.Print("--- Paramter " & DataArrayCounter & " = " & DataArray(DataArrayCounter))
 
+
+                If Format(Now, "ffff") - CodeTimerStart > 10 Then Debug.Print("Read Takes = " & Format(Now, "ffff") - CodeTimerStart & "μs")
+
                 '######################################
                 '### Main Checking Code Starts Here ###
                 '######################################
                 Try
 
                     ' Write Log Analysis Header.
-                    CodeTimerStart = Format(Now, "ffff")
                     Call WriteLogFileHeader()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("WriteLogFileHeader = " & CodeTimerStart - Format(Now, "ffff") & "μs")
+
 
                     'Debug.Print("DATA: " & DataArray(0).PadRight(5) & " Flying: " & Log_In_Flight & " -- Mode_In_Flight_Start_Time: " & Mode_In_Flight_Start_Time & " -- Log_Current_Mode_Flight_Time (Flying Only): " & Log_Current_Mode_Flight_Time & " -- Log_Current_Flight_Time: " & Log_Current_Flight_Time & " -- Log_Total_Flight_Time: " & Log_Total_Flight_Time & " -- Log_Current_Mode_Time: " & Log_Current_Mode_Time)
                     'Debug.Print("DATA: " & DataArray(0).PadRight(5) & " Flying: " & Log_In_Flight & " -- Log_CTUN_ThrOut: " & Log_CTUN_ThrOut & " -- CTUN_ThrottleUp: " & CTUN_ThrottleUp & " -- Log_Ground_BarAlt: " & Log_Ground_BarAlt & " -- Log_CTUN_BarAlt: " & Log_CTUN_BarAlt & " -- Log_Armed_BarAlt: " & Log_Armed_BarAlt & " -- Log_Disarmed_BarAlt: " & Log_Disarmed_BarAlt)
                     'Debug.Print("DATA: " & DataArray(0).PadRight(5) & " Flying: " & Log_In_Flight & " -- Dist_From_Launch: " & Format(Dist_From_Launch * 1000, "0.00") & " -- Mode_Min_Dist_From_Launch: " & Format(Mode_Min_Dist_From_Launch * 1000, "0.00") & " -- Mode_Max_Dist_From_Launch: " & Format(Mode_Max_Dist_From_Launch * 1000, "0.00"))
 
                     'Parameter Checks
-                    CodeTimerStart = Format(Now, "ffff")
                     Call Parameter_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Parameter Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'EV Checks
-                    CodeTimerStart = Format(Now, "ffff")
                     Call EV_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("EV Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'Error Checks
-                    CodeTimerStart = Format(Now, "ffff")
                     Call ERROR_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("ERROR Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'Mode Checks
-                    CodeTimerStart = Format(Now, "ffff")
                     Call Mode_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Mode Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'CURR Checks
-                    CodeTimerStart = Format(Now, "ffff")
                     Call CURR_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Current Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'CTUN Checks
-                    CodeTimerStart = Format(Now, "ffff")
                     Call CTUN_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("CTUN Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'GPS Checks
-                    CodeTimerStart = Format(Now, "ffff")
                     Call GPS_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("GPS Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'IMU Checks - Vibration
-                    CodeTimerStart = Format(Now, "ffff")
                     Call IMU_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("IMU Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'NTUN Checks, Navigation Data - MUST CALL BEFORE ATT due to Charting Data
-                    CodeTimerStart = Format(Now, "ffff")
                     Call NTUN_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("NTUN Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'ATT Checks, Roll and Pitch
-                    CodeTimerStart = Format(Now, "ffff")
                     Call ATT_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("ATT Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'PM Checks, process manager timings
-                    CodeTimerStart = Format(Now, "ffff")
                     Call PM_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("PM Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'DU32 Checks
-                    CodeTimerStart = Format(Now, "ffff")
                     Call DU32_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("DU32 Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'CMD Checks
-                    CodeTimerStart = Format(Now, "ffff")
                     Call CMD_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("CMD Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'Additional Checks not related to any one log data type
-                    CodeTimerStart = Format(Now, "ffff")
                     Call Additional_Checks()
-                    If CodeTimerStart - Format(Now, "ffff") > 1 Then Debug.Print("Additional Checks = " & CodeTimerStart - Format(Now, "ffff") & "μs")
 
                     'This keeps log of how long we have been in this mode, note that this includes ground time!
                     Log_Current_Mode_Time = DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
@@ -236,6 +214,13 @@ Module modMainReadFile
             WriteTextLog("")
             WriteTextLog("")
 
+            'Real time update the progress bar so it does not look like we only did 75%
+            .barReadFile.Value = 99
+            .barReadFile.Refresh()
+            My.Application.DoEvents()
+            .barReadFile.Value = 100
+            .barReadFile.Refresh()
+            My.Application.DoEvents()
             .barReadFile.Visible = False
 
             Debug.Print("Sub ReadFile Completed" & vbNewLine)
@@ -249,7 +234,9 @@ Module modMainReadFile
                 frmMainForm.richtxtLogAnalysis.HideSelection = True
             End If
 
-            Debug.Print("Total Time = T" & CodeTimerStart2 - Format(Now, "ss") & " Seconds")
+
+            Debug.Print("Total Time = T" & Format(Now, "ss") - CodeTimerStart2 & " Seconds")
+            'Threading.Thread.Sleep(3000)
 
         End With
     End Sub
