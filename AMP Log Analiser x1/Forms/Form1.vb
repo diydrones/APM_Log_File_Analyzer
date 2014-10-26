@@ -190,23 +190,57 @@ Public Class frmMainForm
         lblAttitudeChart1Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
         lblAttitudeChart1Header.Text = "Attitude - Roll"
         Me.panAttitude.Controls.Add(lblAttitudeChart2Header) : lblAttitudeChart2Header.BringToFront()
-        lblAttitudeChart2Header.Location = New Point(86, 150)
+        lblAttitudeChart2Header.Location = New Point(86, 151)
         lblAttitudeChart2Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
         lblAttitudeChart2Header.Text = "Attitude - Pitch"
         Me.panAttitude.Controls.Add(lblAttitudeChart3Header) : lblAttitudeChart3Header.BringToFront()
-        lblAttitudeChart3Header.Location = New Point(86, 295)
+        lblAttitudeChart3Header.Location = New Point(86, 297)
         lblAttitudeChart3Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
         lblAttitudeChart3Header.Text = "Attitude - Yaw"
         Me.panAttitude.Controls.Add(lblAttitudeChart4Header) : lblAttitudeChart4Header.BringToFront()
-        lblAttitudeChart4Header.Location = New Point(86, 440)
+        lblAttitudeChart4Header.Location = New Point(86, 443)
         lblAttitudeChart4Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
         lblAttitudeChart4Header.Text = "Attitude - Climb Rate"
         'Add any additional Labels here for this chart.
-        Me.panAttitude.Controls.Add(picAttitudeInfo0) : picAttitudeInfo0.BringToFront()
-        picAttitudeInfo0.Location = New Point(0, 22)
-        picAttitudeInfo0.Anchor = AnchorStyles.Left Or AnchorStyles.Top
-
-
+        Me.panAttitude.Controls.Add(picAttitudeKey1) : picAttitudeKey1.BringToFront()
+        picAttitudeKey1.Location = New Point(529, 5)
+        picAttitudeKey1.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picAttitudeKey2) : picAttitudeKey2.BringToFront()
+        picAttitudeKey2.Location = New Point(529, 151)
+        picAttitudeKey2.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picAttitudeKey3) : picAttitudeKey3.BringToFront()
+        picAttitudeKey3.Location = New Point(529, 297)
+        picAttitudeKey3.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picAttitudeKey4) : picAttitudeKey4.BringToFront()
+        picAttitudeKey4.Location = New Point(529, 443)
+        picAttitudeKey4.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picRollRight) : picRollRight.BringToFront()
+        picRollRight.Location = New Point(3, 25)
+        picRollRight.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picRollLeft) : picRollLeft.BringToFront()
+        picRollLeft.Location = New Point(3, 85)
+        picRollLeft.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picPitchBackward) : picPitchBackward.BringToFront()
+        picPitchBackward.Location = New Point(3, 170)
+        picPitchBackward.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picPitchForward) : picPitchForward.BringToFront()
+        picPitchForward.Location = New Point(3, 234)
+        picPitchForward.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picCompass) : picCompass.BringToFront()
+        picCompass.Location = New Point(0, 316)
+        picCompass.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picCW) : picCW.BringToFront()
+        picCW.Location = New Point(3, 390)
+        picCW.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picCCW) : picCCW.BringToFront()
+        picCCW.Location = New Point(3, 418)
+        picCCW.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picClimb) : picClimb.BringToFront()
+        picClimb.Location = New Point(3, 462)
+        picClimb.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+        Me.panAttitude.Controls.Add(picDescend) : picDescend.BringToFront()
+        picDescend.Location = New Point(3, 511)
+        picDescend.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
 
 
         ' ### DO NOT FORGET TO CLEAR NEW GRAPHS WHEN THE ANALYZE BUTTON IS PRESSED!
@@ -392,6 +426,7 @@ Public Class frmMainForm
             chartAttitude.Series("NavYaw").Points.Clear()
             chartAttitude.Series("ClimbIn").Points.Clear()
             chartAttitude.Series("NavClimb").Points.Clear()
+            chartAttitude.Series("Altitude").Points.Clear()
 
             lblEsc.Visible = True
             Call ReadFile(strLogPathFileName)
