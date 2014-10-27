@@ -192,11 +192,11 @@ Public Class frmMainForm
         Me.panAttitude.Controls.Add(lblAttitudeChart2Header) : lblAttitudeChart2Header.BringToFront()
         lblAttitudeChart2Header.Location = New Point(86, 151)
         lblAttitudeChart2Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
-        lblAttitudeChart2Header.Text = "Attitude - Pitch"
+        lblAttitudeChart2Header.Text = "Attitude - Pitch / Speed"
         Me.panAttitude.Controls.Add(lblAttitudeChart3Header) : lblAttitudeChart3Header.BringToFront()
         lblAttitudeChart3Header.Location = New Point(86, 297)
         lblAttitudeChart3Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
-        lblAttitudeChart3Header.Text = "Attitude - Yaw"
+        lblAttitudeChart3Header.Text = "Attitude - Yaw / Direction of Travel"
         Me.panAttitude.Controls.Add(lblAttitudeChart4Header) : lblAttitudeChart4Header.BringToFront()
         lblAttitudeChart4Header.Location = New Point(86, 443)
         lblAttitudeChart4Header.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom
@@ -241,6 +241,13 @@ Public Class frmMainForm
         Me.panAttitude.Controls.Add(picDescend) : picDescend.BringToFront()
         picDescend.Location = New Point(3, 511)
         picDescend.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom
+
+
+        'Setup the Travel Chart Panel.
+        panTravel.Location = New Point(222, 87) : panTravel.Size = New Point(784, 602) : panTravel.Anchor = AnchorStyles.Left Or AnchorStyles.Bottom Or AnchorStyles.Top Or AnchorStyles.Right
+        Me.panTravel.Controls.Add(chartTravel)
+        chartTravel.Location = New Point(3, 3) : chartTravel.Size = New Point(794, 691)
+        chartTravel.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
 
 
         ' ### DO NOT FORGET TO CLEAR NEW GRAPHS WHEN THE ANALYZE BUTTON IS PRESSED!
@@ -421,12 +428,16 @@ Public Class frmMainForm
             chartAttitude.Series("Pitch").Points.Clear()
             chartAttitude.Series("PitchIn").Points.Clear()
             chartAttitude.Series("NavPitch").Points.Clear()
+            chartAttitude.Series("Speed").Points.Clear()
             chartAttitude.Series("Yaw").Points.Clear()
             chartAttitude.Series("YawIn").Points.Clear()
             chartAttitude.Series("NavYaw").Points.Clear()
+            chartAttitude.Series("Travel").Points.Clear()
             chartAttitude.Series("ClimbIn").Points.Clear()
             chartAttitude.Series("NavClimb").Points.Clear()
             chartAttitude.Series("Altitude").Points.Clear()
+            chartTravel.Series("Yaw").Points.Clear()
+            chartTravel.Series("GPS Calculated Direction").Points.Clear()
 
             lblEsc.Visible = True
             Call ReadFile(strLogPathFileName)
@@ -460,6 +471,16 @@ Public Class frmMainForm
 
     End Sub
 
+
+    Private Sub frmMainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        frmParameters.Close()
+    End Sub
+
+    Private Sub btnParameters_Click(sender As Object, e As EventArgs) Handles btnParameters.Click
+        Call ShowParametersForm()
+    End Sub
+
+
     Private Sub btnAnalysis_Click(sender As Object, e As EventArgs) Handles btnAnalysis.Click
         Call ButtonsCheckBoxes_Visible(True)
         Call ButtonsCharting_Visible(False)
@@ -477,11 +498,15 @@ Public Class frmMainForm
         Call ButtonsCharting_Visible(True)
     End Sub
 
+
+
+
     Private Sub btnPowerChart_Click(sender As Object, e As EventArgs) Handles btnPowerChart.Click
         Call Chart_Vibrations_Visible(False)
         Call Chart_PowerRails_Visible(True)
         Call Chart_GPS_Visible(False)
         Call Chart_Attitude_Visible(False)
+        Call Chart_Travel_Visible(False)
     End Sub
 
     Private Sub btnVibrationChart_Click(sender As Object, e As EventArgs) Handles btnVibrationChart.Click
@@ -489,29 +514,31 @@ Public Class frmMainForm
         Call Chart_PowerRails_Visible(False)
         Call Chart_GPS_Visible(False)
         Call Chart_Attitude_Visible(False)
+        Call Chart_Travel_Visible(False)
     End Sub
 
-    Private Sub btnGPS_Click(sender As Object, e As EventArgs) Handles btnGPS.Click
+    Private Sub btnGPS_Click(sender As Object, e As EventArgs) Handles btnGPSChart.Click
         Call Chart_Vibrations_Visible(False)
         Call Chart_PowerRails_Visible(False)
         Call Chart_GPS_Visible(True)
         Call Chart_Attitude_Visible(False)
+        Call Chart_Travel_Visible(False)
     End Sub
 
-    Private Sub btnAttitude_Click(sender As Object, e As EventArgs) Handles btnAttitude.Click
+    Private Sub btnAttitude_Click(sender As Object, e As EventArgs) Handles btnAttitudeChart.Click
         Call Chart_Vibrations_Visible(False)
         Call Chart_PowerRails_Visible(False)
         Call Chart_GPS_Visible(False)
         Call Chart_Attitude_Visible(True)
+        Call Chart_Travel_Visible(False)
     End Sub
 
-    Private Sub frmMainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        frmParameters.Close()
+    Private Sub btnTravel_Click(sender As Object, e As EventArgs) Handles btnTravel.Click
+        Call Chart_Vibrations_Visible(False)
+        Call Chart_PowerRails_Visible(False)
+        Call Chart_GPS_Visible(False)
+        Call Chart_Attitude_Visible(False)
+        Call Chart_Travel_Visible(True)
     End Sub
-
-    Private Sub btnParameters_Click(sender As Object, e As EventArgs) Handles btnParameters.Click
-        Call ShowParametersForm()
-    End Sub
-
 End Class
 

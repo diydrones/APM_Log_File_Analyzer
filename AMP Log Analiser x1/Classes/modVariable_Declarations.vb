@@ -3,7 +3,7 @@ Imports System.Deployment.Application
 
 Module modVariable_Declarations
 
-    Public MyCurrentVersionNumber As String = "v1.0.4.7"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v1.0.4.8"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""               'frmMainForm.PublishedVers()                 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
 
@@ -330,6 +330,7 @@ Module modVariable_Declarations
     Public Log_GPS_Alt As Integer = 0                       'Holds the current GPS_Alt result.
     Public Log_GPS_Last_Alt As Integer = 0                  'Holds the last GPS_Alt result, used to filter spikes.
     Public Log_GPS_Calculated_Alt As Integer = 0            'Calculated Altitude by taking the GPS Alt - launch GPS Alt
+    Public GPS_Calculated_Direction As Integer = 0          'Calculated Direction based on GPS Lat & Lng movements.
     Public First_In_Flight As Boolean = False               'TRUE and remains TRUE the first time Log_In_Flight goes TRUE
     Public Dist_From_Launch As Single = 0                   'Calculated distance from first take off point in km (Kilometers).
     Public Max_Dist_From_Launch As Single                   'Calculated Maximum distance from first take off point in km (Kilometers).

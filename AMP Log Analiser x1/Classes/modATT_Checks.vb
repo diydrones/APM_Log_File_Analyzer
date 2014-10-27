@@ -22,16 +22,18 @@
                     '& " Max = " & TempMaxPitchDiff)
                 End If
 
-                ' Update the Chart
+                ' Update the Attitude Chart
                 frmMainForm.chartAttitude.Series("RollIn").Points.AddY(Log_ATT_RollIn)
                 frmMainForm.chartAttitude.Series("Roll").Points.AddY(Log_ATT_Roll)
                 frmMainForm.chartAttitude.Series("NavRoll").Points.AddY(Log_NTUN_DRol)
                 frmMainForm.chartAttitude.Series("PitchIn").Points.AddY(Log_ATT_PitchIn)
                 frmMainForm.chartAttitude.Series("Pitch").Points.AddY(Log_ATT_Pitch)
                 frmMainForm.chartAttitude.Series("NavPitch").Points.AddY(Log_NTUN_DPit)
+                frmMainForm.chartAttitude.Series("Speed").Points.AddY(Log_GPS_Spd)
                 frmMainForm.chartAttitude.Series("YawIn").Points.AddY(Log_ATT_YawIn)
                 frmMainForm.chartAttitude.Series("Yaw").Points.AddY(Log_ATT_Yaw)
                 frmMainForm.chartAttitude.Series("NavYaw").Points.AddY(Log_ATT_NavYaw)
+                frmMainForm.chartAttitude.Series("Travel").Points.AddY(GPS_Calculated_Direction)
                 frmMainForm.chartAttitude.Series("ClimbIn").Points.AddY(Log_CTUN_ThrIn)
                 frmMainForm.chartAttitude.Series("NavClimb").Points.AddY(Log_CTUN_CRate)
                 frmMainForm.chartAttitude.Series("Altitude").Points.AddY(Log_CTUN_BarAlt * 10)

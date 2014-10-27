@@ -152,6 +152,7 @@
         Log_GPS_Alt = 0                                 'Holda the current GPS_Alt result.
         Log_GPS_Last_Alt = 0                            'Holds the last GPS_Alt result, used to filter spikes.
         Log_GPS_Calculated_Alt = 0                      'Calculated Altitude by taking the GPS Alt - launch GPS Alt
+        GPS_Calculated_Direction = 0                    'Calculated Direction based on GPS Lat & Lng movements.
         First_In_Flight = False                         'TRUE and remains TRUE the first time Log_In_Flight goes TRUE
         Dist_From_Launch = 0                            'Calculated distance from first take off point in km (Kilometers).
         Max_Dist_From_Launch = 0                        'Calculated Maximum distance from first take off point in km (Kilometers).
