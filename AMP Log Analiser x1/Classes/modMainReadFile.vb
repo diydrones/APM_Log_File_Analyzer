@@ -137,7 +137,14 @@ Module modMainReadFile
                     Call DU32_Checks()
 
                     'CMD Checks
-                    Call CMD_Checks()
+                    If DataArray(0) = "CMD" Then
+                        If VersionCompare(ArduVersion, "3.1.5") = True Then
+                            Call CMD_Checks_v3_1()
+                        Else
+                            Call CMD_Checks_v3_2()
+                        End If
+                    End If
+
 
                     'Additional Checks not related to any one log data type
                     Call Additional_Checks()
