@@ -31,14 +31,15 @@ Module modFile_Handling
     End Function
 
     Public Function FileDataSuitable() As Boolean
+        Dim strTemp As String = ""
+        FileDataSuitable = False
         ' Function returns True if we need to exit the file processing.
 
         'Display the Release Candidate Warning
         If InStr(StrConv(ArduVersion, vbUpperCase), "RC") Then
             WriteTextLog("WARNING: Installed APM firmware is a Release Candidate version, only advanced pilots should be using this!")
             WriteTextLog("WARNING: Beginners are recommended to install the latest stable officially released version.")
-            Dim strTemp As String = "Installed APM firmware is a Release Candidate version!"
-            strTemp = strTemp & "!" & vbNewLine
+            strTemp = "Installed APM firmware is a Release Candidate version!" & vbNewLine
             MsgBox(strTemp, vbOKOnly, "Error")
         End If
 
@@ -48,28 +49,25 @@ Module modFile_Handling
         'Check the log file has been made by an arducopter, if not ArduCoperVersion will still be "".
         If ArduVersion = "" Then
             WriteTextLog("Log file not created by a recognised Ardu Vehicle firmware!")
-            Dim strTemp As String = ""
-            strTemp = strTemp & "Log must be created by an Ardu Vehicle firmware!" & vbNewLine
+            strTemp = "Log must be created by an Ardu Vehicle firmware!" & vbNewLine
             MsgBox(strTemp, vbOKOnly, "Error")
             FileDataSuitable = True
         End If
 
         'Check the program is compatible with this log file version.
         If Ignore_LOG_Version = False Then
-            If ArduType = "ArduCopter" And ArduVersion < "V3.1" Then
+            If ArduType = "ArduCopter" And VersionCompare("3.1", ArduVersion) = False Then 'Inverse VersionCompare to produce the correct result.
                 WriteTextLog("Log file created by an old ArduCopter firmware version!")
-                Dim strTemp As String = ""
-                strTemp = strTemp & "            Log must be created by APM firmware v3.1 or above." & vbNewLine
+                strTemp = "            Log must be created by APM firmware v3.1 or above." & vbNewLine
                 strTemp = strTemp & "Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
                 MsgBox(strTemp, vbOKOnly, "Error")
                 FileDataSuitable = True
             End If
 
             'Display v3.2 warning, not fully complatible yet.
-            If ArduType = "ArduCopter" And ArduVersion > "V3.1.5" Then
+            If ArduType = "ArduCopter" And VersionCompare(ArduVersion, "3.1.5") = False Then 'ArduVersion > "V3.1.5" Then
                 WriteTextLog("Log file created by a new ArduCopter firmware version!")
-                Dim strTemp As String = ""
-                strTemp = strTemp & "This Log file was created by a new version, it may not be fully supported yet." & vbNewLine
+                strTemp = "This Log file was created by a new version, it may not be fully supported yet." & vbNewLine
                 strTemp = strTemp & "            Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
                 strTemp = strTemp & "                     Attempt to run anyway?." & vbNewLine
                 If MsgBox(strTemp, vbYesNo, "Error") = vbNo Then
@@ -77,11 +75,9 @@ Module modFile_Handling
                 End If
 
             End If
-
-            If ArduType = "ArduPlane" And ArduVersion < "V3.0" Then
+            If ArduType = "ArduPlane" Then
                 WriteTextLog("Log file created by an old ArduPlane firmware version!")
-                Dim strTemp As String = ""
-                strTemp = strTemp & "            Log must be created by APM firmware v3.0 or above." & vbNewLine
+                strTemp = "            Log must be created by APM firmware v3.0 or above." & vbNewLine
                 strTemp = strTemp & "Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
                 MsgBox(strTemp, vbOKOnly, "Error")
                 FileDataSuitable = True
@@ -95,8 +91,7 @@ Module modFile_Handling
         If Ignore_LOG_Requirements = False Then
             If ArduType = "ArduCopter" And (GPS_Logging = False Or EV_Logging = False) Then
                 WriteTextLog("Log file does not contain the correct data!")
-                Dim strTemp As String = ""
-                strTemp = strTemp & "          Log must contain GPS and EV data as a minimum" & vbNewLine
+                strTemp = "          Log must contain GPS and EV data as a minimum" & vbNewLine
                 strTemp = strTemp & "                                 for this program to be useful." & vbNewLine
                 strTemp = strTemp & "Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
                 MsgBox(strTemp, vbOKOnly, "Error")
@@ -109,8 +104,6 @@ Module modFile_Handling
         If Read_LOG_Percentage <> 100 Then
             MsgBox("Read_LOG_Percentage is Active @ " & Read_LOG_Percentage & "%", vbOKOnly, "DEVELOPER WARNING")
         End If
-
-        FileDataSuitable = False
 
     End Function
 
@@ -152,12 +145,18 @@ Module modFile_Handling
             DataArray(DataArrayCounter) = DataSplit
             'Debug.Print("--- Paramter " & DataArrayCounter & " = " & DataArray(DataArrayCounter))
 
+            ' Support for Firmware v3.1.? 
             If DataArray(0) = "ArduCopter" Then ArduType = "ArduCopter" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
-            If DataArray(1) = "ArduCopter" Then ArduType = "ArduCopter" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
             If DataArray(0) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
             If DataArray(0) = "Free" And DataArray(1) = "RAM:" Then APM_Free_RAM = DataArray(2)
             If DataArray(0) = "APM" Then APM_Version = DataArray(1)
+            ' Support Firmware v3.2.? 
+            If DataArray(0) = "MSG" And DataArray(1) = "ArduCopter" Then ArduType = "ArduCopter" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
+            If DataArray(0) = "MSG" And DataArray(1) = "PX4:" Then APM_Version = DataArray(1) & " " & DataArray(2) & " " & DataArray(3) & " " & DataArray(4)
+
+            ' Support for all Firmware
             If DataArray(0) = "PARM" And DataArray(1) = "FRAME" Then APM_Frame_Type = DataArray(2)
+            If DataArray(0) = "PARM" And DataArray(1) = "INS_PRODUCT_ID" Then Hardware = DataArray(2)
             If DataArray(0) = "FMT" And DataArray(3) = "MOT" Then
                 APM_No_Motors = Mid(DataArray(DataArrayCounter), 4, Len(DataArray(DataArrayCounter)) - 1)
             End If
@@ -342,5 +341,78 @@ Module modFile_Handling
         End With
     End Sub
 
+    Public Function VersionCompare(LowestVersion As String, HighestVersion As String) As Boolean
+        'This function will return true if "LowestVersion" is lower than "HighestVersion".
+        'It should replace any IF statements that uses ArduVersion variable!!
 
+        'It can handle upto 4 parts in a version number, i.e. 1.2.3.4, or 1.0.1.9999
+
+        VersionCompare = True
+        Dim strTemp As String = ""
+        Dim Counter As Integer = 0
+        Dim V1(4) As Single
+        Dim V2(4) As Single
+
+
+        Debug.Print("VersionCompare Called: " & LowestVersion & " <= " & HighestVersion & " ? ")
+
+        'stripe out the non-numeric data from the 
+        Debug.Print("Striping Out Non-Numeric Characters....")
+        strTemp = ""
+        For N = 1 To Len(LowestVersion)
+            If Mid(LowestVersion, N, 1) >= "." And Mid(LowestVersion, N, 1) <= "9" Then
+                strTemp = strTemp & Mid(LowestVersion, N, 1)
+            End If
+        Next
+        LowestVersion = strTemp
+        strTemp = ""
+        For N = 1 To Len(HighestVersion)
+            If Mid(HighestVersion, N, 1) >= "." And Mid(HighestVersion, N, 1) <= "9" Then
+                strTemp = strTemp & Mid(HighestVersion, N, 1)
+            End If
+        Next
+        HighestVersion = strTemp
+        Debug.Print("Stripping Complete: " & LowestVersion & " < " & HighestVersion & " ? ")
+
+        'We cannot compare strings that are formatted as "1.2.3.99" against "1.2.4.0" as the first would be higher.
+        'So what we need to do is split the numbers into parts, a little like an IP address.
+        Debug.Print("Separating Version Parts...")
+        strTemp = LowestVersion : Counter = 0
+        While InStr(StrConv(strTemp, vbUpperCase), ".") And Counter <> 4
+            V1(Counter) = Left(strTemp, InStr(StrConv(strTemp, vbUpperCase), ".") - 1)
+            strTemp = Right(strTemp, Len(strTemp) - InStr(StrConv(strTemp, vbUpperCase), "."))
+            Counter = Counter + 1
+        End While
+        V1(Counter) = strTemp
+        strTemp = HighestVersion : Counter = 0
+        While InStr(StrConv(strTemp, vbUpperCase), ".") And Counter <> 4
+            V2(Counter) = Left(strTemp, InStr(StrConv(strTemp, vbUpperCase), ".") - 1)
+            strTemp = Right(strTemp, Len(strTemp) - InStr(StrConv(strTemp, vbUpperCase), "."))
+            Counter = Counter + 1
+        End While
+        V2(Counter) = strTemp
+        Debug.Print("Separation Complete.")
+
+        'Debug.Print("Contents of Arrays...")
+        'For N = 0 To 3
+        '    Debug.Print("Lowest Version Part " & N & " = " & V1(N))
+        'Next
+        'For N = 0 To 3
+        '    Debug.Print("Highest Version Part " & N & " = " & V2(N))
+        'Next
+
+        Debug.Print("Comparing Versions...")
+        VersionCompare = True
+        If V1(0) > V2(0) Then VersionCompare = False
+        If V1(1) > V2(1) Then VersionCompare = False
+        If V1(2) > V2(2) Then VersionCompare = False
+        If V1(3) > V2(3) Then VersionCompare = False
+        Debug.Print("Result: " & LowestVersion & " <= " & HighestVersion & " = " & VersionCompare)
+        'It should replace any IF statements that uses ArduVersion variable!!
+
+        'Clear up
+        Array.Clear(V1, 0, V1.Length)
+        Array.Clear(V2, 0, V2.Length)
+
+    End Function
 End Module

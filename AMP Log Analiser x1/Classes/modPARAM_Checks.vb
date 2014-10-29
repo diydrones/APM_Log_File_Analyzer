@@ -115,6 +115,18 @@
                         WriteTextLog("Warning: Compass Offset are not set correctly (-150 to +150 recommended).")
                         WriteTextLog(vbNewLine)
                     End If
+                    If Param = "INS_PRODUCT_ID" And Val(Value) = 0 Then
+                        Call WriteParamHeader()
+                        WriteTextLog(Param & " = " & Value)
+                        WriteTextLog("Warning: Unknown Ardupilot Hardware Detected.")
+                        WriteTextLog(vbNewLine)
+                    End If
+                    If Param = "INS_PRODUCT_ID" And (Val(Value) = 3 Or Val(Value) = 256 Or Val(Value) = 257) Then
+                        Call WriteParamHeader()
+                        WriteTextLog(Param & " = " & Value)
+                        WriteTextLog("Warning: Hardware Simulation Software Used.")
+                        WriteTextLog(vbNewLine)
+                    End If
                 End If
             End If
         End If

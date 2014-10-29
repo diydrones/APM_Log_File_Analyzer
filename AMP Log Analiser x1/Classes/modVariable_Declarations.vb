@@ -67,10 +67,11 @@ Module modVariable_Declarations
     Public ArduBuild As String = ""                        'Holds the Ardu***** Build Version found in the Log File
     Public ArduType As String = ""                         'Holds the Ardu type determined from the log file, "ArduCopter".
     Public APM_Free_RAM As Integer = 0                     'Holds the APM Free RAM reported in the Log File
-    Public APM_Version As Single = 0                       'Hold the APM Version Number as reported in the log file
+    Public APM_Version As String = 0                       'Hold the APM Version Number as reported in the log file
     Public APM_Frame_Type As Single = 0                    'Holds the APM Frame Type, determined from the Parmeter FRAME
     Public APM_Frame_Name As String = ""                   'The Text Name of the Frame Type
     Public APM_No_Motors As Integer = 0                    'Holds the number of Motors, determined from the FMT for MOT.
+    Public Hardware As String = ""                          'Holds the type of hardware used.
 
     'Declare the Parameter Variables
     Public Param As String = ""                             'Parameter read from the Log.
@@ -175,12 +176,14 @@ Module modVariable_Declarations
     Public AUTOTUNE_Flight_Time As Integer = 0              'Holds the flight time for AUTOTUNE Mode in Seconds
     Public MANUAL_Flight_Time As Integer = 0                'Holds the flight time for MANUAL Mode in Seconds
 
+
     'Declare the CURR Variables
-    Public Value1 As Single                                 'Temporary Variable to hold the DataLine values
-    Public Value3 As Single                                 'Temporary Variable to hold the DataLine values
-    Public Value4 As Single                                 'Temporary Variable to hold the DataLine values
-    Public Value5 As Single                                 'Temporary Variable to hold the DataLine values
-    Public Value6 As Single                                 'Temporary Variable to hold the DataLine values
+    Public LOG_CURR_ThrOut As Single                        'Holds the last value in the CURR dataline
+    Public LOG_CURR_ThrInt As Single                        'Holds the last value in the CURR dataline
+    Public LOG_CURR_Volt As Single                          'Holds the last value in the CURR dataline
+    Public LOG_CURR_Curr As Single                          'Holds the last value in the CURR dataline
+    Public LOG_CURR_Vcc As Single                           'Holds the last value in the CURR dataline
+    Public LOG_CURR_CurrTot As Single                       'Holds the last value in the CURR dataline
     Public CURR_ThrottleUp As Boolean = False               'TRUE if Throttle > 0 in CURR logs
     Public Log_Min_VCC As Single = 99999                    'Holds the Minimum VCC found in the Log while in Flight Only
     Public Log_Max_VCC As Single = 0                        'Holds the Maximum VCC found in the Log while in Flight Only

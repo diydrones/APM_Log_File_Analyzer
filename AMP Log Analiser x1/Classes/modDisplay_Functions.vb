@@ -194,8 +194,29 @@ Module modDisplay_Functions
             WriteTextLog("Log FileName: " & strLogPathFileName)
             WriteTextLog("Ardu Version: " & ArduVersion & " Build: " & ArduBuild)
             WriteTextLog("   Ardu Type: " & ArduType)
-            WriteTextLog("APM Free RAM: " & APM_Free_RAM)
-            WriteTextLog(" APM Version: " & APM_Version)
+            Select Case Hardware
+                Case 0
+                    Hardware = "Unknown"
+                Case 1
+                    Hardware = "APM1-1280"
+                Case 2
+                    Hardware = "APM1 -2560"
+                Case 3
+                    Hardware = "SITL"
+                Case 4
+                    Hardware = "PX4v1"
+                Case 5
+                    Hardware = "PX4v2"
+                Case 88
+                    Hardware = "APM2"
+                Case 256
+                    Hardware = "Flymaple"
+                Case 257
+                    Hardware = "Linux"
+            End Select
+            WriteTextLog("    Hardware: " & Hardware)
+            WriteTextLog(" HW Free RAM: " & APM_Free_RAM)
+            WriteTextLog("  HW Version: " & APM_Version)
             Select Case APM_Frame_Type
                 Case 0
                     APM_Frame_Name = "+"

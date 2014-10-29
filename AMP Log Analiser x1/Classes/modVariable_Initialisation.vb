@@ -83,6 +83,12 @@
         OTHER_Flight_Time = 0                           'Holds the flight time for OTHER Mode in Seconds (Cover New Modes etc.)
 
         'Declare the CURR Variables
+        LOG_CURR_ThrOut = 0                             'Holds the last value in the CURR dataline
+        LOG_CURR_ThrInt = 0                             'Holds the last value in the CURR dataline
+        LOG_CURR_Volt = 0                              'Holds the last value in the CURR dataline
+        LOG_CURR_Curr = 0                              'Holds the last value in the CURR dataline
+        LOG_CURR_Vcc = 0                               'Holds the last value in the CURR dataline
+        LOG_CURR_CurrTot = 0                             'Holds the last value in the CURR dataline
         CURR_ThrottleUp = False                         'TRUE if Throttle > 0 in CURR logs
         Log_Min_VCC = 99999                             'Holds the Minimum VCC found in the Log while in Flight Only
         Log_Max_VCC = 0                                 'Holds the Maximum VCC found in the Log while in Flight Only
@@ -176,10 +182,11 @@
         ArduBuild = ""                                  'Holds the ArduCopter Build Version found in the Log File
         ArduType = ""                                   'Holds the Ardu type determined from the log file, "ArduCopter".
         APM_Free_RAM = 0                                'Holds the APM Free RAM reported in the Log File
-        APM_Version = 0                                 'Hold the APM Version Number as reported in the log file
+        APM_Version = ""                                 'Hold the APM Version Number as reported in the log file
         APM_Frame_Type = 0                              'Holds the APM Frame Type, determined from the Parmeter FRAME 
         APM_Frame_Name = ""                            'The Text Name of the Frame Type
         APM_No_Motors = 0                               'Holds the number of Motors, determined from the FMT for MOT.
+        Hardware = ""                                   'Holds the type of hardware used.
 
         'Decalre the IMU Variables
         Log_IMU_TimeMS = 0                              'Holds the current IMU Time in ms that the last reading was taken.
