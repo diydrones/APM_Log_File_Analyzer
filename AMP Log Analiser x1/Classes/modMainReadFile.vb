@@ -113,10 +113,22 @@ Module modMainReadFile
                     Call Mode_Checks()
 
                     'CURR Checks
-                    Call CURR_Checks()
+                    If DataArray(0) = "CURR" Then
+                        If VersionCompare(ArduVersion, "3.1.999") = True Then
+                            Call CURR_Checks_v3_1()
+                        Else
+                            Call CURR_Checks_v3_2()
+                        End If
+                    End If
 
                     'CTUN Checks
-                    Call CTUN_Checks()
+                    If DataArray(0) = "CTUN" Then
+                        If VersionCompare(ArduVersion, "3.1.999") = True Then
+                            Call CTUN_Checks_v3_1()
+                        Else
+                            Call CTUN_Checks_v3_2()
+                        End If
+                    End If
 
                     'GPS Checks
                     Call GPS_Checks()
@@ -125,20 +137,35 @@ Module modMainReadFile
                     Call IMU_Checks()
 
                     'NTUN Checks, Navigation Data - MUST CALL BEFORE ATT due to Charting Data
-                    Call NTUN_Checks()
+                    If DataArray(0) = "NTUN" Then
+                        If VersionCompare(ArduVersion, "3.1.999") = True Then
+                            Call NTUN_Checks_v3_1()
+                        Else
+                            Call NTUN_Checks_v3_2()
+                        End If
+                    End If
 
                     'ATT Checks, Roll and Pitch
                     Call ATT_Checks()
 
                     'PM Checks, process manager timings
-                    Call PM_Checks()
+
+                    If frmMainForm.chkboxPM.Checked = True Then
+                        If DataArray(0) = "PM" Then
+                            If VersionCompare(ArduVersion, "3.1.999") = True Then
+                                Call PM_Checks_v3_1()
+                            Else
+                                Call PM_Checks_v3_2()
+                            End If
+                        End If
+                    End If
 
                     'DU32 Checks
                     Call DU32_Checks()
 
                     'CMD Checks
                     If DataArray(0) = "CMD" Then
-                        If VersionCompare(ArduVersion, "3.1.5") = True Then
+                        If VersionCompare(ArduVersion, "3.1.999") = True Then
                             Call CMD_Checks_v3_1()
                         Else
                             Call CMD_Checks_v3_2()
