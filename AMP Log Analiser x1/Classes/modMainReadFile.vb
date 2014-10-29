@@ -36,6 +36,16 @@ Module modMainReadFile
             ' Also displays warnings about RC versions etc.
             If FileDataSuitable() Then Exit Sub 'Exit if the file data is not compatible.
 
+            ' For Speed we need to set a local variable to quicky handle
+            ' the version of file being read. Using the check on each line
+            ' had a significant overhead.
+            Dim ReadFileVersion As Double = 0
+            If VersionCompare(ArduVersion, "3.1.999") = True Then
+                ReadFileVersion = 3.1
+            Else
+                ReadFileVersion = 3.2
+            End If
+
             'Read the File line by line (2nd Pass)
             .barReadFile.Value = 0
             .barReadFile.Visible = True
@@ -100,23 +110,42 @@ Module modMainReadFile
                     'Debug.Print("DATA: " & DataArray(0).PadRight(5) & " Flying: " & Log_In_Flight & " -- Log_CTUN_ThrOut: " & Log_CTUN_ThrOut & " -- CTUN_ThrottleUp: " & CTUN_ThrottleUp & " -- Log_Ground_BarAlt: " & Log_Ground_BarAlt & " -- Log_CTUN_BarAlt: " & Log_CTUN_BarAlt & " -- Log_Armed_BarAlt: " & Log_Armed_BarAlt & " -- Log_Disarmed_BarAlt: " & Log_Disarmed_BarAlt)
                     'Debug.Print("DATA: " & DataArray(0).PadRight(5) & " Flying: " & Log_In_Flight & " -- Dist_From_Launch: " & Format(Dist_From_Launch * 1000, "0.00") & " -- Mode_Min_Dist_From_Launch: " & Format(Mode_Min_Dist_From_Launch * 1000, "0.00") & " -- Mode_Max_Dist_From_Launch: " & Format(Mode_Max_Dist_From_Launch * 1000, "0.00"))
 
+
                     'Parameter Checks
-                    Call Parameter_Checks()
+                    If frmMainForm.chkboxParameterWarnings.Checked = True Then
+                        Call Parameter_Checks()
+                    End If
+
 
                     'EV Checks
                     Call EV_Checks()
 
                     'Error Checks
-                    Call ERROR_Checks()
+                    If frmMainForm.chkboxErrors.Checked = True Then
+                        Call ERROR_Checks()
+                    End If
+
 
                     'Mode Checks
                     Call Mode_Checks()
 
                     'CURR Checks
-                    Call CURR_Checks()
+                    If DataArray(0) = "CURR" Then
+                        If ReadFileVersion = 3.1 Then
+                            Call CURR_Checks_v3_1()
+                        Else
+                            Call CURR_Checks_v3_2()
+                        End If
+                    End If
 
                     'CTUN Checks
-                    Call CTUN_Checks()
+                    If DataArray(0) = "CTUN" Then
+                        If ReadFileVersion = 3.1 Then
+                            Call CTUN_Checks_v3_1()
+                        Else
+                            Call CTUN_Checks_v3_2()
+                        End If
+                    End If
 
                     'GPS Checks
                     Call GPS_Checks()
@@ -125,26 +154,42 @@ Module modMainReadFile
                     Call IMU_Checks()
 
                     'NTUN Checks, Navigation Data - MUST CALL BEFORE ATT due to Charting Data
-                    Call NTUN_Checks()
+                    If DataArray(0) = "NTUN" Then
+                        If ReadFileVersion = 3.1 Then
+                            Call NTUN_Checks_v3_1()
+                        Else
+                            Call NTUN_Checks_v3_2()
+                        End If
+                    End If
 
                     'ATT Checks, Roll and Pitch
                     Call ATT_Checks()
 
                     'PM Checks, process manager timings
-                    Call PM_Checks()
+
+                    If frmMainForm.chkboxPM.Checked = True Then
+                        If DataArray(0) = "PM" Then
+                            If ReadFileVersion = 3.1 Then
+                                Call PM_Checks_v3_1()
+                            Else
+                                Call PM_Checks_v3_2()
+                            End If
+                        End If
+                    End If
 
                     'DU32 Checks
                     Call DU32_Checks()
 
                     'CMD Checks
-                    If DataArray(0) = "CMD" Then
-                        If VersionCompare(ArduVersion, "3.1.5") = True Then
-                            Call CMD_Checks_v3_1()
-                        Else
-                            Call CMD_Checks_v3_2()
+                    If frmMainForm.chkboxAutoCommands.Checked = True Then
+                        If DataArray(0) = "CMD" Then
+                            If ReadFileVersion = 3.1 Then
+                                Call CMD_Checks_v3_1()
+                            Else
+                                Call CMD_Checks_v3_2()
+                            End If
                         End If
                     End If
-
 
                     'Additional Checks not related to any one log data type
                     Call Additional_Checks()

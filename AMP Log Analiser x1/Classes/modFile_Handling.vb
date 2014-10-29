@@ -347,6 +347,10 @@ Module modFile_Handling
 
         'It can handle upto 4 parts in a version number, i.e. 1.2.3.4, or 1.0.1.9999
 
+        ' WARNING: This routine takes around 40μs to call, use a local variable rather than multiple calls!
+
+        CodeTimerStart = Format(Now, "ffff")
+
         VersionCompare = True
         Dim strTemp As String = ""
         Dim Counter As Integer = 0
@@ -413,6 +417,8 @@ Module modFile_Handling
         'Clear up
         Array.Clear(V1, 0, V1.Length)
         Array.Clear(V2, 0, V2.Length)
+
+        If Format(Now, "ffff") - CodeTimerStart > 1 Then Debug.Print("Version Check = " & Format(Now, "ffff") - CodeTimerStart & "μs")
 
     End Function
 End Module

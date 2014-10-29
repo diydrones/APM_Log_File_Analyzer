@@ -27,8 +27,8 @@
     <ProductName>APM Log File Analiser</ProductName>
     <PublisherName>TheBionicbone</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>9</ApplicationRevision>
-    <ApplicationVersion>1.0.4.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -130,8 +130,12 @@
     <Compile Include="Classes\modCMD_MainAnalysis.vb" />
     <Compile Include="Classes\modCMD_Checks_v3_2.vb" />
     <Compile Include="Classes\modCMD_Checks_v3_1.vb" />
-    <Compile Include="Classes\modCTUN_Checks.vb" />
-    <Compile Include="Classes\modCURR_Checks.vb" />
+    <Compile Include="Classes\modCTUN_Checks_v3_1.vb" />
+    <Compile Include="Classes\modCTUN_Checks_v3.2.vb" />
+    <Compile Include="Classes\modCTUN_MainAnalysis.vb" />
+    <Compile Include="Classes\modCURR_Checks_v3_1.vb" />
+    <Compile Include="Classes\modCURR_Checks_v3_2.vb" />
+    <Compile Include="Classes\modCURR_MainAnalysis.vb" />
     <Compile Include="Classes\modDisplay_Functions.vb" />
     <Compile Include="Classes\modDU32_Checks.vb" />
     <Compile Include="Classes\modERROR_Checks.vb" />
@@ -142,10 +146,14 @@
     <Compile Include="Classes\modIMU_Checks.vb" />
     <Compile Include="Classes\modMainReadFile.vb" />
     <Compile Include="Classes\modMODE_Checks.vb" />
-    <Compile Include="Classes\modNTUN_Checks.vb" />
+    <Compile Include="Classes\modNTUN_Checks_v3_1.vb" />
+    <Compile Include="Classes\modNTUN_Checks_v3_2.vb" />
+    <Compile Include="Classes\modNTUN_MainAnalysis.vb" />
     <Compile Include="Classes\modOther_Functions.vb" />
     <Compile Include="Classes\modPARAM_Checks.vb" />
-    <Compile Include="Classes\modPM_Checks.vb" />
+    <Compile Include="Classes\modPM_Checks_v3_1.vb" />
+    <Compile Include="Classes\modPM_Checks_v3_2.vb" />
+    <Compile Include="Classes\modPM_MainAnalysis.vb" />
     <Compile Include="Classes\modTakeOffEvent.vb" />
     <Compile Include="Classes\modUpdate.vb" />
     <Compile Include="Classes\modVariable_Declarations.vb" />

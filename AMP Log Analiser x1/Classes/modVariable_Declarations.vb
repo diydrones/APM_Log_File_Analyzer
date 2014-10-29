@@ -3,9 +3,8 @@ Imports System.Deployment.Application
 
 Module modVariable_Declarations
 
-    Public MyCurrentVersionNumber As String = "v1.0.4.8"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v2.0.0.0"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""               'frmMainForm.PublishedVers()                 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
-
 
     '### DEVELOPER TEMPORARY VARIABLES, TODO ###
     Public TempMaxRollDiff As Single = 0
