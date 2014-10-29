@@ -194,7 +194,7 @@ Module modDisplay_Functions
             WriteTextLog("Log FileName: " & strLogPathFileName)
             WriteTextLog("Ardu Version: " & ArduVersion & " Build: " & ArduBuild)
             WriteTextLog("   Ardu Type: " & ArduType)
-            Select Case Hardware
+            Select Case Int(Hardware)
                 Case 0
                     Hardware = "Unknown"
                 Case 1
