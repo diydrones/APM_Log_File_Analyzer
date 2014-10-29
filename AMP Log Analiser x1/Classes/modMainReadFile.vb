@@ -8,8 +8,6 @@ Module modMainReadFile
 
         With frmMainForm
 
-            CodeTimerStart2 = Format(Now, "ss")
-
             If osVer.Major >= 6 And osVer.Minor >= 1 Then 'Only allowed in Windows 7 or above
                 '.WindowState = FormWindowState.Minimized
             End If
@@ -43,8 +41,6 @@ Module modMainReadFile
             .barReadFile.Visible = True
             .richtxtLogAnalysis.Focus()
             Do While objReader.Peek() <> -1
-
-                CodeTimerStart = Format(Now, "ffff")
 
                 DataArrayCounter = 0
                 DataSplit = ""
@@ -90,8 +86,6 @@ Module modMainReadFile
                 DataArray(DataArrayCounter) = DataSplit
                 'Debug.Print("--- Paramter " & DataArrayCounter & " = " & DataArray(DataArrayCounter))
 
-
-                If Format(Now, "ffff") - CodeTimerStart > 10 Then Debug.Print("Read Takes = " & Format(Now, "ffff") - CodeTimerStart & "μs")
 
                 '######################################
                 '### Main Checking Code Starts Here ###
@@ -235,7 +229,6 @@ Module modMainReadFile
             End If
 
 
-            Debug.Print("Total Time = T" & Format(Now, "ss") - CodeTimerStart2 & " Seconds")
             'Threading.Thread.Sleep(3000)
 
         End With

@@ -3,7 +3,6 @@ Module modDisplay_Functions
 
     Sub WriteTextLog(ByVal LineText As String)
         'set the timer.
-        CodeTimerStart = Format(Now, "ffff")
 
         'review the contents of the text that needs to be written.
         Dim txtColor As Color
@@ -26,7 +25,6 @@ Module modDisplay_Functions
             My.Application.DoEvents()
             .SelectionColor = Color.Black
         End With
-        If Format(Now, "ffff") - CodeTimerStart > 10 Then Debug.Print("WriteTextLog = " & Format(Now, "ffff") - CodeTimerStart & "μs")
     End Sub
 
     Function FormatTextLogValuesFlying(ByVal Range As String, ByVal Alt As String, ByVal Spd As String, ByVal Dist As String, ByVal DistHome As String, ByVal GPS_Sats As String, ByVal GPS_Hdop As String, ByVal Efficiency As String) As String
@@ -597,6 +595,10 @@ Module modDisplay_Functions
         frmMainForm.Refresh()
     End Sub
 
+    Public Sub Chart_Travel_Visible(OnOff As Boolean)
+        frmMainForm.panTravel.Visible = OnOff
+        frmMainForm.Refresh()
+    End Sub
 
     Public Sub ButtonsCheckBoxes_Visible(OnOff As Boolean)
         frmMainForm.btnLoadLog.Visible = OnOff
@@ -619,6 +621,8 @@ Module modDisplay_Functions
         If OnOff = True Then 'only valid if we are displaying graph buttons.
             If IMU_Logging = True Then frmMainForm.btnVibrationChart.Enabled = True Else frmMainForm.btnVibrationChart.Enabled = False
             If CURR_Logging = True Then frmMainForm.btnPowerChart.Enabled = True Else frmMainForm.btnPowerChart.Enabled = False
+            If GPS_Logging = True Then frmMainForm.btnGPSChart.enabled = True Else frmMainForm.btnGPSChart.Enabled = False
+            If ATT_Logging = True Then frmMainForm.btnAttitudeChart.Enabled = True Else frmMainForm.btnAttitudeChart.Enabled = False
         End If
 
         frmMainForm.btnAnalysis.Visible = OnOff
