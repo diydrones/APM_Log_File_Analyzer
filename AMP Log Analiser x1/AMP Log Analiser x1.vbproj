@@ -126,7 +126,9 @@
   <ItemGroup>
     <Compile Include="Classes\ApplicationEvents.vb" />
     <Compile Include="Classes\modAdditionalChecks.vb" />
-    <Compile Include="Classes\modATT_Checks.vb" />
+    <Compile Include="Classes\modATT_Checks_v3_2.vb" />
+    <Compile Include="Classes\modATT_Checks_v3_1.vb" />
+    <Compile Include="Classes\modATT_MainAnalysis.vb" />
     <Compile Include="Classes\modCMD_MainAnalysis.vb" />
     <Compile Include="Classes\modCMD_Checks_v3_2.vb" />
     <Compile Include="Classes\modCMD_Checks_v3_1.vb" />
