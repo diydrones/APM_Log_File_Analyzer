@@ -162,8 +162,16 @@ Module modMainReadFile
                         End If
                     End If
 
+
                     'ATT Checks, Roll and Pitch
-                    Call ATT_Checks()
+                    If DataArray(0) = "ATT" Then
+                        If ReadFileVersion = 3.1 Then
+                            Call ATT_Checks_v3_1()
+                        Else
+                            Call ATT_Checks_v3_2()
+                        End If
+                    End If
+
 
                     'PM Checks, process manager timings
 
