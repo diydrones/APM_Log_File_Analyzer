@@ -80,6 +80,8 @@ Module modVariable_Declarations
     Public Thr_Min As Integer = 0                           'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
     Public Mot_Spin_Armed As Integer = 0                    'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
     Public Log_Battery_Capacity As Integer                  'Battery Capacity as found in the APM Parameter Settings.
+    Public CH7_OPT As String = ""                            'Holds the display information of what Channel 7 is assigned to.
+    Public CH8_OPT As String = ""                            'Holds the display information of what Channel 7 is assigned to.
 
     'Delcare the NTUN Variables
     Public Log_NTUN_WPDst As Single = 0

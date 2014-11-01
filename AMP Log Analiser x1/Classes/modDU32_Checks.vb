@@ -185,23 +185,25 @@
                         If Log_DU32_CH7_Switch <> (((Log_DU32_Value And (2 ^ 9)) > 0) + ((Log_DU32_Value And (2 ^ 10)))) Then
                             Log_DU32_CH7_Switch = (((Log_DU32_Value And (2 ^ 9)) > 0) + ((Log_DU32_Value And (2 ^ 10))))
                             If Log_DU32_CH7_Switch = 0 Then
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 7 Switch is Low.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 Switch is Low.")
                             ElseIf Log_DU32_CH7_Switch = -1 Then
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 7 Switch is Centred.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 Switch is Centred.")
                             Else
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 7 Switch is High.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 Switch is High.")
                             End If
+                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 function: " & CH7_OPT)
                         End If
 
                         If Log_DU32_CH8_Switch <> (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12)))) Then
                             Log_DU32_CH8_Switch = (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12))))
                             If Log_DU32_CH8_Switch = 0 Then
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 8 Switch is Low.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 Switch is Low.")
                             ElseIf Log_DU32_CH8_Switch = -1 Then
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 8 Switch is Centred.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 Switch is Centred.")
                             Else
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 8 Switch is High.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 Switch is High.")
                             End If
+                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 function: " & CH8_OPT)
                         End If
 
                         If Log_DU32_AutoWait <> ((Log_DU32_Value And (2 ^ 5)) > 0) Then
@@ -232,37 +234,29 @@
                         End If
 
 
-                        ' ***************************************************************************
-                        ' *** Testing the BitWise Operation                                       ***
-                        ' *** Answer will be 0 (both bits zero), -1 (low bit 1), >0 (high bit 1)  ***
-                        ' *** NOTE:  1 & 1 is not allowed here!!                                  ***
-                        ' ***************************************************************************
-                        'WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Testing: CH8 value (Bit13) " & (Log_DU32_Value And (2 ^ 13)) & "   (Bit14) " & (Log_DU32_Value And (2 ^ 14)))
-                        'WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Testing: CH8 value = " & (((Log_DU32_Value And (2 ^ 13)) > 0) + ((Log_DU32_Value And (2 ^ 14)))))
-                        'WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Testing: CH8 value (Bit13)  " & (Log_DU32_Value And 2 ^ 13) / (2 ^ 13) & "   (Bit14) " & (Log_DU32_Value And 2 ^ 14) / (2 ^ 14))
-
-
                         If Log_DU32_CH7_Switch <> (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12)))) Then
                             Log_DU32_CH7_Switch = (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12))))
                             If Log_DU32_CH7_Switch = 0 Then
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 7 Switch is Low.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 Switch is Low.")
                             ElseIf Log_DU32_CH7_Switch = -1 Then
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 7 Switch is Centred.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 Switch is Centred.")
                             Else
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 7 Switch is High.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 Switch is High.")
                             End If
+                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 function: " & CH7_OPT)
                         End If
 
 
                         If Log_DU32_CH8_Switch <> (((Log_DU32_Value And (2 ^ 13)) > 0) + ((Log_DU32_Value And (2 ^ 14)))) Then
                             Log_DU32_CH8_Switch = (((Log_DU32_Value And (2 ^ 13)) > 0) + ((Log_DU32_Value And (2 ^ 14))))
                             If Log_DU32_CH8_Switch = 0 Then
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 8 Switch is Low.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 Switch is Low.")
                             ElseIf Log_DU32_CH8_Switch = -1 Then
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 8 Switch is Centred.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 Switch is Centred.")
                             Else
-                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: Channel 8 Switch is High.")
+                                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 Switch is High.")
                             End If
+                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 function: " & CH8_OPT)
                         End If
 
                         If Log_DU32_AutoWait <> ((Log_DU32_Value And (2 ^ 5)) > 0) Then

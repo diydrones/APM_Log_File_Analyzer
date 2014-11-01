@@ -150,6 +150,69 @@
                     WriteTextLog("Warning: Hardware Simulation Software Used.")
                     WriteTextLog(vbNewLine)
                 End If
+
+                If Param = "CH7_OPT" Or Param = "CH8_OPT" Then
+                    Dim TempString As String = ""
+                    Select Case Val(Value)
+                        Case 0
+                            TempString = "Disabled"
+                        Case 2
+                            TempString = "Flip"
+                        Case 3
+                            TempString = "Change to Simple Mode"
+                        Case 4
+                            TempString = "Change to RTL Mode"
+                        Case 5
+                            TempString = "Save Current Position as Level"
+                        Case 7
+                            TempString = "Save Mission Waypoint or RTL if in Auto Mode"
+                        Case 8
+                            TempString = "Multi Mode: Depends on CH6 for Flip (low), RTL (mid), or Save Waypoint (high)"
+                        Case 9
+                            TempString = "Trigger Camera Servo or Relay"
+                        Case 10
+                            TempString = "Enable / Disable Sonar"
+                        Case 11
+                            TempString = "Enable / Disable Fence"
+                        Case 12
+                            TempString = "Change Yew to Armed Direction"
+                        Case 13
+                            TempString = "Low = Normal, Mid = Simple or High = Super Simple."
+                        Case 14
+                            TempString = "ACRO Trainer, Low = Disabled, Mid = Leveled or High = Leveled and Limited."
+                        Case 15
+                            TempString = "Enable / Disable Crop Sprayer."
+                        Case 16
+                            TempString = "Change to Auto Flight Mode"
+                        Case 17
+                            TempString = "Enable / Disable Auto Tune"
+                        Case 18
+                            TempString = "Change to LAND Flight Mode"
+                        Case 19
+                            TempString = "EPM Cargo Gripper, Low = Off, Mid = Neutral or High = On"
+                        Case 20
+                            TempString = "Enable / Disable NavEKF."
+                        Case 21
+                            TempString = "Enable / Disable Parachute."
+                        Case 22
+                            TempString = "Parachute Release."
+                        Case 23
+                            TempString = "Parachute Disable, Enable and Release (3 pos switch version)."
+                        Case 24
+                            TempString = "Reset Auto Mission to Start of from First Command."
+                        Case 25
+                            TempString = "Enable / Disable the Roll and Pitch Rate Feed Forward."
+                        Case 26
+                            TempString = "Enable / Disable the Roll, Pitch and Yaw Accel Limiting."
+                        Case 27
+                            TempString = "Retract Mount."
+                        Case 28
+                            TempString = "Relay pin on/off (only supports first relay)."
+                        Case Else
+                            TempString = "New Function - Update Program to support this."
+                    End Select
+                    If Param = "CH7_OPT" Then CH7_OPT = TempString Else CH8_OPT = TempString
+                End If
             End If
         End If
 
