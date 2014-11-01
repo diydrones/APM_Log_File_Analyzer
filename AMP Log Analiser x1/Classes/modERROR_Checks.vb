@@ -168,6 +168,66 @@
                 If strErrorCode = "12" And strECode = "0" Then
                     WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": CRASH ERROR: Undocumented Crash Error.")
                 End If
+                If strErrorCode = "13" And strECode = "0" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": FLIP ERROR: Undocumented Flip Error.")
+                End If
+                If strErrorCode = "13" And strECode = "1" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": FLIP ERROR: Undocumented Flip Error.")
+                End If
+                If strErrorCode = "13" And strECode = "2" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": FLIP ERROR: Flip abandoned (because of 2 second timeout).")
+                End If
+
+                If strErrorCode = "14" And strECode = "0" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": AUTOTUNE ERROR: Undocumented AUTOTUNE Error.")
+                End If
+                If strErrorCode = "14" And strECode = "1" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": AUTOTUNE ERROR: Undocumented AUTOTUNE Error.")
+                End If
+                If strErrorCode = "14" And strECode = "2" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": AUTOTUNE ERROR: Bad Gains (failed to determine proper gains).")
+                End If
+
+                If strErrorCode = "15" And strECode = "0" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": PARACHUTE ERROR: Undocumented PARACHUTE Error.")
+                End If
+                If strErrorCode = "15" And strECode = "1" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": PARACHUTE ERROR: Undocumented PARACHUTE Error.")
+                End If
+                If strErrorCode = "15" And strECode = "2" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": PARACHUTE ERROR: @ " & Log_CTUN_BarAlt & "m you were too low to deploy parachute.")
+                End If
+
+                If strErrorCode = "16" And strECode = "0" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ":  EKF/ Inertial Nav Check ERROR: Bad Variance cleared.")
+                End If
+                If strErrorCode = "16" And strECode = "1" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ":  EKF/ Inertial Nav Check ERROR: Undocumented EKF/ Inertial Nav Check Error.")
+                End If
+                If strErrorCode = "16" And strECode = "2" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ":  EKF/ Inertial Nav Check ERROR: Bad Variance.")
+                End If
+
+                If strErrorCode = "17" And strECode = "0" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": EKF/InertialNav Failsafe ERROR: Undocumented EKF/InertialNav Failsafe Error.")
+                End If
+                If strErrorCode = "17" And strECode = "1" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": EKF/InertialNav Failsafe ERROR: Undocumented EKF/InertialNav Failsafe Error.")
+                End If
+                If strErrorCode = "17" And strECode = "2" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": EKF/InertialNav Failsafe ERROR: EKF Failsafe triggered.")
+                End If
+
+                If strErrorCode = "18" And strECode = "0" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ":  BARO GLITCH ERROR: Baro glitch cleared.")
+                End If
+                If strErrorCode = "18" And strECode = "1" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ":  BARO GLITCH ERROR: Undocumented BARO GLITCH Error.")
+                End If
+                If strErrorCode = "18" And strECode = "2" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ":  BARO GLITCH ERROR: Baro glitch.")
+                End If
+
             End If
         End If
     End Sub
