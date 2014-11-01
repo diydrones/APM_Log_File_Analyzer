@@ -254,5 +254,26 @@
         PID_Logging = False                             'TRUE if Valid data found in Log File
         CAM_Logging = False                             'TRUE if Valid data found in Log File
         ERR_Logging = False                             'TRUE if Valid data found in Log File
+
+        'Added for V3.2 compatibility
+        GPS2_Logging = False                   'TRUE if Valid data found in Log File
+        IMU2_Logging = False                   'TRUE if Valid data found in Log File
+        IMU3_Logging = False                   'TRUE if Valid data found in Log File
+        MAG2_Logging = False                   'TRUE if Valid data found in Log File
+        MAG3_Logging = False                   'TRUE if Valid data found in Log File
+        AHR2_Logging = False                   'TRUE if Valid data found in Log File
+        SIM_Logging = False                   'TRUE if Valid data found in Log File
+        EKF1_Logging = False                   'TRUE if Valid data found in Log File
+        EKF2_Logging = False                   'TRUE if Valid data found in Log File
+        EKF3_Logging = False                   'TRUE if Valid data found in Log File
+        EKF4_Logging = False                   'TRUE if Valid data found in Log File
+        TERR_Logging = False                   'TRUE if Valid data found in Log File
+        UBX1_Logging = False                   'TRUE if Valid data found in Log File
+        UBX2_Logging = False                   'TRUE if Valid data found in Log File
+        RCIN_Logging = False                   'TRUE if Valid data found in Log File
+        RCOU_Logging = False                   'TRUE if Valid data found in Log File
+        BARO_Logging = False                   'TRUE if Valid data found in Log File
+        POWR_Logging = False                   'TRUE if Valid data found in Log File
+        RAD_Logging = False                   'TRUE if Valid data found in Log File
     End Sub
 End Module

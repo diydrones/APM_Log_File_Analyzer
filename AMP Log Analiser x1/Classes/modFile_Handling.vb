@@ -196,6 +196,27 @@ Module modFile_Handling
             If DataArray(0) = "CAM" Then CAM_Logging = True
             If DataArray(0) = "ERR" Then ERR_Logging = True
 
+            'Support for v3.2
+            If DataArray(0) = "GPS2" Then GPS2_Logging = True
+            If DataArray(0) = "IMU2" Then IMU2_Logging = True
+            If DataArray(0) = "IMU3" Then IMU3_Logging = True
+            If DataArray(0) = "MAG2" Then MAG2_Logging = True
+            If DataArray(0) = "MAG3" Then MAG3_Logging = True
+            If DataArray(0) = "AHR2" Then AHR2_Logging = True
+            If DataArray(0) = "EKF1" Then EKF1_Logging = True
+            If DataArray(0) = "EKF2" Then EKF2_Logging = True
+            If DataArray(0) = "EKF3" Then EKF3_Logging = True
+            If DataArray(0) = "EKF4" Then EKF4_Logging = True
+            If DataArray(0) = "TERR" Then TERR_Logging = True
+            If DataArray(0) = "UBX1" Then UBX1_Logging = True
+            If DataArray(0) = "UBX2" Then UBX2_Logging = True
+            If DataArray(0) = "RCIN" Then RCIN_Logging = True
+            If DataArray(0) = "RCOU" Then RCOU_Logging = True
+            If DataArray(0) = "BARO" Then BARO_Logging = True
+            If DataArray(0) = "POWR" Then POWR_Logging = True
+            If DataArray(0) = "RAD" Then RAD_Logging = True
+            If DataArray(0) = "SIM" Then SIM_Logging = True
+
             TotalDataLines = TotalDataLines + 1
         Loop
         objReader.Close()

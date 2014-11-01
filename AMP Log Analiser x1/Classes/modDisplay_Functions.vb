@@ -215,7 +215,11 @@ Module modDisplay_Functions
                     Hardware = "Linux"
             End Select
             WriteTextLog("    Hardware: " & Hardware)
-            WriteTextLog(" HW Free RAM: " & APM_Free_RAM)
+            If APM_Free_RAM <> 0 Then
+                WriteTextLog(" HW Free RAM: " & APM_Free_RAM)
+            Else
+                WriteTextLog(" HW Free RAM: Not Available")
+            End If
             WriteTextLog("  HW Version: " & APM_Version)
             Select Case APM_Frame_Type
                 Case 0
@@ -233,6 +237,7 @@ Module modDisplay_Functions
                 Case Else
                     APM_Frame_Name = "Error: Please update code to determine frame type " & APM_Frame_Type
             End Select
+            If APM_No_Motors = 6 Then APM_Frame_Name += " (Hexa)"
             WriteTextLog("  Frame Type: " & APM_Frame_Name)
             WriteTextLog("  No. Motors: " & APM_No_Motors)
             WriteTextLog("")
@@ -253,32 +258,54 @@ Module modDisplay_Functions
         Dim strTempEnabledText As String = ""
         Dim strTempDisabledText As String = ""
         If frmMainForm.chkboxFlightDataTypes.Checked = True Then
-            If IMU_Logging Then strTempEnabledText = strTempEnabledText & "IMU, " Else strTempDisabledText = strTempDisabledText & "IMU, "
-            If GPS_Logging Then strTempEnabledText = strTempEnabledText & "GPS, " Else strTempDisabledText = strTempDisabledText & "GPS, "
-            If CTUN_Logging Then strTempEnabledText = strTempEnabledText & "CTUN, " Else strTempDisabledText = strTempDisabledText & "CTUN, "
-            If PM_Logging Then strTempEnabledText = strTempEnabledText & "PM, " Else strTempDisabledText = strTempDisabledText & "PM, "
-            If CURR_Logging Then strTempEnabledText = strTempEnabledText & "CURR, " Else strTempDisabledText = strTempDisabledText & "CURR, "
-            If NTUN_Logging Then strTempEnabledText = strTempEnabledText & "NTUN, " Else strTempDisabledText = strTempDisabledText & "NTUN, "
-            If MSG_Logging Then strTempEnabledText = strTempEnabledText & "MSG, " Else strTempDisabledText = strTempDisabledText & "MSG, "
-            If ATUN_Logging Then strTempEnabledText = strTempEnabledText & "ATUN, " Else strTempDisabledText = strTempDisabledText & "ATUN, "
-            If ATDE_logging Then strTempEnabledText = strTempEnabledText & "ATDE, " Else strTempDisabledText = strTempDisabledText & "ATDE, "
-            If MOT_Logging Then strTempEnabledText = strTempEnabledText & "MOT, " Else strTempDisabledText = strTempDisabledText & "MOT, "
-            If OF_Logging Then strTempEnabledText = strTempEnabledText & "OF, " Else strTempDisabledText = strTempDisabledText & "OF, "
-            If MAG_Logging Then strTempEnabledText = strTempEnabledText & "MAG, " Else strTempDisabledText = strTempDisabledText & "MAG, "
-            If CMD_Logging Then strTempEnabledText = strTempEnabledText & "CMD, " Else strTempDisabledText = strTempDisabledText & "CMD, "
-            If ATT_Logging Then strTempEnabledText = strTempEnabledText & "ATT, " Else strTempDisabledText = strTempDisabledText & "ATT, "
-            If INAV_Logging Then strTempEnabledText = strTempEnabledText & "INAV, " Else strTempDisabledText = strTempDisabledText & "INAV, "
-            If MODE_Logging Then strTempEnabledText = strTempEnabledText & "MODE, " Else strTempDisabledText = strTempDisabledText & "MODE, "
-            If STRT_logging Then strTempEnabledText = strTempEnabledText & "STRT, " Else strTempDisabledText = strTempDisabledText & "STRT, "
-            If EV_Logging Then strTempEnabledText = strTempEnabledText & "EV, " Else strTempDisabledText = strTempDisabledText & "EV, "
-            If D16_Logging Then strTempEnabledText = strTempEnabledText & "D16, " Else strTempDisabledText = strTempDisabledText & "D16, "
-            If DU16_Logging Then strTempEnabledText = strTempEnabledText & "DU16, " Else strTempDisabledText = strTempDisabledText & "DU16, "
-            If D32_Logging Then strTempEnabledText = strTempEnabledText & "D32, " Else strTempDisabledText = strTempDisabledText & "D32, "
-            If DU32_Logging Then strTempEnabledText = strTempEnabledText & "DU32, " Else strTempDisabledText = strTempDisabledText & "DU32, "
-            If DFLT_Logging Then strTempEnabledText = strTempEnabledText & "DFLT, " Else strTempDisabledText = strTempDisabledText & "DFLT, "
-            If PID_Logging Then strTempEnabledText = strTempEnabledText & "PID, " Else strTempDisabledText = strTempDisabledText & "PID, "
-            If CAM_Logging Then strTempEnabledText = strTempEnabledText & "CAM, " Else strTempDisabledText = strTempDisabledText & "CAM, "
-            If ERR_Logging Then strTempEnabledText = strTempEnabledText & "ERR, " Else strTempDisabledText = strTempDisabledText & "ERR, "
+            If IMU_Logging Then strTempEnabledText += "IMU, " Else strTempDisabledText += "IMU, "
+            If GPS_Logging Then strTempEnabledText += "GPS, " Else strTempDisabledText += "GPS, "
+            If CTUN_Logging Then strTempEnabledText += "CTUN, " Else strTempDisabledText += "CTUN, "
+            If PM_Logging Then strTempEnabledText += "PM, " Else strTempDisabledText += "PM, "
+            If CURR_Logging Then strTempEnabledText += "CURR, " Else strTempDisabledText += "CURR, "
+            If NTUN_Logging Then strTempEnabledText += "NTUN, " Else strTempDisabledText += "NTUN, "
+            If MSG_Logging Then strTempEnabledText += "MSG, " Else strTempDisabledText += "MSG, "
+            If ATUN_Logging Then strTempEnabledText += "ATUN, " Else strTempDisabledText += "ATUN, "
+            If ATDE_logging Then strTempEnabledText += "ATDE, " Else strTempDisabledText += "ATDE, "
+            If MOT_Logging Then strTempEnabledText += "MOT, " Else strTempDisabledText += "MOT, "
+            If OF_Logging Then strTempEnabledText += "OF, " Else strTempDisabledText += "OF, "
+            If MAG_Logging Then strTempEnabledText += "MAG, " Else strTempDisabledText += "MAG, "
+            If CMD_Logging Then strTempEnabledText += "CMD, " Else strTempDisabledText += "CMD, "
+            If ATT_Logging Then strTempEnabledText += "ATT, " Else strTempDisabledText += "ATT, "
+            If INAV_Logging Then strTempEnabledText += "INAV, " Else strTempDisabledText += "INAV, "
+            If MODE_Logging Then strTempEnabledText += "MODE, " Else strTempDisabledText += "MODE, "
+            If STRT_logging Then strTempEnabledText += "STRT, " Else strTempDisabledText += "STRT, "
+            If EV_Logging Then strTempEnabledText += "EV, " Else strTempDisabledText += "EV, "
+            If D16_Logging Then strTempEnabledText += "D16, " Else strTempDisabledText += "D16, "
+            If DU16_Logging Then strTempEnabledText += "DU16, " Else strTempDisabledText += "DU16, "
+            If D32_Logging Then strTempEnabledText += "D32, " Else strTempDisabledText += "D32, "
+            If DU32_Logging Then strTempEnabledText += "DU32, " Else strTempDisabledText += "DU32, "
+            If DFLT_Logging Then strTempEnabledText += "DFLT, " Else strTempDisabledText += "DFLT, "
+            If PID_Logging Then strTempEnabledText += "PID, " Else strTempDisabledText += "PID, "
+            If CAM_Logging Then strTempEnabledText += "CAM, " Else strTempDisabledText += "CAM, "
+            If ERR_Logging Then strTempEnabledText += "ERR, " Else strTempDisabledText += "ERR, "
+
+            'Support for v3.2
+            If GPS2_Logging Then strTempEnabledText += "GPS2, " Else strTempDisabledText += "GPS2, "
+            If IMU2_Logging Then strTempEnabledText += "IMU2, " Else strTempDisabledText += "IMU2, "
+            If IMU3_Logging Then strTempEnabledText += "IMU3, " Else strTempDisabledText += "IMU3, "
+            If MAG2_Logging Then strTempEnabledText += "MAG2, " Else strTempDisabledText += "MAG2, "
+            If MAG3_Logging Then strTempEnabledText += "MAG3, " Else strTempDisabledText += "MAG3, "
+            If AHR2_Logging Then strTempEnabledText += "AHR2, " Else strTempDisabledText += "AHR2, "
+            If EKF1_Logging Then strTempEnabledText += "EKF1, " Else strTempDisabledText += "EKF1, "
+            If EKF2_Logging Then strTempEnabledText += "EKF2, " Else strTempDisabledText += "EKF2, "
+            If EKF3_Logging Then strTempEnabledText += "EKF3, " Else strTempDisabledText += "EKF3, "
+            If EKF4_Logging Then strTempEnabledText += "EKF4, " Else strTempDisabledText += "EKF4, "
+            If TERR_Logging Then strTempEnabledText += "TERR, " Else strTempDisabledText += "TERR, "
+            If UBX1_Logging Then strTempEnabledText += "UBX1, " Else strTempDisabledText += "UBX1, "
+            If UBX2_Logging Then strTempEnabledText += "UBX2, " Else strTempDisabledText += "UBX2, "
+            If RCIN_Logging Then strTempEnabledText += "RCIN, " Else strTempDisabledText += "RCIN, "
+            If RCOU_Logging Then strTempEnabledText += "RCOU, " Else strTempDisabledText += "RCOU, "
+            If BARO_Logging Then strTempEnabledText += "BARO, " Else strTempDisabledText += "BARO, "
+            If POWR_Logging Then strTempEnabledText += "POWR, " Else strTempDisabledText += "POWR, "
+            If RAD_Logging Then strTempEnabledText += "RAD, " Else strTempDisabledText += "RAD, "
+            If SIM_Logging Then strTempEnabledText += "SIM, " Else strTempDisabledText += "SIM, "
+
             If Len(strTempEnabledText) > 0 Then
                 strTempEnabledText = Mid(strTempEnabledText, 1, Len(strTempEnabledText) - 2)
             End If
