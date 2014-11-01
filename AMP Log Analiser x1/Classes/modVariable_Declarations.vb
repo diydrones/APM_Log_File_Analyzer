@@ -3,7 +3,7 @@ Imports System.Deployment.Application
 
 Module modVariable_Declarations
 
-    Public MyCurrentVersionNumber As String = "v2.0.0.0"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v2.0.0.1"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""               'frmMainForm.PublishedVers()                 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
     '### DEVELOPER TEMPORARY VARIABLES, TODO ###
@@ -289,6 +289,38 @@ Module modVariable_Declarations
     Public PID_Logging As Boolean = False                   'TRUE if Valid data found in Log File
     Public CAM_Logging As Boolean = False                   'TRUE if Valid data found in Log File
     Public ERR_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+
+    'Added for V3.2 compatibility
+    Public GPS2_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public IMU2_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public IMU3_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public MAG2_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public MAG3_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public AHR2_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public SIM_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public EKF1_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public EKF2_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public EKF3_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public EKF4_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public TERR_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public UBX1_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public UBX2_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public RCIN_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public RCOU_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public BARO_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public POWR_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+    Public RAD_Logging As Boolean = False                   'TRUE if Valid data found in Log File
+
+
+
+
+
+
+
+
+
+
+
 
     Public FileOpened As Boolean = False                    'TRUE if file opened. False if no file opened or opened Cancelled
 
