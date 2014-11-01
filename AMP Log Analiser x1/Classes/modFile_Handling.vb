@@ -108,6 +108,8 @@ Module modFile_Handling
     End Function
 
     Public Sub FindLoggingData()
+        Dim MotorsDetectedForV3_2 As Boolean = False 'for v3.2 we need to look at the actual datline not just the FMT line.
+        APM_No_Motors = 0
         'Do some warnings about DEVELOPER IGNORES
         Debug.Print("1st Pass Started, Finding Logging Data...")
         If Ignore_CTUN_Logging = True Then
@@ -118,6 +120,7 @@ Module modFile_Handling
         'Read the File line by line
         Dim objReader As New System.IO.StreamReader(strLogPathFileName)
         Do While objReader.Peek() <> -1
+            Array.Clear(DataArray, 0, 25)
             DataArrayCounter = 0
             DataSplit = ""
 
@@ -150,16 +153,22 @@ Module modFile_Handling
             If DataArray(0) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
             If DataArray(0) = "Free" And DataArray(1) = "RAM:" Then APM_Free_RAM = DataArray(2)
             If DataArray(0) = "APM" Then APM_Version = DataArray(1)
+            If DataArray(0) = "FMT" And DataArray(3) = "MOT" Then
+                APM_No_Motors = Mid(DataArray(DataArrayCounter), 4, Len(DataArray(DataArrayCounter)) - 1)
+            End If
             ' Support Firmware v3.2.? 
             If DataArray(0) = "MSG" And DataArray(1) = "ArduCopter" Then ArduType = "ArduCopter" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
             If DataArray(0) = "MSG" And DataArray(1) = "PX4:" Then APM_Version = DataArray(1) & " " & DataArray(2) & " " & DataArray(3) & " " & DataArray(4)
+            If DataArray(0) = "RCOU" And MotorsDetectedForV3_2 = False Then
+                For N = 1 To 8
+                    If DataArray(N) > 0 Then APM_No_Motors = APM_No_Motors + 1
+                Next
+                MotorsDetectedForV3_2 = True
+            End If
 
             ' Support for all Firmware
             If DataArray(0) = "PARM" And DataArray(1) = "FRAME" Then APM_Frame_Type = DataArray(2)
             If DataArray(0) = "PARM" And DataArray(1) = "INS_PRODUCT_ID" Then Hardware = DataArray(2)
-            If DataArray(0) = "FMT" And DataArray(3) = "MOT" Then
-                APM_No_Motors = Mid(DataArray(DataArrayCounter), 4, Len(DataArray(DataArrayCounter)) - 1)
-            End If
             If DataArray(0) = "IMU" Then IMU_Logging = True
             If DataArray(0) = "GPS" Then GPS_Logging = True
             If DataArray(0) = "CTUN" And Ignore_CTUN_Logging = False Then CTUN_Logging = True
