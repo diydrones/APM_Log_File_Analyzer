@@ -70,6 +70,7 @@ Module modVariable_Declarations
     Public APM_Frame_Type As Single = 0                    'Holds the APM Frame Type, determined from the Parmeter FRAME
     Public APM_Frame_Name As String = ""                   'The Text Name of the Frame Type
     Public APM_No_Motors As Integer = 0                    'Holds the number of Motors, determined from the FMT for MOT.
+    '                                                       'or for v3.2 a count of the values > 0  in the RCOUT dataline.
     Public Hardware As String = ""                          'Holds the type of hardware used.
 
     'Declare the Parameter Variables
