@@ -90,6 +90,8 @@
                         Case "11" 'this case is captured above, this is just so the Else Statement is not executed.
                         Case "15" 'this case is captured above, this is just so the Else Statement is not executed.
                         Case "16" 'this case is captured above, this is just so the Else Statement is not executed.
+                        Case "17"
+                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": LAND_COMPLETE_MAYBE")
                         Case "18" 'this case is captured above, this is just so the Else Statement is not executed.
 
                         Case "19"    ' LOST_GPS
