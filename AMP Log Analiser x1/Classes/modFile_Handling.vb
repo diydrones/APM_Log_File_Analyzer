@@ -154,7 +154,11 @@ Module modFile_Handling
             If DataArray(0) = "Free" And DataArray(1) = "RAM:" Then APM_Free_RAM = DataArray(2)
             If DataArray(0) = "APM" Then APM_Version = DataArray(1)
             If DataArray(0) = "FMT" And DataArray(3) = "MOT" Then
-                APM_No_Motors = Mid(DataArray(DataArrayCounter), 4, Len(DataArray(DataArrayCounter)) - 1)
+                If Val(Mid(DataArray(DataArrayCounter), 4, Len(DataArray(DataArrayCounter)) - 1)) > 1 And Val(Mid(DataArray(DataArrayCounter), 4, Len(DataArray(DataArrayCounter)) - 1)) < 12 Then
+                    APM_No_Motors = Mid(DataArray(DataArrayCounter), 4, Len(DataArray(DataArrayCounter)) - 1)
+                Else
+                    APM_No_Motors = 0
+                End If
             End If
             ' Support Firmware v3.2.? 
             If DataArray(0) = "MSG" And DataArray(1) = "ArduCopter" Then ArduType = "ArduCopter" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
