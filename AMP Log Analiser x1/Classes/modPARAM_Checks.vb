@@ -151,6 +151,20 @@
                     WriteTextLog(vbNewLine)
                 End If
 
+                If Param = "AHRS_EKF_USE" Then
+                    If Val(Value) = 1 Then
+                        Call WriteParamHeader()
+                        WriteTextLog(Param & " = " & Value)
+                        WriteTextLog("Information: Using Extended Kalman Filter (EKF) for Navigation.")
+                        WriteTextLog(vbNewLine)
+                    Else
+                        Call WriteParamHeader()
+                        WriteTextLog(Param & " = " & Value)
+                        WriteTextLog("Information: Using Direction Cosine Matrix (DCM) for Navigation.")
+                        WriteTextLog(vbNewLine)
+                    End If
+                End If
+
                 If Param = "CH7_OPT" Or Param = "CH8_OPT" Then
                     Dim TempString As String = ""
                     Select Case Val(Value)
@@ -213,7 +227,7 @@
                     End Select
                     If Param = "CH7_OPT" Then CH7_OPT = TempString Else CH8_OPT = TempString
                 End If
-            End If
+                End If
         End If
 
     End Sub
