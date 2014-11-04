@@ -165,6 +165,103 @@
                     End If
                 End If
 
+                If Param = "TUNE" Then
+                    Dim TempString As String = ""
+                    Select Case Val(Value)
+                        Case 0
+                            TempString = "Information: CH6 Tuning is Disabled"
+                        Case 1
+                            TempString = "Information: CH6 Tuning: stabilize roll/pitch angle controller's P term"
+                        Case 3
+                            TempString = "Information: CH6 Tuning: stabilize yaw heading controller's P term"
+                        Case 4
+                            TempString = "Information: CH6 Tuning: body frame roll/pitch rate controller's P term"
+                        Case 5
+                            TempString = "Information: CH6 Tuning: body frame roll/pitch rate controller's I term"
+                        Case 6
+                            TempString = "Information: CH6 Tuning: body frame yaw rate controller's P term"
+                        Case 7
+                            TempString = "Information: CH6 Tuning: throttle rate controller's P term (desired rate to acceleration or motor output)"
+                        Case 10
+                            TempString = "Information: CH6 Tuning: maximum speed to next way point (0 to 10m/s)"
+                        Case 12
+                            TempString = "Information: CH6 Tuning: loiter distance controller's P term (position error to speed)"
+                        Case 13
+                            TempString = "Information: CH6 Tuning: TradHeli specific external tail gyro gain"
+                        Case 14
+                            TempString = "Information: CH6 Tuning: altitude hold controller's P term (alt error to desired rate)"
+                        Case 17
+                            TempString = "Information: CH6 Tuning: optical flow loiter controller's P term (position error to tilt angle)"
+                        Case 18
+                            TempString = "Information: CH6 Tuning: optical flow loiter controller's I term (position error to tilt angle)"
+                        Case 19
+                            TempString = "Information: CH6 Tuning: optical flow loiter controller's D term (position error to tilt angle)"
+                        Case 21
+                            TempString = "Information: CH6 Tuning: body frame roll/pitch rate controller's D term"
+                        Case 22
+                            TempString = "Information: CH6 Tuning: loiter rate controller's P term (speed error to tilt angle)"
+                        Case 23
+                            TempString = "Information: CH6 Tuning: loiter rate controller's D term (speed error to tilt angle)"
+                        Case 25
+                            TempString = "Information: CH6 Tuning: acro controller's P term.  converts pilot input to a desired roll, pitch or yaw rate"
+                        Case 26
+                            TempString = "Information: CH6 Tuning: body frame yaw rate controller's D term"
+                        Case 28
+                            TempString = "Information: CH6 Tuning: loiter rate controller's I term (speed error to tilt angle)"
+                        Case 30
+                            TempString = "Information: CH6 Tuning: ahrs's compass effect on yaw angle (0 = very low, 1 = very high)"
+                        Case 31
+                            TempString = "Information: CH6 Tuning: accelerometer effect on roll/pitch angle (0=low)"
+                        Case 34
+                            TempString = "Information: CH6 Tuning: accel based throttle controller's P term"
+                        Case 35
+                            TempString = "Information: CH6 Tuning: accel based throttle controller's I term"
+                        Case 36
+                            TempString = "Information: CH6 Tuning: accel based throttle controller's D term"
+                        Case 38
+                            TempString = "Information: CH6 Tuning: compass declination in radians"
+                        Case 39
+                            TempString = "Information: CH6 Tuning: circle turn rate in degrees (hard coded to about 45 degrees in either direction)"
+                        Case 40
+                            TempString = "Information: CH6 Tuning: acro controller's P term.  converts pilot input to a desired roll, pitch or yaw rate"
+                        Case 41
+                            TempString = "Information: CH6 Tuning: sonar gain"
+                        Case 42
+                            TempString = "Information: CH6 Tuning: EKF's baro vs accel (higher rely on accels more, baro impact is reduced).  Range should be 0.2 ~ 4.0?  2.0 is default"
+                        Case 43
+                            TempString = "Information: CH6 Tuning: EKF's gps vs accel (higher rely on accels more, gps impact is reduced).  Range should be 1.0 ~ 3.0?  1.5 is default"
+                        Case 44
+                            TempString = "Information: CH6 Tuning: EKF's accel noise (lower means trust accels more, gps & baro less).  Range should be 0.02 ~ 0.5  0.5 is default (but very robust at that level)"
+                        Case 45
+                            TempString = "Information: CH6 Tuning: roll-pitch input smoothing"
+                        Case 46
+                            TempString = "Information: CH6 Tuning: body frame pitch rate controller's P term"
+                        Case 47
+                            TempString = "Information: CH6 Tuning: body frame pitch rate controller's I term"
+                        Case 48
+                            TempString = "Information: CH6 Tuning: body frame pitch rate controller's D term"
+                        Case 49
+                            TempString = "Information: CH6 Tuning: body frame roll rate controller's P term"
+                        Case 50
+                            TempString = "Information: CH6 Tuning: body frame roll rate controller's I term"
+                        Case 51
+                            TempString = "Information: CH6 Tuning: body frame roll rate controller's D term"
+                        Case 52
+                            TempString = "Information: CH6 Tuning: body frame pitch rate controller FF term"
+                        Case 53
+                            TempString = "Information: CH6 Tuning: body frame roll rate controller FF term"
+                        Case 54
+                            TempString = "Information: CH6 Tuning: body frame yaw rate controller FF term"
+                        Case Else
+                            TempString = "Information: Update program to new tuning on CH6, option = " & Value
+                    End Select
+
+                    Call WriteParamHeader()
+                    WriteTextLog(Param & " = " & Value)
+                    WriteTextLog(TempString)
+                    WriteTextLog(vbNewLine)
+                End If
+
                 If Param = "CH7_OPT" Or Param = "CH8_OPT" Then
                     Dim TempString As String = ""
                     Select Case Val(Value)
@@ -227,7 +324,7 @@
                     End Select
                     If Param = "CH7_OPT" Then CH7_OPT = TempString Else CH8_OPT = TempString
                 End If
-                End If
+            End If
         End If
 
     End Sub
