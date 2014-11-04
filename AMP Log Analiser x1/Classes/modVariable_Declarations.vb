@@ -82,6 +82,7 @@ Module modVariable_Declarations
     Public Log_Battery_Capacity As Integer                  'Battery Capacity as found in the APM Parameter Settings.
     Public CH7_OPT As String = ""                            'Holds the display information of what Channel 7 is assigned to.
     Public CH8_OPT As String = ""                            'Holds the display information of what Channel 7 is assigned to.
+    Public CH6_Tune As Boolean = False                      ' TRUE if TUNE param is set > 0
 
     'Delcare the NTUN Variables
     Public Log_NTUN_WPDst As Single = 0

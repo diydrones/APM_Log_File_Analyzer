@@ -9,6 +9,7 @@
         Log_Battery_Capacity = 0                        'Battery Capacity as found in the APM Parameter Settings.
         CH7_OPT = ""                                    'Holds the display information of what Channel 7 is assigned to.
         CH8_OPT = ""                                    'Holds the display information of what Channel 7 is assigned to.
+        CH6_Tune = False                                ' TRUE if TUNE param is set > 0
 
         'Initialise the INAV Variables
         Log_INAV_Home_GLat = 0                           'Hold where the APM considers home to be.
