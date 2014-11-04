@@ -167,9 +167,11 @@
 
                 If Param = "TUNE" Then
                     Dim TempString As String = ""
+                    CH6_Tune = True
                     Select Case Val(Value)
                         Case 0
                             TempString = "Information: CH6 Tuning is Disabled"
+                            CH6_Tune = False
                         Case 1
                             TempString = "Information: CH6 Tuning: stabilize roll/pitch angle controller's P term"
                         Case 3
@@ -259,6 +261,17 @@
                     Call WriteParamHeader()
                     WriteTextLog(Param & " = " & Value)
                     WriteTextLog(TempString)
+                End If
+
+                'Currently assumes TUNE, TUNE_LOW and TUNE_HIGH appear in the log in this order!
+                If Param = "TUNE_LOW" And CH6_Tune = True Then
+                    Call WriteParamHeader()
+                    WriteTextLog("Information: CH6 Tuning: Low Value set to: " & Value)
+                End If
+
+                If Param = "TUNE_HIGH" And CH6_Tune = True Then
+                    Call WriteParamHeader()
+                    WriteTextLog("Information: CH6 Tuning: High Value set to: " & Value)
                     WriteTextLog(vbNewLine)
                 End If
 
