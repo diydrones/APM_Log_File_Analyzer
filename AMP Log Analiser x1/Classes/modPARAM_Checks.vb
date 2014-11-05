@@ -261,6 +261,7 @@
                     Call WriteParamHeader()
                     WriteTextLog(Param & " = " & Value)
                     WriteTextLog(TempString)
+                    If CH6_Tune = False Then WriteTextLog(vbNewLine) 'there will not be any Mix / Max data to follow
                 End If
 
                 'Currently assumes TUNE, TUNE_LOW and TUNE_HIGH appear in the log in this order!
@@ -272,6 +273,14 @@
                 If Param = "TUNE_HIGH" And CH6_Tune = True Then
                     Call WriteParamHeader()
                     WriteTextLog("Information: CH6 Tuning: High Value set to: " & Value)
+                    WriteTextLog(vbNewLine)
+                End If
+
+                If Param = "FS_GPS_ENABLE" And Val(Value) = 0 Then
+                    Call WriteParamHeader()
+                    WriteTextLog("Warning: GPS Failsafe has been disabled.")
+                    WriteTextLog("Warning: Refer to this Issue for more information:")
+                    WriteTextLog("Warning: https://github.com/diydrones/ardupilot/issues/1560")
                     WriteTextLog(vbNewLine)
                 End If
 
