@@ -3,7 +3,7 @@ Imports System.Deployment.Application
 
 Module modVariable_Declarations
 
-    Public MyCurrentVersionNumber As String = "v2.0.0.1"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v2.0.0.2"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""               'frmMainForm.PublishedVers()                 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
     '### DEVELOPER TEMPORARY VARIABLES, TODO ###
@@ -77,12 +77,29 @@ Module modVariable_Declarations
     Public Param As String = ""                             'Parameter read from the Log.
     Public Value As Integer = 0                             'Paramter Value read from the Log.
     Public Param_Issue_Found As Boolean = False             'TRUE if one or more parameters issues are found.
-    Public Thr_Min As Integer = 0                           'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
-    Public Mot_Spin_Armed As Integer = 0                    'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
-    Public Log_Battery_Capacity As Integer                  'Battery Capacity as found in the APM Parameter Settings.
-    Public CH7_OPT As String = ""                            'Holds the display information of what Channel 7 is assigned to.
-    Public CH8_OPT As String = ""                            'Holds the display information of what Channel 7 is assigned to.
-    Public CH6_Tune As Boolean = False                      ' TRUE if TUNE param is set > 0
+    Public PARM_THR_MIN As Integer = 99                           'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
+    Public PARM_MOT_SPIN_ARMED As Integer = 99                    'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
+    Public PARM_BATTERY_CAPACITY As Integer = 99                 'Battery Capacity as found in the APM Parameter Settings.
+    Public PARM_CH7_OPT As Integer = 99                             'Value of Parameter found.
+    Public PARM_CH8_OPT As Integer = 99                          'Value of Parameter found.
+    Public CH7_OPT_TEXT As String = ""                          'Stores the Text that should be displayed when CH7 changes
+    Public CH8_OPT_TEXT As String = ""                          'Stores the Text that should be displayed when CH8 changes
+    Public PARM_CH6_TUNE As Integer = 99                       ' TRUE if TUNE param is set > 0
+    Public PARM_ACRO_TRAINER As Integer = 99                     ' Value of Parameter found
+    Public PARM_ARMING_CHECK As Integer = 99                     ' Value of Parameter found.
+    Public PARM_RTL_ALT As Integer = 99                     ' Value of Parameter found.
+    Public PARM_RTL_ALT_FINAL As Integer = 99                     ' Value of Parameter found.
+    Public PARM_RTL_LOIT_TIME As Integer = 99                     ' Value of Parameter found.
+    Public PARM_COMPASS_OFS_X As Integer = 99                     ' Value of Parameter found.
+    Public PARM_COMPASS_OFS_Y As Integer = 99                     ' Value of Parameter found.
+    Public PARM_COMPASS_OFS_Z As Integer = 99                     ' Value of Parameter found.
+    Public PARM_INS_PRODUCT_ID As Integer = 99                     ' Value of Parameter found.
+    Public PARM_AHRS_EKF_USE As Integer = 99                     ' Value of Parameter found.
+    Public PARM_TUNE As Integer = 99                             ' Value of Parameter found.
+    Public PARM_TUNE_LOW As Integer = 99                        ' Value of Parameter found.
+    Public PARM_TUNE_HIGH As Integer = 99                         ' Value of Parameter found.
+    Public PARM_FS_GPS_ENABLE As Integer = 99                     ' Value of Parameter found.
+
 
     'Delcare the NTUN Variables
     Public Log_NTUN_WPDst As Single = 0

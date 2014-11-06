@@ -191,7 +191,7 @@
                             Else
                                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 Switch is High.")
                             End If
-                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 function: " & CH7_OPT)
+                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 function: " & CH7_OPT_TEXT)
                         End If
 
                         If Log_DU32_CH8_Switch <> (((Log_DU32_Value And (2 ^ 11)) > 0) + ((Log_DU32_Value And (2 ^ 12)))) Then
@@ -203,7 +203,7 @@
                             Else
                                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 Switch is High.")
                             End If
-                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 function: " & CH8_OPT)
+                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 function: " & CH8_OPT_TEXT)
                         End If
 
                         If Log_DU32_AutoWait <> ((Log_DU32_Value And (2 ^ 5)) > 0) Then
@@ -243,7 +243,7 @@
                             Else
                                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 Switch is High.")
                             End If
-                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 function: " & CH7_OPT)
+                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH7 function: " & CH7_OPT_TEXT)
                         End If
 
 
@@ -256,7 +256,7 @@
                             Else
                                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 Switch is High.")
                             End If
-                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 function: " & CH8_OPT)
+                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Rx Information: CH8 function: " & CH8_OPT_TEXT)
                         End If
 
                         If Log_DU32_AutoWait <> ((Log_DU32_Value And (2 ^ 5)) > 0) Then

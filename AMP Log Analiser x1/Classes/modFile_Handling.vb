@@ -56,24 +56,27 @@ Module modFile_Handling
 
         'Check the program is compatible with this log file version.
         If Ignore_LOG_Version = False Then
-            If ArduType = "ArduCopter" And VersionCompare("3.1", ArduVersion) = False Then 'Inverse VersionCompare to produce the correct result.
-                WriteTextLog("Log file created by an old ArduCopter firmware version!")
-                strTemp = "            Log must be created by APM firmware v3.1 or above." & vbNewLine
-                strTemp = strTemp & "Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
-                MsgBox(strTemp, vbOKOnly, "Error")
-                FileDataSuitable = True
+            If ArduType = "ArduCopter" Then
+                If VersionCompare("3.1", ArduVersion) = False Then 'Inverse VersionCompare to produce the correct result.
+                    WriteTextLog("Log file created by an old ArduCopter firmware version!")
+                    strTemp = "            Log must be created by APM firmware v3.1 or above." & vbNewLine
+                    strTemp = strTemp & "Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
+                    MsgBox(strTemp, vbOKOnly, "Error")
+                    FileDataSuitable = True
+                End If
             End If
 
             'Display v3.2 warning, not fully complatible yet.
-            If ArduType = "ArduCopter" And VersionCompare(ArduVersion, "3.1.5") = False Then 'ArduVersion > "V3.1.5" Then
-                WriteTextLog("Log file created by a new ArduCopter firmware version!")
-                strTemp = "This Log file was created by a new version, it may not be fully supported yet." & vbNewLine
-                strTemp = strTemp & "            Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
-                strTemp = strTemp & "                     Attempt to run anyway?." & vbNewLine
-                If MsgBox(strTemp, vbYesNo, "Error") = vbNo Then
-                    FileDataSuitable = True
+            If ArduType = "ArduCopter" Then
+                If VersionCompare(ArduVersion, "3.1.5") = False Then 'ArduVersion > "V3.1.5" Then
+                    WriteTextLog("Log file created by a new ArduCopter firmware version!")
+                    strTemp = "This Log file was created by a new version, it may not be fully supported yet." & vbNewLine
+                    strTemp = strTemp & "            Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
+                    strTemp = strTemp & "                     Attempt to run anyway?." & vbNewLine
+                    If MsgBox(strTemp, vbYesNo, "Error") = vbNo Then
+                        FileDataSuitable = True
+                    End If
                 End If
-
             End If
             If ArduType = "ArduPlane" Then
                 WriteTextLog("Log file created by an old ArduPlane firmware version!")
@@ -107,7 +110,7 @@ Module modFile_Handling
 
     End Function
 
-    Public Sub FindLoggingData()
+    Public Sub FindLoggingDataAndParams()
         Dim MotorsDetectedForV3_2 As Boolean = False 'for v3.2 we need to look at the actual datline not just the FMT line.
         APM_No_Motors = 0
         'Do some warnings about DEVELOPER IGNORES
@@ -148,7 +151,7 @@ Module modFile_Handling
             DataArray(DataArrayCounter) = DataSplit
             'Debug.Print("--- Paramter " & DataArrayCounter & " = " & DataArray(DataArrayCounter))
 
-            ' Support for Firmware v3.1.? 
+            ' Header Data Support for Firmware v3.1.? 
             If DataArray(0) = "ArduCopter" Then ArduType = "ArduCopter" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
             If DataArray(0) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
             If DataArray(0) = "Free" And DataArray(1) = "RAM:" Then APM_Free_RAM = DataArray(2)
@@ -160,8 +163,9 @@ Module modFile_Handling
                     APM_No_Motors = 0
                 End If
             End If
-            ' Support Firmware v3.2.? 
+            ' Header Data Support Firmware v3.2.? 
             If DataArray(0) = "MSG" And DataArray(1) = "ArduCopter" Then ArduType = "ArduCopter" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
+            If DataArray(0) = "MSG" And DataArray(1) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
             If DataArray(0) = "MSG" And DataArray(1) = "PX4:" Then APM_Version = DataArray(1) & " " & DataArray(2) & " " & DataArray(3) & " " & DataArray(4)
             If DataArray(0) = "RCOU" And MotorsDetectedForV3_2 = False Then
                 For N = 2 To 9
@@ -170,7 +174,7 @@ Module modFile_Handling
                 MotorsDetectedForV3_2 = True
             End If
 
-            ' Support for all Firmware
+            ' Logging Data Support for all Firmwares
             If DataArray(0) = "PARM" And DataArray(1) = "FRAME" Then APM_Frame_Type = DataArray(2)
             If DataArray(0) = "PARM" And DataArray(1) = "INS_PRODUCT_ID" Then Hardware = DataArray(2)
             If DataArray(0) = "IMU" Then IMU_Logging = True
@@ -200,7 +204,7 @@ Module modFile_Handling
             If DataArray(0) = "CAM" Then CAM_Logging = True
             If DataArray(0) = "ERR" Then ERR_Logging = True
 
-            'Support for v3.2
+            'Logging Data Support for v3.2
             If DataArray(0) = "GPS2" Then GPS2_Logging = True
             If DataArray(0) = "IMU2" Then IMU2_Logging = True
             If DataArray(0) = "IMU3" Then IMU3_Logging = True
@@ -220,6 +224,53 @@ Module modFile_Handling
             If DataArray(0) = "POWR" Then POWR_Logging = True
             If DataArray(0) = "RAD" Then RAD_Logging = True
             If DataArray(0) = "SIM" Then SIM_Logging = True
+
+            ' Parameter Support for all Firmwares
+            'A Parameter value should have only 3 pieces of data!
+            If DataArray(0) = "PARM" Then
+                If IsNumeric(DataArray(2)) = False Or IsNothing(DataArray(3)) = False Then
+                    Debug.Print("================================================================")
+                    Debug.Print("== File Corruption Detected on Data Line " & DataLine & ", line ignored! ==")
+                    Debug.Print("================================================================")
+                    ErrorCount = ErrorCount + 1
+                    With frmMainForm
+                        .lblErrors.Visible = True
+                        .lblErrors.Refresh()
+                        .lblErrorCountNo.Visible = True
+                        .lblErrorCount.Visible = True
+                        .lblErrorCountNo.Text = ErrorCount
+                        .lblErrorCount.Refresh()
+                        .lblErrorCountNo.Refresh()
+                    End With
+                Else
+                    Param = DataArray(1)
+                    Value = Val(DataArray(2))
+
+                    'Write the parameter found to the Parameter List Box
+                    frmParameters.lstboxParameters.Items.Add(Param & "  =  " & Value)
+
+                    'Set the Parameters Values
+                    If Param = "ACRO_TRAINER" Then PARM_ACRO_TRAINER = Val(Value)
+                    If Param = "THR_MIN" Then PARM_THR_MIN = Val(Value)
+                    If Param = "MOT_SPIN_ARMED" Then PARM_MOT_SPIN_ARMED = Val(Value)
+                    If Param = "BATT_CAPACITY" Then PARM_BATTERY_CAPACITY = Val(Value)
+                    If Param = "ARMING_CHECK" Then PARM_ARMING_CHECK = Val(Value)
+                    If Param = "CH7_OPT" Then PARM_CH7_OPT = Val(Value)
+                    If Param = "CH8_OPT" Then PARM_CH8_OPT = Val(Value)
+                    If Param = "RTL_ALT" Then PARM_RTL_ALT = Val(Value)
+                    If Param = "RTL_ALT_FINAL" Then PARM_RTL_ALT_FINAL = Val(Value)
+                    If Param = "RTL_LOIT_TIME" Then PARM_RTL_LOIT_TIME = Val(Value)
+                    If Param = "COMPASS_OFS_X" Then PARM_COMPASS_OFS_X = Val(Value)
+                    If Param = "COMPASS_OFS_Y" Then PARM_COMPASS_OFS_Y = Val(Value)
+                    If Param = "COMPASS_OFS_Z" Then PARM_COMPASS_OFS_Z = Val(Value)
+                    If Param = "INS_PRODUCT_ID" Then PARM_INS_PRODUCT_ID = Val(Value)
+                    If Param = "AHRS_EKF_USE" Then PARM_AHRS_EKF_USE = Val(Value)
+                    If Param = "TUNE" Then PARM_TUNE = Val(Value)
+                    If Param = "TUNE_LOW" Then PARM_TUNE_LOW = Val(Value)
+                    If Param = "TUNE_HIGH" Then PARM_TUNE_HIGH = Val(Value)
+                    If Param = "FS_GPS_ENABLE" Then PARM_FS_GPS_ENABLE = Val(Value)
+                End If
+            End If
 
             TotalDataLines = TotalDataLines + 1
         Loop

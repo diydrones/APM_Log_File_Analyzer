@@ -490,11 +490,11 @@ Module modDisplay_Functions
             WriteTextLog("")
 
             'Add the code to check on Capacity Consumption against the set Battery Capacity in the Parameters.
-            If Log_Total_Current > (Log_Battery_Capacity * 80) / 100 Then
+            If Log_Total_Current > (PARM_BATTERY_CAPACITY * 80) / 100 Then
                 WriteTextLog("")
-                WriteTextLog("WARNING: Battery Capacity in Parameters is set to: " & Log_Battery_Capacity)
+                WriteTextLog("WARNING: Battery Capacity in Parameters is set to: " & PARM_BATTERY_CAPACITY)
                 WriteTextLog("WARNING: However, Capacity used in this flight is: " & Log_Total_Current)
-                WriteTextLog("WARNING: This means you have used " & (Log_Total_Current / Log_Battery_Capacity) * 100 & "% of the total Capacity")
+                WriteTextLog("WARNING: This means you have used " & (Log_Total_Current / PARM_BATTERY_CAPACITY) * 100 & "% of the total Capacity")
                 WriteTextLog("WARNING: First, Check the Battery Capacity Parameter setting is correct.")
                 WriteTextLog("WARNING: Second, check the Power Calibration: https://www.youtube.com/watch?v=tEA0Or-1n18")
                 WriteTextLog("WARNING: Thrid, reduce flight times to protect the main battery!")
