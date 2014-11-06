@@ -4,12 +4,28 @@
         Param = ""                                      'Parameter read from the Log.
         Value = 0                                       'Paramter Value read from the Log.
         Param_Issue_Found = False                       'TRUE if one or more parameters issues are found.
-        Thr_Min = 0                                     'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
-        Mot_Spin_Armed = 0                              'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
-        Log_Battery_Capacity = 0                        'Battery Capacity as found in the APM Parameter Settings.
-        CH7_OPT = ""                                    'Holds the display information of what Channel 7 is assigned to.
-        CH8_OPT = ""                                    'Holds the display information of what Channel 7 is assigned to.
-        CH6_Tune = False                                ' TRUE if TUNE param is set > 0
+        PARM_THR_MIN = 99                                     'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
+        PARM_MOT_SPIN_ARMED = 99                              'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
+        PARM_BATTERY_CAPACITY = 99                        'Battery Capacity as found in the APM Parameter Settings.
+        PARM_CH7_OPT = 99                                    'Holds the display information of what Channel 7 is assigned to.
+        PARM_CH8_OPT = 99                                    'Holds the display information of what Channel 8 is assigned to.
+        CH7_OPT_TEXT = ""                                   'Stores the Text that should be displayed when CH7 changes
+        CH8_OPT_TEXT = ""                                   'Stores the Text that should be displayed when CH8 changes
+        PARM_CH6_TUNE = 99                                ' TRUE if TUNE param is set > 0
+        PARM_ACRO_TRAINER = 99                               ' Value of Parameter found.
+        PARM_ARMING_CHECK = 99                               ' Value of Parameter found.
+        PARM_RTL_ALT = 99                                    ' Value of Parameter found.
+        PARM_RTL_ALT_FINAL = 99                          ' Value of Parameter found.
+        PARM_RTL_LOIT_TIME = 99                          ' Value of Parameter found.
+        PARM_COMPASS_OFS_X = 99                          ' Value of Parameter found.
+        PARM_COMPASS_OFS_Y = 99                          ' Value of Parameter found.
+        PARM_COMPASS_OFS_Z = 99                          ' Value of Parameter found.
+        PARM_INS_PRODUCT_ID = 99                             ' Value of Parameter found.
+        PARM_AHRS_EKF_USE = 99                           ' Value of Parameter found.
+        PARM_TUNE = 99                                  ' Value of Parameter found.
+        PARM_TUNE_LOW = 99                               ' Value of Parameter found.
+        PARM_TUNE_HIGH = 99                              ' Value of Parameter found.
+        PARM_FS_GPS_ENABLE = 99                          ' Value of Parameter found.
 
         'Initialise the INAV Variables
         Log_INAV_Home_GLat = 0                           'Hold where the APM considers home to be.
