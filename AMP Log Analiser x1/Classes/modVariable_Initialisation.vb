@@ -4,6 +4,16 @@
         Param = ""                                      'Parameter read from the Log.
         Value = 0                                       'Paramter Value read from the Log.
         Param_Issue_Found = False                       'TRUE if one or more parameters issues are found.
+
+        FileOrderCorrect = True                      ' File should have an order of FMT, PARAM, DATA, End of File. Wierd entries will not be tollerated.
+        FoundFMT = False                             'True when the First FMT line is found.
+        EndOfFMT = False                             'True when we find the first parameter of data.
+        FoundPARAM = False                           'True when the first PARAM line is found.
+        EndOfPARAM = False                           'True when we find the first Data
+        IgnoreMoreParam = False                      ' True when the user has already been warned about the extra Parameters found.
+        WarnAboutExtraParams = False                  ' True if the log should report that parameters were found at the end (v3.2 issue)
+        WarnAboutExtraFMT = False                  ' True if the log should report that FMTs were found at the end (v3.2 issue)
+
         PARM_THR_MIN = 99                                     'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
         PARM_MOT_SPIN_ARMED = 99                              'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
         PARM_BATTERY_CAPACITY = 99                        'Battery Capacity as found in the APM Parameter Settings.
@@ -37,14 +47,22 @@
         Log_CMD_CId = 0                                 'CId: the mavlink message id
         Log_CMD_Copt = 0                                'Copt: the option parameter (used for many different purposes)
         Log_CMD_Prm1 = 0                                'Prm1: the command’s parameter (used for many different purposes)
+        Log_CMD_Prm2 = 0                                'Prm2: the command’s parameter (used for many different purposes)
+        Log_CMD_Prm3 = 0                                'Prm3: the command’s parameter (used for many different purposes)
+        Log_CMD_Prm4 = 0                                'Prm4: the command’s parameter (used for many different purposes)
         Log_CMD_Alt = 0                                 'Alt: the command’s altitude in meters
         Log_CMD_Lat = 0                                 'Lat: the command’s latitude position
         Log_CMD_Lng = 0                                 'Lng: the command’s longitude position
         Log_Last_CMD_Lat = 0                      'Holds the previous WP1 Co-ordinates
         Log_Last_CMD_Lng = 0                      'Holds the previous WP1 Co-ordinates
         Log_Last_CMD_Alt = 0                      'Holds the previous WP Alititude
-        Log_CMD_Dist1 = 0                    'Distance using current GPS when we hit the WP radius to the next way point
-        Log_CMD_Dist2 = 0                     'Distance between the two way points.
+        Log_CMD_Dist1 = 0                      'Distance between the last two way points.
+        Log_CMD_Dist2 = 0                      'Distance between the two way points.
+        Log_CMD_WPtoWP_Eff = 0                 'Holds the Capacity used at the start of each new WP to calculate the capcity used to get to the new WP.
+        Log_CMD_WP_Speed = 0                   'Holds either the Parameter WPNAV_SPEED or the last Command Waypoint Speed.
+        Log_CMD_WP_PreviousSpeed = 0           'Holds either 0 or the last Command Waypoint Speed when it is changed.
+        Log_CMD_WP_PreviousTime = GPS_Base_Date 'Hold either GPS_Base_Date or the GPS Time when we hit the previous WP.
+
 
         'Initialise the DU32 Variables
         Log_DU32_ID = 0                                     'Holds the ID number, 7 (bit mask of internal state) or 9 (simple mode’s initial heading in centi-degrees)

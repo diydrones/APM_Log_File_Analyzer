@@ -35,6 +35,22 @@ Module modFile_Handling
         FileDataSuitable = False
         ' Function returns True if we need to exit the file processing.
 
+        ' v3.2 Issue - Display warning if Params have been found at the end
+        If WarnAboutExtraParams = True Then
+            WriteTextLog("WARNING: Curruption Of Parameter Lines Detected!")
+            WriteTextLog("WARNING: the Analyzer tried to handle them.")
+            WriteTextLog("WARNING: This is a v3.2 firmware issue that has been reported!")
+            WriteTextLog("")
+        End If
+
+        ' v3.2 Issue - Display warning if FMTs have been found at the end
+        If WarnAboutExtraFMT = True Then
+            WriteTextLog("WARNING: Curruption Of FMT Lines Detected!")
+            WriteTextLog("WARNING: the Analyzer tried to handle them.")
+            WriteTextLog("WARNING: This is a v3.2 firmware issue that has been reported!")
+            WriteTextLog("")
+        End If
+
         'Display the Release Candidate Warning
         If InStr(StrConv(ArduVersion, vbUpperCase), "RC") Then
             WriteTextLog("WARNING: Installed APM firmware is a Release Candidate version, only advanced pilots should be using this!")
@@ -68,7 +84,8 @@ Module modFile_Handling
 
             'Display v3.2 warning, not fully complatible yet.
             If ArduType = "ArduCopter" Then
-                If VersionCompare(ArduVersion, "3.1.5") = False Then 'ArduVersion > "V3.1.5" Then
+                'If VersionCompare(ArduVersion, "3.1.5") = False Then 'ArduVersion > "V3.1.5" Then
+                If VersionCompare(ArduVersion, "3.3") = False Then 'ArduVersion > "V3.3" Then
                     WriteTextLog("Log file created by a new ArduCopter firmware version!")
                     strTemp = "This Log file was created by a new version, it may not be fully supported yet." & vbNewLine
                     strTemp = strTemp & "            Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
@@ -112,11 +129,7 @@ Module modFile_Handling
 
     Public Sub FindLoggingDataAndParams()
         Dim MotorsDetectedForV3_2 As Boolean = False 'for v3.2 we need to look at the actual datline not just the FMT line.
-        Dim FileOrderCorrect As Boolean = True ' File should have an order of FMT, PARAM, DATA, End of File. Wierd entries will not be tollerated.
-        Dim FoundFMT As Boolean = False 'True when the First FMT line is found.
-        Dim EndOfFMT As Boolean = False 'True when we find the first parameter of data.
-        Dim FoundPARAM As Boolean = False 'True when the first PARAM line is found.
-        Dim EndOfPARAM As Boolean = False 'True when we find the first Data
+
 
         APM_No_Motors = 0
         'Do some warnings about DEVELOPER IGNORES
@@ -165,7 +178,9 @@ Module modFile_Handling
             If DataArray(0) = "FMT" Then
                 FoundFMT = True
                 If EndOfFMT = True Then
-                    MsgBox("Curruption Of FMT Lines Detected, analysis may be unreliable!", vbOKOnly & vbExclamation, "Warning!")
+
+                    'MsgBox("Curruption Of FMT Lines Detected, the Analyzer is trying to handle them (V3.2 issue)!", vbOKOnly & vbExclamation, "Warning!")
+                    WarnAboutExtraFMT = True
                     EndOfFMT = False
                 End If
             End If
@@ -242,9 +257,10 @@ Module modFile_Handling
             ' Parameter Support for all Firmwares
             'A Parameter value should have only 3 pieces of data!
             If DataArray(0) = "PARM" Then
-                If EndOfPARAM = True Then
-                    MsgBox("Curruption Of Parameters Detected, analysis may be unreliable!", vbOKOnly & vbExclamation, "Warning!")
-                    EndOfPARAM = False
+                If EndOfPARAM = True And IgnoreMoreParam = False Then
+                    WarnAboutExtraParams = True
+                    'MsgBox("Curruption Of Parameters Detected, the Analyzer is trying to handle them (V3.2 issue)!", vbOKOnly & vbExclamation, "Warning!")
+                    IgnoreMoreParam = True
                 End If
                 EndOfFMT = True
                 If IsNumeric(DataArray(2)) = False Or IsNothing(DataArray(3)) = False Then
@@ -262,32 +278,35 @@ Module modFile_Handling
                         .lblErrorCountNo.Refresh()
                     End With
                 Else
-                    Param = DataArray(1)
-                    Value = Val(DataArray(2))
+                    If EndOfPARAM = False Then 'Handles log corruption where PARAMS from previous logs are added at the end.
+                        Param = DataArray(1)
+                        Value = Val(DataArray(2))
 
-                    'Write the parameter found to the Parameter List Box
-                    frmParameters.lstboxParameters.Items.Add(Param & "  =  " & Value)
+                        'Write the parameter found to the Parameter List Box
+                        frmParameters.lstboxParameters.Items.Add(Param & "  =  " & Value)
 
-                    'Set the Parameters Values
-                    If Param = "ACRO_TRAINER" Then PARM_ACRO_TRAINER = Val(Value)
-                    If Param = "THR_MIN" Then PARM_THR_MIN = Val(Value)
-                    If Param = "MOT_SPIN_ARMED" Then PARM_MOT_SPIN_ARMED = Val(Value)
-                    If Param = "BATT_CAPACITY" Then PARM_BATTERY_CAPACITY = Val(Value)
-                    If Param = "ARMING_CHECK" Then PARM_ARMING_CHECK = Val(Value)
-                    If Param = "CH7_OPT" Then PARM_CH7_OPT = Val(Value)
-                    If Param = "CH8_OPT" Then PARM_CH8_OPT = Val(Value)
-                    If Param = "RTL_ALT" Then PARM_RTL_ALT = Val(Value)
-                    If Param = "RTL_ALT_FINAL" Then PARM_RTL_ALT_FINAL = Val(Value)
-                    If Param = "RTL_LOIT_TIME" Then PARM_RTL_LOIT_TIME = Val(Value)
-                    If Param = "COMPASS_OFS_X" Then PARM_COMPASS_OFS_X = Val(Value)
-                    If Param = "COMPASS_OFS_Y" Then PARM_COMPASS_OFS_Y = Val(Value)
-                    If Param = "COMPASS_OFS_Z" Then PARM_COMPASS_OFS_Z = Val(Value)
-                    If Param = "INS_PRODUCT_ID" Then PARM_INS_PRODUCT_ID = Val(Value)
-                    If Param = "AHRS_EKF_USE" Then PARM_AHRS_EKF_USE = Val(Value)
-                    If Param = "TUNE" Then PARM_TUNE = Val(Value)
-                    If Param = "TUNE_LOW" Then PARM_TUNE_LOW = Val(Value)
-                    If Param = "TUNE_HIGH" Then PARM_TUNE_HIGH = Val(Value)
-                    If Param = "FS_GPS_ENABLE" Then PARM_FS_GPS_ENABLE = Val(Value)
+                        'Set the Parameters Values
+                        If Param = "ACRO_TRAINER" Then PARM_ACRO_TRAINER = Val(Value)
+                        If Param = "THR_MIN" Then PARM_THR_MIN = Val(Value)
+                        If Param = "MOT_SPIN_ARMED" Then PARM_MOT_SPIN_ARMED = Val(Value)
+                        If Param = "BATT_CAPACITY" Then PARM_BATTERY_CAPACITY = Val(Value)
+                        If Param = "ARMING_CHECK" Then PARM_ARMING_CHECK = Val(Value)
+                        If Param = "CH7_OPT" Then PARM_CH7_OPT = Val(Value)
+                        If Param = "CH8_OPT" Then PARM_CH8_OPT = Val(Value)
+                        If Param = "RTL_ALT" Then PARM_RTL_ALT = Val(Value)
+                        If Param = "RTL_ALT_FINAL" Then PARM_RTL_ALT_FINAL = Val(Value)
+                        If Param = "RTL_LOIT_TIME" Then PARM_RTL_LOIT_TIME = Val(Value)
+                        If Param = "COMPASS_OFS_X" Then PARM_COMPASS_OFS_X = Val(Value)
+                        If Param = "COMPASS_OFS_Y" Then PARM_COMPASS_OFS_Y = Val(Value)
+                        If Param = "COMPASS_OFS_Z" Then PARM_COMPASS_OFS_Z = Val(Value)
+                        If Param = "INS_PRODUCT_ID" Then PARM_INS_PRODUCT_ID = Val(Value)
+                        If Param = "AHRS_EKF_USE" Then PARM_AHRS_EKF_USE = Val(Value)
+                        If Param = "TUNE" Then PARM_TUNE = Val(Value)
+                        If Param = "TUNE_LOW" Then PARM_TUNE_LOW = Val(Value)
+                        If Param = "TUNE_HIGH" Then PARM_TUNE_HIGH = Val(Value)
+                        If Param = "FS_GPS_ENABLE" Then PARM_FS_GPS_ENABLE = Val(Value)
+                        If Param = "WPNAV_SPEED" Then Log_CMD_WP_Speed = Val(Value)
+                    End If
                 End If
             End If
 
@@ -297,7 +316,7 @@ Module modFile_Handling
             MsgBox("No FMT Lines Detected, analysis will be unreliable!", vbOKOnly & vbExclamation, "Warning!")
         End If
         If FoundPARAM <> True Then
-            MsgBox("This log file was partially overwritten by a newer log!  Analysis is unreliable!", vbOKOnly & vbExclamation, "Warning!")
+            MsgBox("This log file was partially overwritten by a newer log!  Analysis is unreliable at the best!", vbOKOnly & vbExclamation, "Warning!")
         End If
         objReader.Close()
         Debug.Print("Success!")
