@@ -112,6 +112,12 @@ Module modFile_Handling
 
     Public Sub FindLoggingDataAndParams()
         Dim MotorsDetectedForV3_2 As Boolean = False 'for v3.2 we need to look at the actual datline not just the FMT line.
+        Dim FileOrderCorrect As Boolean = True ' File should have an order of FMT, PARAM, DATA, End of File. Wierd entries will not be tollerated.
+        Dim FoundFMT As Boolean = False 'True when the First FMT line is found.
+        Dim EndOfFMT As Boolean = False 'True when we find the first parameter of data.
+        Dim FoundPARAM As Boolean = False 'True when the first PARAM line is found.
+        Dim EndOfPARAM As Boolean = False 'True when we find the first Data
+
         APM_No_Motors = 0
         'Do some warnings about DEVELOPER IGNORES
         Debug.Print("1st Pass Started, Finding Logging Data...")
@@ -156,6 +162,13 @@ Module modFile_Handling
             If DataArray(0) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
             If DataArray(0) = "Free" And DataArray(1) = "RAM:" Then APM_Free_RAM = DataArray(2)
             If DataArray(0) = "APM" Then APM_Version = DataArray(1)
+            If DataArray(0) = "FMT" Then
+                FoundFMT = True
+                If EndOfFMT = True Then
+                    MsgBox("Curruption Of FMT Lines Detected, analysis may be unreliable!", vbOKOnly & vbExclamation, "Warning!")
+                    EndOfFMT = False
+                End If
+            End If
             If DataArray(0) = "FMT" And DataArray(3) = "MOT" Then
                 If Val(Mid(DataArray(DataArrayCounter), 4, Len(DataArray(DataArrayCounter)) - 1)) > 1 And Val(Mid(DataArray(DataArrayCounter), 4, Len(DataArray(DataArrayCounter)) - 1)) < 12 Then
                     APM_No_Motors = Mid(DataArray(DataArrayCounter), 4, Len(DataArray(DataArrayCounter)) - 1)
@@ -175,59 +188,65 @@ Module modFile_Handling
             End If
 
             ' Logging Data Support for all Firmwares
+            If DataArray(0) = "PARM" Then FoundPARAM = True
             If DataArray(0) = "PARM" And DataArray(1) = "FRAME" Then APM_Frame_Type = DataArray(2)
             If DataArray(0) = "PARM" And DataArray(1) = "INS_PRODUCT_ID" Then Hardware = DataArray(2)
-            If DataArray(0) = "IMU" Then IMU_Logging = True
-            If DataArray(0) = "GPS" Then GPS_Logging = True
-            If DataArray(0) = "CTUN" And Ignore_CTUN_Logging = False Then CTUN_Logging = True
-            If DataArray(0) = "PM" Then PM_Logging = True
-            If DataArray(0) = "CURR" Then CURR_Logging = True
-            If DataArray(0) = "NTUN" Then NTUN_Logging = True
-            If DataArray(0) = "MSG" Then MSG_Logging = True
-            If DataArray(0) = "ATUN" Then ATUN_Logging = True
-            If DataArray(0) = "ATDE" Then ATDE_logging = True
-            If DataArray(0) = "MOT" Then MOT_Logging = True
-            If DataArray(0) = "OF" Then OF_Logging = True
-            If DataArray(0) = "MAG" Then MAG_Logging = True
-            If DataArray(0) = "CMD" Then CMD_Logging = True
-            If DataArray(0) = "ATT" Then ATT_Logging = True
-            If DataArray(0) = "INAV" Then INAV_Logging = True
-            If DataArray(0) = "MODE" Then MODE_Logging = True
-            If DataArray(0) = "STRT" Then STRT_logging = True
-            If DataArray(0) = "EV" Then EV_Logging = True
-            If DataArray(0) = "D16" Then D16_Logging = True
-            If DataArray(0) = "DU16" Then DU16_Logging = True
-            If DataArray(0) = "D32" Then D32_Logging = True
-            If DataArray(0) = "DU32" Then DU32_Logging = True
-            If DataArray(0) = "DFLT" Then DFLT_Logging = True
-            If DataArray(0) = "PID" Then PID_Logging = True
-            If DataArray(0) = "CAM" Then CAM_Logging = True
-            If DataArray(0) = "ERR" Then ERR_Logging = True
+            If DataArray(0) = "IMU" Then IMU_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "GPS" Then GPS_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "CTUN" And Ignore_CTUN_Logging = False Then CTUN_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "PM" Then PM_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "CURR" Then CURR_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "NTUN" Then NTUN_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "MSG" Then MSG_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "ATUN" Then ATUN_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "ATDE" Then ATDE_logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "MOT" Then MOT_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "OF" Then OF_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "MAG" Then MAG_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "CMD" Then CMD_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "ATT" Then ATT_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "INAV" Then INAV_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "MODE" Then MODE_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "STRT" Then STRT_logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "EV" Then EV_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "D16" Then D16_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "DU16" Then DU16_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "D32" Then D32_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "DU32" Then DU32_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "DFLT" Then DFLT_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "PID" Then PID_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "CAM" Then CAM_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "ERR" Then ERR_Logging = True : EndOfFMT = True : EndOfPARAM = True
 
             'Logging Data Support for v3.2
-            If DataArray(0) = "GPS2" Then GPS2_Logging = True
-            If DataArray(0) = "IMU2" Then IMU2_Logging = True
-            If DataArray(0) = "IMU3" Then IMU3_Logging = True
-            If DataArray(0) = "MAG2" Then MAG2_Logging = True
-            If DataArray(0) = "MAG3" Then MAG3_Logging = True
-            If DataArray(0) = "AHR2" Then AHR2_Logging = True
-            If DataArray(0) = "EKF1" Then EKF1_Logging = True
-            If DataArray(0) = "EKF2" Then EKF2_Logging = True
-            If DataArray(0) = "EKF3" Then EKF3_Logging = True
-            If DataArray(0) = "EKF4" Then EKF4_Logging = True
-            If DataArray(0) = "TERR" Then TERR_Logging = True
-            If DataArray(0) = "UBX1" Then UBX1_Logging = True
-            If DataArray(0) = "UBX2" Then UBX2_Logging = True
-            If DataArray(0) = "RCIN" Then RCIN_Logging = True
-            If DataArray(0) = "RCOU" Then RCOU_Logging = True
-            If DataArray(0) = "BARO" Then BARO_Logging = True
-            If DataArray(0) = "POWR" Then POWR_Logging = True
-            If DataArray(0) = "RAD" Then RAD_Logging = True
-            If DataArray(0) = "SIM" Then SIM_Logging = True
+            If DataArray(0) = "GPS2" Then GPS2_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "IMU2" Then IMU2_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "IMU3" Then IMU3_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "MAG2" Then MAG2_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "MAG3" Then MAG3_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "AHR2" Then AHR2_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "EKF1" Then EKF1_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "EKF2" Then EKF2_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "EKF3" Then EKF3_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "EKF4" Then EKF4_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "TERR" Then TERR_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "UBX1" Then UBX1_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "UBX2" Then UBX2_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "RCIN" Then RCIN_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "RCOU" Then RCOU_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "BARO" Then BARO_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "POWR" Then POWR_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "RAD" Then RAD_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "SIM" Then SIM_Logging = True : EndOfFMT = True : EndOfPARAM = True
 
             ' Parameter Support for all Firmwares
             'A Parameter value should have only 3 pieces of data!
             If DataArray(0) = "PARM" Then
+                If EndOfPARAM = True Then
+                    MsgBox("Curruption Of Parameters Detected, analysis may be unreliable!", vbOKOnly & vbExclamation, "Warning!")
+                    EndOfPARAM = False
+                End If
+                EndOfFMT = True
                 If IsNumeric(DataArray(2)) = False Or IsNothing(DataArray(3)) = False Then
                     Debug.Print("================================================================")
                     Debug.Print("== File Corruption Detected on Data Line " & DataLine & ", line ignored! ==")
@@ -274,6 +293,12 @@ Module modFile_Handling
 
             TotalDataLines = TotalDataLines + 1
         Loop
+        If FoundFMT <> True Then
+            MsgBox("No FMT Lines Detected, analysis will be unreliable!", vbOKOnly & vbExclamation, "Warning!")
+        End If
+        If FoundPARAM <> True Then
+            MsgBox("This log file was partially overwritten by a newer log!  Analysis is unreliable!", vbOKOnly & vbExclamation, "Warning!")
+        End If
         objReader.Close()
         Debug.Print("Success!")
     End Sub
