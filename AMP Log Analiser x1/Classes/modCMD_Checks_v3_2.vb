@@ -14,6 +14,9 @@
             Log_CMD_CId = Val(DataArray(4))
             Log_CMD_Copt = 0                    'This value may not be available.
             Log_CMD_Prm1 = Val(DataArray(5))
+            Log_CMD_Prm2 = Val(DataArray(6))
+            Log_CMD_Prm3 = Val(DataArray(7))
+            Log_CMD_Prm4 = Val(DataArray(8))
             Log_CMD_Alt = Val(DataArray(11))
             Log_CMD_Lat = Val(DataArray(9))
             Log_CMD_Lng = Val(DataArray(10))
