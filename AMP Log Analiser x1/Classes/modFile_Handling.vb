@@ -197,7 +197,7 @@ Module modFile_Handling
             If DataArray(0) = "MSG" And DataArray(1) = "PX4:" Then APM_Version = DataArray(1) & " " & DataArray(2) & " " & DataArray(3) & " " & DataArray(4)
             If DataArray(0) = "RCOU" And MotorsDetectedForV3_2 = False Then
                 For N = 2 To 9
-                    If DataArray(N) > 0 Then APM_No_Motors = APM_No_Motors + 1
+                    If DataArray(N) > 0 And DataArray(N) < 32767 Then APM_No_Motors = APM_No_Motors + 1
                 Next
                 MotorsDetectedForV3_2 = True
             End If
