@@ -71,10 +71,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>5D25DD188B88640D2631FFAD10DFFF2BBE16D806</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>C9C9CF1972E636A2A8848B047CE46283720A0321</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>AMP Log Analiser x1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>AMP Log Analiser x1_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -184,6 +184,7 @@
     <Compile Include="Forms\SplashScreen.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="modUpdateHttp.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -225,6 +226,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AMP Log Analiser x1_1_TemporaryKey.pfx" />
     <None Include="AMP Log Analiser x1_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
