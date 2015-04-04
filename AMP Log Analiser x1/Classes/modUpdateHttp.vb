@@ -4,8 +4,19 @@ Imports System.Text.RegularExpressions
 Module modUpdateHttp
 
     Function AutoUpdateHttp(ByVal CurrentVersion As String) As Integer
+        ' KXG Apr 2015
+        ' This is a new Version to replace the FTP version that I have used upto version v2.0.0.5
+        ' It has been written as the FTP version required the use of a UserName and a Psssword to
+        ' gain access to the updated files hosted on the FTP server provided by TheQuestor.
+        ' As we go-live in a true OpenSource environment I needed to remove this Vulnerability.
+        ' The basic principal of operation remains though.
 
+        ' Due to TheQuestor's servers not allowing http access we have changed to x10Hosting.com
+        ' for the update server. 
 
+        ' Encryption has been removed as this is no longer required.
+
+        '  #########  CHECK THIS IS STILL ALL TRUE ##############
 
         '### Note: This has all changed to make the Updater Program push the file changes
         '###    instead of the Log_Analyzer pulling them from the FTP.
@@ -43,43 +54,41 @@ Module modUpdateHttp
         'ThisProgram.exe=v1.0=ftp://bionicbone.sshcs.com/Updates with this name for example.exe
 
 
+
+
         'Delcare the AutoUpdate Variables
         Try
             Debug.Print("Checking for updates...")
 
             Debug.Print("ProgramInstallationFolder: " & ProgramInstallationFolder)
-            'Debug.Print("TempProgramInstallationFolder " & TempProgramInstallationFolder)
+            Debug.Print("TempProgramInstallationFolder " & TempProgramInstallationFolder)
 
             If CurrentVersion = "" Then CurrentVersion = "v9.9.9.9" 'if the function is called incorrectly, force an update!
             AutoUpdateHttp = False                                          'Set as function failed
             Dim ProgramName As String = "APM Log File Analiser.exe"     'This program we want to update.
             Dim UpdaterProgramName As String = "UpdaterProgram.exe"     'This program we will use to update the main program.
             Dim UpdateToLocaleFolder As String = "C:\Temp\"
-            Dim SiteName As String = "guq;##cjpojdcpof~ttidt~dpn#"      'ftp://bionicbone.sshcs.com/
-            Dim UserName As String = "cjpojdcpof"                       'bionicbone
-            Dim Password As String = "s:8yu$S3b[gF"                     'r97xt#R2aZfE
+            Dim SiteName As String = "http://apmloganalyser.x10host.com/"      'New http address for Update Server 1
+            Dim SiteUpdatePath As String = "Upgrade/"
             Dim VersionFileName As String = "Versions.txt"
             Dim GetVer As String = ""
             Dim GetVerLink As String = ""
             Dim GetUpd As Integer = 0
 
-            'Debug.Print(DecryptData(SiteName))
-            'Debug.Print(DecryptData(UserName))
-            'Debug.Print(DecryptData(Password))
-
-            'Debug.Print("Update Server: " & SiteName)
+            Debug.Print("Update Server: " & SiteName)
+            Debug.Print("Update Server Path" & SiteName & SiteUpdatePath)
             Debug.Print("Program Name: " & ProgramName)
             Debug.Print("Current User Version: " & MyCurrentVersionNumber)
 
-            Debug.Print("Opening FTP update Connection...")
-            Dim WebRequest As System.Net.FtpWebRequest = System.Net.FtpWebRequest.Create(DecryptData(SiteName) & VersionFileName)
+            Debug.Print("Opening http update Connection...")
+            Dim WebRequest As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create(SiteName & VersionFileName)
             Debug.Print("Requesting file: " & VersionFileName)
-            WebRequest.Credentials = New Net.NetworkCredential(DecryptData(UserName), DecryptData(Password))
+            'WebRequest.Credentials = New Net.NetworkCredential(UserName, Password)
             Debug.Print("Waiting for a response...")
-            Dim WebResponse As System.Net.FtpWebResponse = WebRequest.GetResponse
+            Dim WebResponse As System.Net.HttpWebResponse = WebRequest.GetResponse
             Dim stream1 As System.IO.StreamReader = New System.IO.StreamReader(WebResponse.GetResponseStream())
             Dim ReadSource As String = stream1.ReadToEnd
-            'Debug.Print(VersionFileName & " contents: " & ReadSource)
+            Debug.Print(VersionFileName & " contents: " & ReadSource)
             Dim Regex As New System.Text.RegularExpressions.Regex(ProgramName & "=v(\d+).(\d+).(\d+).(\d+)=(.*?).exe")
             Debug.Print("Using Regex to find Mastches: " & ProgramName)
             Dim matches As MatchCollection = Regex.Matches(ReadSource)
@@ -91,7 +100,8 @@ Module modUpdateHttp
                 GetVer = RegSplit(1)
                 GetVerLink = RegSplit(2)
                 Debug.Print("Current Server Version: " & GetVer)
-                'Debug.Print("Current Server Link: " & GetVerLink)
+                Debug.Print("Current User Version: " & MyCurrentVersionNumber)
+                Debug.Print("Current Server Link: " & GetVerLink)
             Next
 
             Debug.Print("Checking versions...")
@@ -100,30 +110,34 @@ Module modUpdateHttp
 
                 Debug.Print("Updates are currently forced due to developments in progress!")
 
-                'Close current connections in case FTP will only allow one connection!
-                Debug.Print("Closing current update FTP connection...")
+                'Close current connections in case Http will only allow one connection!
+                Debug.Print("Closing current update Http connection...")
                 stream1.Close()
                 WebResponse.Close()
 
-                'Prepare to Get the updated program file via FTP.
+                'Prepare to Get the updated program file via Http.
                 Dim buffer(1023) As Byte ' Allocate a read buffer of 1kB size
                 Dim output As IO.Stream ' A file to save response
                 Dim bytesIn As Integer = 0 ' Number of bytes read to buffer
                 Dim totalBytesIn As Integer = 0 ' Total number of bytes received (= filesize)
 
-                'Prepare to Get the updater program file via FTP.
+                'Prepare to Get the updater program file via Http.
                 bytesIn = 0 ' Number of bytes read to buffer
                 totalBytesIn = 0 ' Total number of bytes received (= filesize)
 
-                'Prepare new FTP connection to Get the required file.
-                Debug.Print("Preparing a new FTP Download connection...")
-                Debug.Print("Requesting file: " & ProgramName & "...")
-                Dim ftpRequest2 As System.Net.FtpWebRequest = System.Net.FtpWebRequest.Create(DecryptData(SiteName) & UpdaterProgramName)
-                ftpRequest2.Credentials = New Net.NetworkCredential(DecryptData(UserName), DecryptData(Password))
-                ftpRequest2.Method = Net.WebRequestMethods.Ftp.DownloadFile
+                'Prepare new Http connection to Get the required file.
+                Debug.Print("Preparing a new Http Download connection...")
+                Debug.Print("Requesting file: " & UpdaterProgramName & "...")
+                Dim HttpRequest2 As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create(SiteName & SiteUpdatePath & UpdaterProgramName)
+
+                'FtpRequest2.Credentials = New Net.NetworkCredential(UserName, Password)
+                'FtppRequest2.Method = Net.WebRequestMethods.Ftp.DownloadFile
+
+                HttpRequest2.Method = Net.WebRequestMethods.Http.Get
+
                 Debug.Print("Waiting for a response...")
-                Dim ftpResponse2 As System.Net.FtpWebResponse = ftpRequest2.GetResponse
-                Debug.Print("Found FTP File.")
+                Dim HttpResponse2 As System.Net.HttpWebResponse = HttpRequest2.GetResponse
+                Debug.Print("Found Http File.")
 
                 'Need to check local folder exists, if not create it.
                 Debug.Print("Preparing to copy file to local machine...")
@@ -156,7 +170,7 @@ Module modUpdateHttp
                 Debug.Print("Success, at least by name, file is still empty!")
 
                 Debug.Print("Opening the stream...")
-                Dim stream3 As System.IO.Stream = ftpRequest2.GetResponse.GetResponseStream
+                Dim stream3 As System.IO.Stream = HttpRequest2.GetResponse.GetResponseStream
 
                 Debug.Print("Writing file contents...")
                 bytesIn = 1 ' Set initial value to 1 to get into loop. We get out of the loop when bytesIn is zero
@@ -172,9 +186,10 @@ Module modUpdateHttp
                         Application.DoEvents()
                     End If
                 Loop
+                Debug.Print("Total Byte Downloaded: " & totalBytesIn.ToString)
                 Debug.Print("Success!")
                 ' Close streams
-                Debug.Print("Closing FTP download connection...")
+                Debug.Print("Closing Http download connection...")
                 output.Close()
                 stream3.Close()
 
@@ -220,7 +235,7 @@ Module modUpdateHttp
             Else
                 'Close current connections!
                 Debug.Print("Program does not require an update.")
-                Debug.Print("Closing FTP update connection...")
+                Debug.Print("Closing Http update connection...")
                 stream1.Close()
                 WebResponse.Close()
                 Debug.Print("Success!")
@@ -238,4 +253,5 @@ Module modUpdateHttp
         End Try
 
     End Function
+
 End Module

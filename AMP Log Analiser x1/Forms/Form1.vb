@@ -283,7 +283,7 @@ Public Class frmMainForm
                 'display the Updating splash screen.
                 frmUpdate.Show()
                 frmUpdate.Refresh()
-                Call AutoUpdate(CurrentPublishVersionNumber)
+                Call AutoUpdateHttp(CurrentPublishVersionNumber)
                 frmUpdate.Close()
             End If
         End If
@@ -322,7 +322,7 @@ Public Class frmMainForm
         'display the Updating splash screen.
         frmUpdate.Show()
         frmUpdate.Refresh()
-        Call AutoUpdate(CurrentPublishVersionNumber)
+        Call AutoUpdateHttp(CurrentPublishVersionNumber)
         frmUpdate.Close()
     End Sub
 
