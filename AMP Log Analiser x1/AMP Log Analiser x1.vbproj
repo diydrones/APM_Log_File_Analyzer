@@ -157,7 +157,6 @@
     <Compile Include="Classes\modPM_Checks_v3_2.vb" />
     <Compile Include="Classes\modPM_MainAnalysis.vb" />
     <Compile Include="Classes\modTakeOffEvent.vb" />
-    <Compile Include="Classes\modUpdate.vb" />
     <Compile Include="Classes\modUpdateHttp.vb" />
     <Compile Include="Classes\modVariable_Declarations.vb" />
     <Compile Include="Classes\modVariable_Initialisation.vb" />
