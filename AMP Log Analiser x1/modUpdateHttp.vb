@@ -5,9 +5,9 @@ Module modUpdateHttp
     Function AutoUpdateHttp(ByVal CurrentVersion As String) As Integer
         ' KXG Apr 2015
         ' This is a new Version to replace the FTP version that I have used upto version v2.0.0.5
-        ' It has been written as the FTP version required the use of a UserName and a Psssword to
-        ' gain access to the updated files hosted on the FTP server provided by TheQuestor.
-        ' As we go-live in a true OpenSource environment I needed to remove this Vulnerability.
+        ' It has been written as the FTP version required the use of a UserName and a PAssword to
+        ' gain access to the updated files.
+        ' As we go-live with a true OpenSource environment I needed to remove this Vulnerability.
         ' The basic principal of operation remains though.
 
         ' Due to TheQuestor's servers not allowing http access we have changed to x10Hosting.com
@@ -15,45 +15,7 @@ Module modUpdateHttp
 
         ' Encryption has been removed as this is no longer required.
 
-        '  #########  CHECK THIS IS STILL ALL TRUE ##############
-
-        '### Note: This has all changed to make the Updater Program push the file changes
-        '###    instead of the Log_Analyzer pulling them from the FTP.
-
-        'The function will check an FTP website to see if there are any updates for a program.
-        'If found it will download the updated program to the local machine. Then it will download a
-        'program called UpdaterProgram.exe (used to update the folders on the local machine). 
-        'Once we have these program is will create a file on the local machine called 
-        'Update.txt, this file contains all the information like version numbers and installation
-        'paths that will be required by the UpdaterProgram. Once these are in place the
-        'APM_Log_Analiser program will pass control to the UpdaterProgram and then close down.
-        'The UpdaterProgram will install the new APM Log Analiser.exe and then start the
-        'new version.
-
-        'The Users CurrentVersion must be passed in the format "v0.0"
-        'The function will return:
-        '   False = Failed to execute the code successfully
-        '   True = Code executed successfully but program did not require updating.
-        '   99 = Code executed successfully and a new update was downloaded as required.
-
-        'The website must contain three files:
-        '   APM Log File Analiser.exe = The latest program .exe file.
-        '   UpdaterProgram.exe = The lastest updater program .exe file.
-        '   Versions.txt = Must contain a list of programs and versions available.
-
-        'Versions.txt formatting (create in notepad):
-        '   [ProgramName]=[V?.?]=[DownloadLink]
-        '   [ProgramName]=[V?.?]=[DownloadLink]
-        '   [ProgramName]=[V?.?]=[DownloadLink]
-        '   etc.
-
-        'Versions.txt Example:
-        'APM Log File Analiser.exe=v1.0=ftp://bionicbone.sshcs.com/APM Log File Analiser.exe
-        'Avitar.exe=v1.0=ftp://bionicbone.sshcs.com/UpdateAvitar.exe
-        'ThisProgram.exe=v1.0=ftp://bionicbone.sshcs.com/Updates with this name for example.exe
-
-
-
+        '  #########  Add the main details here ##############
 
         'Delcare the AutoUpdate Variables
         Try
@@ -67,15 +29,13 @@ Module modUpdateHttp
             Dim ProgramName As String = "APM Log File Analiser.exe"     'This program we want to update.
             Dim UpdaterProgramName As String = "UpdaterProgram.exe"     'This program we will use to update the main program.
             Dim UpdateToLocaleFolder As String = "C:\Temp\"
-            Dim SiteName As String = "http://apmloganalyser.x10host.com/"      'New http address for Update Server 1
-            Dim SiteUpdatePath As String = "Upgrade/"
+            Dim SiteName As String = "http://apmloganalyser.x10host.com/Upgrade/"      'New http address for Update Server 1
             Dim VersionFileName As String = "Versions.txt"
             Dim GetVer As String = ""
             Dim GetVerLink As String = ""
             Dim GetUpd As Integer = 0
 
             Debug.Print("Update Server: " & SiteName)
-            Debug.Print("Update Server Path" & SiteName & SiteUpdatePath)
             Debug.Print("Program Name: " & ProgramName)
             Debug.Print("Current User Version: " & MyCurrentVersionNumber)
 
@@ -127,7 +87,7 @@ Module modUpdateHttp
                 'Prepare new Http connection to Get the required file.
                 Debug.Print("Preparing a new Http Download connection...")
                 Debug.Print("Requesting file: " & UpdaterProgramName & "...")
-                Dim HttpRequest2 As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create(SiteName & SiteUpdatePath & UpdaterProgramName)
+                Dim HttpRequest2 As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create(SiteName & UpdaterProgramName)
 
                 'FtpRequest2.Credentials = New Net.NetworkCredential(UserName, Password)
                 'FtppRequest2.Method = Net.WebRequestMethods.Ftp.DownloadFile
@@ -185,7 +145,6 @@ Module modUpdateHttp
                         Application.DoEvents()
                     End If
                 Loop
-                Debug.Print("Total Byte Downloaded: " & totalBytesIn.ToString)
                 Debug.Print("Success!")
                 ' Close streams
                 Debug.Print("Closing Http download connection...")
