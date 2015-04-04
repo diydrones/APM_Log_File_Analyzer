@@ -15,7 +15,7 @@ Module modUpdateHttp
 
         ' Encryption has been removed as this is no longer required.
 
-        '  #########  CHECK THIS IS STILL ALL TRUE ##############
+        '  #########  CHECK THIS IS STILL ALL TRUE ############
 
         '### Note: This has all changed to make the Updater Program push the file changes
         '###    instead of the Log_Analyzer pulling them from the FTP.
