@@ -14,6 +14,9 @@ Module modUpdateHttp
         ' Due to TheQuestor's servers not allowing http access we have changed to x10Hosting.com
         ' for the primary update server and 000webhost.com as the secondary update server. 
 
+        ' Due to issues downloading some file types from almost all the web servers the files names are
+        ' appended with teh characters "apm" - after downloading the files are renamed.
+
         ' Encryption has been removed as this is no longer required.
 
         ' ---------------------------------------------------------------------------------------------
@@ -73,10 +76,6 @@ Module modUpdateHttp
             ' First we must detect which update server is available
             ' ######################
             SiteName = SiteName2
-            ' ######################
-
-            ' ######################
-            ' REMEMBER ALL FILENAMES ARE APPENED WITH THE LETTERS apm, WE NEED TO RENAME AFTER DOWNLOADING.
             ' ######################
 
 
