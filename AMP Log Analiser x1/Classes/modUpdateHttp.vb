@@ -62,10 +62,10 @@ Module modUpdateHttp
             Dim UpdaterProgramName As String = "UpdaterProgram.exe"         'This program we will use to update the main program.
             Dim UpdateToLocaleFolder As String = "C:\Temp\"                 'Local folder to store the temporary update files
             Dim SiteName As String = ""                                     'Will hold the SiteName that the update will be completed from.
-            Dim SiteName1 As String = "http://xapmloganalyser.x10host.com/"  'Primary WebSite Host for Updates
+            Dim SiteName1 As String = "http://apmloganalyser.x10host.com/"  'Primary WebSite Host for Updates
             Dim SiteName2 As String = "http://apmloganalyser.net63.net/"    'Secondary WebSite Host for Updates
             Dim SiteUpdatePath As String = "Upgrade/"
-            Dim VersionFileName As String = "Versions.rtf"
+            Dim VersionFileName As String = "Versions.txt"
             Dim GetVer As String = ""
             Dim GetVerLink As String = ""
             Dim GetUpd As Integer = 0
