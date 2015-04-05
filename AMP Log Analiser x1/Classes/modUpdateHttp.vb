@@ -6,38 +6,35 @@ Module modUpdateHttp
     Function AutoUpdateHttp(ByVal CurrentVersion As String) As Integer
         ' KXG Apr 2015
         ' This is a new Version to replace the FTP version that I have used upto version v2.0.0.5
-        ' It has been written as the FTP version required the use of a UserName and a Psssword to
+        ' It has been written because the FTP version required the use of a UserName and a Password to
         ' gain access to the updated files hosted on the FTP server provided by TheQuestor.
         ' As we go-live in a true OpenSource environment I needed to remove this Vulnerability.
         ' The basic principal of operation remains though.
 
         ' Due to TheQuestor's servers not allowing http access we have changed to x10Hosting.com
-        ' for the update server. 
+        ' for the primary update server and 000webhost.com as the secondary update server. 
 
         ' Encryption has been removed as this is no longer required.
 
-        '  #########  CHECK THIS IS STILL ALL TRUE ##############
+        ' ---------------------------------------------------------------------------------------------
 
-        '### Note: This has all changed to make the Updater Program push the file changes
-        '###    instead of the Log_Analyzer pulling them from the FTP.
-
-        'The function will check an FTP website to see if there are any updates for a program.
-        'If found it will download the updated program to the local machine. Then it will download a
-        'program called UpdaterProgram.exe (used to update the folders on the local machine). 
-        'Once we have these program is will create a file on the local machine called 
+        'The function will check a website to see if there are any updates for a program.
+        'If found it will download a program called UpdaterProgram.exe (used to update the
+        'folders on the local machine).
+        'Once we have the UpdaterProgram.exe is will create a file on the local machine called 
         'Update.txt, this file contains all the information like version numbers and installation
         'paths that will be required by the UpdaterProgram. Once these are in place the
         'APM_Log_Analiser program will pass control to the UpdaterProgram and then close down.
         'The UpdaterProgram will install the new APM Log Analiser.exe and then start the
-        'new version.
+        'new version, UpdaterProgram will also pull any new files that are required.
 
-        'The Users CurrentVersion must be passed in the format "v0.0"
+        'The Users CurrentVersion must be passed in the format "v0.0.0.0"
         'The function will return:
         '   False = Failed to execute the code successfully
         '   True = Code executed successfully but program did not require updating.
         '   99 = Code executed successfully and a new update was downloaded as required.
 
-        'The website must contain three files:
+        'The website must contain a minimum of three files:
         '   APM Log File Analiser.exe = The latest program .exe file.
         '   UpdaterProgram.exe = The lastest updater program .exe file.
         '   Versions.txt = Must contain a list of programs and versions available.
@@ -53,10 +50,6 @@ Module modUpdateHttp
         'Avitar.exe=v1.0=ftp://bionicbone.sshcs.com/UpdateAvitar.exe
         'ThisProgram.exe=v1.0=ftp://bionicbone.sshcs.com/Updates with this name for example.exe
 
-
-
-
-        'Delcare the AutoUpdate Variables
         Try
             Debug.Print("Checking for updates...")
 
@@ -65,18 +58,38 @@ Module modUpdateHttp
 
             If CurrentVersion = "" Then CurrentVersion = "v9.9.9.9" 'if the function is called incorrectly, force an update!
             AutoUpdateHttp = False                                          'Set as function failed
-            Dim ProgramName As String = "APM Log File Analiser.exe"     'This program we want to update.
-            Dim UpdaterProgramName As String = "UpdaterProgram.exe"     'This program we will use to update the main program.
-            Dim UpdateToLocaleFolder As String = "C:\Temp\"
-            Dim SiteName As String = "http://apmloganalyser.x10host.com/"      'New http address for Update Server 1
+            Dim ProgramName As String = "APM Log File Analiser.exe"         'This program we want to update.
+            Dim UpdaterProgramName As String = "UpdaterProgram.exe"         'This program we will use to update the main program.
+            Dim UpdateToLocaleFolder As String = "C:\Temp\"                 'Local folder to store the temporary update files
+            Dim SiteName As String = ""                                     'Will hold the SiteName that the update will be completed from.
+            Dim SiteName1 As String = "http://xapmloganalyser.x10host.com/"  'Primary WebSite Host for Updates
+            Dim SiteName2 As String = "http://apmloganalyser.net63.net/"    'Secondary WebSite Host for Updates
             Dim SiteUpdatePath As String = "Upgrade/"
-            Dim VersionFileName As String = "Versions.txt"
+            Dim VersionFileName As String = "Versions.rtf"
             Dim GetVer As String = ""
             Dim GetVerLink As String = ""
             Dim GetUpd As Integer = 0
 
+            ' Determine which WebSite host to use for the update.
+            Debug.Print("Finding an available Update Server...")
+            Dim WebService1 As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create(SiteName1 & VersionFileName)
+            Dim WebServiceResponse1 As System.Net.HttpWebResponse = WebService1.GetResponse
+            If WebServiceResponse1.ContentLength > 0 And WebServiceResponse1.ContentLength < 200 Then
+                SiteName = SiteName1
+            End If
+            WebService1 = Nothing
+            If SiteName = "" Then
+                Debug.Print("Primary Web Update Server is Not Available, Checking Secondary...")
+                Dim WebService2 As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create(SiteName2 & VersionFileName)
+                Dim WebServiceResponse2 As System.Net.HttpWebResponse = WebService2.GetResponse
+                If WebServiceResponse2.ContentLength > 0 And WebServiceResponse2.ContentLength < 200 Then
+                    SiteName = SiteName2
+                End If
+                WebService2 = Nothing
+            End If
+
             Debug.Print("Update Server: " & SiteName)
-            Debug.Print("Update Server Path" & SiteName & SiteUpdatePath)
+            Debug.Print("Update Server Path: " & SiteName & SiteUpdatePath)
             Debug.Print("Program Name: " & ProgramName)
             Debug.Print("Current User Version: " & MyCurrentVersionNumber)
 
