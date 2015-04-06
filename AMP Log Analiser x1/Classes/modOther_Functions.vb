@@ -1,4 +1,6 @@
 ﻿Imports System.Deployment.Application
+Imports System.Net
+
 Module modOther_Functions
 
     Function GetCurrentDeploymentCurrentVersion() As String
@@ -17,6 +19,19 @@ Module modOther_Functions
             End If
         End If
         GetCurrentDeploymentCurrentVersion = CurrentVersion
+    End Function
+
+    Public Function CheckAddress(ByVal URL As String) As Boolean
+        Try
+            Dim request As WebRequest = WebRequest.Create(URL)
+            Dim response As WebResponse = request.GetResponse()
+            If response.ContentLength > 300 Then
+                Return False
+            End If
+        Catch ex As Exception
+            Return False
+        End Try
+        Return True
     End Function
 
 End Module
