@@ -63,20 +63,33 @@ Module modUpdateHttp
             AutoUpdateHttp = False                                          'Set as function failed
             Dim ProgramName As String = "APM Log File Analiser.exe"             'This program we want to update.
             Dim UpdaterProgramName As String = "UpdaterProgram.exe"             'This program we will use to update the main program.
-            Dim UpdateToLocaleFolder As String = "C:\Temp\"
+            Dim UpdateToLocaleFolder As String = "C:\Temp"
             Dim SiteName1 As String = "http://apmloganalyser.x10host.com/"      'New http address for Update Server 1
             Dim SiteName2 As String = "http://www.apmloganalyser.net63.net/"      'New http address for Update Server 2
             Dim SiteName As String = ""
             Dim SiteUpdatePath As String = "update_v2_1_onwards/"
-            Dim New_VersionFileName As String = "Versions.html"         ' Changed to html from v2.1.0.0
+            Dim SiteVersionsPath As String = "versions/"
+            Dim New_VersionFileName As String = "versions.html"         ' Changed to html from v2.1.0.0
             Dim GetVer As String = ""
-            Dim GetVerLink As String = ""
             Dim GetUpd As Integer = 0
 
             ' First we must detect which update server is available
-            ' ######################
-            SiteName = SiteName2
-            ' ######################
+            If CheckAddress(SiteName1 & SiteVersionsPath & New_VersionFileName) = True Then
+                SiteName = SiteName1
+            End If
+            ' Only look at Site2 if Site1 was not available.
+            If SiteName = "" Then
+                If CheckAddress(SiteName2 & SiteVersionsPath & New_VersionFileName) = True Then
+                    SiteName = SiteName2
+                End If
+            End If
+
+            If SiteName = "" Then
+                'No Update Servers Available
+                AutoUpdateHttp = True
+                MsgBox("No Servers Available", vbOKOnly)
+                Exit Function
+            End If
 
 
             Debug.Print("Update Server: " & SiteName)
@@ -85,15 +98,14 @@ Module modUpdateHttp
             Debug.Print("Current User Version: " & MyCurrentVersionNumber)
 
             Debug.Print("Opening http update Connection...")
-            Dim WebRequest As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create(SiteName & New_VersionFileName)
+            Dim WebRequest As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create(SiteName & SiteVersionsPath & New_VersionFileName)
             Debug.Print("Requesting file: " & New_VersionFileName)
-            'WebRequest.Credentials = New Net.NetworkCredential(UserName, Password)
             Debug.Print("Waiting for a response...")
             Dim WebResponse As System.Net.HttpWebResponse = WebRequest.GetResponse
             Dim stream1 As System.IO.StreamReader = New System.IO.StreamReader(WebResponse.GetResponseStream())
             Dim ReadSource As String = stream1.ReadToEnd
             Debug.Print(New_VersionFileName & " contents: " & ReadSource)
-            Dim Regex As New System.Text.RegularExpressions.Regex(ProgramName & "=v(\d+).(\d+).(\d+).(\d+)=(.*?).exe")
+            Dim Regex As New System.Text.RegularExpressions.Regex(ProgramName & "=v(\d+).(\d+).(\d+).(\d+)=(\d+)")  '=(.*?).exe")
             Debug.Print("Using Regex to find Mastches: " & ProgramName)
             Dim matches As MatchCollection = Regex.Matches(ReadSource)
             Debug.Print("Found: " & matches.Count & ", program is known to server!")
@@ -102,17 +114,13 @@ Module modUpdateHttp
                 Dim RegSplit() As String = Split(ReadSource.ToString, "=")
                 Debug.Print("Getting Current Server Version for Match: " & match.Index + 1 & "...")
                 GetVer = RegSplit(1)
-                GetVerLink = RegSplit(2)
                 Debug.Print("Current Server Version: " & GetVer)
                 Debug.Print("Current User Version: " & MyCurrentVersionNumber)
-                Debug.Print("Current Server Link: " & GetVerLink)
             Next
 
             Debug.Print("Checking versions...")
             If GetVer > MyCurrentVersionNumber Then
                 Debug.Print("Update is available!")
-
-                Debug.Print("Updates are currently forced due to developments in progress!")
 
                 'Close current connections in case Http will only allow one connection!
                 Debug.Print("Closing current update Http connection...")
@@ -158,19 +166,19 @@ Module modUpdateHttp
 
                 'Need to check that the file we are about to create does not already exist.
                 'We know the folder already exists from the step above
-                Debug.Print("Checking previous update does not still exist: " & UpdateToLocaleFolder & UpdaterProgramName)
-                If File.Exists(UpdateToLocaleFolder & UpdaterProgramName & "apm") Then
-                    Debug.Print("Found: " & UpdateToLocaleFolder & UpdaterProgramName)
-                    Debug.Print("Attempting to delete old update file: " & UpdateToLocaleFolder & UpdaterProgramName)
-                    File.Delete(UpdateToLocaleFolder & UpdaterProgramName & "apm")
+                Debug.Print("Checking previous update does not still exist: " & UpdateToLocaleFolder & "\" & UpdaterProgramName)
+                If File.Exists(UpdateToLocaleFolder & "\" & UpdaterProgramName & "apm") Then
+                    Debug.Print("Found: " & UpdateToLocaleFolder & "\" & UpdaterProgramName)
+                    Debug.Print("Attempting to delete old update file: " & UpdateToLocaleFolder & "\" & UpdaterProgramName)
+                    File.Delete(UpdateToLocaleFolder & "\" & UpdaterProgramName & "apm")
                     Debug.Print("Success!")
                 Else
-                    Debug.Print("Not Found: " & UpdateToLocaleFolder & UpdaterProgramName & ", no further action required.")
+                    Debug.Print("Not Found: " & UpdateToLocaleFolder & "\" & UpdaterProgramName & ", no further action required.")
                 End If
 
                 ' Write the content to the output file
-                Debug.Print("Creating Local Update File: " & UpdateToLocaleFolder & UpdaterProgramName)
-                output = System.IO.File.Create(UpdateToLocaleFolder & UpdaterProgramName & "apm")
+                Debug.Print("Creating Local Update File: " & UpdateToLocaleFolder & "\" & UpdaterProgramName)
+                output = System.IO.File.Create(UpdateToLocaleFolder & "\" & UpdaterProgramName & "apm")
                 Debug.Print("Success, at least by name, file is still empty!")
 
                 Debug.Print("Opening the stream...")
@@ -197,44 +205,64 @@ Module modUpdateHttp
                 output.Close()
                 stream3.Close()
 
-                ' Rename the file to loose the "apm" from the end.
-                FileSystem.Rename(UpdateToLocaleFolder & UpdaterProgramName & "apm", UpdateToLocaleFolder & UpdaterProgramName)
-
-
-                'Create a file that passes all the information required to update the main program
-                'to the updater program.
-                Debug.Print("Creating an installation file for the updater (Update.txt)...")
-
-                Dim ScriptFileName As String = "Update.txt"
-                Debug.Print("Checking previous update does not still exist: " & UpdateToLocaleFolder & ScriptFileName)
-                If File.Exists(UpdateToLocaleFolder & ScriptFileName) Then
-                    Debug.Print("Found: " & UpdateToLocaleFolder & ScriptFileName)
-                    Debug.Print("Attempting to delete old update file: " & UpdateToLocaleFolder & ScriptFileName)
-                    File.Delete(UpdateToLocaleFolder & ScriptFileName)
+                ' Need to check that the file without the "apm" does not already exist.
+                Debug.Print("Checking previous update does not still exist: " & UpdateToLocaleFolder & "\" & UpdaterProgramName)
+                If File.Exists(UpdateToLocaleFolder & "\" & UpdaterProgramName) Then
+                    Debug.Print("Found: " & UpdateToLocaleFolder & "\" & UpdaterProgramName)
+                    Debug.Print("Attempting to delete old update file: " & UpdateToLocaleFolder & "\" & UpdaterProgramName)
+                    File.Delete(UpdateToLocaleFolder & "\" & UpdaterProgramName)
                     Debug.Print("Success!")
                 Else
-                    Debug.Print("Not Found: " & UpdateToLocaleFolder & ScriptFileName & ", no further action required.")
+                    Debug.Print("Not Found: " & UpdateToLocaleFolder & "\" & UpdaterProgramName & ", no further action required.")
                 End If
 
-                Dim objWriter As StreamWriter = File.CreateText(UpdateToLocaleFolder & ScriptFileName)
+                ' Rename the file to loose the "apm" from the end.
+                FileSystem.Rename(UpdateToLocaleFolder & "\" & UpdaterProgramName & "apm", UpdateToLocaleFolder & "\" & UpdaterProgramName)
 
 
-                objWriter.WriteLine("APM Log Analysis Updater file")
-                objWriter.WriteLine("")
-                objWriter.WriteLine("Program Name =" & ProgramName)
-                objWriter.WriteLine("Current Version =" & MyCurrentVersionNumber)
-                objWriter.WriteLine("Update Version =" & GetVer)
-                objWriter.WriteLine("")
-                objWriter.WriteLine("Installation Folder =" & ProgramInstallationFolder & "\")
-                objWriter.WriteLine("Updater Folder =" & UpdateToLocaleFolder)
-                objWriter.Flush()
-                objWriter.Close()
+                ''Create a file that passes all the information required to update the main program
+                ''to the updater program.
+                'Debug.Print("Creating an installation file for the updater (Update.txt)...")
 
-                AutoUpdateHttp = 99
+                'Dim ScriptFileName As String = "Update.txt"
+                'Debug.Print("Checking previous update does not still exist: " & UpdateToLocaleFolder & ScriptFileName)
+                'If File.Exists(UpdateToLocaleFolder & ScriptFileName) Then
+                '    Debug.Print("Found: " & UpdateToLocaleFolder & ScriptFileName)
+                '    Debug.Print("Attempting to delete old update file: " & UpdateToLocaleFolder & ScriptFileName)
+                '    File.Delete(UpdateToLocaleFolder & ScriptFileName)
+                '    Debug.Print("Success!")
+                'Else
+                '    Debug.Print("Not Found: " & UpdateToLocaleFolder & ScriptFileName & ", no further action required.")
+                'End If
+
+                'Dim objWriter As StreamWriter = File.CreateText(UpdateToLocaleFolder & ScriptFileName)
+
+
+                'objWriter.WriteLine("APM Log Analysis Updater file")
+                'objWriter.WriteLine("")
+                'objWriter.WriteLine("Program Name =" & ProgramName)
+                'objWriter.WriteLine("Current Version =" & MyCurrentVersionNumber)
+                'objWriter.WriteLine("Update Version =" & GetVer)
+                'objWriter.WriteLine("")
+                'objWriter.WriteLine("Installation Folder =" & ProgramInstallationFolder & "\")
+                'objWriter.WriteLine("Updater Folder =" & UpdateToLocaleFolder)
+                'objWriter.Flush()
+                'objWriter.Close()
+
+                'AutoUpdateHttp = 99
+
+                ' At this stage the UpdateToLocaleFolder should contain two files
+                ' Update.txt
+                ' UpdaterProgram.exe
+
 
                 'Call the updater program to do its stuff
-                Debug.Print("Start the Updater Program: " & UpdateToLocaleFolder & UpdaterProgramName)
-                System.Diagnostics.Process.Start(UpdateToLocaleFolder & UpdaterProgramName)
+                Debug.Print("Start the Updater Program: " & UpdateToLocaleFolder & "\" & UpdaterProgramName)
+
+                Dim StartInfo As New ProcessStartInfo
+                StartInfo.FileName = UpdateToLocaleFolder & "\" & UpdaterProgramName
+                StartInfo.Arguments = """" & ProgramName & """ " & MyCurrentVersionNumber & " " & GetVer & " """ & ProgramInstallationFolder & """ " & """" & UpdateToLocaleFolder & """ " & SiteName & SiteUpdatePath
+                System.Diagnostics.Process.Start(StartInfo)
 
                 Debug.Print("Close the APM Log Anayliser Program so it can update...")
                 Debug.Print(vbNewLine)
