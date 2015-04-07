@@ -71,10 +71,11 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>98EABBCE157185CCC8DA29562AA50B693D6C90E8</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>0AE70DA14BB8821D877B2C0B2580129C3AE975F0</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>AMP Log Analiser x1_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -225,8 +226,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AMP Log Analiser x1_1_TemporaryKey.pfx" />
-    <None Include="AMP Log Analiser x1_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
