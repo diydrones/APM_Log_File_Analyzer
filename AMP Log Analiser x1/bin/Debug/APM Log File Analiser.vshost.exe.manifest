@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APM Log File Analiser.exe" size="3360120">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="APM Log File Analiser.exe" size="3358584">
       <assemblyIdentity name="APM Log File Analiser" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>kCpbopLan7LaZDgZD2PoZ/jeqKQ=</dsig:DigestValue>
+        <dsig:DigestValue>xeT4wSqhseSaCkA6RbIsk7+qb8s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

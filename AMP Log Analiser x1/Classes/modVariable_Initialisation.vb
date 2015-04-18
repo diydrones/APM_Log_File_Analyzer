@@ -15,7 +15,6 @@
         WarnAboutExtraFMT = False                  ' True if the log should report that FMTs were found at the end (v3.2 issue)
 
         PARM_THR_MIN = 99                                     'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
-        PARM_THR_MAX = 99                                     'Used to check this is set between 800-1000
         PARM_MOT_SPIN_ARMED = 99                              'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
         PARM_BATTERY_CAPACITY = 99                        'Battery Capacity as found in the APM Parameter Settings.
         PARM_CH7_OPT = 99                                    'Holds the display information of what Channel 7 is assigned to.

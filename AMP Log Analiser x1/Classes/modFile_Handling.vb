@@ -288,7 +288,6 @@ Module modFile_Handling
                         'Set the Parameters Values
                         If Param = "ACRO_TRAINER" Then PARM_ACRO_TRAINER = Val(Value)
                         If Param = "THR_MIN" Then PARM_THR_MIN = Val(Value)
-                        If Param = "THR_MAX" Then PARM_THR_MAX = Val(Value)
                         If Param = "MOT_SPIN_ARMED" Then PARM_MOT_SPIN_ARMED = Val(Value)
                         If Param = "BATT_CAPACITY" Then PARM_BATTERY_CAPACITY = Val(Value)
                         If Param = "ARMING_CHECK" Then PARM_ARMING_CHECK = Val(Value)

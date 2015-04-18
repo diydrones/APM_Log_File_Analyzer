@@ -88,7 +88,6 @@ Module modVariable_Declarations
     Public WarnAboutExtraFMT As Boolean = False                  ' True if the log should report that FMTs were found at the end (v3.2 issue)
 
     Public PARM_THR_MIN As Integer = 99                           'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
-    Public PARM_THR_MAX As Integer = 99                            'Used to check this is set between 800-1000
     Public PARM_MOT_SPIN_ARMED As Integer = 99                    'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
     Public PARM_BATTERY_CAPACITY As Integer = 99                 'Battery Capacity as found in the APM Parameter Settings.
     Public PARM_CH7_OPT As Integer = 99                             'Value of Parameter found.

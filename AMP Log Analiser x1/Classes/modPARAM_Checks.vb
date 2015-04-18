@@ -46,29 +46,6 @@
             End If
         End If
 
-        ' CHeck the THR_MAX setting is set in the correct range.
-        ' if too low the Quad will not take off.
-        If PARM_THR_MAX <> 99 Then ' Ensure the Parmeter to available and set.
-            If PARM_THR_MAX < 800 Then
-                Call WriteParamHeader()
-                WriteTextLog("THR_MAX = " & PARM_THR_MAX)
-                WriteTextLog("Warning: MOT_MAX is set lower than normal.")
-                WriteTextLog("This may result in the UAV being underpowered and may not take off, normal setting is 800-1000.")
-                WriteTextLog("http://www.rcgroups.com/forums/showpost.php?p=31375573&postcount=4406")
-                WriteTextLog(vbNewLine)
-            End If
-            If PARM_THR_MAX > 1000 Then
-                Call WriteParamHeader()
-                WriteTextLog("THR_MAX = " & PARM_THR_MAX)
-                WriteTextLog("Warning: MOT_MAX is set Higher than normal.")
-                WriteTextLog("This may result in the UAV being overpowered and may become unstable, normal setting is 800-1000.")
-                WriteTextLog("At the time of writing there are no good web links to more information.")
-                WriteTextLog("If you are aware of more information please raise a new ""issue"" here so it can be added:")
-                WriteTextLog("https://github.com/diydrones/APM_Log_File_Analyzer")
-                WriteTextLog(vbNewLine)
-            End If
-        End If
-
         ' Warning if Pre-Arming Check is not fully active.
         If PARM_ARMING_CHECK <> 1 Then
             '0:Disabled  1:Enabled  -3:Skip Baro  -5:Skip Compass  -9:Skip GPS  -17:Skip INS  -33:Skip Parameters  -65:Skip RC  127:Skip Voltage
