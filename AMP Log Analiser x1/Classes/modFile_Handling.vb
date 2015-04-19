@@ -73,7 +73,7 @@ Module modFile_Handling
         'Check the program is compatible with this log file version.
         If Ignore_LOG_Version = False Then
             If ArduType = "ArduCopter" Then
-                If VersionCompare("3.1", ArduVersion) = False Then 'Inverse VersionCompare to produce the correct result.
+                If VersionCompare("3.0", ArduVersion) = False Then 'Inverse VersionCompare to produce the correct result.
                     WriteTextLog("Log file created by an old ArduCopter firmware version!")
                     strTemp = "            Log must be created by APM firmware v3.1 or above." & vbNewLine
                     strTemp = strTemp & "Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
@@ -288,6 +288,7 @@ Module modFile_Handling
                         'Set the Parameters Values
                         If Param = "ACRO_TRAINER" Then PARM_ACRO_TRAINER = Val(Value)
                         If Param = "THR_MIN" Then PARM_THR_MIN = Val(Value)
+                        If Param = "THR_MAX" Then PARM_THR_MAX = Val(Value)
                         If Param = "MOT_SPIN_ARMED" Then PARM_MOT_SPIN_ARMED = Val(Value)
                         If Param = "BATT_CAPACITY" Then PARM_BATTERY_CAPACITY = Val(Value)
                         If Param = "ARMING_CHECK" Then PARM_ARMING_CHECK = Val(Value)
@@ -476,16 +477,10 @@ Module modFile_Handling
 
         'It can handle upto 4 parts in a version number, i.e. 1.2.3.4, or 1.0.1.9999
 
-        ' WARNING: This routine takes around 40μs to call, use a local variable rather than multiple calls!
-
         CodeTimerStart = Format(Now, "ffff")
 
-        VersionCompare = True
+        VersionCompare = False
         Dim strTemp As String = ""
-        Dim Counter As Integer = 0
-        Dim V1(4) As Single
-        Dim V2(4) As Single
-
 
         Debug.Print("VersionCompare Called: " & LowestVersion & " <= " & HighestVersion & " ? ")
 
@@ -505,49 +500,27 @@ Module modFile_Handling
             End If
         Next
         HighestVersion = strTemp
+
+        ' make into 4 digits, else the .net compare will fail.
+        If Len(LowestVersion) = 1 Then LowestVersion = LowestVersion & ".0.0.0"
+        If Len(LowestVersion) = 3 Then LowestVersion = LowestVersion & ".0.0"
+        If Len(LowestVersion) = 5 Then LowestVersion = LowestVersion & ".0"
+        If Len(HighestVersion) = 1 Then HighestVersion = HighestVersion & ".0.0.0"
+        If Len(HighestVersion) = 3 Then HighestVersion = HighestVersion & ".0.0"
+        If Len(HighestVersion) = 5 Then HighestVersion = HighestVersion & ".0"
+
         Debug.Print("Stripping Complete: " & LowestVersion & " < " & HighestVersion & " ? ")
 
-        'We cannot compare strings that are formatted as "1.2.3.99" against "1.2.4.0" as the first would be higher.
-        'So what we need to do is split the numbers into parts, a little like an IP address.
-        Debug.Print("Separating Version Parts...")
-        strTemp = LowestVersion : Counter = 0
-        While InStr(StrConv(strTemp, vbUpperCase), ".") And Counter <> 4
-            V1(Counter) = Left(strTemp, InStr(StrConv(strTemp, vbUpperCase), ".") - 1)
-            strTemp = Right(strTemp, Len(strTemp) - InStr(StrConv(strTemp, vbUpperCase), "."))
-            Counter = Counter + 1
-        End While
-        V1(Counter) = strTemp
-        strTemp = HighestVersion : Counter = 0
-        While InStr(StrConv(strTemp, vbUpperCase), ".") And Counter <> 4
-            V2(Counter) = Left(strTemp, InStr(StrConv(strTemp, vbUpperCase), ".") - 1)
-            strTemp = Right(strTemp, Len(strTemp) - InStr(StrConv(strTemp, vbUpperCase), "."))
-            Counter = Counter + 1
-        End While
-        V2(Counter) = strTemp
-        Debug.Print("Separation Complete.")
+        Dim oldVersion As New Version(LowestVersion)
+        Dim newVersion As New Version(HighestVersion)
+        If Version.op_GreaterThan(newVersion, oldVersion) Then
+            VersionCompare = True
+        End If
 
-        'Debug.Print("Contents of Arrays...")
-        'For N = 0 To 3
-        '    Debug.Print("Lowest Version Part " & N & " = " & V1(N))
-        'Next
-        'For N = 0 To 3
-        '    Debug.Print("Highest Version Part " & N & " = " & V2(N))
-        'Next
-
-        Debug.Print("Comparing Versions...")
-        VersionCompare = True
-        If V1(0) > V2(0) Then VersionCompare = False
-        If V1(1) > V2(1) Then VersionCompare = False
-        If V1(2) > V2(2) Then VersionCompare = False
-        If V1(3) > V2(3) Then VersionCompare = False
         Debug.Print("Result: " & LowestVersion & " <= " & HighestVersion & " = " & VersionCompare)
-        'It should replace any IF statements that uses ArduVersion variable!!
-
-        'Clear up
-        Array.Clear(V1, 0, V1.Length)
-        Array.Clear(V2, 0, V2.Length)
 
         If Format(Now, "ffff") - CodeTimerStart > 1 Then Debug.Print("Version Check = " & Format(Now, "ffff") - CodeTimerStart & "μs")
 
     End Function
+
 End Module
