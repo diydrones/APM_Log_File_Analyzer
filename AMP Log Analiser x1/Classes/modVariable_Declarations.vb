@@ -86,6 +86,7 @@ Module modVariable_Declarations
     Public IgnoreMoreParam As Boolean = False                      ' True when the user has already been warned about the extra Parameters found.
     Public WarnAboutExtraParams As Boolean = False                  ' True if the log should report that parameters were found at the end (v3.2 issue)
     Public WarnAboutExtraFMT As Boolean = False                  ' True if the log should report that FMTs were found at the end (v3.2 issue)
+    Public TruncationIssue As Boolean = False                   'Used during DataLog file reading to detect truncation issues.
 
     Public PARM_THR_MIN As Integer = 99                           'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
     Public PARM_THR_MAX As Integer = 99                            'Used to check this is set between 800-1000

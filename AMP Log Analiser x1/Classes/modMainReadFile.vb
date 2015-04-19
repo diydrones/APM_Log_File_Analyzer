@@ -110,121 +110,120 @@ Module modMainReadFile
                 '######################################
                 Try
 
- 
-
-
                     'Debug.Print("DATA: " & DataArray(0).PadRight(5) & " Flying: " & Log_In_Flight & " -- Mode_In_Flight_Start_Time: " & Mode_In_Flight_Start_Time & " -- Log_Current_Mode_Flight_Time (Flying Only): " & Log_Current_Mode_Flight_Time & " -- Log_Current_Flight_Time: " & Log_Current_Flight_Time & " -- Log_Total_Flight_Time: " & Log_Total_Flight_Time & " -- Log_Current_Mode_Time: " & Log_Current_Mode_Time)
                     'Debug.Print("DATA: " & DataArray(0).PadRight(5) & " Flying: " & Log_In_Flight & " -- Log_CTUN_ThrOut: " & Log_CTUN_ThrOut & " -- CTUN_ThrottleUp: " & CTUN_ThrottleUp & " -- Log_Ground_BarAlt: " & Log_Ground_BarAlt & " -- Log_CTUN_BarAlt: " & Log_CTUN_BarAlt & " -- Log_Armed_BarAlt: " & Log_Armed_BarAlt & " -- Log_Disarmed_BarAlt: " & Log_Disarmed_BarAlt)
                     'Debug.Print("DATA: " & DataArray(0).PadRight(5) & " Flying: " & Log_In_Flight & " -- Dist_From_Launch: " & Format(Dist_From_Launch * 1000, "0.00") & " -- Mode_Min_Dist_From_Launch: " & Format(Mode_Min_Dist_From_Launch * 1000, "0.00") & " -- Mode_Max_Dist_From_Launch: " & Format(Mode_Max_Dist_From_Launch * 1000, "0.00"))
 
+                    ' Stop Processing data if we have detected the DataLog File Truncation Issue
+                    If TruncationIssue = False Then
 
-                    'EV Checks
-                    Call EV_Checks()
+                        'EV Checks
+                        Call EV_Checks()
 
-                    'Error Checks
-                    If frmMainForm.chkboxErrors.Checked = True Then
-                        Call ERROR_Checks()
-                    End If
-
-
-                    'Mode Checks
-                    Call Mode_Checks()
-
-                    'CURR Checks
-                    If DataArray(0) = "CURR" Then
-                        If ReadFileVersion = 3.1 Then
-                            Call CURR_Checks_v3_1()
-                        Else
-                            Call CURR_Checks_v3_2()
+                        'Error Checks
+                        If frmMainForm.chkboxErrors.Checked = True Then
+                            Call ERROR_Checks()
                         End If
-                    End If
-
-                    'CTUN Checks
-                    If DataArray(0) = "CTUN" Then
-                        If ReadFileVersion = 3.1 Then
-                            Call CTUN_Checks_v3_1()
-                        Else
-                            Call CTUN_Checks_v3_2()
-                        End If
-                    End If
-
-                    'GPS Checks
-                    Call GPS_Checks()
-
-                    'IMU Checks - Vibration
-                    Call IMU_Checks()
-
-                    'NTUN Checks, Navigation Data - MUST CALL BEFORE ATT due to Charting Data
-                    If DataArray(0) = "NTUN" Then
-                        If ReadFileVersion = 3.1 Then
-                            Call NTUN_Checks_v3_1()
-                        Else
-                            Call NTUN_Checks_v3_2()
-                        End If
-                    End If
 
 
-                    'ATT Checks, Roll and Pitch
-                    If DataArray(0) = "ATT" Then
-                        If ReadFileVersion = 3.1 Then
-                            Call ATT_Checks_v3_1()
-                        Else
-                            Call ATT_Checks_v3_2()
-                        End If
-                    End If
+                        'Mode Checks
+                        Call Mode_Checks()
 
-
-                    'PM Checks, process manager timings
-
-                    If frmMainForm.chkboxPM.Checked = True Then
-                        If DataArray(0) = "PM" Then
+                        'CURR Checks
+                        If DataArray(0) = "CURR" Then
                             If ReadFileVersion = 3.1 Then
-                                Call PM_Checks_v3_1()
+                                Call CURR_Checks_v3_1()
                             Else
-                                Call PM_Checks_v3_2()
+                                Call CURR_Checks_v3_2()
                             End If
                         End If
-                    End If
 
-                    'DU32 Checks
-                    Call DU32_Checks()
-
-                    'CMD Checks
-                    If frmMainForm.chkboxAutoCommands.Checked = True Then
-                        If DataArray(0) = "CMD" Then
+                        'CTUN Checks
+                        If DataArray(0) = "CTUN" Then
                             If ReadFileVersion = 3.1 Then
-                                Call CMD_Checks_v3_1()
+                                Call CTUN_Checks_v3_1()
                             Else
-                                Call CMD_Checks_v3_2()
+                                Call CTUN_Checks_v3_2()
                             End If
                         End If
+
+                        'GPS Checks
+                        Call GPS_Checks()
+
+                        'IMU Checks - Vibration
+                        Call IMU_Checks()
+
+                        'NTUN Checks, Navigation Data - MUST CALL BEFORE ATT due to Charting Data
+                        If DataArray(0) = "NTUN" Then
+                            If ReadFileVersion = 3.1 Then
+                                Call NTUN_Checks_v3_1()
+                            Else
+                                Call NTUN_Checks_v3_2()
+                            End If
+                        End If
+
+
+                        'ATT Checks, Roll and Pitch
+                        If DataArray(0) = "ATT" Then
+                            If ReadFileVersion = 3.1 Then
+                                Call ATT_Checks_v3_1()
+                            Else
+                                Call ATT_Checks_v3_2()
+                            End If
+                        End If
+
+
+                        'PM Checks, process manager timings
+
+                        If frmMainForm.chkboxPM.Checked = True Then
+                            If DataArray(0) = "PM" Then
+                                If ReadFileVersion = 3.1 Then
+                                    Call PM_Checks_v3_1()
+                                Else
+                                    Call PM_Checks_v3_2()
+                                End If
+                            End If
+                        End If
+
+                        'DU32 Checks
+                        Call DU32_Checks()
+
+                        'CMD Checks
+                        If frmMainForm.chkboxAutoCommands.Checked = True Then
+                            If DataArray(0) = "CMD" Then
+                                If ReadFileVersion = 3.1 Then
+                                    Call CMD_Checks_v3_1()
+                                Else
+                                    Call CMD_Checks_v3_2()
+                                End If
+                            End If
+                        End If
+
+                        'Additional Checks not related to any one log data type
+                        Call Additional_Checks()
+
+                        'This keeps log of how long we have been in this mode, note that this includes ground time!
+                        Log_Current_Mode_Time = DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+
+                        'Check the DEVELOPER OPTION not to read all the file, i.e. brown out detection
+                        If Read_LOG_Percentage <> 100 Then
+                            If DataLine / TotalDataLines * 100 > Read_LOG_Percentage Then Exit Do
+                        End If
+
+                        'Check ESCAPE has not been pressed
+                        .richtxtLogAnalysis.Focus()
+                        Application.DoEvents()
+                        If ESCPress = True Then
+                            WriteTextLog("")
+                            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": ERROR: User has aborted the analysis")
+                            ESCPress = False
+                            .lblEsc.Visible = False
+                            .btnGraphs.Visible = True
+                            .btnCopyText.Visible = True
+                            .btnParameters.Visible = True
+                            Exit Sub
+                        End If
                     End If
-
-                    'Additional Checks not related to any one log data type
-                    Call Additional_Checks()
-
-                    'This keeps log of how long we have been in this mode, note that this includes ground time!
-                    Log_Current_Mode_Time = DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
-
-                    'Check the DEVELOPER OPTION not to read all the file, i.e. brown out detection
-                    If Read_LOG_Percentage <> 100 Then
-                        If DataLine / TotalDataLines * 100 > Read_LOG_Percentage Then Exit Do
-                    End If
-
-                    'Check ESCAPE has not been pressed
-                    .richtxtLogAnalysis.Focus()
-                    Application.DoEvents()
-                    If ESCPress = True Then
-                        WriteTextLog("")
-                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": ERROR: User has aborted the analysis")
-                        ESCPress = False
-                        .lblEsc.Visible = False
-                        .btnGraphs.Visible = True
-                        .btnCopyText.Visible = True
-                        .btnParameters.Visible = True
-                        Exit Sub
-                    End If
-
 
                     'Catch Any Errors
                 Catch

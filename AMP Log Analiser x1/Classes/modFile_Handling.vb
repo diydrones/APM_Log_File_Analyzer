@@ -128,7 +128,7 @@ Module modFile_Handling
     End Function
 
     Public Sub FindLoggingDataAndParams()
-        Dim MotorsDetectedForV3_2 As Boolean = False 'for v3.2 we need to look at the actual datline not just the FMT line.
+        Dim MotorsDetectedForV3_2 As Boolean = False 'for v3.2 we need to look at the actual dataline not just the FMT line.
 
 
         APM_No_Motors = 0
