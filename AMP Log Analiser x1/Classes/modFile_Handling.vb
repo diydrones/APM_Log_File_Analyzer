@@ -481,22 +481,31 @@ Module modFile_Handling
 
         VersionCompare = False
         Dim strTemp As String = ""
+        Dim DetectRC As Boolean = False ' If we find RC then stop adding the numeric values
 
         Debug.Print("VersionCompare Called: " & LowestVersion & " <= " & HighestVersion & " ? ")
 
         'stripe out the non-numeric data from the 
         Debug.Print("Striping Out Non-Numeric Characters....")
-        strTemp = ""
+        strTemp = "" : DetectRC = False
         For N = 1 To Len(LowestVersion)
-            If Mid(LowestVersion, N, 1) >= "." And Mid(LowestVersion, N, 1) <= "9" Then
-                strTemp = strTemp & Mid(LowestVersion, N, 1)
+            If UCase(Mid(LowestVersion, N, 1)) <> "R" And UCase(Mid(LowestVersion, N, 1)) <> "C" And DetectRC = False Then
+                If Mid(LowestVersion, N, 1) >= "." And Mid(LowestVersion, N, 1) <= "9" Then
+                    strTemp = strTemp & Mid(LowestVersion, N, 1)
+                End If
+            Else
+                DetectRC = True
             End If
         Next
         LowestVersion = strTemp
-        strTemp = ""
+        strTemp = "" : DetectRC = False
         For N = 1 To Len(HighestVersion)
-            If Mid(HighestVersion, N, 1) >= "." And Mid(HighestVersion, N, 1) <= "9" Then
-                strTemp = strTemp & Mid(HighestVersion, N, 1)
+            If UCase(Mid(HighestVersion, N, 1)) <> "R" And UCase(Mid(HighestVersion, N, 1)) <> "C" And DetectRC = False Then
+                If Mid(HighestVersion, N, 1) >= "." And Mid(HighestVersion, N, 1) <= "9" Then
+                    strTemp = strTemp & Mid(HighestVersion, N, 1)
+                End If
+            Else
+                DetectRC = True
             End If
         Next
         HighestVersion = strTemp
