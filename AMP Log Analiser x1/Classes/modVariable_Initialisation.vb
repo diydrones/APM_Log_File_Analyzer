@@ -13,6 +13,7 @@
         IgnoreMoreParam = False                      ' True when the user has already been warned about the extra Parameters found.
         WarnAboutExtraParams = False                  ' True if the log should report that parameters were found at the end (v3.2 issue)
         WarnAboutExtraFMT = False                  ' True if the log should report that FMTs were found at the end (v3.2 issue)
+        TruncationIssue = False                         'Used during DataLog file reading to detect truncation issues.
 
         PARM_THR_MIN = 99                                     'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
         PARM_THR_MAX = 99                                     'Used to check this is set between 800-1000
