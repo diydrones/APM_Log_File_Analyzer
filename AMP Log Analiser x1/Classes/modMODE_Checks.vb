@@ -15,7 +15,7 @@
             If frmMainForm.chkboxSplitModeLandings.Checked = True Then Call AddModeTime()
 
             'ArduCopter and ArduPlane have the Mode "Name" in different cells, assume cell 1 if we dont know the type.
-            If ArduType = "ArduCopter" Then
+            If ArduType = "APM:Copter" Then
                 Log_Current_Mode = DataArray(1)
             ElseIf ArduType = "ArduPlane" Then
                 Log_Current_Mode = DataArray(2)
