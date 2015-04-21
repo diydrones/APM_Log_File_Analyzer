@@ -72,9 +72,9 @@ Module modFile_Handling
 
         'Check the program is compatible with this log file version.
         If Ignore_LOG_Version = False Then
-            If ArduType = "ArduCopter" Then
+            If ArduType = "ArduCopter" Or ArduType = "APM:Copter" Then
                 If VersionCompare("3.0", ArduVersion) = False Then 'Inverse VersionCompare to produce the correct result.
-                    WriteTextLog("Log file created by an old ArduCopter firmware version!")
+                    WriteTextLog("Log file created by an old APM:Copter firmware version!")
                     strTemp = "            Log must be created by APM firmware v3.1 or above." & vbNewLine
                     strTemp = strTemp & "Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
                     MsgBox(strTemp, vbOKOnly, "Error")
@@ -83,10 +83,10 @@ Module modFile_Handling
             End If
 
             'Display v3.2 warning, not fully complatible yet.
-            If ArduType = "ArduCopter" Then
+            If ArduType = "ArduCopter" Or ArduType = "APM:Copter" Then
                 'If VersionCompare(ArduVersion, "3.1.5") = False Then 'ArduVersion > "V3.1.5" Then
                 If VersionCompare(ArduVersion, "3.3") = False Then 'ArduVersion > "V3.3" Then
-                    WriteTextLog("Log file created by a new ArduCopter firmware version!")
+                    WriteTextLog("Log file created by a new APM:Copter firmware version!")
                     strTemp = "This Log file was created by a new version, it may not be fully supported yet." & vbNewLine
                     strTemp = strTemp & "            Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
                     strTemp = strTemp & "                     Attempt to run anyway?." & vbNewLine
@@ -109,7 +109,7 @@ Module modFile_Handling
 
         'Check to ensure the files contains the minimum data types required.
         If Ignore_LOG_Requirements = False Then
-            If ArduType = "ArduCopter" And (GPS_Logging = False Or EV_Logging = False) Then
+            If (ArduType = "ArduCopter" Or ArduType = "APM:Copter") And (GPS_Logging = False Or EV_Logging = False) Then
                 WriteTextLog("Log file does not contain the correct data!")
                 strTemp = "          Log must contain GPS and EV data as a minimum" & vbNewLine
                 strTemp = strTemp & "                                 for this program to be useful." & vbNewLine
@@ -171,7 +171,7 @@ Module modFile_Handling
             'Debug.Print("--- Paramter " & DataArrayCounter & " = " & DataArray(DataArrayCounter))
 
             ' Header Data Support for Firmware v3.1.? 
-            If DataArray(0) = "ArduCopter" Then ArduType = "ArduCopter" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
+            If DataArray(0) = "ArduCopter" Or DataArray(0) = "APM:Copter" Then ArduType = "APM:Copter" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
             If DataArray(0) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
             If DataArray(0) = "Free" And DataArray(1) = "RAM:" Then APM_Free_RAM = DataArray(2)
             If DataArray(0) = "APM" Then APM_Version = DataArray(1)
@@ -192,7 +192,7 @@ Module modFile_Handling
                 End If
             End If
             ' Header Data Support Firmware v3.2.? 
-            If DataArray(0) = "MSG" And DataArray(1) = "ArduCopter" Then ArduType = "ArduCopter" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
+            If DataArray(0) = "MSG" And DataArray(1) = "ArduCopter" Or DataArray(1) = "APM:Copter" Then ArduType = "APM:Copter" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
             If DataArray(0) = "MSG" And DataArray(1) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
             If DataArray(0) = "MSG" And DataArray(1) = "PX4:" Then APM_Version = DataArray(1) & " " & DataArray(2) & " " & DataArray(3) & " " & DataArray(4)
             If DataArray(0) = "RCOU" And MotorsDetectedForV3_2 = False Then
