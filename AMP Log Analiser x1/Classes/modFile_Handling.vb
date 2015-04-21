@@ -85,7 +85,7 @@ Module modFile_Handling
             'Display v3.2 warning, not fully complatible yet.
             If ArduType = "ArduCopter" Or ArduType = "APM:Copter" Then
                 'If VersionCompare(ArduVersion, "3.1.5") = False Then 'ArduVersion > "V3.1.5" Then
-                If VersionCompare(ArduVersion, "3.3") = False Then 'ArduVersion > "V3.3" Then
+                If VersionCompare(ArduVersion, "3.4") = False Then 'ArduVersion > "V3.3" Then
                     WriteTextLog("Log file created by a new APM:Copter firmware version!")
                     strTemp = "This Log file was created by a new version, it may not be fully supported yet." & vbNewLine
                     strTemp = strTemp & "            Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
