@@ -3,6 +3,7 @@ Imports System.Deployment.Application
 
 Module modVariable_Declarations
 
+
     Public MyCurrentVersionNumber As String = "v2.1.0.2"          'Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""           'frmMainForm.PublishedVers() 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 

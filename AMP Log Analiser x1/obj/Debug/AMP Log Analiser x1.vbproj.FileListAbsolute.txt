@@ -56,3 +56,4 @@ C:\Users\Kevin\Documents\GitHub\APM_Analyzer\APM_Log_File_Analyzer\AMP Log Anali
 C:\Users\Kevin\Documents\GitHub\APM_Analyzer\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.TrustInfo.xml
 C:\Users\Kevin\Documents\GitHub\APM_Analyzer\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.exe.manifest
 C:\Users\Kevin\Documents\GitHub\APM_Analyzer\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.application
+C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\Debug\APM Log File Analiser.exe.config
