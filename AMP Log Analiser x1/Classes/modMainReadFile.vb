@@ -50,8 +50,10 @@ Module modMainReadFile
             Dim ReadFileVersion As Double = 0
             If VersionCompare(ArduVersion, "3.1.999") = True Then
                 ReadFileVersion = 3.1
-            Else
+            ElseIf VersionCompare(ArduVersion, "3.2.999") = True Then
                 ReadFileVersion = 3.2
+            Else
+                ReadFileVersion = 3.3
             End If
 
             'Read the File line by line (2nd Pass)
@@ -127,7 +129,14 @@ Module modMainReadFile
 
 
                         'Mode Checks
-                        Call Mode_Checks()
+                        If DataArray(0) = "MODE" Then
+                            If (ReadFileVersion = 3.1 Or ReadFileVersion = 3.2) And ArduType = "APM:Copter" Then
+                                Call MODE_Checks_v3_1_v3_2()
+                            Else
+                                Call MODE_Checks_v3_3()
+                            End If
+                        End If
+
 
                         'CURR Checks
                         If DataArray(0) = "CURR" Then
