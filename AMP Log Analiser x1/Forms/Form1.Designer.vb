@@ -513,8 +513,6 @@ Partial Class frmMainForm
         Me.chkboxPM.AutoSize = True
         Me.chkboxPM.BackgroundImage = CType(resources.GetObject("chkboxPM.BackgroundImage"), System.Drawing.Image)
         Me.chkboxPM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.chkboxPM.Checked = True
-        Me.chkboxPM.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkboxPM.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkboxPM.Location = New System.Drawing.Point(21, 205)
         Me.chkboxPM.MaximumSize = New System.Drawing.Size(177, 42)

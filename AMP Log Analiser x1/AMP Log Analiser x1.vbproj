@@ -159,6 +159,7 @@
     <Compile Include="Classes\modOther_Functions.vb" />
     <Compile Include="Classes\modPARAM_Checks.vb" />
     <Compile Include="Classes\modPM_Checks_v3_1.vb" />
+    <Compile Include="Classes\modPM_Checks_v3_3.vb" />
     <Compile Include="Classes\modPM_Checks_v3_2.vb" />
     <Compile Include="Classes\modPM_MainAnalysis.vb" />
     <Compile Include="Classes\modTakeOffEvent.vb" />
