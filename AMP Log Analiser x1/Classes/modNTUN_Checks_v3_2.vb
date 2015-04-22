@@ -16,9 +16,10 @@
             '### V3.2 totally changed ###
             '############################
 
+            Call NTUN_MainAnalysis()
         End If
 
-        Call NTUN_MainAnalysis()
+
 
     End Sub
 End Module
