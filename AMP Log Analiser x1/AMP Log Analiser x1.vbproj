@@ -147,6 +147,8 @@
     <Compile Include="Classes\modGPS_Checks.vb" />
     <Compile Include="Classes\modGPS_Functions.vb" />
     <Compile Include="Classes\modIMU_Checks.vb" />
+    <Compile Include="Classes\modIMU_Checks_v3_1_v3_2.vb" />
+    <Compile Include="Classes\modIMU_Checks_v3_3.vb" />
     <Compile Include="Classes\modMainReadFile.vb" />
     <Compile Include="Classes\modMODE_MainAnalysis.vb" />
     <Compile Include="Classes\modMODE_Checks_v3_3.vb" />
