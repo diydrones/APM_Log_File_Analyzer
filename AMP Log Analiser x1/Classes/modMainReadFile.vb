@@ -160,7 +160,14 @@ Module modMainReadFile
                         Call GPS_Checks()
 
                         'IMU Checks - Vibration
-                        Call IMU_Checks()
+                        If DataArray(0) = "IMU" Then
+                            If ReadFileVersion = 3.1 Or ReadFileVersion = 3.2 Then
+                                Call IMU_Checks_v3_1_v3_2()
+                            Else
+                                Call IMU_Checks_v3_3()
+                            End If
+                        End If
+
 
                         'NTUN Checks, Navigation Data - MUST CALL BEFORE ATT due to Charting Data
                         If DataArray(0) = "NTUN" Then
