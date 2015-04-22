@@ -195,8 +195,10 @@ Module modMainReadFile
                             If DataArray(0) = "PM" Then
                                 If ReadFileVersion = 3.1 Then
                                     Call PM_Checks_v3_1()
-                                Else
+                                ElseIf ReadFileVersion = 3.2 Then
                                     Call PM_Checks_v3_2()
+                                Else
+                                    Call PM_Checks_v3_3()
                                 End If
                             End If
                         End If
