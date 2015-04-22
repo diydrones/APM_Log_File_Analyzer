@@ -16,9 +16,10 @@
             Log_ATT_YawIn = Val(DataArray(5))
             Log_ATT_Yaw = Val(DataArray(6))
             Log_ATT_NavYaw = Val(DataArray(7))
+            Call ATT_MainAnalysis()
         End If
 
-        Call ATT_MainAnalysis()
+
 
     End Sub
 End Module

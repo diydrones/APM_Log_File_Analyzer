@@ -18,9 +18,8 @@
             Log_ATT_YawIn = Val(DataArray(6))
             Log_ATT_Yaw = Val(DataArray(7))
             Log_ATT_NavYaw = Val(DataArray(9))                          'Value is not available in v3.2RC<13 ATT Dataline
+            Call ATT_MainAnalysis()
         End If
-
-        Call ATT_MainAnalysis()
 
     End Sub
 End Module

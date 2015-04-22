@@ -17,9 +17,8 @@
             Log_CMD_Alt = Val(DataArray(6))
             Log_CMD_Lat = Val(DataArray(7))
             Log_CMD_Lng = Val(DataArray(8))
+            Call CMD_Checks_MainAnalysis()
         End If
-
-        Call CMD_Checks_MainAnalysis()
 
     End Sub
 End Module

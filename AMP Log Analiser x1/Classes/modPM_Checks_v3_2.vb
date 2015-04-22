@@ -20,9 +20,8 @@
             Log_PM_INAVErr = Val(DataArray(7))
             'Debug.Print("Processing:- " & Str(DataLine) & ": " & Data)
             PM_Delay_Counter = PM_Delay_Counter + 1
+            Call PM_MainAnalysis()
         End If
-
-        Call PM_MainAnalysis()
 
     End Sub
 End Module

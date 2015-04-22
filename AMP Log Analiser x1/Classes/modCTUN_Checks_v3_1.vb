@@ -18,9 +18,8 @@
             Log_CTUN_CRate = Val(DataArray(7))
             Log_CTUN_ThrOut = Val(DataArray(8))
             Log_CTUN_DCRate = Val(DataArray(9))
+            Call CTUN_MainAnalysis()
         End If
-
-        Call CTUN_MainAnalysis()
 
     End Sub
 End Module

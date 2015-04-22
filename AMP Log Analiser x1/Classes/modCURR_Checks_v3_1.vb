@@ -16,9 +16,8 @@
             LOG_CURR_Curr = Val(DataArray(4))
             LOG_CURR_Vcc = Val(DataArray(5))
             LOG_CURR_CurrTot = Val(DataArray(6))
+            Call CURR_MainAnalysis()
         End If
-
-        Call CURR_MainAnalysis()
 
     End Sub
 End Module
