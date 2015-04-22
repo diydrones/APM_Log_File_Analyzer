@@ -28,10 +28,13 @@
                 If strErrorCode = "1" Then
                     WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": MAIN ERROR: Critical Error, contact firmware developers and DO NOT FLY!")
                 End If
-                If strErrorCode = "2" And Val(strECode) > 1 Then
+                If strErrorCode = "2" And Val(strECode) > 2 Then
                     WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": RADIO ERROR: New Error Code (ECode Unknown to APM Log Analyser")
                 End If
                 If strErrorCode = "2" And strECode = "1" Then
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": RADIO ERROR: The radio failed to initialise (likely a hardware / signal issue).")
+                End If
+                If strErrorCode = "2" And strECode = "2" Then
                     WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": RADIO ERROR: Late Frame Detected, i.e. Longer than 2 Seconds.")
                     Debug.Print("Radio Error: Start")
                 End If
