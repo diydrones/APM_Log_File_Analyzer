@@ -84,8 +84,6 @@ Module modVariable_Declarations
     Public EndOfFMT As Boolean = False                             'True when we find the first parameter of data.
     Public FoundPARAM As Boolean = False                           'True when the first PARAM line is found.
     Public EndOfPARAM As Boolean = False                           'True when we find the first Data
-    Public IgnoreMoreParam As Boolean = False                      ' True when the user has already been warned about the extra Parameters found.
-    Public WarnAboutExtraParams As Boolean = False                  ' True if the log should report that parameters were found at the end (v3.2 issue)
     Public WarnAboutExtraFMT As Boolean = False                  ' True if the log should report that FMTs were found at the end (v3.2 issue)
     Public TruncationIssue As Boolean = False                   'Used during DataLog file reading to detect truncation issues.
 

@@ -14,32 +14,12 @@
         'and advise that if the Motors do not spin on Arming then increase the
         'Motor Spin Arm upto a Max of Throttle Min.
         If PARM_THR_MIN <> 99 Or PARM_MOT_SPIN_ARMED <> 99 Then
-            If PARM_MOT_SPIN_ARMED = 70 Then
-                Call WriteParamHeader()
-                WriteTextLog("MOT_SPIN_ARMED = " & PARM_MOT_SPIN_ARMED)
-                WriteTextLog("Advice: If motors do not spin when armed calibrate ESC and then try increasing")
-                WriteTextLog("the parameter MOT_SPIN_ARMED up from 70 in small increments.")
-                WriteTextLog("http://ardupilot.com/forum/viewtopic.php?f=25&t=5345&sid=3171087bcf7d84e03491e1845eaa9393")
-                WriteTextLog(vbNewLine)
-            End If
-            If PARM_THR_MIN <> 0 And PARM_MOT_SPIN_ARMED <> 0 Then
-                If PARM_THR_MIN <> 130 Or PARM_MOT_SPIN_ARMED <> 70 Then
-                    Call WriteParamHeader()
-                    WriteTextLog("THR_MIN = " & PARM_THR_MIN)
-                    WriteTextLog("MOT_SPIN_ARMED = " & PARM_MOT_SPIN_ARMED)
-                    WriteTextLog("Warning: MOT_SPIN_ARMED & THR_MIN parameters have been altered from their defaults.")
-                    WriteTextLog("They should be 70 & 130 respectively unless the motors do not spin when armed.")
-                    WriteTextLog("http://ardupilot.com/forum/viewtopic.php?f=25&t=5345&sid=3171087bcf7d84e03491e1845eaa9393")
-                    WriteTextLog(vbNewLine)
-                End If
-            End If
             If PARM_THR_MIN <> 0 And PARM_MOT_SPIN_ARMED <> 0 Then
                 If PARM_MOT_SPIN_ARMED > PARM_THR_MIN Then
                     Call WriteParamHeader()
                     WriteTextLog("THR_MIN = " & PARM_THR_MIN)
                     WriteTextLog("MOT_SPIN_ARMED = " & PARM_MOT_SPIN_ARMED)
                     WriteTextLog("Warning: MOT_SPIN_ARMED is greater then THR_MIN parameter, this is dangerous!")
-                    WriteTextLog("These parameter should be 70 & 130 respectively unless the motors do not spin when armed.")
                     WriteTextLog("http://ardupilot.com/forum/viewtopic.php?f=25&t=5345&sid=3171087bcf7d84e03491e1845eaa9393")
                     WriteTextLog(vbNewLine)
                 End If
