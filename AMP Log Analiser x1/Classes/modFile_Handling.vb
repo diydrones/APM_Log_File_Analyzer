@@ -35,14 +35,6 @@ Module modFile_Handling
         FileDataSuitable = False
         ' Function returns True if we need to exit the file processing.
 
-        ' v3.2 Issue - Display warning if Params have been found at the end
-        If WarnAboutExtraParams = True Then
-            WriteTextLog("WARNING: Curruption Of Parameter Lines Detected!")
-            WriteTextLog("WARNING: the Analyzer tried to handle them.")
-            WriteTextLog("WARNING: This is a v3.2 firmware issue that has been reported!")
-            WriteTextLog("")
-        End If
-
         ' v3.2 Issue - Display warning if FMTs have been found at the end
         If WarnAboutExtraFMT = True Then
             WriteTextLog("WARNING: Curruption Of FMT Lines Detected!")
@@ -257,11 +249,6 @@ Module modFile_Handling
             ' Parameter Support for all Firmwares
             'A Parameter value should have only 3 pieces of data!
             If DataArray(0) = "PARM" Then
-                If EndOfPARAM = True And IgnoreMoreParam = False Then
-                    WarnAboutExtraParams = True
-                    'MsgBox("Curruption Of Parameters Detected, the Analyzer is trying to handle them (V3.2 issue)!", vbOKOnly & vbExclamation, "Warning!")
-                    IgnoreMoreParam = True
-                End If
                 EndOfFMT = True
                 If IsNumeric(DataArray(2)) = False Or IsNothing(DataArray(3)) = False Then
                     Debug.Print("================================================================")
