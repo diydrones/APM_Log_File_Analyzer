@@ -137,6 +137,7 @@
     <Compile Include="Classes\modCTUN_Checks_v3.2.vb" />
     <Compile Include="Classes\modCTUN_MainAnalysis.vb" />
     <Compile Include="Classes\modCURR_Checks_v3_1.vb" />
+    <Compile Include="Classes\modCURR_Checks_v3_3.vb" />
     <Compile Include="Classes\modCURR_Checks_v3_2.vb" />
     <Compile Include="Classes\modCURR_MainAnalysis.vb" />
     <Compile Include="Classes\modDisplay_Functions.vb" />
