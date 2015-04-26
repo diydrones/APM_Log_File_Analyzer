@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Threading.Thread
 
 Module modFile_Handling
 
@@ -425,13 +426,16 @@ Module modFile_Handling
             Debug.Print("Open File")
             .OpenFD.InitialDirectory = "C:\Program Files (x86)\Mission Planner\logs\"
             .OpenFD.Title = "Open a Text File"
-            'OpenFD.FileName = "????-??-?? ??-??*.log"
-            .OpenFD.FileName = "*.log" 'Allow any log file to be selected
+
+            ' ## Changed KXG 26/04/2015 ##
+            '.OpenFD.FileName = "*.log" 'Allow any log file to be selected
+            .OpenFD.Filter = "APM Logs|*.log;*.bin"
+            .OpenFD.FileName = "*.log;*.bin"
+
 
             'Display the Open File Dialog Window.
             If .OpenFD.ShowDialog() = Windows.Forms.DialogResult.Cancel Then
-                Dim strLogFileName As String
-                strLogFileName = ""
+                Dim strLogFileName As String = ""
                 Debug.Print("User Selected Cancel " & strLogFileName)
                 FileOpened = False
                 Exit Sub
@@ -446,6 +450,41 @@ Module modFile_Handling
                 Call ButtonsCheckBoxes_Visible(True)
                 Call ButtonsCharting_Visible(False)
                 frmMainForm.btnAnalyze.Visible = True
+
+                ' {{ Added KXG 26/04/2015
+                ' If the file choosen is a .bin file then convert to a log file first and save in the source folder.
+                If UCase(Mid(strLogPathFileName, Len(strLogPathFileName) - 3, 4)) = ".BIN" Then
+                    ' move the .bin strings to the correct variables
+                    Dim strBinPathFileName As String = strLogPathFileName
+                    Dim strBinFileName As String = strLogFileName
+                    ' change the .bin to .log
+                    strLogFileName = Mid(strLogFileName, 1, Len(strLogFileName) - 4) & ".log"
+                    strLogPathFileName = Mid(strLogPathFileName, 1, Len(strLogPathFileName) - 4) & ".log"
+                    Debug.Print("User selected a .bin file... ")
+                    Debug.Print("Running .Bin Conversion... " & strBinPathFileName & " --> " & strLogPathFileName)
+
+                    ' Let the user know what's happening as there will be a short delay
+                    With frmMainForm.richtxtLogAnalysis
+                        .Visible = True
+                        .Clear()
+                        .AppendText("Running .Bin Conversion... " & strBinPathFileName & " --> " & strLogPathFileName)
+                        .Refresh()
+                    End With
+                    'frmMainForm.Refresh()
+                    'Application.DoEvents()
+
+                    Call ConvertBin(strBinPathFileName, strLogPathFileName)
+                    Debug.Print("Conversion Completed.")
+                    Sleep(2000) ' Ensure the new file .log is dropped before allowing it to be opened.
+
+                    ' Clean up
+                    With frmMainForm.richtxtLogAnalysis
+                        .Clear()
+                        .Refresh()
+                    End With
+
+                End If
+                ' }} - End
             End If
             Debug.Print("Open File Completed." & vbNewLine)
             If FileOpened = True Then
@@ -457,6 +496,7 @@ Module modFile_Handling
             End If
         End With
     End Sub
+
 
     Public Function VersionCompare(LowestVersion As String, HighestVersion As String) As Boolean
         'This function will return true if "LowestVersion" is lower than "HighestVersion".
