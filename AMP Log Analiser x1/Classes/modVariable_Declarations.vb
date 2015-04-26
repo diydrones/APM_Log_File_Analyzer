@@ -19,6 +19,9 @@ Module modVariable_Declarations
 
 
     'Declare the Main Program Variables
+    Public HEAD_BYTE1 As Byte = &HA3                         ' Bin File Conversion - Header Byte 1 (Decimal 163) to be ignored!  
+    Public HEAD_BYTE2 As Byte = &H95                         ' Bin File Conversion - Header Byte 2 (Decimal 149) to be ignored!   
+
     Public osVer As Version = Environment.OSVersion.Version 'Detect Windows Environment.
     Public CodeTimerStart As Double                         'Use CodeTimerStart = Format(Now, "ffff") at the start of a process.
     'Then If Format(Now, "ffff") - CodeTimerStart > 1 Then Debug.Print("Parameter Checks = " & Format(Now, "ffff") - CodeTimerStart & "μs") at the end
