@@ -180,6 +180,12 @@
     <Compile Include="Forms\Form2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmHelp.Designer.vb">
+      <DependentUpon>frmHelp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmHelp.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Parameters.Designer.vb">
       <DependentUpon>Parameters.vb</DependentUpon>
     </Compile>
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmHelp.resx">
+      <DependentUpon>frmHelp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Parameters.resx">
       <DependentUpon>Parameters.vb</DependentUpon>
