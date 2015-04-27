@@ -14,7 +14,7 @@
         strTempText = strTempText & "http://www.rcgroups.com/forums/showthread.php?t=2151318" & vbNewLine
         strTempText = strTempText & vbNewLine
         strTempText = strTempText & "              Thank you for your support :)" & vbNewLine
-        strTempText = strTempText & "                 ---Version: " & CurrentPublishVersionNumber & vbNewLine
+        strTempText = strTempText & "                 ---Version: " & MyCurrentVersionNumber & vbNewLine
         richtextHelp1.AppendText(strTempText)
         lblTitle.Focus()
     End Sub
