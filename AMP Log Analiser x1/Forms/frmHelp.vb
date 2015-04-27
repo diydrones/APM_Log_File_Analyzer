@@ -11,11 +11,16 @@
         strTempText = strTempText & vbNewLine
         strTempText = strTempText & "    For more support and instructions please visit the" & vbNewLine
         strTempText = strTempText & "               RC Groups dedicated thread." & vbNewLine
-        strTempText = strTempText & "  http://www.rcgroups.com/forums/showthread.php?t=2151318" & vbNewLine
+        strTempText = strTempText & "http://www.rcgroups.com/forums/showthread.php?t=2151318" & vbNewLine
         strTempText = strTempText & vbNewLine
         strTempText = strTempText & "              Thank you for your support :)" & vbNewLine
         strTempText = strTempText & "                 ---Version: " & CurrentPublishVersionNumber & vbNewLine
         richtextHelp1.AppendText(strTempText)
         lblTitle.Focus()
+    End Sub
+
+    Private Sub richtextHelp1_LinkClicked(sender As Object, e As LinkClickedEventArgs) Handles richtextHelp1.LinkClicked
+        Me.Close()
+        System.Diagnostics.Process.Start(e.LinkText)
     End Sub
 End Class
