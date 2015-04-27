@@ -41,7 +41,7 @@ Partial Class frmHelp
         '
         Me.richtextHelp1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.richtextHelp1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.richtextHelp1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.richtextHelp1.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.richtextHelp1.Font = New System.Drawing.Font("Courier New", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.richtextHelp1.ForeColor = System.Drawing.Color.LimeGreen
         Me.richtextHelp1.Location = New System.Drawing.Point(12, 60)
@@ -52,6 +52,7 @@ Partial Class frmHelp
         Me.richtextHelp1.TabIndex = 1
         Me.richtextHelp1.TabStop = False
         Me.richtextHelp1.Text = ""
+        Me.richtextHelp1.WordWrap = False
         '
         'frmHelp
         '
@@ -65,7 +66,7 @@ Partial Class frmHelp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmHelp"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "APM Log File Analyser - Help"
         Me.ResumeLayout(False)
         Me.PerformLayout()
