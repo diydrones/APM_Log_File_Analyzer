@@ -22,32 +22,35 @@ Partial Class frmHelp
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblTitle = New System.Windows.Forms.Label()
         Me.richtextHelp1 = New System.Windows.Forms.RichTextBox()
         Me.SuspendLayout()
         '
-        'Label1
+        'lblTitle
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Franklin Gothic Medium", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.LimeGreen
-        Me.Label1.Location = New System.Drawing.Point(106, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(294, 34)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "APM Log File Analyser"
+        Me.lblTitle.AutoSize = True
+        Me.lblTitle.Font = New System.Drawing.Font("Franklin Gothic Medium", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitle.ForeColor = System.Drawing.Color.LimeGreen
+        Me.lblTitle.Location = New System.Drawing.Point(106, 9)
+        Me.lblTitle.Name = "lblTitle"
+        Me.lblTitle.Size = New System.Drawing.Size(294, 34)
+        Me.lblTitle.TabIndex = 0
+        Me.lblTitle.Text = "APM Log File Analyser"
         '
         'richtextHelp1
         '
         Me.richtextHelp1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.richtextHelp1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.richtextHelp1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.richtextHelp1.Font = New System.Drawing.Font("Courier New", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.richtextHelp1.ForeColor = System.Drawing.Color.LimeGreen
         Me.richtextHelp1.Location = New System.Drawing.Point(12, 60)
         Me.richtextHelp1.Name = "richtextHelp1"
+        Me.richtextHelp1.ReadOnly = True
         Me.richtextHelp1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None
         Me.richtextHelp1.Size = New System.Drawing.Size(480, 231)
         Me.richtextHelp1.TabIndex = 1
+        Me.richtextHelp1.TabStop = False
         Me.richtextHelp1.Text = ""
         '
         'frmHelp
@@ -57,17 +60,17 @@ Partial Class frmHelp
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ClientSize = New System.Drawing.Size(504, 303)
         Me.Controls.Add(Me.richtextHelp1)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblTitle)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmHelp"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "APM Log File Analyser - Help"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblTitle As System.Windows.Forms.Label
     Friend WithEvents richtextHelp1 As System.Windows.Forms.RichTextBox
 End Class

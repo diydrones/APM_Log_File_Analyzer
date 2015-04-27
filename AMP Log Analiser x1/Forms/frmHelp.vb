@@ -16,5 +16,6 @@
         strTempText = strTempText & "              Thank you for your support :)" & vbNewLine
         strTempText = strTempText & "                 ---Version: " & CurrentPublishVersionNumber & vbNewLine
         richtextHelp1.AppendText(strTempText)
+        lblTitle.Focus()
     End Sub
 End Class
