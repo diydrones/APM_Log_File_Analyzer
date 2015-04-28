@@ -91,29 +91,43 @@ Module modVariable_Declarations
     Public WarnAboutExtraFMT As Boolean = False                  ' True if the log should report that FMTs were found at the end (v3.2 issue)
     Public TruncationIssue As Boolean = False                   'Used during DataLog file reading to detect truncation issues.
 
-    Public PARM_THR_MIN As Integer = 99                           'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
-    Public PARM_THR_MAX As Integer = 99                            'Used to check this is set between 800-1000
-    Public PARM_MOT_SPIN_ARMED As Integer = 99                    'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
-    Public PARM_BATTERY_CAPACITY As Integer = 99                 'Battery Capacity as found in the APM Parameter Settings.
-    Public PARM_CH7_OPT As Integer = 99                             'Value of Parameter found.
-    Public PARM_CH8_OPT As Integer = 99                          'Value of Parameter found.
-    Public CH7_OPT_TEXT As String = ""                          'Stores the Text that should be displayed when CH7 changes
-    Public CH8_OPT_TEXT As String = ""                          'Stores the Text that should be displayed when CH8 changes
-    Public PARM_CH6_TUNE As Integer = 99                       ' TRUE if TUNE param is set > 0
-    Public PARM_ACRO_TRAINER As Integer = 99                     ' Value of Parameter found
-    Public PARM_ARMING_CHECK As Integer = 99                     ' Value of Parameter found.
-    Public PARM_RTL_ALT As Integer = 99                     ' Value of Parameter found.
-    Public PARM_RTL_ALT_FINAL As Integer = 99                     ' Value of Parameter found.
-    Public PARM_RTL_LOIT_TIME As Integer = 99                     ' Value of Parameter found.
-    Public PARM_COMPASS_OFS_X As Integer = 99                     ' Value of Parameter found.
-    Public PARM_COMPASS_OFS_Y As Integer = 99                     ' Value of Parameter found.
-    Public PARM_COMPASS_OFS_Z As Integer = 99                     ' Value of Parameter found.
-    Public PARM_INS_PRODUCT_ID As Integer = 99                     ' Value of Parameter found.
-    Public PARM_AHRS_EKF_USE As Integer = 99                     ' Value of Parameter found.
-    Public PARM_TUNE As Integer = 99                             ' Value of Parameter found.
+    Public PARM_THR_MIN As Integer = 99                         ' Used to Determine the settings for Thr_Min & Mot_Spin_Armed
+    Public PARM_THR_MAX As Integer = 99                         ' Used to check this is set between 800-1000
+    Public PARM_MOT_SPIN_ARMED As Integer = 99                  ' Used to Determine the settings for Thr_Min & Mot_Spin_Armed
+    Public PARM_BATTERY_CAPACITY As Integer = 99                ' Battery Capacity as found in the APM Parameter Settings.
+    Public PARM_CH7_OPT As Integer = 99                         ' Value of Parameter found.
+    Public PARM_CH8_OPT As Integer = 99                         ' Value of Parameter found.
+    Public CH7_OPT_TEXT As String = ""                          ' Stores the Text that should be displayed when CH7 changes
+    Public CH8_OPT_TEXT As String = ""                          ' Stores the Text that should be displayed when CH8 changes
+    Public PARM_CH6_TUNE As Integer = 99                        ' TRUE if TUNE param is set > 0
+    Public PARM_ACRO_TRAINER As Integer = 99                    ' Value of Parameter found
+    Public PARM_ARMING_CHECK As Integer = 99                    ' Value of Parameter found.
+    Public PARM_RTL_ALT As Integer = 99                         ' Value of Parameter found.
+    Public PARM_RTL_ALT_FINAL As Integer = 99                   ' Value of Parameter found.
+    Public PARM_RTL_LOIT_TIME As Integer = 99                   ' Value of Parameter found.
+    Public PARM_COMPASS_OFS_X As Integer = 99                   ' Value of Parameter found.
+    Public PARM_COMPASS_OFS_Y As Integer = 99                   ' Value of Parameter found.
+    Public PARM_COMPASS_OFS_Z As Integer = 99                   ' Value of Parameter found.
+    Public PARM_INS_PRODUCT_ID As Integer = 99                  ' Value of Parameter found.
+    Public PARM_AHRS_EKF_USE As Integer = 99                    ' Value of Parameter found.
+    Public PARM_TUNE As Integer = 99                            ' Value of Parameter found.
     Public PARM_TUNE_LOW As Integer = 99                        ' Value of Parameter found.
-    Public PARM_TUNE_HIGH As Integer = 99                         ' Value of Parameter found.
-    Public PARM_FS_GPS_ENABLE As Integer = 99                     ' Value of Parameter found.
+    Public PARM_TUNE_HIGH As Integer = 99                       ' Value of Parameter found.
+
+    Public PARM_FS_GPS_ENABLE As Integer = 99                   ' Value of Parameter found, only in < v3.3.
+
+    Public PARM_FS_BATT_ENABLE As Integer = 99                  ' Value of Parameter found.
+    Public PARM_FS_BATT_VOLTAGE As Integer = 99                 ' Value of Parameter found.
+    Public PARM_FS_BATT_MAH As Integer = 99                     ' Value of Parameter found.
+    Public PARM_FS_GCS_ENABLE As Integer = 99                   ' Value of Parameter found.
+    Public PARM_FS_THR_ENABLE As Integer = 99                   ' Value of Parameter found.
+    Public PARM_FS_THR_VALUE As Integer = 99                    ' Value of Parameter found.
+    Public PARM_FENCE_ENABLE As Integer = 99                    ' Value of Parameter found.
+    Public PARM_FENCE_TYPE As Integer = 99                       ' Value of Parameter found.
+    Public PARM_FENCE_ACTION As Integer = 99                    ' Value of Parameter found.
+    Public PARM_FENCE_ALT_MAX As Integer = 99                   ' Value of Parameter found.
+    Public PARM_FENCE_RADIUS As Integer = 99                    ' Value of Parameter found.
+    Public PARM_FENCE_MARGIN As Integer = 99                    ' Value of Parameter found.
 
 
     'Delcare the NTUN Variables

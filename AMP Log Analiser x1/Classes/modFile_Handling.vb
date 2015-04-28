@@ -296,6 +296,18 @@ Module modFile_Handling
                         If Param = "TUNE_HIGH" Then PARM_TUNE_HIGH = Val(Value)
                         If Param = "FS_GPS_ENABLE" Then PARM_FS_GPS_ENABLE = Val(Value)
                         If Param = "WPNAV_SPEED" Then Log_CMD_WP_Speed = Val(Value)
+                        If Param = "FS_BATT_ENABLE" Then PARM_FS_BATT_ENABLE = Val(Value)
+                        If Param = "FS_BATT_VOLTAGE" Then PARM_FS_BATT_VOLTAGE = Val(Value)
+                        If Param = "FS_BATT_MAH" Then PARM_FS_BATT_MAH = Val(Value)
+                        If Param = "FS_GCS_ENABLE" Then PARM_FS_GCS_ENABLE = Val(Value)
+                        If Param = "FS_THR_ENABLE" Then PARM_FS_THR_ENABLE = Val(Value)
+                        If Param = "FS_THR_VALUE" Then PARM_FS_THR_VALUE = Val(Value)
+                        If Param = "FENCE_ENABLE" Then PARM_FENCE_ENABLE = Val(Value)
+                        If Param = "FENCE_TYPE" Then PARM_FENCE_TYPE = Val(Value)
+                        If Param = "FENCE_ACTION" Then PARM_FENCE_ACTION = Val(Value)
+                        If Param = "FENCE_ALT_MAX" Then PARM_FENCE_ALT_MAX = Val(Value)
+                        If Param = "FENCE_RADIUS" Then PARM_FENCE_RADIUS = Val(Value)
+                        If Param = "FENCE_MARGIN" Then PARM_FENCE_MARGIN = Val(Value)
                     End If
                 End If
             End If

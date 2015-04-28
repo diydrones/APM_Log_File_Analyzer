@@ -1,41 +1,54 @@
 ﻿Module modVariable_Initialisation
     Public Sub Variable_Initialisation()
         'Initialise the Parameter Variables
-        Param = ""                                      'Parameter read from the Log.
-        Value = 0                                       'Paramter Value read from the Log.
-        Param_Issue_Found = False                       'TRUE if one or more parameters issues are found.
+        Param = ""                                  ' Parameter read from the Log.
+        Value = 0                                   ' Paramter Value read from the Log.
+        Param_Issue_Found = False                   ' TRUE if one or more parameters issues are found.
 
-        FileOrderCorrect = True                      ' File should have an order of FMT, PARAM, DATA, End of File. Wierd entries will not be tollerated.
-        FoundFMT = False                             'True when the First FMT line is found.
-        EndOfFMT = False                             'True when we find the first parameter of data.
-        FoundPARAM = False                           'True when the first PARAM line is found.
-        EndOfPARAM = False                           'True when we find the first Data
-        WarnAboutExtraFMT = False                  ' True if the log should report that FMTs were found at the end (v3.2 issue)
-        TruncationIssue = False                         'Used during DataLog file reading to detect truncation issues.
+        FileOrderCorrect = True                     ' File should have an order of FMT, PARAM, DATA, End of File. Wierd entries will not be tollerated.
+        FoundFMT = False                            ' True when the First FMT line is found.
+        EndOfFMT = False                            ' True when we find the first parameter of data.
+        FoundPARAM = False                          ' True when the first PARAM line is found.
+        EndOfPARAM = False                          ' True when we find the first Data
+        WarnAboutExtraFMT = False                   ' True if the log should report that FMTs were found at the end (v3.2 issue)
+        TruncationIssue = False                     ' Used during DataLog file reading to detect truncation issues.
 
-        PARM_THR_MIN = 99                                     'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
-        PARM_THR_MAX = 99                                     'Used to check this is set between 800-1000
-        PARM_MOT_SPIN_ARMED = 99                              'Used to Determine the settings for Thr_Min & Mot_Spin_Armed
-        PARM_BATTERY_CAPACITY = 99                        'Battery Capacity as found in the APM Parameter Settings.
-        PARM_CH7_OPT = 99                                    'Holds the display information of what Channel 7 is assigned to.
-        PARM_CH8_OPT = 99                                    'Holds the display information of what Channel 8 is assigned to.
-        CH7_OPT_TEXT = ""                                   'Stores the Text that should be displayed when CH7 changes
-        CH8_OPT_TEXT = ""                                   'Stores the Text that should be displayed when CH8 changes
-        PARM_CH6_TUNE = 99                                ' TRUE if TUNE param is set > 0
-        PARM_ACRO_TRAINER = 99                               ' Value of Parameter found.
-        PARM_ARMING_CHECK = 99                               ' Value of Parameter found.
-        PARM_RTL_ALT = 99                                    ' Value of Parameter found.
-        PARM_RTL_ALT_FINAL = 99                          ' Value of Parameter found.
-        PARM_RTL_LOIT_TIME = 99                          ' Value of Parameter found.
-        PARM_COMPASS_OFS_X = 99                          ' Value of Parameter found.
-        PARM_COMPASS_OFS_Y = 99                          ' Value of Parameter found.
-        PARM_COMPASS_OFS_Z = 99                          ' Value of Parameter found.
-        PARM_INS_PRODUCT_ID = 99                             ' Value of Parameter found.
-        PARM_AHRS_EKF_USE = 99                           ' Value of Parameter found.
-        PARM_TUNE = 99                                  ' Value of Parameter found.
-        PARM_TUNE_LOW = 99                               ' Value of Parameter found.
-        PARM_TUNE_HIGH = 99                              ' Value of Parameter found.
-        PARM_FS_GPS_ENABLE = 99                          ' Value of Parameter found.
+        PARM_THR_MIN = 99                           ' Used to Determine the settings for Thr_Min & Mot_Spin_Armed
+        PARM_THR_MAX = 99                           ' Used to check this is set between 800-1000
+        PARM_MOT_SPIN_ARMED = 99                    ' Used to Determine the settings for Thr_Min & Mot_Spin_Armed
+        PARM_BATTERY_CAPACITY = 99                  ' Battery Capacity as found in the APM Parameter Settings.
+        PARM_CH7_OPT = 99                           ' Holds the display information of what Channel 7 is assigned to.
+        PARM_CH8_OPT = 99                           ' Holds the display information of what Channel 8 is assigned to.
+        CH7_OPT_TEXT = ""                           ' Stores the Text that should be displayed when CH7 changes
+        CH8_OPT_TEXT = ""                           ' Stores the Text that should be displayed when CH8 changes
+        PARM_CH6_TUNE = 99                          ' TRUE if TUNE param is set > 0
+        PARM_ACRO_TRAINER = 99                      ' Value of Parameter found.
+        PARM_ARMING_CHECK = 99                      ' Value of Parameter found.
+        PARM_RTL_ALT = 99                           ' Value of Parameter found.
+        PARM_RTL_ALT_FINAL = 99                     ' Value of Parameter found.
+        PARM_RTL_LOIT_TIME = 99                     ' Value of Parameter found.
+        PARM_COMPASS_OFS_X = 99                     ' Value of Parameter found.
+        PARM_COMPASS_OFS_Y = 99                     ' Value of Parameter found.
+        PARM_COMPASS_OFS_Z = 99                     ' Value of Parameter found.
+        PARM_INS_PRODUCT_ID = 99                    ' Value of Parameter found.
+        PARM_AHRS_EKF_USE = 99                      ' Value of Parameter found.
+        PARM_TUNE = 99                              ' Value of Parameter found.
+        PARM_TUNE_LOW = 99                          ' Value of Parameter found.
+        PARM_TUNE_HIGH = 99                         ' Value of Parameter found.
+        PARM_FS_GPS_ENABLE = 99                     ' Value of Parameter found.
+
+        PARM_FS_BATT_ENABLE = 99                    ' Value of Parameter found.
+        PARM_FS_BATT_VOLTAGE = 99                   ' Value of Parameter found.
+        PARM_FS_BATT_MAH = 99                       ' Value of Parameter found.
+        PARM_FS_GCS_ENABLE = 99                     ' Value of Parameter found.
+        PARM_FS_THR_ENABLE = 99                     ' Value of Parameter found.
+        PARM_FS_THR_VALUE = 99                      ' Value of Parameter found.
+        PARM_FENCE_ENABLE = 99                      ' Value of Parameter found.
+        PARM_FENCE_TYPE = 99                         ' Value of Parameter found.
+        PARM_FENCE_ACTION = 99                      ' Value of Parameter found.
+        PARM_FENCE_ALT_MAX = 99                     ' Value of Parameter found.
+        PARM_FENCE_RADIUS = 99                      ' Value of Parameter found.
+        PARM_FENCE_MARGIN = 99                      ' Value of Parameter found.
 
         'Initialise the INAV Variables
         Log_INAV_Home_GLat = 0                           'Hold where the APM considers home to be.
