@@ -194,10 +194,12 @@ Module modDisplay_Functions
             WriteTextLog("Log FileName: " & strLogPathFileName)
             WriteTextLog("Ardu Version: " & ArduVersion & " Build: " & ArduBuild)
             WriteTextLog("   Ardu Type: " & ArduType)
+
+            ' Hardware by "INS_PRODUCT_ID" seems to have been dropped, this parameter is 0 for my PixHawk
             If Hardware <> "" Then ' This just checks that the Hardware Parameter line was found before converting to int()
                 Select Case Int(Hardware)
                     Case 0
-                        Hardware = "Unknown"
+                        Hardware = ""
                     Case 1
                         Hardware = "APM1-1280"
                     Case 2
@@ -218,14 +220,11 @@ Module modDisplay_Functions
             Else
                 Hardware = "Parameter Value Missing"
             End If
+            If Hardware <> "" Then WriteTextLog("    Hardware: " & Hardware)
 
-            WriteTextLog("    Hardware: " & Hardware)
-            If APM_Free_RAM <> 0 Then
-                WriteTextLog(" HW Free RAM: " & APM_Free_RAM)
-            Else
-                WriteTextLog(" HW Free RAM: Not Available")
-            End If
-            WriteTextLog("  HW Version: " & APM_Version)
+            If APM_Free_RAM <> 0 Then WriteTextLog(" HW Free RAM: " & APM_Free_RAM)
+            If APM_Version <> "" Then WriteTextLog("  HW Version: " & APM_Version)
+            If Pixhawk_Serial_Number <> "" Then WriteTextLog("  Serial No.: " & Pixhawk_Serial_Number)
             Select Case APM_Frame_Type
                 Case 0
                     APM_Frame_Name = "+"
@@ -243,8 +242,8 @@ Module modDisplay_Functions
                     APM_Frame_Name = "Error: Please update code to determine frame type " & APM_Frame_Type
             End Select
             If APM_No_Motors = 6 Then APM_Frame_Name += " (Hexa)"
-            WriteTextLog("  Frame Type: " & APM_Frame_Name)
-            WriteTextLog("  No. Motors: " & APM_No_Motors)
+            If APM_Frame_Name <> "" Then WriteTextLog("  Frame Type: " & APM_Frame_Name)
+            If APM_No_Motors <> 0 Then WriteTextLog("  No. Motors: " & APM_No_Motors)
             WriteTextLog("")
             'Display what Data Types were found in the log file.
             WriteTextLog_LoggingData()

@@ -76,6 +76,7 @@ Module modVariable_Declarations
     Public APM_No_Motors As Integer = 0                    'Holds the number of Motors, determined from the FMT for MOT.
     '                                                       'or for v3.2 a count of the values > 0  in the RCOUT dataline.
     Public Hardware As String = ""                          'Holds the type of hardware used.
+    Public Pixhawk_Serial_Number As String                  'Holds the PixHawk Serial Number.
 
     'Declare the Parameter Variables
     Public Param As String = ""                             'Parameter read from the Log.
