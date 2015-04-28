@@ -16,6 +16,12 @@ Module modDisplay_Functions
         If InStr(LineText, "Testing") Then txtColor = Color.LightPink
         If InStr(LineText, "Information") Then txtColor = Color.LightGreen
         If InStr(LineText, "***") Then txtColor = Color.LightGreen
+        If Mid(LineText, 1, 3) = "$$$" Then
+            ' Special Marker at start of line to force Text LightGreen
+            LineText = Mid(LineText, 4, Len(LineText) - 3)
+            txtColor = Color.LightGreen
+        End If
+
 
         With frmMainForm.richtxtLogAnalysis
             .SelectionStart = .Text.Length
@@ -194,12 +200,10 @@ Module modDisplay_Functions
             WriteTextLog("Log FileName: " & strLogPathFileName)
             WriteTextLog("Ardu Version: " & ArduVersion & " Build: " & ArduBuild)
             WriteTextLog("   Ardu Type: " & ArduType)
-
-            ' Hardware by "INS_PRODUCT_ID" seems to have been dropped, this parameter is 0 for my PixHawk
             If Hardware <> "" Then ' This just checks that the Hardware Parameter line was found before converting to int()
                 Select Case Int(Hardware)
                     Case 0
-                        Hardware = ""
+                        Hardware = "Unknown"
                     Case 1
                         Hardware = "APM1-1280"
                     Case 2
@@ -221,7 +225,6 @@ Module modDisplay_Functions
                 Hardware = "Parameter Value Missing"
             End If
             If Hardware <> "" Then WriteTextLog("    Hardware: " & Hardware)
-
             If APM_Free_RAM <> 0 Then WriteTextLog(" HW Free RAM: " & APM_Free_RAM)
             If APM_Version <> "" Then WriteTextLog("  HW Version: " & APM_Version)
             If Pixhawk_Serial_Number <> "" Then WriteTextLog("  Serial No.: " & Pixhawk_Serial_Number)

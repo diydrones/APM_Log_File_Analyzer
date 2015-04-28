@@ -1,6 +1,83 @@
 ﻿Module modPARAM_Checks
     Public Sub Parameter_Checks()
 
+        ' FailSafe Header
+        ' NOTE: $$$ just truns the Text Colour LightGreen by the formatter
+        Dim MyString As String = ""
+        WriteTextLog("$$$FAILSAFE SETTINGS:")
+        ' Battery FailSafe
+        MyString = "$$$  Main Battery = "
+        If PARM_FS_BATT_ENABLE = 99 Then
+            WriteTextLog(MyString & "Parameter Not Found in Log")
+        ElseIf PARM_FS_BATT_ENABLE = 0 Then
+            WriteTextLog(MyString & "Not Activated")
+        ElseIf PARM_FS_BATT_ENABLE = 1 Then
+            WriteTextLog(MyString & "Activated at " & PARM_FS_BATT_VOLTAGE & " volts or " & PARM_FS_BATT_MAH & " mAH, with Land")
+        ElseIf PARM_FS_BATT_ENABLE = 2 Then
+            WriteTextLog(MyString & "Activated at " & PARM_FS_BATT_VOLTAGE & " volts or " & PARM_FS_BATT_MAH & " mAH, with RTL")
+        Else
+            WriteTextLog(MyString & "Update program for new FS_BATT_ENABLE value.")
+        End If
+        ' GCS FailSafe
+        MyString = "$$$Ground Control = "
+        If PARM_FS_GCS_ENABLE = 99 Then
+            WriteTextLog(MyString & "Parameter Not Found in Log")
+        ElseIf PARM_FS_GCS_ENABLE = 0 Then
+            WriteTextLog(MyString & "Not Activated")
+        ElseIf PARM_FS_GCS_ENABLE = 1 Then
+            WriteTextLog(MyString & "Activated, with always RTL")
+        ElseIf PARM_FS_GCS_ENABLE = 2 Then
+            WriteTextLog(MyString & "Activated, with Continue with Mission in Auto Mode")
+        Else
+            WriteTextLog(MyString & "Update program for new FS_GCS_ENABLE value.")
+        End If
+        ' Throttle FailSafe
+        MyString = "$$$      Receiver = "
+        If PARM_FS_THR_ENABLE = 99 Then
+            WriteTextLog(MyString & "Parameter Not Found in Log")
+        ElseIf PARM_FS_THR_ENABLE = 0 Then
+            WriteTextLog(MyString & "Not Activated")
+        ElseIf PARM_FS_THR_ENABLE = 1 Then
+            WriteTextLog(MyString & "Activated at " & PARM_FS_THR_VALUE & " PWM with always RTL")
+        ElseIf PARM_FS_THR_ENABLE = 2 Then
+            WriteTextLog(MyString & "Activated at " & PARM_FS_THR_VALUE & " PWM with Continue with Mission in Auto Mode")
+        ElseIf PARM_FS_THR_ENABLE = 3 Then
+            WriteTextLog(MyString & "Activated at " & PARM_FS_THR_VALUE & " PWM with always LAND")
+        Else
+            WriteTextLog(MyString & "Update program for new FS_THR_ENABLE value.")
+        End If
+        ' Fence FailSafe
+        MyString = "$$$     GEO Fence = "
+        If PARM_FENCE_ENABLE = 99 Then
+            WriteTextLog(MyString & "Parameter Not Found in Log")
+        ElseIf PARM_FENCE_ENABLE = 0 Then
+            WriteTextLog(MyString & "Not Activated")
+        ElseIf PARM_FENCE_ENABLE = 1 Then
+            MyString = MyString & "Activated "
+            If PARM_FENCE_TYPE = 1 Then
+                WriteTextLog(MyString & "on Altitude of " & PARM_FENCE_ALT_MAX & " meters")
+            ElseIf PARM_FENCE_TYPE = 2 Then
+                WriteTextLog(MyString & "on Circle Radius of " & PARM_FENCE_RADIUS & " meters")
+            ElseIf PARM_FENCE_TYPE = 3 Then
+                WriteTextLog(MyString & "on Altitude of " & PARM_FENCE_ALT_MAX & " & Circle Radius " & PARM_FENCE_RADIUS & " meters")
+            Else
+                WriteTextLog(MyString & "with a new Type Parameter :" & PARM_FENCE_TYPE)
+            End If
+            MyString = "$$$    GEO Action = "
+            If PARM_FENCE_ACTION = 0 Then
+                WriteTextLog(MyString & "Report Only")
+            ElseIf PARM_FENCE_ACTION = 1 Then
+                WriteTextLog(MyString & "RTL or Land")
+            Else
+                WriteTextLog(MyString & "Fail Safe Activated with with a new Action Parameter :" & PARM_FENCE_ACTION)
+            End If
+            MyString = "$$$    GEO Margin = "
+            WriteTextLog(MyString & PARM_FENCE_MARGIN & " meters")
+        Else
+            WriteTextLog(MyString & "Update program for new FENCE_ENABLE value.")
+        End If
+
+
         'Check that ACRO mode will try to self level.
         If PARM_ACRO_TRAINER <> 2 Then
             Call WriteParamHeader()
@@ -79,7 +156,6 @@
             WriteTextLog(vbNewLine)
         End If
 
-
         ' Warning about GPS FailSafe being disabled.
         If PARM_FS_GPS_ENABLE = 0 Then
             Call WriteParamHeader()
@@ -90,6 +166,7 @@
             WriteTextLog(vbNewLine)
         End If
 
+        ' Note: in v3.3 logs this parameter has been removed.
         ' Warning if Pre-Arm check is disabled or skipping GPS and GPS fail safe is enabled
         If PARM_FS_GPS_ENABLE = 1 And (PARM_ARMING_CHECK = 0 Or PARM_ARMING_CHECK = -9) Then
             WriteTextLog("ARMING_CHECK = " & PARM_ARMING_CHECK)
