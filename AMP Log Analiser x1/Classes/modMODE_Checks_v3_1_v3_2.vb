@@ -9,6 +9,9 @@
 
         ' ReadFileResilienceCheck(3) Can not be used here because the value is not numeric
 
+        ' We must update the screen before we change the mode
+        If frmMainForm.chkboxSplitModeLandings.Checked = True Then Call AddModeTime()
+
         Log_Current_Mode = DataArray(1)
 
         Call MODE_MainAnalysis()

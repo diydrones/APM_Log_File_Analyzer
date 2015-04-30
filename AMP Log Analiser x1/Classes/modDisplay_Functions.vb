@@ -329,14 +329,17 @@ Module modDisplay_Functions
     End Sub
 
     Sub AddModeTime()
-        Dim TempFlightTime As Integer = 0   'FlightTime in Seconds from the current mode.
-        Dim Efficiency As String = ""        'Calculated Efficiency
+        Dim TempFlightTime As Integer = 0       'FlightTime in Seconds from the current mode.
+        TempFlightTime = 0
+        Dim Efficiency As String = ""           'Calculated Efficiency
+        Efficiency = ""
         'Only update the display if the Flight Time is worth reporting
         'this alos removes some bugs when the mode changes very quickly
         'and not enough data is retrieved to overwrite the program variables
         'from their base settings, i.e. a min setting as 99999
         If Log_Current_Mode_Flight_Time > 0 Then
-            Select Case Log_Current_Mode
+            'Select Case UCase(Log_Current_Mode)
+            Select Case UCase(Log_Current_Mode)
                 Case "STABILIZE"
                     STABILIZE_Flight_Time = STABILIZE_Flight_Time + Log_Current_Mode_Flight_Time    'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
                     TempFlightTime = STABILIZE_Flight_Time
@@ -379,6 +382,7 @@ Module modDisplay_Functions
                     Debug.Print("CONDITION ERROR")
                     Debug.Print("New MODE Detected: " & Log_Current_Mode)
                     Debug.Print("Update ""MODE"" Code to support this new mode")
+                    Debug.Print("DataLine: " & DataLine)
                     Debug.Print("#############################################")
                     Debug.Print(vbNewLine)
                     OTHER_Flight_Time = OTHER_Flight_Time + Log_Current_Mode_Flight_Time            'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)

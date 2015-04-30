@@ -12,6 +12,7 @@
         EndOfPARAM = False                          ' True when we find the first Data
         WarnAboutExtraFMT = False                   ' True if the log should report that FMTs were found at the end (v3.2 issue)
         TruncationIssue = False                     ' Used during DataLog file reading to detect truncation issues.
+        FoundFailSafeError = 0                      ' Number of FailSafe Errors found during PARAM_Checks
 
         PARM_THR_MIN = 99                           ' Used to Determine the settings for Thr_Min & Mot_Spin_Armed
         PARM_THR_MAX = 99                           ' Used to check this is set between 800-1000

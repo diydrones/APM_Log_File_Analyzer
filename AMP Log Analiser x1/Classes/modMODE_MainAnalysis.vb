@@ -6,8 +6,6 @@
 
         ' THIS CODE MUST ONLY BE CALLED AFTER THE DATA LINE VARIABLES HAVE BEEN SET !!!
 
-        If frmMainForm.chkboxSplitModeLandings.Checked = True Then Call AddModeTime()
-
         'Debug.Print("@ Logline " & DataLine & " - Mode Changed to: " & Log_Current_Mode & " @ " & Log_GPS_DateTime)
 
         WriteTextLog("")
