@@ -9,6 +9,7 @@
         MyString = "$$$  Main Battery = "
         If PARM_FS_BATT_ENABLE = 99 Then
             WriteTextLog(MyString & "Parameter Not Found in Log")
+            FoundFailSafeError = FoundFailSafeError + 1
         ElseIf PARM_FS_BATT_ENABLE = 0 Then
             WriteTextLog(MyString & "Not Activated")
         ElseIf PARM_FS_BATT_ENABLE = 1 Then
@@ -17,11 +18,13 @@
             WriteTextLog(MyString & "Activated at " & PARM_FS_BATT_VOLTAGE & " volts or " & PARM_FS_BATT_MAH & " mAH, with RTL")
         Else
             WriteTextLog(MyString & "Update program for new FS_BATT_ENABLE value.")
+            FoundFailSafeError = FoundFailSafeError + 1
         End If
         ' GCS FailSafe
         MyString = "$$$Ground Control = "
         If PARM_FS_GCS_ENABLE = 99 Then
             WriteTextLog(MyString & "Parameter Not Found in Log")
+            FoundFailSafeError = FoundFailSafeError + 1
         ElseIf PARM_FS_GCS_ENABLE = 0 Then
             WriteTextLog(MyString & "Not Activated")
         ElseIf PARM_FS_GCS_ENABLE = 1 Then
@@ -30,11 +33,13 @@
             WriteTextLog(MyString & "Activated, with Continue with Mission in Auto Mode")
         Else
             WriteTextLog(MyString & "Update program for new FS_GCS_ENABLE value.")
+            FoundFailSafeError = FoundFailSafeError + 1
         End If
         ' Throttle FailSafe
         MyString = "$$$      Receiver = "
         If PARM_FS_THR_ENABLE = 99 Then
             WriteTextLog(MyString & "Parameter Not Found in Log")
+            FoundFailSafeError = FoundFailSafeError + 1
         ElseIf PARM_FS_THR_ENABLE = 0 Then
             WriteTextLog(MyString & "Not Activated")
         ElseIf PARM_FS_THR_ENABLE = 1 Then
@@ -45,11 +50,13 @@
             WriteTextLog(MyString & "Activated at " & PARM_FS_THR_VALUE & " PWM with always LAND")
         Else
             WriteTextLog(MyString & "Update program for new FS_THR_ENABLE value.")
+            FoundFailSafeError = FoundFailSafeError + 1
         End If
         ' Fence FailSafe
         MyString = "$$$     GEO Fence = "
         If PARM_FENCE_ENABLE = 99 Then
             WriteTextLog(MyString & "Parameter Not Found in Log")
+            FoundFailSafeError = FoundFailSafeError + 1
         ElseIf PARM_FENCE_ENABLE = 0 Then
             WriteTextLog(MyString & "Not Activated")
         ElseIf PARM_FENCE_ENABLE = 1 Then
@@ -61,7 +68,8 @@
             ElseIf PARM_FENCE_TYPE = 3 Then
                 WriteTextLog(MyString & "on Altitude of " & PARM_FENCE_ALT_MAX & " & Circle Radius " & PARM_FENCE_RADIUS & " meters")
             Else
-                WriteTextLog(MyString & "with a new Type Parameter :" & PARM_FENCE_TYPE)
+                WriteTextLog(MyString & "with a New or Invalid Type Parameter :" & PARM_FENCE_TYPE)
+                FoundFailSafeError = FoundFailSafeError + 1
             End If
             MyString = "$$$    GEO Action = "
             If PARM_FENCE_ACTION = 0 Then
@@ -69,12 +77,18 @@
             ElseIf PARM_FENCE_ACTION = 1 Then
                 WriteTextLog(MyString & "RTL or Land")
             Else
-                WriteTextLog(MyString & "Fail Safe Activated with with a new Action Parameter :" & PARM_FENCE_ACTION)
+                WriteTextLog(MyString & "Fail Safe Activated with with a New or Invalid Action Parameter :" & PARM_FENCE_ACTION)
+                FoundFailSafeError = FoundFailSafeError + 1
             End If
             MyString = "$$$    GEO Margin = "
             WriteTextLog(MyString & PARM_FENCE_MARGIN & " meters")
         Else
             WriteTextLog(MyString & "Update program for new FENCE_ENABLE value.")
+            FoundFailSafeError = FoundFailSafeError + 1
+        End If
+        If FoundFailSafeError <> 0 Then
+            WriteTextLog("ERROR: " & FoundFailSafeError & " FailSafe Setup errors have been found - DO NOT FLY!")
+            FoundFailSafeError = 0   ' Reset for a second run.
         End If
 
 
