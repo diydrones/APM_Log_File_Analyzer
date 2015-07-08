@@ -130,9 +130,6 @@
     <Compile Include="Classes\modATT_Checks_v3_2.vb" />
     <Compile Include="Classes\modATT_Checks_v3_1.vb" />
     <Compile Include="Classes\modATT_MainAnalysis.vb" />
-    <Compile Include="Classes\modATUN_Checks_v3_1_v3_2.vb" />
-    <Compile Include="Classes\modATUN_Checks_v3_3.vb" />
-    <Compile Include="Classes\modATUN_MainAnalysis.vb" />
     <Compile Include="Classes\modBinFileConversion.vb" />
     <Compile Include="Classes\modCMD_MainAnalysis.vb" />
     <Compile Include="Classes\modCMD_Checks_v3_2.vb" />

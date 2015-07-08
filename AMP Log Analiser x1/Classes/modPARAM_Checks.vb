@@ -194,7 +194,7 @@
 
 
         ' Warning if final RTL landing value is less than 15 meters
-        If PARM_RTL_ALT > 0 And PARM_RTL_ALT < 1500 Then
+        If PARM_RTL_ALT < 1500 Then
             Call WriteParamHeader()
             WriteTextLog("RTL_ALT = " & PARM_RTL_ALT)
             WriteTextLog("Warning: Return to Launch Altitude is less than 15 meters (Value in CM)")
@@ -203,19 +203,13 @@
         If PARM_RTL_ALT = 0 Then
             Call WriteParamHeader()
             WriteTextLog("RTL_ALT = " & PARM_RTL_ALT)
-            WriteTextLog("Information: Return to Launch Altitude is set to RTL at Current Altitude")
+            WriteTextLog("Warning: Return to Launch is set to Land (Value in CM)")
             WriteTextLog(vbNewLine)
         End If
-        If PARM_RTL_ALT_FINAL > 0 And PARM_RTL_ALT_FINAL < 500 Then
+        If PARM_RTL_ALT > 0 And PARM_RTL_ALT < 500 Then
             Call WriteParamHeader()
-            WriteTextLog("RTL_ALT_FINAL = " & PARM_RTL_ALT_FINAL)
+            WriteTextLog("RTL_ALT = " & PARM_RTL_ALT)
             WriteTextLog("Warning: Return to Launch Final Hover Altitude is set to less than 5 meters (Value in CM)")
-            WriteTextLog(vbNewLine)
-        End If
-        If PARM_RTL_ALT_FINAL = 0 Then
-            Call WriteParamHeader()
-            WriteTextLog("RTL_ALT_FINAL = " & PARM_RTL_ALT_FINAL)
-            WriteTextLog("Warning: Return to Launch Final Hover Altitude is set to land (Value in CM)")
             WriteTextLog(vbNewLine)
         End If
 

@@ -8,10 +8,6 @@
 
         'Debug.Print("@ Logline " & DataLine & " - Mode Changed to: " & Log_Current_Mode & " @ " & Log_GPS_DateTime)
 
-        ' When AutoTune activate it gives a log Mode Change with a " " for the Mode.
-        ' I'm not sure if it does this with any other special modes.
-        If Log_Current_Mode = " " Then Log_Current_Mode = "SPECIAL SUB MODE"
-
         WriteTextLog("")
         WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Mode Changed to " & Log_Current_Mode)
         WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Mode Initialised at " & Log_GPS_Lat & " " & Log_GPS_Lng & " Alt: " & Log_CTUN_BarAlt & " Spd:" & Log_GPS_Spd)
