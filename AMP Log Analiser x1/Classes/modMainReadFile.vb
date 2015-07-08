@@ -69,24 +69,26 @@ Module modMainReadFile
                 DataLine = DataLine + 1
                 'Update progress bar, note -1 and back again keeps it updaing real time!
                 PercentageComplete = (DataLine / TotalDataLines) * 100
-                '.barReadFile.Value = PercentageComplete
-                '.barReadFile.Refresh()
-                'If PercentageComplete Then .barReadFile.Value = PercentageComplete - 1
-                '.barReadFile.Refresh()
                 .barReadFile.Value = PercentageComplete
-                '.barReadFile.Refresh()
-                'My.Application.DoEvents()
                 'Update the TaskBar Progress Bar
                 If osVer.Major >= 6 And osVer.Minor >= 1 Then 'Only allowed in Windows 7 or above
                     TaskbarManager.Instance.SetProgressValue(DataLine, TotalDataLines, frmMainFormHandle)
                 End If
 
+                ' BreakPoint
+                'If DataLine = 3320 Then
+                '    Dim a = 0
+                'End If
+
+
                 Data = objReader.ReadLine()
+                Dim FirstComma As Boolean = False
                 'Debug.Print("Processing:- " & Str(DataLine) & ": " & Data)
                 ' Split the data into the DataArray()
                 For n = 1 To Len(Data)
                     DataChar = Mid(Data, n, 1)
                     If (DataChar = "," Or DataChar = " ") Then
+                        If DataSplit = "" And FirstComma = True Then DataSplit = " "
                         If DataSplit <> "" Then
                             DataArray(DataArrayCounter) = DataSplit
                             'Debug.Print("--- Paramter " & DataArrayCounter & " = " & DataArray(DataArrayCounter))
@@ -96,10 +98,14 @@ Module modMainReadFile
                             'ensure we do not make more than 25 enteries into the array.
                             'the code in each section will pick up the issue and ensure we do not process corrupt data.
                             If DataArrayCounter > 25 Then DataArrayCounter = 25
+                            FirstComma = False
+                        Else
+                            FirstComma = True
                         End If
                     Else
                         DataSplit = DataSplit + DataChar
                     End If
+
                 Next n
                 'Capture the very Last entry (i.e. there is no , after the last entry.
                 'DataArrayCounter is now = to the last entry in the data spilt.
@@ -218,6 +224,18 @@ Module modMainReadFile
                                 End If
                             End If
                         End If
+
+                        'ATUN - AutoTune Checks
+                        If DataArray(0) = "ATUN" Then
+                            If ReadFileVersion = 3.1 Then
+                                Call ATUN_Checks_v3_1_v3_2()
+                            ElseIf ReadFileVersion = 3.2 Then
+                                Call ATUN_Checks_v3_1_v3_2()
+                            Else
+                                Call ATUN_Checks_v3_3()
+                            End If
+                        End If
+
 
                         'Additional Checks not related to any one log data type
                         Call Additional_Checks()

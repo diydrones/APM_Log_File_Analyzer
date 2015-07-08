@@ -50,6 +50,21 @@
         PARM_FENCE_ALT_MAX = 99                     ' Value of Parameter found.
         PARM_FENCE_RADIUS = 99                      ' Value of Parameter found.
         PARM_FENCE_MARGIN = 99                      ' Value of Parameter found.
+        PARM_RATE_YAW_D = 99                        ' Value of Parameter found.
+
+        'Initialise the ATUN Variables - AutoTune
+        Log_ATUN_Axis = 0                               ' Axis being Tuned, 0 = Roll, 1 = Pitch, 3 = Yaw
+        Log_ATUN_TuneStep = 0                           ' TuneStep, 0-4 in v3.3 but code must be able to detect higher.
+        Log_ATUN_RP = 0                                 ' Best Rate P so far for the current axis being tuned.
+        Log_ATUN_RD = 0                                 ' Best Rate D so far for the current axis being tuned.
+        Log_ATUN_SP = 0                                 ' Best Stabilize P so far for the current axis being tuned.
+        ATUN_PreviousAxis = 0                           ' Used to detect when the Axis changes
+        ATUN_PreviousTuneStep = 0                       ' Used to detect when the TuneStep changes
+        ATUN_PreviousRP = 0                             ' Remember last RP
+        ATUN_PreviousRD = 0                             ' Remember last RD
+        ATUN_PreviousSP = 0                             ' Remember last SP
+        ATUN_WriteBasedSettings = False                 ' True if the base settings have been written to the screen for the current axis
+
 
         'Initialise the INAV Variables
         Log_INAV_Home_GLat = 0                           'Hold where the APM considers home to be.

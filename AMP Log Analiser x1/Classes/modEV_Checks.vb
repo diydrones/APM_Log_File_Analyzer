@@ -127,6 +127,8 @@
                         Case "32"    ' AUTOTUNE_RESTART
                             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": AUTOTUNE_RESTART")
                         Case "33"    ' AUTOTUNE_SUCCESS
+                            Log_ATUN_Axis = 99      ' Signal ATUN_MainAnalysis to Display Final Settings
+                            Call ATUN_MainAnalysis()
                             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": AUTOTUNE_SUCCESS")
                         Case "34"    ' AUTOTUNE_FAILED
                             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": AUTOTUNE_FAILED")

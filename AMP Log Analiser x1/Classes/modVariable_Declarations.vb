@@ -129,7 +129,23 @@ Module modVariable_Declarations
     Public PARM_FENCE_ALT_MAX As Integer = 99                   ' Value of Parameter found.
     Public PARM_FENCE_RADIUS As Integer = 99                    ' Value of Parameter found.
     Public PARM_FENCE_MARGIN As Integer = 99                    ' Value of Parameter found.
+    Public PARM_RATE_YAW_D As Double = 99                       ' Value of Parameter found.
 
+
+    'Declare the ATUN Variables - AutoTune
+    Public Log_ATUN_Axis As Integer = 0                         ' Axis being Tuned, 0 = Roll, 1 = Pitch, 3 = Yaw
+    Public Log_ATUN_TuneStep As Integer = 0                     ' TuneStep, 0-4 in v3.3 but code must be able to detect higher.
+    Public Log_ATUN_RP As Double = 0                            ' Best Rate P so far for the current axis being tuned.
+    Public Log_ATUN_RD As Double = 0                            ' Best Rate D so far for the current axis being tuned.
+    Public Log_ATUN_SP As Double = 0                            ' Best Stabilize P so far for the current axis being tuned.
+    Public Const AUTOTUNE_PI_RATIO_FINAL As Single = 2.5        ' Multiplier to cal Rate I gain for Roll and Pitch from Rate P
+    Public Const AUTOTUNE_YAW_PI_RATIO_FINAL As Single = 0.1    ' Multiplier to cal Rate I gain for Yaw from Rate P
+    Public ATUN_PreviousAxis As Integer = 0                     ' Used to detect when the Axis changes
+    Public ATUN_PreviousTuneStep As Integer = 0                 ' Used to detect when the TuneStep changes
+    Public ATUN_PreviousRP As Double = 0                        ' Remember last RP
+    Public ATUN_PreviousRD As Double = 0                        ' Remember last RD
+    Public ATUN_PreviousSP As Double = 0                        ' Remember last SP
+    Public ATUN_WriteBasedSettings As Boolean = False           ' True if the base setting have been written to the screen for the current axis
 
     'Delcare the NTUN Variables
     Public Log_NTUN_WPDst As Single = 0
