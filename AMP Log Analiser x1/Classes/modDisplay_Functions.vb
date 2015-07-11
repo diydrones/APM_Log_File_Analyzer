@@ -203,7 +203,7 @@ Module modDisplay_Functions
             If Hardware <> "" Then ' This just checks that the Hardware Parameter line was found before converting to int()
                 Select Case Int(Hardware)
                     Case 0
-                        Hardware = "Unknown"
+                        Hardware = "Unknown - Redundant Parameter for PixHawk"
                     Case 1
                         Hardware = "APM1-1280"
                     Case 2
@@ -224,7 +224,7 @@ Module modDisplay_Functions
             Else
                 Hardware = "Parameter Value Missing"
             End If
-            If Hardware <> "" Then WriteTextLog("    Hardware: " & Hardware)
+            If Hardware <> "" And APM_Version = "" Then WriteTextLog("    Hardware: " & Hardware)
             If APM_Free_RAM <> 0 Then WriteTextLog(" HW Free RAM: " & APM_Free_RAM)
             If APM_Version <> "" Then WriteTextLog("  HW Version: " & APM_Version)
             If Pixhawk_Serial_Number <> "" Then WriteTextLog("  Serial No.: " & Pixhawk_Serial_Number)
