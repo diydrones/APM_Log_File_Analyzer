@@ -56,6 +56,15 @@ C:\Users\Kevin\Documents\GitHub\APM_Analyzer\APM_Log_File_Analyzer\AMP Log Anali
 C:\Users\Kevin\Documents\GitHub\APM_Analyzer\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.TrustInfo.xml
 C:\Users\Kevin\Documents\GitHub\APM_Analyzer\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.exe.manifest
 C:\Users\Kevin\Documents\GitHub\APM_Analyzer\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.application
+C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\AMP Log Analiser x1.vbprojResolveAssemblyReference.cache
+C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.frmMainForm.resources
+C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.frmUpdate.resources
+C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.frmHelp.resources
+C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.frmParameters.resources
+C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.SplashScreen.resources
+C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.Resources.resources
+C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\AMP Log Analiser x1.vbproj.GenerateResource.Cache
+C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.xml
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\Debug\APM Log File Analiser.exe.config
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\Debug\APM Log File Analiser.exe.manifest
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\Debug\APM Log File Analiser.application
@@ -70,16 +79,8 @@ C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\De
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.pdb
-C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.frmMainForm.resources
-C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.frmUpdate.resources
-C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.frmParameters.resources
-C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.SplashScreen.resources
-C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.Resources.resources
-C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\AMP Log Analiser x1.vbproj.GenerateResource.Cache
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.TrustInfo.xml
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.exe.manifest
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.application
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.exe
-C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.xml
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APM Log File Analiser.pdb
-C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.frmHelp.resources
