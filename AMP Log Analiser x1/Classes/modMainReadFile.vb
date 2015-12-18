@@ -78,7 +78,7 @@ Module modMainReadFile
                 'My.Application.DoEvents()
                 'Update the TaskBar Progress Bar
                 If osVer.Major >= 6 And osVer.Minor >= 1 Then 'Only allowed in Windows 7 or above
-                    TaskbarManager.Instance.SetProgressValue(DataLine, TotalDataLines, frmMainFormHandle)
+                    'TODO - Fix This TaskbarManager.Instance.SetProgressValue(DataLine, TotalDataLines, frmMainFormHandle)
                 End If
 
                 Data = objReader.ReadLine()
@@ -120,11 +120,25 @@ Module modMainReadFile
                     If TruncationIssue = False Then
 
                         'EV Checks
-                        Call EV_Checks()
+                        If DataArray(0) = "EV" Then
+                            If (ReadFileVersion = 3.1 Or ReadFileVersion = 3.2) And ArduType = "APM:Copter" Then
+                                Call EV_Checks()
+                            Else
+                                Call EV_Checks_v3_3()
+                            End If
+                        End If
+
 
                         'Error Checks
                         If frmMainForm.chkboxErrors.Checked = True Then
                             Call ERROR_Checks()
+                            If DataArray(0) = "ERR" Then
+                                If (ReadFileVersion = 3.1 Or ReadFileVersion = 3.2) And ArduType = "APM:Copter" Then
+                                    Call ERROR_Checks()
+                                Else
+                                    Call ERROR_Checks_v3_3()
+                                End If
+                            End If
                         End If
 
 
@@ -302,7 +316,7 @@ Module modMainReadFile
             'Restore the form and complete the task bar progress
             If osVer.Major >= 6 And osVer.Minor >= 1 Then 'Only allowed in Windows 7 or above
                 .WindowState = FormWindowState.Normal
-                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress, frmMainFormHandle)
+                'TODO - Fix This  - TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress, frmMainFormHandle)
                 frmMainForm.richtxtLogAnalysis.HideSelection = False
                 frmMainForm.richtxtLogAnalysis.SelectionStart = 0
                 frmMainForm.richtxtLogAnalysis.HideSelection = True
