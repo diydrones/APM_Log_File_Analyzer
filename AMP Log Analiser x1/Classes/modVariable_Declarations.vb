@@ -77,6 +77,7 @@ Module modVariable_Declarations
     '                                                           ' or for v3.2 a count of the values > 0  in the RCOUT dataline.
     Public Hardware As String = ""                              ' Holds the type of hardware used.
     Public Pixhawk_Serial_Number As String                      ' Holds the PixHawk Serial Number.
+    Public SoloFirmwareDetected_v3_2 As Boolean = False         ' True if ArduVersion returned with the name "solo" in it and was replaced with v3.2
 
     'Declare the Parameter Variables
     Public Param As String = ""                                 ' Parameter read from the Log.

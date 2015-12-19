@@ -186,9 +186,13 @@ Module modMainReadFile
                         'IMU Checks - Vibration
                         If DataArray(0) = "IMU" Then
                             If ReadFileVersion = 3.1 Or ReadFileVersion = 3.2 Then
-                                Call IMU_Checks_v3_1_v3_2()
+                                If SoloFirmwareDetected_v3_2 = False Then
+                                    Call IMU_Checks_v3_1_v3_2()
+                                Else
+
+                                End If
                             Else
-                                Call IMU_Checks_v3_3()
+                                    Call IMU_Checks_v3_3()
                             End If
                         End If
 

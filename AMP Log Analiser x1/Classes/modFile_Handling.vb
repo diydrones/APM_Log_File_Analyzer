@@ -63,6 +63,16 @@ Module modFile_Handling
             FileDataSuitable = True
         End If
 
+        'Special Code for SOLO solo-1.2.0 to Force V3.2 code
+        If InStr(StrConv(ArduVersion, vbUpperCase), "SOLO-1.2.0") Then
+            WriteTextLog("Log file created by a Solo Copter (" & ArduVersion & ") - Forcing to v3.2 scanning")
+            ArduVersion = 3.2 : SoloFirmwareDetected_v3_2 = True ' Drives different IMU Code.
+            strTemp = "         Solo Copter Firmware Detected," & vbNewLine
+            strTemp = strTemp & "Compatibility may be limited at this time." & vbNewLine
+            MsgBox(strTemp, vbOKOnly, "Warning")
+        End If
+
+
         'Check the program is compatible with this log file version.
         If Ignore_LOG_Version = False Then
             If ArduType = "ArduCopter" Or ArduType = "APM:Copter" Then
@@ -276,11 +286,11 @@ Module modFile_Handling
             ' v3.3 - FMT, 129, 31, PARM, QNf, TimeUS,Name,Value
             If DataArray(0) = "PARM" Then
                 EndOfFMT = True
-                If (ReadFileVersion = 3.1 Or ReadFileVersion = 3.2) And ArduType = "APM:Copter" Then
-                    'Alter Old Version Data to meet v3.3 requirements
-                    DataArray(4) = DataArray(3) : DataArray(3) = DataArray(2)
+                If ReadFileVersion = 3.3 And ArduType = "APM:Copter" Then
+                    'Alter Data to meet v3.2 requirements by shifting it down one place.
+                    DataArray(1) = DataArray(2) : DataArray(2) = DataArray(3) : DataArray(3) = Nothing
                 End If
-                If IsNumeric(DataArray(3)) = False Or IsNothing(DataArray(4)) = False Then
+                If IsNumeric(DataArray(2)) = False Or IsNothing(DataArray(3)) = False Then
                     Debug.Print("================================================================")
                     Debug.Print("== File Corruption Detected on Data Line " & DataLine & ", PARM Check ignored! ==")
                     Debug.Print("================================================================")
@@ -296,8 +306,8 @@ Module modFile_Handling
                     End With
                 Else
                     If EndOfPARAM = False Then 'Handles log corruption where PARAMS from previous logs are added at the end.
-                        Param = DataArray(2)
-                        Value = Val(DataArray(3))
+                        Param = DataArray(1)
+                        Value = Val(DataArray(2))
 
                         'Write the parameter found to the Parameter List Box
                         frmParameters.lstboxParameters.Items.Add(Param & "  =  " & Value)

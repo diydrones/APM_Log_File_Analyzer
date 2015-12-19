@@ -240,6 +240,7 @@
         APM_No_Motors = 0                               'Holds the number of Motors, determined from the FMT for MOT.
         Hardware = ""                                   'Holds the type of hardware used.
         Pixhawk_Serial_Number = ""                      'Holds the PixHawk Serial Number.
+        SoloFirmwareDetected_v3_2 = False               ' True if ArduVersion returned with the name "solo" in it and was replaced with v3.2
 
         'Decalre the IMU Variables
         Log_IMU_TimeMS = 0                              'Holds the current IMU Time in ms that the last reading was taken.
