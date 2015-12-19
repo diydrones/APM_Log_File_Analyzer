@@ -90,6 +90,7 @@
         Log_DU32_CH8_Switch = 99                            'ch8 aux switch : 0 is low or false, 1 is center or true, 2 is high
         Log_DU32_USB = 99                                   'True if USB is Powered.
         Log_DU32_Compass_Mot = 99                           'True if compassmot is being calibrated.
+        Log_DU32_SystemTimeGPS = 99                         'Ture if the System Time has been set by the GPS
         Log_DU32_Receiver = 99                              'True if a receiver is present.
         Log_DU32_AutoWait = 99                              'True if Auto mode is waiting for Throttle.
         USB_Warning1 = False                                'True if the USB warning has been presented to the user when APM thinks it has a USB connection while in flight
