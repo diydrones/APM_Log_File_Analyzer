@@ -218,13 +218,15 @@ Module modFile_Handling
             If DataArray(0) = "PARM" Then FoundPARAM = True
             If DataArray(0) = "PARM" And DataArray(1) = "FRAME" Then APM_Frame_Type = DataArray(2)
             If DataArray(0) = "PARM" And DataArray(1) = "INS_PRODUCT_ID" Then Hardware = DataArray(2)
+            If DataArray(0) = "PARM" And DataArray(2) = "FRAME" Then APM_Frame_Type = DataArray(3)
+            If DataArray(0) = "PARM" And DataArray(2) = "INS_PRODUCT_ID" Then Hardware = DataArray(3)
             If DataArray(0) = "IMU" Then IMU_Logging = True : EndOfFMT = True : EndOfPARAM = True
             If DataArray(0) = "GPS" Then GPS_Logging = True : EndOfFMT = True : EndOfPARAM = True
             If DataArray(0) = "CTUN" And Ignore_CTUN_Logging = False Then CTUN_Logging = True : EndOfFMT = True : EndOfPARAM = True
             If DataArray(0) = "PM" Then PM_Logging = True : EndOfFMT = True : EndOfPARAM = True
             If DataArray(0) = "CURR" Then CURR_Logging = True : EndOfFMT = True : EndOfPARAM = True
             If DataArray(0) = "NTUN" Then NTUN_Logging = True : EndOfFMT = True : EndOfPARAM = True
-            If DataArray(0) = "MSG" Then MSG_Logging = True : EndOfFMT = True : EndOfPARAM = True
+            If DataArray(0) = "MSG" Then MSG_Logging = True : EndOfFMT = True
             If DataArray(0) = "ATUN" Then ATUN_Logging = True : EndOfFMT = True : EndOfPARAM = True
             If DataArray(0) = "ATDE" Then ATDE_logging = True : EndOfFMT = True : EndOfPARAM = True
             If DataArray(0) = "MOT" Then MOT_Logging = True : EndOfFMT = True : EndOfPARAM = True
@@ -294,8 +296,8 @@ Module modFile_Handling
                     End With
                 Else
                     If EndOfPARAM = False Then 'Handles log corruption where PARAMS from previous logs are added at the end.
-                        Param = DataArray(1)
-                        Value = Val(DataArray(2))
+                        Param = DataArray(2)
+                        Value = Val(DataArray(3))
 
                         'Write the parameter found to the Parameter List Box
                         frmParameters.lstboxParameters.Items.Add(Param & "  =  " & Value)
