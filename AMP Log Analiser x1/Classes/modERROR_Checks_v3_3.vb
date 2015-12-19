@@ -2,7 +2,15 @@
     Public Sub ERROR_Checks_v3_3()
         'An Error value should have only 3 Pieces of data!
         If DataArray(0) = "ERR" Then
-            If IsNumeric(DataArray(1)) = False Or IsNothing(DataArray(3)) = False And (IsNumeric(DataArray(2) = False Or IsNothing(DataArray(2)) = False)) Then
+
+            ' Remove this old check from v3.2
+            ' I Believe that the new code will always give 3 data pieces now.
+            ' so we should be able to use the relilience checker
+            'If IsNumeric(DataArray(1)) = False Or IsNothing(DataArray(3)) = False And (IsNumeric(DataArray(2) = False Or IsNothing(DataArray(2)) = False)) Then
+
+
+            ' v3.3 - ERR, 109780635, 6, 1
+            If ReadFileResilienceCheck(3) <> True Then
                 Debug.Print("================================================================")
                 Debug.Print("== File Corruption Detected on Data Line " & DataLine & ", ERROR Checks v3.3 ignored! ==")
                 Debug.Print("================================================================")

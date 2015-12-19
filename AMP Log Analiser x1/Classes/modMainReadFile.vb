@@ -131,7 +131,6 @@ Module modMainReadFile
 
                         'Error Checks
                         If frmMainForm.chkboxErrors.Checked = True Then
-                            Call ERROR_Checks()
                             If DataArray(0) = "ERR" Then
                                 If (ReadFileVersion = 3.1 Or ReadFileVersion = 3.2) And ArduType = "APM:Copter" Then
                                     Call ERROR_Checks()
