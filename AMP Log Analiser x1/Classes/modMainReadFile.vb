@@ -229,7 +229,14 @@ Module modMainReadFile
                         End If
 
                         'DU32 Checks
-                        Call DU32_Checks()
+                        If DataArray(0) = "DU32" Then
+                            If ReadFileVersion = 3.1 Or ReadFileVersion = 3.2 Then
+                                Call DU32_Checks_v3_1_v3_2()
+                            Else
+                                Call DU32_Checks_v3_3()
+                            End If
+                        End If
+
 
                         'CMD Checks
                         If frmMainForm.chkboxAutoCommands.Checked = True Then

@@ -1,5 +1,5 @@
-﻿Module modDU32_Checks
-    Public Sub DU32_Checks()
+﻿Module modDU32_Checks_v3_1_v3_2
+    Public Sub DU32_Checks_v3_1_v3_2()
         '    DU32 7 Structure is bependent on the AP Firmware Version Number being used.
 
         'Firmware 2.9.x (Switch Off and Uncheck the DU32 button)

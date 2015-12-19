@@ -183,6 +183,7 @@ Module modVariable_Declarations
     Public Log_DU32_CH8_Switch As Integer = 99                  ' ch8 aux switch : 0 is low or false, 1 is center or true, 2 is high
     Public Log_DU32_USB As Integer = 99                         ' True if USB is Powered.
     Public Log_DU32_Compass_Mot As Integer = 99                 ' True if compassmot is being calibrated.
+    Public Log_DU32_SystemTimeGPS As Integer = 99               ' True if the System Time has been set by the GPS time
     Public Log_DU32_Receiver As Integer = 99                    ' True if a receiver is present.
     Public Log_DU32_AutoWait As Integer = 99                    ' True if Auto mode is waiting for Throttle.
     Public USB_Warning1 As Boolean = False                      ' True if the USB warning has been presented to the user when APM thinks it has a USB connection while in flight
