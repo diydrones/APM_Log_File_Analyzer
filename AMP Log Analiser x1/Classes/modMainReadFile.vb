@@ -167,8 +167,10 @@ Module modMainReadFile
                         If DataArray(0) = "CTUN" Then
                             If ReadFileVersion = 3.1 Then
                                 Call CTUN_Checks_v3_1()
-                            Else
+                            ElseIf ReadFileVersion = 3.2 Then
                                 Call CTUN_Checks_v3_2()
+                            Else
+                                Call CTUN_Checks_v3_3()
                             End If
                         End If
 
