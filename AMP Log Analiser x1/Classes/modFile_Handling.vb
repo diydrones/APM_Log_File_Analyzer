@@ -122,7 +122,7 @@ Module modFile_Handling
 
     Public Sub FindLoggingDataAndParams()
         Dim MotorsDetectedForV3_2 As Boolean = False 'for v3.2 we need to look at the actual dataline not just the FMT line.
-
+        Dim ReadFileVersion As Double = 0
 
         APM_No_Motors = 0
         'Do some warnings about DEVELOPER IGNORES
@@ -171,6 +171,20 @@ Module modFile_Handling
 
             ' Header Data Support for Firmware v3.3
             If DataArray(2) = "APM:Copter" Then ArduType = "APM:Copter" : ArduVersion = DataArray(3) : ArduBuild = DataArray(4)
+
+            ' For Speed we need to set a local variable to quicky handle
+            ' the version of file being read. Using the check on each line
+            ' had a significant overhead.
+            If ReadFileVersion = 0 And ArduVersion <> "" Then
+                If VersionCompare(ArduVersion, "3.1.999") = True Then
+                    ReadFileVersion = 3.1
+                ElseIf VersionCompare(ArduVersion, "3.2.999") = True Then
+                    ReadFileVersion = 3.2
+                Else
+                    ReadFileVersion = 3.3
+                End If
+            End If
+
 
             If DataArray(0) = "FMT" Then
                 FoundFMT = True
@@ -252,13 +266,21 @@ Module modFile_Handling
             If DataArray(0) = "RAD" Then RAD_Logging = True : EndOfFMT = True : EndOfPARAM = True
             If DataArray(0) = "SIM" Then SIM_Logging = True : EndOfFMT = True : EndOfPARAM = True
 
+
+
             ' Parameter Support for all Firmwares
-            'A Parameter value should have only 3 pieces of data!
+            ' A v3.1 or v3.2 Parameter value should have only 3 pieces of data!
+            ' v3.2 - FMT, 129, 23, PARM, Nf, Name,Value
+            ' v3.3 - FMT, 129, 31, PARM, QNf, TimeUS,Name,Value
             If DataArray(0) = "PARM" Then
                 EndOfFMT = True
-                If IsNumeric(DataArray(2)) = False Or IsNothing(DataArray(3)) = False Then
+                If (ReadFileVersion = 3.1 Or ReadFileVersion = 3.2) And ArduType = "APM:Copter" Then
+                    'Alter Old Version Data to meet v3.3 requirements
+                    DataArray(4) = DataArray(3) : DataArray(3) = DataArray(2)
+                End If
+                If IsNumeric(DataArray(3)) = False Or IsNothing(DataArray(4)) = False Then
                     Debug.Print("================================================================")
-                    Debug.Print("== File Corruption Detected on Data Line " & DataLine & ", line ignored! ==")
+                    Debug.Print("== File Corruption Detected on Data Line " & DataLine & ", PARM Check ignored! ==")
                     Debug.Print("================================================================")
                     ErrorCount = ErrorCount + 1
                     With frmMainForm

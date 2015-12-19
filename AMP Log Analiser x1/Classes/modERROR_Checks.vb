@@ -4,7 +4,7 @@
         If DataArray(0) = "ERR" Then
             If IsNumeric(DataArray(1)) = False Or IsNothing(DataArray(3)) = False And (IsNumeric(DataArray(2) = False Or IsNothing(DataArray(2)) = False)) Then
                 Debug.Print("================================================================")
-                Debug.Print("== File Corruption Detected on Data Line " & DataLine & ", line ignored! ==")
+                Debug.Print("== File Corruption Detected on Data Line " & DataLine & ", ERROR Checks ignored! ==")
                 Debug.Print("================================================================")
                 ErrorCount = ErrorCount + 1
                 With frmMainForm
