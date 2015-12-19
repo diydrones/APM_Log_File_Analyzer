@@ -68,14 +68,13 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>0AE70DA14BB8821D877B2C0B2580129C3AE975F0</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>E6729FF5BC44F6A53EFEBF67D512F33FFEB5137F</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>AMP Log Analiser x1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -91,8 +90,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="gLabel, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.WindowsAPICodePack">
-      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.Shell">
       <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
@@ -143,7 +143,9 @@
     <Compile Include="Classes\modCURR_MainAnalysis.vb" />
     <Compile Include="Classes\modDisplay_Functions.vb" />
     <Compile Include="Classes\modDU32_Checks.vb" />
+    <Compile Include="Classes\modERROR_Checks_v3_3.vb" />
     <Compile Include="Classes\modERROR_Checks.vb" />
+    <Compile Include="Classes\modEV_Checks_v3_3.vb" />
     <Compile Include="Classes\modEV_Checks.vb" />
     <Compile Include="Classes\modFile_Handling.vb" />
     <Compile Include="Classes\modGPS_Checks.vb" />
@@ -242,6 +244,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AMP Log Analiser x1_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

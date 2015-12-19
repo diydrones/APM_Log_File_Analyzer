@@ -168,6 +168,10 @@ Module modFile_Handling
             If DataArray(0) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
             If DataArray(0) = "Free" And DataArray(1) = "RAM:" Then APM_Free_RAM = DataArray(2)
             If DataArray(0) = "APM" Then APM_Version = DataArray(1)
+
+            ' Header Data Support for Firmware v3.3
+            If DataArray(2) = "APM:Copter" Then ArduType = "APM:Copter" : ArduVersion = DataArray(3) : ArduBuild = DataArray(4)
+
             If DataArray(0) = "FMT" Then
                 FoundFMT = True
                 If EndOfFMT = True Then
