@@ -175,7 +175,14 @@ Module modMainReadFile
                         End If
 
                         'GPS Checks
-                        Call GPS_Checks()
+
+                        If DataArray(0) = "GPS" Then
+                            If (ReadFileVersion = 3.1 Or ReadFileVersion = 3.2) Then
+                                Call GPS_Checks_v3_1_v3_2()
+                            Else
+                                Call GPS_Checks_v3_3()
+                            End If
+                        End If
 
                         'IMU Checks - Vibration
                         If DataArray(0) = "IMU" Then
