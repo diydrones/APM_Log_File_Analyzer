@@ -101,7 +101,6 @@ Public Class frmMainForm
         Me.panVibrations.Controls.Add(lblAccXY) : lblAccXY.BringToFront()
         Me.panVibrations.Controls.Add(lblAccZ) : lblAccZ.BringToFront()
         Me.panVibrations.Controls.Add(lblAltitude) : lblAltitude.BringToFront()
-        Me.panVibrations.Controls.Add(lblAbove) : lblAbove.BringToFront()
         Me.panVibrations.Controls.Add(lblXY_Acceptable) : lblXY_Acceptable.BringToFront()
         Me.panVibrations.Controls.Add(lblAccZ_Acceptable) : lblAccZ_Acceptable.BringToFront()
         chartVibrations.Location = New Point(3, 3) : chartVibrations.Size = New Point(794, 691)
@@ -110,11 +109,9 @@ Public Class frmMainForm
         lblAccZ.Location = New Point(92, 180)
         lblAccZ_Acceptable.Location = New Point(460, 180)
         lblAltitude.Location = New Point(92, 333)
-        lblAbove.Location = New Point(328, 333)
         chartVibrations.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
         lblXY_Acceptable.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
         lblAccZ_Acceptable.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
-        lblAbove.Anchor = AnchorStyles.Right Or AnchorStyles.Top Or AnchorStyles.Bottom
 
 
         'Setup the Power Rails Chart Panel.
