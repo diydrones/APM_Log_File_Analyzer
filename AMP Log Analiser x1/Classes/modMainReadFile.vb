@@ -1,5 +1,4 @@
 ﻿
-Imports Microsoft.WindowsAPICodePack
 Imports Microsoft.WindowsAPICodePack.Taskbar
 
 Module modMainReadFile
@@ -78,7 +77,7 @@ Module modMainReadFile
                 'My.Application.DoEvents()
                 'Update the TaskBar Progress Bar
                 If osVer.Major >= 6 And osVer.Minor >= 1 Then 'Only allowed in Windows 7 or above
-                    'TODO - Fix This TaskbarManager.Instance.SetProgressValue(DataLine, TotalDataLines, frmMainFormHandle)
+                    TaskbarManager.Instance.SetProgressValue(DataLine, TotalDataLines, frmMainFormHandle)
                 End If
 
                 Data = objReader.ReadLine()
@@ -192,7 +191,7 @@ Module modMainReadFile
                                     Call IMU_Checks_Solo_v1_2_0()
                                 End If
                             Else
-                                    Call IMU_Checks_v3_3()
+                                Call IMU_Checks_v3_3()
                             End If
                         End If
 
@@ -335,7 +334,7 @@ Module modMainReadFile
             'Restore the form and complete the task bar progress
             If osVer.Major >= 6 And osVer.Minor >= 1 Then 'Only allowed in Windows 7 or above
                 .WindowState = FormWindowState.Normal
-                'TODO - Fix This  - TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress, frmMainFormHandle)
+                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress, frmMainFormHandle)
                 frmMainForm.richtxtLogAnalysis.HideSelection = False
                 frmMainForm.richtxtLogAnalysis.SelectionStart = 0
                 frmMainForm.richtxtLogAnalysis.HideSelection = True
