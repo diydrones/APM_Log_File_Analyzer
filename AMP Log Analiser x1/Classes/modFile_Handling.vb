@@ -306,8 +306,8 @@ Module modFile_Handling
                     End With
                 Else
                     If EndOfPARAM = False Then 'Handles log corruption where PARAMS from previous logs are added at the end.
-                        Param = DataArray(1)
-                        Value = Val(DataArray(2))
+                        Dim Param As String = DataArray(1)
+                        Dim Value As String = Val(DataArray(2))
 
                         'Write the parameter found to the Parameter List Box
                         frmParameters.lstboxParameters.Items.Add(Param & "  =  " & Value)
