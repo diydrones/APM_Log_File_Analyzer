@@ -17,7 +17,7 @@
         ElseIf PARM_FS_BATT_ENABLE = 2 Then
             WriteTextLog(MyString & "Activated at " & PARM_FS_BATT_VOLTAGE & " volts or " & PARM_FS_BATT_MAH & " mAH, with RTL")
         Else
-            WriteTextLog(MyString & "Update program for new FS_BATT_ENABLE value.")
+            WriteTextLog(MyString & "*** Update program for new FS_BATT_ENABLE value.")
             FoundFailSafeError = FoundFailSafeError + 1
         End If
         ' GCS FailSafe
@@ -32,7 +32,7 @@
         ElseIf PARM_FS_GCS_ENABLE = 2 Then
             WriteTextLog(MyString & "Activated, with Continue with Mission in Auto Mode")
         Else
-            WriteTextLog(MyString & "Update program for new FS_GCS_ENABLE value.")
+            WriteTextLog(MyString & "*** Update program for new FS_GCS_ENABLE value.")
             FoundFailSafeError = FoundFailSafeError + 1
         End If
         ' Throttle FailSafe
@@ -49,7 +49,7 @@
         ElseIf PARM_FS_THR_ENABLE = 3 Then
             WriteTextLog(MyString & "Activated at " & PARM_FS_THR_VALUE & " PWM with always LAND")
         Else
-            WriteTextLog(MyString & "Update program for new FS_THR_ENABLE value.")
+            WriteTextLog(MyString & "*** Update program for new FS_THR_ENABLE value.")
             FoundFailSafeError = FoundFailSafeError + 1
         End If
         ' Fence FailSafe
@@ -83,7 +83,7 @@
             MyString = "$$$    GEO Margin = "
             WriteTextLog(MyString & PARM_FENCE_MARGIN & " meters")
         Else
-            WriteTextLog(MyString & "Update program for new FENCE_ENABLE value.")
+            WriteTextLog(MyString & "*** Update program for new FENCE_ENABLE value.")
             FoundFailSafeError = FoundFailSafeError + 1
         End If
         If FoundFailSafeError <> 0 Then
@@ -353,7 +353,7 @@
                 Case 54
                     TempString = "Information: CH6 Tuning: body frame yaw rate controller FF term"
                 Case Else
-                    TempString = "Information: Update program to new tuning on CH6, option = " & PARM_TUNE
+                    TempString = "*** Update program to new tuning on CH6, option = " & PARM_TUNE
             End Select
 
             Call WriteParamHeader()
@@ -431,7 +431,7 @@
                 Case 28
                     TempString = "Relay pin on/off (only supports first relay)."
                 Case Else
-                    TempString = "New Function - Update Program to support this."
+                    TempString = "*** New Function - Update Program to support function " & PARM_CH7_OPT
             End Select
             CH7_OPT_TEXT = TempString
         End If
@@ -495,7 +495,7 @@
                 Case 28
                     TempString = "Relay pin on/off (only supports first relay)."
                 Case Else
-                    TempString = "New Function - Update Program to support this."
+                    TempString = "*** New Function - Update Program to support " & PARM_CH8_OPT
             End Select
             CH8_OPT_TEXT = TempString
         End If
