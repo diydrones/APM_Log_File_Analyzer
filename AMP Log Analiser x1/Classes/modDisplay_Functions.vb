@@ -15,9 +15,9 @@ Module modDisplay_Functions
         If InStr(LineText, "Flight Time") Then txtColor = Color.Aqua
         If InStr(LineText, "Testing") Then txtColor = Color.LightPink
         If InStr(LineText, "Information") Then txtColor = Color.LightGreen
-        If InStr(LineText, "***") Then txtColor = Color.LightGreen
+        If InStr(LineText, "***") Then txtColor = Color.LightPink
         If Mid(LineText, 1, 3) = "$$$" Then
-            ' Special Marker at start of line to force Text LightGreen
+            ' Special Marker at start of line to force Text LightGreen, the marker is removed
             LineText = Mid(LineText, 4, Len(LineText) - 3)
             txtColor = Color.LightGreen
         End If
@@ -348,6 +348,10 @@ Module modDisplay_Functions
                     ALT_HOLD_Flight_Time = ALT_HOLD_Flight_Time + Log_Current_Mode_Flight_Time      'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
                     TempFlightTime = ALT_HOLD_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & ALT_HOLD_Flight_Time & " Seconds")
+                Case "ALTHOLD"
+                    ALT_HOLD_Flight_Time = ALT_HOLD_Flight_Time + Log_Current_Mode_Flight_Time      'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    TempFlightTime = ALT_HOLD_Flight_Time
+                    Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & ALT_HOLD_Flight_Time & " Seconds")
                 Case "LOITER"
                     LOITER_Flight_Time = LOITER_Flight_Time + Log_Current_Mode_Flight_Time          'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
                     TempFlightTime = LOITER_Flight_Time
@@ -372,7 +376,7 @@ Module modDisplay_Functions
                     AUTOTUNE_Flight_Time = AUTOTUNE_Flight_Time + Log_Current_Mode_Flight_Time              'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
                     TempFlightTime = AUTOTUNE_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & AUTOTUNE_Flight_Time & " Seconds")
-                Case "Manual"
+                Case "MANUAL"
                     MANUAL_Flight_Time = MANUAL_Flight_Time + Log_Current_Mode_Flight_Time              'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
                     TempFlightTime = MANUAL_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & MANUAL_Flight_Time & " Seconds")

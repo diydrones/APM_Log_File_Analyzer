@@ -172,7 +172,7 @@
                 Case "60"    ' EKF_ALT_RESET
                     WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": EKF_ALT_RESET")
                 Case Else
-                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Update Program to include this Event: " & DataArray(2))
+                    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": *** Update Program to include this Event *** : " & DataArray(2))
             End Select
         End If
         'Debug.Print("----------------------------------------------------------------------------------------")

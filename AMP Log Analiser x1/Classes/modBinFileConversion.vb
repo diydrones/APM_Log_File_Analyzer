@@ -33,7 +33,7 @@ Module modBinFileConversion
 
                     If Mid(MyTemp, 1, 3) <> "FMT" And MyMSGdone = False Then
                         ' Write my Bin Converter MSG at the top to identify this was converted by my Converter and not Mission Planner.
-                        Dim MyMSG = "MSG, 0, APM Log File Analyser BinToLog Converter" & MyCurrentVersionNumber & vbNewLine
+                        Dim MyMSG = "MSG, 0, APM Log File Analyser BinToLog Converter " & MyCurrentVersionNumber & vbNewLine
                         data = ASCIIEncoding.ASCII.GetBytes(MyMSG)
                         stream.Write(data, 0, data.Length)
                         MyMSGdone = True
@@ -313,7 +313,10 @@ Module modBinFileConversion
                     Dim currentmode As String = ""
 
                     Select Case modeno
-                        '      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided</Values>
+                        ' Modes can be found in a local file once mission planner has been executed.
+                        ' C:\Program Files (x86)\Mission Planner\ParameterMetaData.xml
+                        ' Search for <FLTMODE1>
+                        ' 0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:RTL,7:Circle,9:Land,11:Drift,13:Sport,14:Flip,15:AutoTune,16:PosHold,17:Brake</Values>
                         Case 0
                             currentmode = "Stabilize"
                             Exit Select
@@ -362,11 +365,25 @@ Module modBinFileConversion
                             currentmode = "Sport"
                             Exit Select
 
+                            ' 14:Flip,15:AutoTune,16:PosHold,17:Brake
+                        Case 14
+                            currentmode = "Flip"
+                            Exit Select
+
+                        Case 15
+                            currentmode = "AutoTune"
+                            Exit Select
+
                         Case 16
                             currentmode = "PosHold"
                             Exit Select
-                        Case Else
 
+                        Case 17
+                            currentmode = "Brake"
+                            Exit Select
+
+                        Case Else
+                            currentmode = "UNKNOWN -- Mode No. = " & modeno
                             Exit Select
 
                     End Select

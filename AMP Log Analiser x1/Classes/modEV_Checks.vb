@@ -164,7 +164,7 @@
                     Case "51"    ' PARACHUTE_RELEASED
                         WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": PARACHUTE_RELEASED")
                     Case Else
-                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Update Program to include this Event: " & DataArray(1))
+                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": *** Update Program to include this Event *** : " & DataArray(1))
                 End Select
             End If
             'Debug.Print("----------------------------------------------------------------------------------------")
