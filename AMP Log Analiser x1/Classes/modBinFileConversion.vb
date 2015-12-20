@@ -26,15 +26,20 @@ Module modBinFileConversion
     Public Sub ConvertBin(inputfn As String, outputfn As String)
         Using stream As Object = File.Open(outputfn, FileMode.Create)
             Using br As New BinaryReader(File.OpenRead(inputfn))
+                Dim MyMSGdone As Boolean = False
+                Dim data As Byte()
                 While br.BaseStream.Position < br.BaseStream.Length
-
                     Dim MyTemp As String = ReadMessage(br.BaseStream)
-                    If Mid(MyTemp, 1, 3) <> "FMT" And Mid(MyTemp, 1, 4) <> "PARM" Then
-                        ' BreakPoint
-                        MyTemp = MyTemp
+
+                    If Mid(MyTemp, 1, 3) <> "FMT" And MyMSGdone = False Then
+                        ' Write my Bin Converter MSG at the top to identify this was converted by my Converter and not Mission Planner.
+                        Dim MyMSG = "MSG, 0, APM Log File Analyser BinToLog Converter" & MyCurrentVersionNumber & vbNewLine
+                        data = ASCIIEncoding.ASCII.GetBytes(MyMSG)
+                        stream.Write(data, 0, data.Length)
+                        MyMSGdone = True
                     End If
 
-                    Dim data As Byte() = ASCIIEncoding.ASCII.GetBytes(MyTemp)
+                    data = ASCIIEncoding.ASCII.GetBytes(MyTemp)
                     stream.Write(data, 0, data.Length)
                 End While
             End Using
@@ -254,9 +259,21 @@ Module modBinFileConversion
                     line.Append(", " + BitConverter.ToUInt32(message, offset).ToString(System.Globalization.CultureInfo.InvariantCulture))
                     offset += 4
                     Exit Select
+                Case "q"
+                    line.Append(", " + BitConverter.ToInt64(message, offset).ToString(System.Globalization.CultureInfo.InvariantCulture))
+                    offset += 8
+                    Exit Select
+                Case "Q"
+                    line.Append(", " + BitConverter.ToUInt64(message, offset).ToString(System.Globalization.CultureInfo.InvariantCulture))
+                    offset += 8
+                    Exit Select
                 Case "f"
                     line.Append(", " + BitConverter.ToSingle(message, offset).ToString(System.Globalization.CultureInfo.InvariantCulture))
                     offset += 4
+                    Exit Select
+                Case "d"
+                    line.Append(", " + BitConverter.ToDouble(message, offset).ToString(System.Globalization.CultureInfo.InvariantCulture))
+                    offset += 8
                     Exit Select
                 Case "c"
                     line.Append(", " + (BitConverter.ToInt16(message, offset) / 100.0).ToString("0.00", System.Globalization.CultureInfo.InvariantCulture))
@@ -296,6 +313,7 @@ Module modBinFileConversion
                     Dim currentmode As String = ""
 
                     Select Case modeno
+                        '      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided</Values>
                         Case 0
                             currentmode = "Stabilize"
                             Exit Select
@@ -361,7 +379,7 @@ Module modBinFileConversion
                     offset += 64
                     Exit Select
                 Case Else
-
+                    Return "Bad Conversion"
                     Exit Select
             End Select
         Next
