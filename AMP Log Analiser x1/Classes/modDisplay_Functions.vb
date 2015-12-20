@@ -525,54 +525,9 @@ Module modDisplay_Functions
             WriteTextLog("")
         End If
 
-        'Only display this if IMU logging has been performed.
-        If IMU_Logging = True Then
-            If IMU_Vibration_Check = True Then
-                'Calcualte the Mean and Standard Deviation on the recorded vibration logs.
-
-                WriteTextLog("Full Vibration Summary (exceptions filtered):")
-                WriteTextLog("          AccX      AccY      AccZ      Spd       Alt")
-                WriteTextLog(FormatTextLogValuesVibration("Max", Log_IMU_Max_AccX, Log_IMU_Max_AccY, Log_IMU_Max_AccZ, log_IMU_Max_Spd, log_IMU_Max_Alt))
-                WriteTextLog(FormatTextLogValuesVibration("Min", Log_IMU_Min_AccX, Log_IMU_Min_AccY, Log_IMU_Min_AccZ, log_IMU_Min_Spd, log_IMU_Min_Alt))
-                ' CODE REMOVED KXG 08/06/2014
-                ' This code that works out the averages is obviously incorrect
-                ' WriteTextLog(FormatTextLogValuesVibration("Avg", Log_IMU_Sum_AccX / Log_IMU_DLs_for_Slow_FLight, Log_IMU_Sum_AccY / Log_IMU_DLs_for_Slow_FLight, Log_IMU_Sum_AccZ / Log_IMU_DLs_for_Slow_FLight, log_IMU_Sum_Spd / Log_IMU_DLs_for_Slow_FLight, log_IMU_Sum_Alt / Log_IMU_DLs_for_Slow_FLight))
-
-                ' WriteTextLog(FormatTextLogValuesVibration("StDev", StandardDeviation(IMU_Vibration_AccX), StandardDeviation(IMU_Vibration_AccY), StandardDeviation(IMU_Vibration_AccZ), 0, 0))
-                WriteTextLog("Datalines: " & IMU_Vibration_Start_DL & " ~ " & IMU_Vibration_End_DL)
-                'Check that vibrations recorded are within the limits set.
-                If Log_IMU_Min_AccX < -3 Or Log_IMU_Max_AccX > 3 _
-                    Or Log_IMU_Min_AccY < -3 Or Log_IMU_Max_AccY > 3 _
-                    Or Log_IMU_Min_AccZ < -15 Or Log_IMU_Max_AccZ > -5 Then
-                    If Log_IMU_Min_AccX < -5 Or Log_IMU_Max_AccX > 5 _
-                    Or Log_IMU_Min_AccY < -5 Or Log_IMU_Max_AccY > 5 _
-                    Or Log_IMU_Min_AccZ < -20 Or Log_IMU_Max_AccZ > 0 Then
-                        WriteTextLog("")
-                        WriteTextLog("WARNING: HIGH Levels of Vibration Detected, recommended not to fly!")
-                        WriteTextLog("WARNING: See the Vibration Section on this web link:")
-                        WriteTextLog("         http://copter.ardupilot.com/wiki/common-diagnosing-problems-using-logs/")
-                    Else
-                        WriteTextLog("")
-                        WriteTextLog("WARNING: Level of vibrations are above recommended values.")
-                        WriteTextLog("WARNING: See the Vibration Section on this web link:")
-                        WriteTextLog("         http://copter.ardupilot.com/wiki/common-diagnosing-problems-using-logs/")
-                    End If
-                Else
-                    WriteTextLog("")
-                    WriteTextLog("Excellent: Levels of vibration detected are within recommended limits.")
-                End If
-            Else
-                WriteTextLog("*** Limited IMU data for vibration analysis")
-                WriteTextLog("    For accurate vibration analysis ensure UAV is flying slowly above 3 meters for at least 10 seconds.")
-                WriteTextLog("")
-            End If
-            WriteTextLog("")
-        Else
-            WriteTextLog("*** Enable IMU logging to view vibration results.")
-            WriteTextLog("")
-        End If
+        WriteTextLog("*** Vibration Analysis has been removed from v2.2 onwards, you should now")
+        WriteTextLog("*** review the ""Vibration Graph"" instead to understand your levels of vibration.")
         WriteTextLog("")
-
 
         'Change the y min max values of the Voltage chart to meet the needs of the users flight pack.
         frmMainForm.chartPowerRails.ChartAreas("Volts").AxisY.Minimum = Int((Log_Min_Battery_Volts / 100)) - 0.5

@@ -250,27 +250,6 @@
         Log_IMU_AccX = 0                                'Holds the current IMU Accelorometer X axis when the last reading was taken.
         Log_IMU_AccY = 0                                'Holds the current IMU Accelorometer Y axis when the last reading was taken.
         Log_IMU_AccZ = 0                                'Holds the current IMU Accelorometer Z axis when the last reading was taken.
-        Log_IMU_DLs = 0                                 'Counts the number of datalines found in the Log for IMU results, for working out averages
-        Log_IMU_DLs_for_Slow_FLight = 0                 'Counts the number of datalines found in the Log for IMU results while in slow flight, for working out averages
-        Log_IMU_Min_AccX = 99                           'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-        Log_IMU_Max_AccX = -99                          'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-        Log_IMU_Sum_AccX = 0                            'Holds the sum of all the IMU Accelorometer X axis detected during a slow flight / hover.
-        Log_IMU_Min_AccY = 99                           'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-        Log_IMU_Max_AccY = -99                          'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-        Log_IMU_Sum_AccY = 0                            'Holds the sum of all the IMU Accelorometer Y axis detected during a slow flight / hover.
-        Log_IMU_Min_AccZ = 99                           'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-        Log_IMU_Max_AccZ = -99                          'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-        Log_IMU_Sum_AccZ = 0                            'Holds the sum of all the IMU Accelorometer Y axis detected during a slow flight / hover.
-        log_IMU_Min_Spd = 99                            'Holds the minimum speed detected during a slow flight / hover.
-        log_IMU_Max_Spd = 0                             'Holds the maximum speed detected during a slow flight / hover.
-        log_IMU_Sum_Spd = 0                             'Holds the of all speeds detected during a slow flight / hover.
-        log_IMU_Min_Alt = 99                            'Holds the minimum speed detected during a slow flight / hover.
-        log_IMU_Max_Alt = 0                             'Holds the maximum speed detected during a slow flight / hover.
-        log_IMU_Sum_Alt = 0                             'Holds the of all speeds detected during a slow flight / hover.
-        IMU_Vibration_Check = False                     'TRUE when 500 successive records have been successfully read for vibration checking.
-        IMU_Vibration_Start_DL = 0                      'Holds the Dataline Number of where we started logging for vibrations
-        IMU_Vibration_End_DL = 0                        'Holds the Dataline Number of where we Ended the logging for vibrations
-
 
         'Declare the ATT Variables
         Log_ATT_RollIn = 0                              'Holds current the ATT RollIn Data

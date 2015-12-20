@@ -116,7 +116,6 @@ Partial Class frmMainForm
         Me.btnLoadLog = New System.Windows.Forms.Button()
         Me.chkboxAutoCommands = New System.Windows.Forms.CheckBox()
         Me.chkboxParameterWarnings = New System.Windows.Forms.CheckBox()
-        Me.chkboxVibrations = New System.Windows.Forms.CheckBox()
         Me.chkboxFlightDataTypes = New System.Windows.Forms.CheckBox()
         Me.chkboxErrors = New System.Windows.Forms.CheckBox()
         Me.chkboxPM = New System.Windows.Forms.CheckBox()
@@ -142,7 +141,6 @@ Partial Class frmMainForm
         Me.btnGraphs = New System.Windows.Forms.Button()
         Me.btnAnalysis = New System.Windows.Forms.Button()
         Me.chartVibrations = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.lblAbove = New System.Windows.Forms.Label()
         Me.lblSpeed = New System.Windows.Forms.Label()
         Me.lblAltitude = New System.Windows.Forms.Label()
         Me.lblAccZ = New System.Windows.Forms.Label()
@@ -425,7 +423,7 @@ Partial Class frmMainForm
         Me.chkboxAutoCommands.Checked = True
         Me.chkboxAutoCommands.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkboxAutoCommands.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkboxAutoCommands.Location = New System.Drawing.Point(21, 397)
+        Me.chkboxAutoCommands.Location = New System.Drawing.Point(21, 352)
         Me.chkboxAutoCommands.MaximumSize = New System.Drawing.Size(177, 42)
         Me.chkboxAutoCommands.MinimumSize = New System.Drawing.Size(177, 42)
         Me.chkboxAutoCommands.Name = "chkboxAutoCommands"
@@ -453,24 +451,6 @@ Partial Class frmMainForm
         Me.chkboxParameterWarnings.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.ToolTip1.SetToolTip(Me.chkboxParameterWarnings, "Select Parameter Warnings")
         Me.chkboxParameterWarnings.UseVisualStyleBackColor = True
-        '
-        'chkboxVibrations
-        '
-        Me.chkboxVibrations.AutoSize = True
-        Me.chkboxVibrations.BackgroundImage = CType(resources.GetObject("chkboxVibrations.BackgroundImage"), System.Drawing.Image)
-        Me.chkboxVibrations.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.chkboxVibrations.Checked = True
-        Me.chkboxVibrations.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkboxVibrations.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkboxVibrations.Location = New System.Drawing.Point(21, 349)
-        Me.chkboxVibrations.MaximumSize = New System.Drawing.Size(177, 42)
-        Me.chkboxVibrations.MinimumSize = New System.Drawing.Size(177, 42)
-        Me.chkboxVibrations.Name = "chkboxVibrations"
-        Me.chkboxVibrations.Size = New System.Drawing.Size(177, 42)
-        Me.chkboxVibrations.TabIndex = 12
-        Me.chkboxVibrations.Text = "Vibrations"
-        Me.ToolTip1.SetToolTip(Me.chkboxVibrations, "Select Vibrations")
-        Me.chkboxVibrations.UseVisualStyleBackColor = True
         '
         'chkboxFlightDataTypes
         '
@@ -587,7 +567,6 @@ Partial Class frmMainForm
         Me.panAnalysisButtons.Controls.Add(Me.chkboxAutoCommands)
         Me.panAnalysisButtons.Controls.Add(Me.lblCurrentVersion)
         Me.panAnalysisButtons.Controls.Add(Me.chkboxParameterWarnings)
-        Me.panAnalysisButtons.Controls.Add(Me.chkboxVibrations)
         Me.panAnalysisButtons.Controls.Add(Me.chkboxFlightDataTypes)
         Me.panAnalysisButtons.Controls.Add(Me.chkboxErrors)
         Me.panAnalysisButtons.Controls.Add(Me.lblErrorCount)
@@ -716,7 +695,7 @@ Partial Class frmMainForm
         ChartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Maroon
         ChartArea1.AxisX.MajorTickMark.Interval = 10.0R
         ChartArea1.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
-        ChartArea1.AxisX.Minimum = 0.0R
+        ChartArea1.AxisX.Minimum = 0R
         ChartArea1.AxisY.Interval = 0.2R
         ChartArea1.AxisY.IsLabelAutoFit = False
         ChartArea1.AxisY.IsStartedFromZero = False
@@ -738,7 +717,7 @@ Partial Class frmMainForm
         ChartArea2.AxisX.LabelStyle.Enabled = False
         ChartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea2.AxisX.MajorTickMark.Interval = 10.0R
-        ChartArea2.AxisX.Minimum = 0.0R
+        ChartArea2.AxisX.Minimum = 0R
         ChartArea2.AxisY.Interval = 1.0R
         ChartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea2.AxisY.MajorGrid.Interval = 1.0R
@@ -769,7 +748,7 @@ Partial Class frmMainForm
         ChartArea4.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
         ChartArea4.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea4.AxisY.Maximum = 1200.0R
-        ChartArea4.AxisY.Minimum = 0.0R
+        ChartArea4.AxisY.Minimum = 0R
         ChartArea4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea4.Name = "Thrust"
         ChartArea4.Position.Auto = False
@@ -914,7 +893,7 @@ Partial Class frmMainForm
         ChartArea5.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea5.AxisX.MajorTickMark.Interval = 10.0R
         ChartArea5.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
-        ChartArea5.AxisX.Minimum = 0.0R
+        ChartArea5.AxisX.Minimum = 0R
         ChartArea5.AxisY.IsStartedFromZero = False
         ChartArea5.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         ChartArea5.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
@@ -933,7 +912,7 @@ Partial Class frmMainForm
         ChartArea6.AxisX.LabelStyle.Enabled = False
         ChartArea6.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea6.AxisX.MajorTickMark.Interval = 10.0R
-        ChartArea6.AxisX.Minimum = 0.0R
+        ChartArea6.AxisX.Minimum = 0R
         ChartArea6.AxisY.Interval = 1.0R
         ChartArea6.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         ChartArea6.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
@@ -1052,20 +1031,9 @@ Partial Class frmMainForm
         Me.chartVibrations.Series.Add(Series14)
         Me.chartVibrations.Series.Add(Series15)
         Me.chartVibrations.Series.Add(Series16)
-        Me.chartVibrations.Size = New System.Drawing.Size(100, 81)
+        Me.chartVibrations.Size = New System.Drawing.Size(172, 103)
         Me.chartVibrations.TabIndex = 41
         Me.chartVibrations.Text = "Chart1"
-        '
-        'lblAbove
-        '
-        Me.lblAbove.AutoSize = True
-        Me.lblAbove.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAbove.ForeColor = System.Drawing.Color.Green
-        Me.lblAbove.Location = New System.Drawing.Point(359, 333)
-        Me.lblAbove.Name = "lblAbove"
-        Me.lblAbove.Size = New System.Drawing.Size(449, 26)
-        Me.lblAbove.TabIndex = 48
-        Me.lblAbove.Text = "Vibrations only Analysed when above 2m"
         '
         'lblSpeed
         '
@@ -1140,12 +1108,11 @@ Partial Class frmMainForm
         Me.panVibrations.Controls.Add(Me.lblAccZ)
         Me.panVibrations.Controls.Add(Me.lblSpeed)
         Me.panVibrations.Controls.Add(Me.lblAccZ_Acceptable)
-        Me.panVibrations.Controls.Add(Me.lblAbove)
         Me.panVibrations.Controls.Add(Me.lblAltitude)
         Me.panVibrations.Controls.Add(Me.chartVibrations)
-        Me.panVibrations.Location = New System.Drawing.Point(651, 87)
+        Me.panVibrations.Location = New System.Drawing.Point(464, 411)
         Me.panVibrations.Name = "panVibrations"
-        Me.panVibrations.Size = New System.Drawing.Size(170, 155)
+        Me.panVibrations.Size = New System.Drawing.Size(198, 120)
         Me.panVibrations.TabIndex = 49
         Me.panVibrations.Visible = False
         '
@@ -1466,7 +1433,7 @@ Partial Class frmMainForm
         ChartArea9.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Maroon
         ChartArea9.AxisX.MajorTickMark.Interval = 10.0R
         ChartArea9.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
-        ChartArea9.AxisX.Minimum = 0.0R
+        ChartArea9.AxisX.Minimum = 0R
         ChartArea9.AxisY.Interval = 1.0R
         ChartArea9.AxisY.IsLabelAutoFit = False
         ChartArea9.AxisY.IsStartedFromZero = False
@@ -1477,7 +1444,7 @@ Partial Class frmMainForm
         ChartArea9.AxisY.MajorGrid.Interval = 0.2R
         ChartArea9.AxisY.MajorTickMark.Interval = 1.0R
         ChartArea9.AxisY.Maximum = 3.0R
-        ChartArea9.AxisY.Minimum = 0.0R
+        ChartArea9.AxisY.Minimum = 0R
         ChartArea9.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea9.Name = "Status"
         ChartArea9.Position.Auto = False
@@ -1489,14 +1456,14 @@ Partial Class frmMainForm
         ChartArea10.AxisX.LabelStyle.Enabled = False
         ChartArea10.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea10.AxisX.MajorTickMark.Interval = 10.0R
-        ChartArea10.AxisX.Minimum = 0.0R
+        ChartArea10.AxisX.Minimum = 0R
         ChartArea10.AxisY.Interval = 0.5R
         ChartArea10.AxisY.IsLabelAutoFit = False
         ChartArea10.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
         ChartArea10.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea10.AxisY.MajorGrid.Interval = 1.0R
         ChartArea10.AxisY.MajorTickMark.Interval = 1.0R
-        ChartArea10.AxisY.Minimum = 0.0R
+        ChartArea10.AxisY.Minimum = 0R
         ChartArea10.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea10.Name = "HDop"
         ChartArea10.Position.Auto = False
@@ -1512,7 +1479,7 @@ Partial Class frmMainForm
         ChartArea11.AxisY.IsLabelAutoFit = False
         ChartArea11.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
         ChartArea11.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea11.AxisY.Minimum = 0.0R
+        ChartArea11.AxisY.Minimum = 0R
         ChartArea11.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea11.Name = "Satellites"
         ChartArea11.Position.Auto = False
@@ -1526,7 +1493,7 @@ Partial Class frmMainForm
         ChartArea12.AxisY.IsLabelAutoFit = False
         ChartArea12.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         ChartArea12.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea12.AxisY.Minimum = 0.0R
+        ChartArea12.AxisY.Minimum = 0R
         ChartArea12.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea12.Name = "Speed"
         ChartArea12.Position.Auto = False
@@ -1798,15 +1765,15 @@ Partial Class frmMainForm
         ChartArea13.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Maroon
         ChartArea13.AxisX.MajorTickMark.Interval = 10.0R
         ChartArea13.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
-        ChartArea13.AxisX.Minimum = 0.0R
+        ChartArea13.AxisX.Minimum = 0R
         ChartArea13.AxisY.IsLabelAutoFit = False
         ChartArea13.AxisY.IsStartedFromZero = False
         ChartArea13.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
         ChartArea13.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
         ChartArea13.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea13.AxisY.LineColor = System.Drawing.Color.Maroon
-        ChartArea13.AxisY.MajorGrid.Interval = 0.0R
-        ChartArea13.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea13.AxisY.MajorGrid.Interval = 0R
+        ChartArea13.AxisY.MajorTickMark.Interval = 0R
         ChartArea13.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea13.Name = "Roll"
         ChartArea13.Position.Auto = False
@@ -1818,12 +1785,12 @@ Partial Class frmMainForm
         ChartArea14.AxisX.LabelStyle.Enabled = False
         ChartArea14.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea14.AxisX.MajorTickMark.Interval = 10.0R
-        ChartArea14.AxisX.Minimum = 0.0R
+        ChartArea14.AxisX.Minimum = 0R
         ChartArea14.AxisY.IsLabelAutoFit = False
         ChartArea14.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
         ChartArea14.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea14.AxisY.MajorGrid.Interval = 0.0R
-        ChartArea14.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea14.AxisY.MajorGrid.Interval = 0R
+        ChartArea14.AxisY.MajorTickMark.Interval = 0R
         ChartArea14.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea14.Name = "Pitch"
         ChartArea14.Position.Auto = False
@@ -1838,8 +1805,8 @@ Partial Class frmMainForm
         ChartArea15.AxisY.IsLabelAutoFit = False
         ChartArea15.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
         ChartArea15.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea15.AxisY.MajorGrid.Interval = 0.0R
-        ChartArea15.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea15.AxisY.MajorGrid.Interval = 0R
+        ChartArea15.AxisY.MajorTickMark.Interval = 0R
         ChartArea15.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea15.Name = "Yaw"
         ChartArea15.Position.Auto = False
@@ -1852,8 +1819,8 @@ Partial Class frmMainForm
         ChartArea16.AxisY.IsLabelAutoFit = False
         ChartArea16.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         ChartArea16.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea16.AxisY.MajorGrid.Interval = 0.0R
-        ChartArea16.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea16.AxisY.MajorGrid.Interval = 0R
+        ChartArea16.AxisY.MajorTickMark.Interval = 0R
         ChartArea16.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea16.Name = "Climb Rate"
         ChartArea16.Position.Auto = False
@@ -2162,15 +2129,15 @@ Partial Class frmMainForm
         ChartArea17.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Maroon
         ChartArea17.AxisX.MajorTickMark.Interval = 10.0R
         ChartArea17.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
-        ChartArea17.AxisX.Minimum = 0.0R
+        ChartArea17.AxisX.Minimum = 0R
         ChartArea17.AxisY.IsLabelAutoFit = False
         ChartArea17.AxisY.IsStartedFromZero = False
         ChartArea17.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
         ChartArea17.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!)
         ChartArea17.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea17.AxisY.LineColor = System.Drawing.Color.Maroon
-        ChartArea17.AxisY.MajorGrid.Interval = 0.0R
-        ChartArea17.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea17.AxisY.MajorGrid.Interval = 0R
+        ChartArea17.AxisY.MajorTickMark.Interval = 0R
         ChartArea17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea17.Name = "Direction"
         ChartArea17.Position.Auto = False
@@ -2182,12 +2149,12 @@ Partial Class frmMainForm
         ChartArea18.AxisX.LabelStyle.Enabled = False
         ChartArea18.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
         ChartArea18.AxisX.MajorTickMark.Interval = 10.0R
-        ChartArea18.AxisX.Minimum = 0.0R
+        ChartArea18.AxisX.Minimum = 0R
         ChartArea18.AxisY.IsLabelAutoFit = False
         ChartArea18.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
         ChartArea18.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea18.AxisY.MajorGrid.Interval = 0.0R
-        ChartArea18.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea18.AxisY.MajorGrid.Interval = 0R
+        ChartArea18.AxisY.MajorTickMark.Interval = 0R
         ChartArea18.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea18.Name = "Pitch"
         ChartArea18.Position.Auto = False
@@ -2202,8 +2169,8 @@ Partial Class frmMainForm
         ChartArea19.AxisY.IsLabelAutoFit = False
         ChartArea19.AxisY.LabelAutoFitStyle = System.Windows.Forms.DataVisualization.Charting.LabelAutoFitStyles.None
         ChartArea19.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea19.AxisY.MajorGrid.Interval = 0.0R
-        ChartArea19.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea19.AxisY.MajorGrid.Interval = 0R
+        ChartArea19.AxisY.MajorTickMark.Interval = 0R
         ChartArea19.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea19.Name = "Yaw"
         ChartArea19.Position.Auto = False
@@ -2216,8 +2183,8 @@ Partial Class frmMainForm
         ChartArea20.AxisY.IsLabelAutoFit = False
         ChartArea20.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         ChartArea20.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
-        ChartArea20.AxisY.MajorGrid.Interval = 0.0R
-        ChartArea20.AxisY.MajorTickMark.Interval = 0.0R
+        ChartArea20.AxisY.MajorGrid.Interval = 0R
+        ChartArea20.AxisY.MajorTickMark.Interval = 0R
         ChartArea20.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         ChartArea20.Name = "Climb Rate"
         ChartArea20.Position.Auto = False
@@ -2323,6 +2290,7 @@ Partial Class frmMainForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(1006, 695)
+        Me.Controls.Add(Me.panVibrations)
         Me.Controls.Add(Me.panTravel)
         Me.Controls.Add(Me.panAttitude)
         Me.Controls.Add(Me.panGPS)
@@ -2338,7 +2306,6 @@ Partial Class frmMainForm
         Me.Controls.Add(Me.picClickButton)
         Me.Controls.Add(Me.panAnalysis)
         Me.Controls.Add(Me.panGraphButtons)
-        Me.Controls.Add(Me.panVibrations)
         Me.Controls.Add(Me.MenuStrip1)
         Me.ForeColor = System.Drawing.Color.White
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -2422,7 +2389,6 @@ Partial Class frmMainForm
     Friend WithEvents lblErrorCountNo As System.Windows.Forms.Label
     Friend WithEvents chkboxDU32 As System.Windows.Forms.CheckBox
     Friend WithEvents chkboxPM As System.Windows.Forms.CheckBox
-    Friend WithEvents chkboxVibrations As System.Windows.Forms.CheckBox
     Friend WithEvents chkboxAutoCommands As System.Windows.Forms.CheckBox
     Friend WithEvents panAnalysisButtons As System.Windows.Forms.Panel
     Friend WithEvents btnLoadLog As System.Windows.Forms.Button
@@ -2443,7 +2409,6 @@ Partial Class frmMainForm
     Friend WithEvents btnGraphs As System.Windows.Forms.Button
     Friend WithEvents btnAnalysis As System.Windows.Forms.Button
     Friend WithEvents chartVibrations As System.Windows.Forms.DataVisualization.Charting.Chart
-    Friend WithEvents lblAbove As System.Windows.Forms.Label
     Friend WithEvents lblSpeed As System.Windows.Forms.Label
     Friend WithEvents lblAltitude As System.Windows.Forms.Label
     Friend WithEvents lblAccZ As System.Windows.Forms.Label

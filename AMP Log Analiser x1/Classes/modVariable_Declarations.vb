@@ -291,26 +291,7 @@ Module modVariable_Declarations
     Public Log_IMU_AccX As Single = 0                       'Holds the current IMU Accelorometer X axis when the last reading was taken.
     Public Log_IMU_AccY As Single = 0                       'Holds the current IMU Accelorometer Y axis when the last reading was taken.
     Public Log_IMU_AccZ As Single = 0                       'Holds the current IMU Accelorometer Z axis when the last reading was taken.
-    Public Log_IMU_DLs As Integer = 0                       'Counts the number of datalines found in the Log for IMU results, for working out averages
-    Public Log_IMU_DLs_for_Slow_FLight As Integer = 0       'Counts the number of datalines found in the Log for IMU results while in slow flight, for working out averages
-    Public Log_IMU_Min_AccX As Single = 99                  'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-    Public Log_IMU_Max_AccX As Single = -99                 'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-    Public Log_IMU_Sum_AccX As Single = 0                   'Holds the sum of all the IMU Accelorometer X axis detected during a slow flight / hover.
-    Public Log_IMU_Min_AccY As Single = 99                  'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-    Public Log_IMU_Max_AccY As Single = -99                 'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-    Public Log_IMU_Sum_AccY As Single = 0                   'Holds the sum of all the IMU Accelorometer Y axis detected during a slow flight / hover.
-    Public Log_IMU_Min_AccZ As Single = 99                  'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-    Public Log_IMU_Max_AccZ As Single = -99                 'Holds the minimum IMU Accelorometer X axis detected during a slow flight / hover.
-    Public Log_IMU_Sum_AccZ As Single = 0                   'Holds the sum of all the IMU Accelorometer Y axis detected during a slow flight / hover.
-    Public log_IMU_Min_Spd As Integer = 99                  'Holds the minimum speed detected during a slow flight / hover.
-    Public log_IMU_Max_Spd As Integer = 0                   'Holds the maximum speed detected during a slow flight / hover.
-    Public log_IMU_Sum_Spd As Integer = 0                   'Holds the of all speeds detected during a slow flight / hover.
-    Public log_IMU_Min_Alt As Integer = 99                  'Holds the minimum altitude detected during a slow flight / hover.
-    Public log_IMU_Max_Alt As Integer = 0                   'Holds the maximum altitude detected during a slow flight / hover.
-    Public log_IMU_Sum_Alt As Integer = 0                   'Holds the of all altitude detected during a slow flight / hover.
-    Public IMU_Vibration_Check As Boolean = False           'TRUE when 500 successive records have been successfully read for vibration checking.
-    Public IMU_Vibration_Start_DL As Single = 0             'Holds the Dataline Number of where we started logging for vibrations
-    Public IMU_Vibration_End_DL As Single = 0               'Holds the Dataline Number of where we Ended the logging for vibrations
+
 
     'Declare the ATT Variables
     Public Log_ATT_RollIn As Single = 0                     'Holds current the ATT RollIn Data
