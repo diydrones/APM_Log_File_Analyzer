@@ -506,18 +506,35 @@ Module modDisplay_Functions
 
             'Add the code to check on Capacity Consumption against the set Battery Capacity in the Parameters.
             If Log_Total_Current > (PARM_BATTERY_CAPACITY * 80) / 100 Then
-                WriteTextLog("")
                 WriteTextLog("WARNING: Battery Capacity in Parameters is set to: " & PARM_BATTERY_CAPACITY)
                 WriteTextLog("WARNING: However, Capacity used in this flight is: " & Log_Total_Current)
                 WriteTextLog("WARNING: This means you have used " & (Log_Total_Current / PARM_BATTERY_CAPACITY) * 100 & "% of the total Capacity")
                 WriteTextLog("WARNING: First, Check the Battery Capacity Parameter setting is correct.")
                 WriteTextLog("WARNING: Second, check the Power Calibration: https://www.youtube.com/watch?v=tEA0Or-1n18")
                 WriteTextLog("WARNING: Thrid, reduce flight times to protect the main battery!")
+                WriteTextLog("")
             End If
             If Log_Total_Current = 0 Then
-                WriteTextLog("")
-                WriteTextLog("WARNING: If an APM Current Sensing Power Module is fitted then it is failing to measure current consumption correctly!")
-                WriteTextLog("WARNING: You could try calibrating the module: https://www.youtube.com/watch?v=tEA0Or-1n18")
+                If PARM_BATT_CURR_PIN = -1 Then
+                    WriteTextLog("APM Information: Current Sensing is disabled.")
+                    WriteTextLog("")
+                Else
+                    WriteTextLog("WARNING: Current Sensing is Enabled but failing to measure current consumption correctly!")
+                    WriteTextLog("WARNING: Issue Analysis:")
+                    If PARM_BATT_CURR_PIN <> 12 And Hardware = "APM2" Then
+                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is normally set to 12 on an APM, this is " & PARM_BATT_CURR_PIN)
+                    Else
+                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is set correctly for an APM as pin " & PARM_BATT_CURR_PIN)
+                    End If
+                    If PARM_BATT_CURR_PIN <> 3 And Hardware = "PX4v2" Then
+                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is normally set to 3 on a Pix v2, this is " & PARM_BATT_CURR_PIN)
+                    Else
+                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is set correctly for a Pixhawk as pin " & PARM_BATT_CURR_PIN)
+                    End If
+                    WriteTextLog("WARNING:  -- Calibrate your Power Module: https://www.youtube.com/watch?v=tEA0Or-1n18")
+                    WriteTextLog("WARNING:  -- Switch off Current Sensing by setting Parameter BATT_CURR_PIN to -1")
+                    WriteTextLog("")
+                End If
             End If
 
         Else
