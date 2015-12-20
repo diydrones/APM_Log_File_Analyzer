@@ -4,7 +4,7 @@ Imports System.Deployment.Application
 Module modVariable_Declarations
 
 
-    Public MyCurrentVersionNumber As String = "v2.2.0.3"        ' Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v2.2.0.4"        ' Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""           ' frmMainForm.PublishedVers() 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
     '### DEVELOPER TEMPORARY VARIABLES, TODO ###
@@ -16,6 +16,21 @@ Module modVariable_Declarations
     Public Ignore_LOG_Version As Boolean = False                ' TRUE is you want to load any log regardless of the Firmware Version that created it.
     Public Ignore_LOG_Requirements As Boolean = False           ' TRUE is you want to load any log regardless of the Firmware Version that created it.
     Public Read_LOG_Percentage As Integer = 100                 ' Set to the percentage of the log you want to read, i.e. ignore the end.
+
+
+    'Declare the Return Variables that will be set by reading the Log File
+    Public ArduVersion As String = ""                           ' Holds the Ardu***** Version found in the Log File
+    Public ArduBuild As String = ""                             ' Holds the Ardu***** Build Version found in the Log File
+    Public ArduType As String = ""                              ' Holds the Ardu type determined from the log file, "ArduCopter".
+    Public APM_Free_RAM As Integer = 0                          ' Holds the APM Free RAM reported in the Log File
+    Public APM_Version As String = 0                            ' Hold the APM Version Number as reported in the log file
+    Public APM_Frame_Type As Single = 0                         ' Holds the APM Frame Type, determined from the Parmeter FRAME
+    Public APM_Frame_Name As String = ""                        ' The Text Name of the Frame Type
+    Public APM_No_Motors As Integer = 0                         ' Holds the number of Motors, determined from the FMT for MOT.
+    '                                                           ' or for v3.2 a count of the values > 0  in the RCOUT dataline.
+    Public Hardware As String = ""                              ' Holds the type of hardware used.
+    Public Pixhawk_Serial_Number As String                      ' Holds the PixHawk Serial Number.
+    Public SoloFirmwareDetected_v3_2 As Boolean = False         ' True if ArduVersion returned with the name "solo" in it and was replaced with v3.2
 
 
     'Declare the Main Program Variables
@@ -64,20 +79,6 @@ Module modVariable_Declarations
     'If new variables are added then the Default .ini file
     'creation must also be updated.
 
-
-    'Declare the Return Variables that will be set by reading the Log File
-    Public ArduVersion As String = ""                           ' Holds the Ardu***** Version found in the Log File
-    Public ArduBuild As String = ""                             ' Holds the Ardu***** Build Version found in the Log File
-    Public ArduType As String = ""                              ' Holds the Ardu type determined from the log file, "ArduCopter".
-    Public APM_Free_RAM As Integer = 0                          ' Holds the APM Free RAM reported in the Log File
-    Public APM_Version As String = 0                            ' Hold the APM Version Number as reported in the log file
-    Public APM_Frame_Type As Single = 0                         ' Holds the APM Frame Type, determined from the Parmeter FRAME
-    Public APM_Frame_Name As String = ""                        ' The Text Name of the Frame Type
-    Public APM_No_Motors As Integer = 0                         ' Holds the number of Motors, determined from the FMT for MOT.
-    '                                                           ' or for v3.2 a count of the values > 0  in the RCOUT dataline.
-    Public Hardware As String = ""                              ' Holds the type of hardware used.
-    Public Pixhawk_Serial_Number As String                      ' Holds the PixHawk Serial Number.
-    Public SoloFirmwareDetected_v3_2 As Boolean = False         ' True if ArduVersion returned with the name "solo" in it and was replaced with v3.2
 
     'Declare the Parameter Variables
     Public Param As String = ""                                 ' Parameter read from the Log.
