@@ -313,6 +313,7 @@ Module modBinFileConversion
                     Dim currentmode As String = ""
 
                     Select Case modeno
+                        '      <Values>0:Manual,1:CIRCLE,2:STABILIZE,3:TRAINING,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,10:Auto,11:RTL,12:Loiter,15:Guided</Values>
                         Case 0
                             currentmode = "Stabilize"
                             Exit Select
