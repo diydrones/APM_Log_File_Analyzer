@@ -346,6 +346,7 @@ Module modFile_Handling
                         If Param = "FENCE_ALT_MAX" Then PARM_FENCE_ALT_MAX = Val(Value)
                         If Param = "FENCE_RADIUS" Then PARM_FENCE_RADIUS = Val(Value)
                         If Param = "FENCE_MARGIN" Then PARM_FENCE_MARGIN = Val(Value)
+                        If Param = "BATT_CURR_PIN" Then PARM_BATT_CURR_PIN = Val(Value)
                     End If
                 End If
             End If

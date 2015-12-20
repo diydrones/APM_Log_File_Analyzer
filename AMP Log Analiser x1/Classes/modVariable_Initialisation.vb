@@ -50,6 +50,7 @@
         PARM_FENCE_ALT_MAX = 99                     ' Value of Parameter found.
         PARM_FENCE_RADIUS = 99                      ' Value of Parameter found.
         PARM_FENCE_MARGIN = 99                      ' Value of Parameter found.
+        PARM_BATT_CURR_PIN = 99                     ' Value of Parameter found, -1 if not set for current sencing 
 
         'Initialise the INAV Variables
         Log_INAV_Home_GLat = 0                           'Hold where the APM considers home to be.

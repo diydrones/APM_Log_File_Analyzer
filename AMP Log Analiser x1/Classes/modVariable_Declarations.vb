@@ -4,7 +4,7 @@ Imports System.Deployment.Application
 Module modVariable_Declarations
 
 
-    Public MyCurrentVersionNumber As String = "v2.2.0.2"        ' Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v2.2.0.3"        ' Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""           ' frmMainForm.PublishedVers() 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
     '### DEVELOPER TEMPORARY VARIABLES, TODO ###
@@ -130,6 +130,7 @@ Module modVariable_Declarations
     Public PARM_FENCE_ALT_MAX As Integer = 99                   ' Value of Parameter found.
     Public PARM_FENCE_RADIUS As Integer = 99                    ' Value of Parameter found.
     Public PARM_FENCE_MARGIN As Integer = 99                    ' Value of Parameter found.
+    Public PARM_BATT_CURR_PIN As Integer = 99                   ' Value of Parameter found, -1 if not set for current sencing 
 
 
     'Delcare the NTUN Variables
