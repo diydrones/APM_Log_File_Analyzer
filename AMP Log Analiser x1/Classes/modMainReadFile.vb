@@ -189,7 +189,7 @@ Module modMainReadFile
                                 If SoloFirmwareDetected_v3_2 = False Then
                                     Call IMU_Checks_v3_1_v3_2()
                                 Else
-
+                                    Call IMU_Checks_Solo_v1_2_0()
                                 End If
                             Else
                                     Call IMU_Checks_v3_3()
