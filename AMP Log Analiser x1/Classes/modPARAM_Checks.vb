@@ -221,18 +221,30 @@
             WriteTextLog(vbNewLine)
         End If
 
-        'Warning if Compass offsets are not within -150 to 150 range
-        If PARM_COMPASS_OFS_X < -150 Or PARM_COMPASS_OFS_Y < -150 Or PARM_COMPASS_OFS_Z < -150 Or PARM_COMPASS_OFS_X > 150 Or PARM_COMPASS_OFS_Y > 150 Or PARM_COMPASS_OFS_Z > 150 Then
-            Call WriteParamHeader()
-            WriteTextLog("COMPASS_OFS_X = " & PARM_COMPASS_OFS_X)
-            WriteTextLog("COMPASS_OFS_Y = " & PARM_COMPASS_OFS_Y)
-            WriteTextLog("COMPASS_OFS_Z = " & PARM_COMPASS_OFS_Z)
-            WriteTextLog("Warning: One or more compass offset is not set correctly (-150 to +150 recommended).")
-            WriteTextLog(vbNewLine)
+        ' Compass Parameters Checks
+        If VersionCompare(ArduVersion, "3.2.1") = True Then
+            ' For version < 3.2.1 Warning if Compass offsets are not within -150 to 150 range
+            If PARM_COMPASS_OFS_X < -150 Or PARM_COMPASS_OFS_Y < -150 Or PARM_COMPASS_OFS_Z < -150 Or PARM_COMPASS_OFS_X > 150 Or PARM_COMPASS_OFS_Y > 150 Or PARM_COMPASS_OFS_Z > 150 Then
+                Call WriteParamHeader()
+                WriteTextLog("COMPASS_OFS_X = " & PARM_COMPASS_OFS_X)
+                WriteTextLog("COMPASS_OFS_Y = " & PARM_COMPASS_OFS_Y)
+                WriteTextLog("COMPASS_OFS_Z = " & PARM_COMPASS_OFS_Z)
+                WriteTextLog("Warning: One or more compass offset is not set correctly (-150 to +150 recommended).")
+                WriteTextLog(vbNewLine)
+            End If
+        Else
+            'For Versions above 3.2.1 then warning if sqrt(offset_x^2+offset_y^2+offset_Z^2) < 600 
+            If Math.Sqrt(PARM_COMPASS_OFS_X ^ 2 + PARM_COMPASS_OFS_Y ^ 2 + PARM_COMPASS_OFS_Z ^ 2) >= 600 Then
+                WriteTextLog("COMPASS_OFS_X = " & PARM_COMPASS_OFS_X)
+                WriteTextLog("COMPASS_OFS_Y = " & PARM_COMPASS_OFS_Y)
+                WriteTextLog("COMPASS_OFS_Z = " & PARM_COMPASS_OFS_Z)
+                WriteTextLog("Warning: Compass offsets are not set correctly (sqrt(offset_x^2+offset_y^2+offset_Z^2) < 600 recommended).")
+                WriteTextLog(vbNewLine)
+            End If
         End If
 
-        'Warning if Hardware is not recongnised
-        If PARM_INS_PRODUCT_ID = 0 Or PARM_INS_PRODUCT_ID = 99 Then
+            'Warning if Hardware is not recongnised
+            If PARM_INS_PRODUCT_ID = 0 Or PARM_INS_PRODUCT_ID = 99 Then
             Call WriteParamHeader()
             WriteTextLog("INS_PRODUCT_ID = " & PARM_INS_PRODUCT_ID)
             WriteTextLog("Warning: Unknown Ardupilot Hardware Detected.")
