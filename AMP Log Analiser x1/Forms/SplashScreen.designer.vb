@@ -100,7 +100,7 @@ Partial Class SplashScreen
         Me.GLabel4.ShadowColor = System.Drawing.Color.Transparent
         Me.GLabel4.Size = New System.Drawing.Size(534, 40)
         Me.GLabel4.TabIndex = 6
-        Me.GLabel4.Text = "Copyright 2014 Kevin Guest. All rights reserved." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "With special thanks to Craig Wo" & _
+        Me.GLabel4.Text = "Copyright 2014 Kevin Guest. All rights reserved." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "With special thanks to Craig Wo" &
     "rden. * now with more cowbell!"
         '
         'PictureBox1

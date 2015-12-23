@@ -297,10 +297,12 @@
     <Content Include="Resources\menuback-B-R.png" />
     <Content Include="Resources\menuback.png" />
     <Content Include="Resources\newicon.ico" />
+    <Content Include="Resources\NoButton.png" />
     <Content Include="Resources\OFD.png" />
     <Content Include="Resources\Parameters.png" />
     <Content Include="Resources\UpdateB.png" />
     <Content Include="Resources\VB.png" />
+    <Content Include="Resources\YesButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

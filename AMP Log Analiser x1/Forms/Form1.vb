@@ -275,15 +275,15 @@ Public Class frmMainForm
             Debug.Print("Success!")
         End If
 
-        If (ApplicationDeployment.IsNetworkDeployed) Then
-            If MsgBox("Would you like to check for updates now?", vbYesNo) = vbYes Then
-                'display the Updating splash screen.
-                frmUpdate.Show()
-                frmUpdate.Refresh()
-                Call AutoUpdateHttp(CurrentPublishVersionNumber)
-                frmUpdate.Close()
-            End If
-        End If
+        'If (ApplicationDeployment.IsNetworkDeployed) Then ' Check for Updates
+        '    'display the Updating splash screen.
+        '    frmUpdate.Show()
+        '    frmUpdate.Refresh()
+        '    Call AutoUpdateHttp(CurrentPublishVersionNumber)
+        '    While UpdateYesNo <> 98
+        '    End While
+        '    frmUpdate.Close()
+        'End If
 
         Call ReadINIfile()
 
@@ -362,6 +362,7 @@ Public Class frmMainForm
             ESCPress = True
         End If
     End Sub
+
     Private Sub richtxtLogAnalysis_LinkClicked_1(sender As Object, e As LinkClickedEventArgs) Handles richtxtLogAnalysis.LinkClicked
         System.Diagnostics.Process.Start(e.LinkText)
     End Sub
@@ -369,6 +370,7 @@ Public Class frmMainForm
     Private Sub btnLoadLog_Click(sender As Object, e As EventArgs) Handles btnLoadLog.Click
         Call SelectFile()
     End Sub
+
     Private Sub btnAnalyze_Click(sender As Object, e As EventArgs) Handles btnAnalyze.Click
         If strLogPathFileName <> "" Then
 
@@ -436,24 +438,28 @@ Public Class frmMainForm
             MsgBox("Please Select a Valid APM Log File first!", MsgBoxStyle.Exclamation & vbOKOnly, "APM Log Error")
         End If
     End Sub
+
     Private Sub btnCopyText_Click(sender As Object, e As EventArgs) Handles btnCopyText.Click
         Call CopytoClip() 'changed this to its own sub so it can be called via anything except the one button it was assigned to
     End Sub
+
     Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
         Call AboutInfo()
     End Sub
+
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         Call UpdateNow()
     End Sub
+
     Private Sub btnMCB_Click(sender As Object, e As EventArgs) Handles btnMCB.Click
 
         My.Computer.Audio.Play(My.Resources.MCB, AudioPlayMode.Background)
     End Sub
+
     Private Sub btnDonate_Click(sender As Object, e As EventArgs) Handles btnDonate.Click
         Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RZFHAR67833ZQ")
 
     End Sub
-
 
     Private Sub frmMainForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         frmParameters.Close()
@@ -462,7 +468,6 @@ Public Class frmMainForm
     Private Sub btnParameters_Click(sender As Object, e As EventArgs) Handles btnParameters.Click
         Call ShowParametersForm()
     End Sub
-
 
     Private Sub btnAnalysis_Click(sender As Object, e As EventArgs) Handles btnAnalysis.Click
         Call ButtonsCheckBoxes_Visible(True)
@@ -480,9 +485,6 @@ Public Class frmMainForm
         'End If
         Call ButtonsCharting_Visible(True)
     End Sub
-
-
-
 
     Private Sub btnPowerChart_Click(sender As Object, e As EventArgs) Handles btnPowerChart.Click
         Call Chart_Vibrations_Visible(False)

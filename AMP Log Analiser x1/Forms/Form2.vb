@@ -1,12 +1,13 @@
 ﻿Imports System.IO
 Imports System.Runtime.InteropServices
+Imports System.Deployment.Application
 
 Public Class frmUpdate
 #Region " Functions and Constants "
-    <DllImport("user32.dll")> _
+    <DllImport("user32.dll")>
     Public Shared Function ReleaseCapture() As Boolean
     End Function
-    <DllImport("user32.dll")> _
+    <DllImport("user32.dll")>
     Public Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
     End Function
     Public Const WM_NCLBUTTONDOWN As Integer = &HA1
@@ -34,8 +35,8 @@ Public Class frmUpdate
         If frm.WindowState = FormWindowState.Normal Then
             SaveSetting(app_name, "Geometry", "Left", frm.Left)
             SaveSetting(app_name, "Geometry", "Top", frm.Top)
-            SaveSetting(app_name, "Geometry", "Width", frm.Width)
-            SaveSetting(app_name, "Geometry", "Height", frm.Height)
+            SaveSetting(app_name, "Geometry", "Width", 320)    ' frm.Width)
+            SaveSetting(app_name, "Geometry", "Height", 260)    'frm.Height)
         Else
             SaveSetting(app_name, "Geometry", "Left", frm.RestoreBounds.Left)
             SaveSetting(app_name, "Geometry", "Top", frm.RestoreBounds.Top)
@@ -44,19 +45,61 @@ Public Class frmUpdate
         End If
     End Sub
     Private Sub RestorePosition(ByVal frm As Form, ByVal app_name As String)
-        frm.SetBounds( _
-            GetSetting(app_name, "Geometry", "Left", Me.RestoreBounds.Left), _
-            GetSetting(app_name, "Geometry", "Top", Me.RestoreBounds.Top), _
-            GetSetting(app_name, "Geometry", "Width", Me.RestoreBounds.Width), _
-            GetSetting(app_name, "Geometry", "Height", Me.RestoreBounds.Height) _
+        frm.SetBounds(
+            GetSetting(app_name, "Geometry", "Left", Me.RestoreBounds.Left),
+            GetSetting(app_name, "Geometry", "Top", Me.RestoreBounds.Top),
+            GetSetting(app_name, "Geometry", "Width", Me.RestoreBounds.Width),
+            GetSetting(app_name, "Geometry", "Height", Me.RestoreBounds.Height)
         )
         Me.WindowState = GetSetting(app_name, "Geometry", "WindowState", Me.WindowState)
     End Sub
     Private Sub frmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RestorePosition(Me, "UpdateFRM")
+        ActivateUpdateLabels(False, "", "")
     End Sub
     Private Sub frmUpdate_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
         'saves form position
         SavePosition(Me, "UpdateFRM")
+        frmMainForm.Show()
+    End Sub
+
+    Private Sub lblReviewChanges_Click(sender As Object, e As EventArgs) Handles lblReviewChanges.Click
+        ' open the change log in the users web browser
+        Process.Start("http://apmloganalyser.x10host.com/versions/ChangeLog_v1.0.html")
+    End Sub
+
+    Public Sub ActivateUpdateLabels(ByVal Switch As Boolean, ByVal CurrentVersionNo As String, ByVal UpdateVersionNo As String)
+        lblCurrentVersionNo.Text = CurrentVersionNo
+        lblUpdateVersionNo.Text = UpdateVersionNo
+        lblSearchForUpdates.Visible = Not Switch
+        lblCurrentVersion.Visible = Switch
+        lblUpdateVersion.Visible = Switch
+        lblCurrentVersionNo.Visible = Switch
+        lblUpdateVersionNo.Visible = Switch
+        lblLikeToUpdate.Visible = Switch
+        lblReviewChanges.Visible = Switch
+        lblUpdateAvailable.Visible = Switch
+        picYes.Visible = Switch
+        picNo.Visible = Switch
+        UpdateYesNo = 99  'signal waiting for response
+    End Sub
+
+    Private Sub picYes_Click(sender As Object, e As EventArgs) Handles picYes.Click
+        UpdateYesNo = True   'signal we want to update to modUpdateHttp
+    End Sub
+
+    Private Sub picNo_Click(sender As Object, e As EventArgs) Handles picNo.Click
+        UpdateYesNo = False   'signal we do not want to update to modUpdateHttp
+    End Sub
+
+    Private Sub frmUpdate_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        If (ApplicationDeployment.IsNetworkDeployed) Then ' Check for Updates
+            Call AutoUpdateHttp(CurrentPublishVersionNumber)
+            While UpdateYesNo <> 98
+            End While
+        End If
+        Me.Close()
+
+
     End Sub
 End Class

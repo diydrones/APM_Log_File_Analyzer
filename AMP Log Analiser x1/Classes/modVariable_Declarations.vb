@@ -4,7 +4,7 @@ Imports System.Deployment.Application
 Module modVariable_Declarations
 
 
-    Public MyCurrentVersionNumber As String = "v2.2.0.4"        ' Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v2.2.0.5"        ' Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""           ' frmMainForm.PublishedVers() 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
 
     '### DEVELOPER TEMPORARY VARIABLES, TODO ###
@@ -65,6 +65,7 @@ Module modVariable_Declarations
     Public ParametersVisible As Boolean = False                 ' True if Parameters window is currently displayed.
     Public frmMainFormHandle As Double = 0                      ' The Handle of the main form.
     Public PercentageComplete As Integer                        ' Holds the percentage complete to update the progress bar (speeds up code)
+    Public UpdateYesNo As Integer = 99                          ' 99 = Waiting for Reponse, True = Update, False = dont update, 98 = update finished.
 
     'Declare the .ini Variables
     Public BATTERY_CAPACITY As Integer = 5000                   ' Holds the Models Battery Capacity

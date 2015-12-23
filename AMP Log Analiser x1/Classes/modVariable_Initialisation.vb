@@ -1,5 +1,7 @@
 ﻿Module modVariable_Initialisation
     Public Sub Variable_Initialisation()
+        UpdateYesNo = 99                          ' 99 = Waiting for Reponse, True = Update, False = dont update
+
         'Initialise the Parameter Variables
         Param = ""                                  ' Parameter read from the Log.
         Value = 0                                   ' Paramter Value read from the Log.
