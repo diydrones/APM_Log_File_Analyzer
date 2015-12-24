@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
+Imports System.Deployment.Application
 
 Module modUpdateHttp
 
@@ -76,6 +77,12 @@ Module modUpdateHttp
         Dim WebResponse As Net.HttpWebResponse = Nothing
         Dim stream1 As StreamReader = Nothing
         Dim ReadSource As String = Nothing
+
+        ' If we are not deplopyed then Exit the Update checks
+        If Not (ApplicationDeployment.IsNetworkDeployed) Then
+            UpdateYesNo = 98 'signal finished OK
+            Exit Function
+        End If
 
         ' First we must detect which update server is available
         If CheckAddress(SiteName1 & SiteVersionsPath & New_VersionFileName) = True Then
