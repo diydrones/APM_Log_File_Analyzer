@@ -99,7 +99,5 @@ Public Class frmUpdate
             End While
         End If
         Me.Close()
-
-
     End Sub
 End Class
