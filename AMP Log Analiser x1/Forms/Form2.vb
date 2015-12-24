@@ -1,6 +1,4 @@
-﻿Imports System.IO
-Imports System.Runtime.InteropServices
-Imports System.Deployment.Application
+﻿Imports System.Runtime.InteropServices
 
 Public Class frmUpdate
 #Region " Functions and Constants "
@@ -21,22 +19,23 @@ Public Class frmUpdate
     Public Const HTTOP As Integer = 12
     Public Const HTTOPLEFT As Integer = 13
     Public Const HTTOPRIGHT As Integer = 14
+    Public Const EM_GETLINECOUNT = &HBA
+    Public Const EM_LINESCROLL = &HB6
 #End Region
 #Region " Moving & Resizing methods "
     Public Sub MoveForm()
         ReleaseCapture()
-        SendMessage(Me.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0)
+        SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0)
     End Sub
 #End Region
-    Public Const EM_GETLINECOUNT = &HBA
-    Public Const EM_LINESCROLL = &HB6
+
     Private Sub SavePosition(ByVal frm As Form, ByVal app_name As String)
         SaveSetting(app_name, "Geometry", "WindowState", frm.WindowState)
         If frm.WindowState = FormWindowState.Normal Then
             SaveSetting(app_name, "Geometry", "Left", frm.Left)
             SaveSetting(app_name, "Geometry", "Top", frm.Top)
-            SaveSetting(app_name, "Geometry", "Width", 320)    ' frm.Width)
-            SaveSetting(app_name, "Geometry", "Height", 260)    'frm.Height)
+            SaveSetting(app_name, "Geometry", "Width", frm.Width)
+            SaveSetting(app_name, "Geometry", "Height", frm.Height)
         Else
             SaveSetting(app_name, "Geometry", "Left", frm.RestoreBounds.Left)
             SaveSetting(app_name, "Geometry", "Top", frm.RestoreBounds.Top)
@@ -46,17 +45,32 @@ Public Class frmUpdate
     End Sub
     Private Sub RestorePosition(ByVal frm As Form, ByVal app_name As String)
         frm.SetBounds(
-            GetSetting(app_name, "Geometry", "Left", Me.RestoreBounds.Left),
-            GetSetting(app_name, "Geometry", "Top", Me.RestoreBounds.Top),
-            GetSetting(app_name, "Geometry", "Width", Me.RestoreBounds.Width),
-            GetSetting(app_name, "Geometry", "Height", Me.RestoreBounds.Height)
+            GetSetting(app_name, "Geometry", "Left", RestoreBounds.Left),
+            GetSetting(app_name, "Geometry", "Top", RestoreBounds.Top),
+            GetSetting(app_name, "Geometry", "Width", RestoreBounds.Width),
+            GetSetting(app_name, "Geometry", "Height", RestoreBounds.Height)
         )
-        Me.WindowState = GetSetting(app_name, "Geometry", "WindowState", Me.WindowState)
+        WindowState = GetSetting(app_name, "Geometry", "WindowState", WindowState)
     End Sub
+
     Private Sub frmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RestorePosition(Me, "UpdateFRM")
         ActivateUpdateLabels(False, "", "")
     End Sub
+
+    Private Sub frmUpdate_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        Call AutoUpdateHttp(CurrentPublishVersionNumber)
+        ' This routine will call the updater but will not wait for the updater to finish before
+        ' carrying on to the next line of code. Therefore we need to create a loop until the
+        ' update code finishes. It will signal 98 when done.
+        Width = 320
+        Height = 260
+        While UpdateYesNo <> 98
+            Application.DoEvents()
+        End While
+        Close()
+    End Sub
+
     Private Sub frmUpdate_Closing(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
         'saves form position
         SavePosition(Me, "UpdateFRM")
@@ -92,12 +106,4 @@ Public Class frmUpdate
         UpdateYesNo = False   'signal we do not want to update to modUpdateHttp
     End Sub
 
-    Private Sub frmUpdate_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        If (ApplicationDeployment.IsNetworkDeployed) Then ' Check for Updates
-            Call AutoUpdateHttp(CurrentPublishVersionNumber)
-            While UpdateYesNo <> 98
-            End While
-        End If
-        Me.Close()
-    End Sub
 End Class
