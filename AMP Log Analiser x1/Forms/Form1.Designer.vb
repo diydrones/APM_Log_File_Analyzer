@@ -318,7 +318,7 @@ Partial Class frmMainForm
         Me.btnDonate.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.DB
         Me.btnDonate.FlatAppearance.BorderSize = 0
         Me.btnDonate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDonate.Location = New System.Drawing.Point(3, 3)
+        Me.btnDonate.Location = New System.Drawing.Point(73, 3)
         Me.btnDonate.MaximumSize = New System.Drawing.Size(64, 68)
         Me.btnDonate.MinimumSize = New System.Drawing.Size(64, 68)
         Me.btnDonate.Name = "btnDonate"
@@ -354,6 +354,7 @@ Partial Class frmMainForm
         Me.btnUpdate.TabIndex = 29
         Me.ToolTip1.SetToolTip(Me.btnUpdate, "Click here to update to latest version")
         Me.btnUpdate.UseVisualStyleBackColor = True
+        Me.btnUpdate.Visible = False
         '
         'btnHelp
         '

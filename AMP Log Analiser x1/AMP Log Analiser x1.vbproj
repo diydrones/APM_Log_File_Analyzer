@@ -224,7 +224,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Classes\RichTextBoxEx.vb" />
-    <Compile Include="Classes\modRevisionHistory.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\Form1.resx">
