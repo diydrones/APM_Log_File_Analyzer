@@ -6,7 +6,7 @@ Module modUpdateHttp
 
     Function AutoUpdateHttp(ByVal CurrentVersion As String) As Integer
 
-#Const ForceUpdate = True    ' True = Force an update regardless of server version.
+#Const ForceUpdate = False    ' True = Force an update regardless of server version.
 
         ' KXG Apr 2015
         ' This is a new Version to replace the FTP version that I have used upto version v2.0.0.5
