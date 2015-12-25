@@ -42,9 +42,9 @@ Partial Class frmUpdate
         Me.lblSearchForUpdates.AutoSize = True
         Me.lblSearchForUpdates.Location = New System.Drawing.Point(10, 9)
         Me.lblSearchForUpdates.Name = "lblSearchForUpdates"
-        Me.lblSearchForUpdates.Size = New System.Drawing.Size(108, 13)
+        Me.lblSearchForUpdates.Size = New System.Drawing.Size(122, 13)
         Me.lblSearchForUpdates.TabIndex = 1
-        Me.lblSearchForUpdates.Text = "Search for Updates..."
+        Me.lblSearchForUpdates.Text = "Searching for Updates..."
         '
         'lblUpdateAvailable
         '
@@ -154,7 +154,7 @@ Partial Class frmUpdate
         Me.Controls.Add(Me.lblUpdateAvailable)
         Me.Controls.Add(Me.lblSearchForUpdates)
         Me.ForeColor = System.Drawing.Color.LimeGreen
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmUpdate"

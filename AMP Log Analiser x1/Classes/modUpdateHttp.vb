@@ -5,6 +5,9 @@ Imports System.Deployment.Application
 Module modUpdateHttp
 
     Function AutoUpdateHttp(ByVal CurrentVersion As String) As Integer
+
+#Const ForceUpdate = True    ' True = Force an update regardless of server version.
+
         ' KXG Apr 2015
         ' This is a new Version to replace the FTP version that I have used upto version v2.0.0.5
         ' It has been written because the FTP version required the use of a UserName and a Password to
@@ -60,7 +63,7 @@ Module modUpdateHttp
             Debug.Print("ProgramInstallationFolder: " & ProgramInstallationFolder)
             Debug.Print("TempProgramInstallationFolder " & TempProgramInstallationFolder)
 
-            If CurrentVersion = "" Then CurrentVersion = "v9.9.9.9"             'if the function is called incorrectly, force an update!
+            If CurrentVersion = "" Then CurrentVersion = "v0.0.0.1"             'if the function is called incorrectly, force an update!
             AutoUpdateHttp = False                                              'Set as function failed
             Dim ProgramName As String = "APM Log File Analiser.exe"             'This program we want to update.
             Dim UpdaterProgramName As String = "UpdaterProgram.exe"             'This program we will use to update the main program.
@@ -78,11 +81,17 @@ Module modUpdateHttp
             Dim stream1 As StreamReader = Nothing
             Dim ReadSource As String = Nothing
 
+
             ' If we are not deplopyed then Exit the Update checks
+#If ForceUpdate = False Then
             If Not (ApplicationDeployment.IsNetworkDeployed) Then
                 UpdateYesNo = 98 'signal finished OK
                 Exit Function
             End If
+#Else
+            Debug.Print("WARNING: Updates are Being Forced by Testing Code!!!")
+#End If
+
 
             ' First we must detect which update server is available
             If CheckAddress(SiteName1 & SiteVersionsPath & New_VersionFileName) = True Then
@@ -94,28 +103,33 @@ Module modUpdateHttp
                     SiteName = SiteName2
                 End If
             End If
-
             If SiteName = "" Then
                 'No Update Servers Available
                 AutoUpdateHttp = True
-                MsgBox("No Servers Available", vbOKOnly)
+                MsgBox("No Update Servers Available", vbOKOnly)
+                UpdateYesNo = 98 'signal finished OK
+                AutoUpdateHttp = False
                 Exit Function
             End If
 
 
+            ' At this point we know everything except the Update Server Version.
+
+            ' #####################################
+            ' ### Get the Server Version Number ###
+            ' #####################################
             Debug.Print("Update Server: " & SiteName)
             Debug.Print("Update Server Path: " & SiteName & SiteUpdatePath)
             Debug.Print("Program Name: " & ProgramName)
             Debug.Print("Current User Version: " & MyCurrentVersionNumber)
-
             Debug.Print("Opening http update Connection...")
 
-
-
+            ' Create the connection to the update server version file
             WebRequest = Net.WebRequest.Create(SiteName & SiteVersionsPath & New_VersionFileName)
             Debug.Print("Requesting file: " & New_VersionFileName)
             Debug.Print("Waiting for a response...")
             WebResponse = WebRequest.GetResponse
+            ' The StreamReader will read the returned file.
             stream1 = New StreamReader(WebResponse.GetResponseStream())
             ReadSource = stream1.ReadToEnd
             Debug.Print(New_VersionFileName & " contents: " & ReadSource)
@@ -127,8 +141,14 @@ Module modUpdateHttp
             For Each match As Match In matches
                 Dim RegSplit() As String = Split(ReadSource.ToString, "=")
                 Debug.Print("Getting Current Server Version for Match: " & match.Index + 1 & "...")
+#If ForceUpdate = False Then
+                ' Verison will be returned with the format v?.?.?.?
                 GetVer = RegSplit(1)
                 Debug.Print("Current Server Version: " & GetVer)
+#Else
+                GetVer = "v9.9.9.9"
+                Debug.Print("Forced Server Version: " & GetVer)
+#End If
                 Debug.Print("Current User Version: " & MyCurrentVersionNumber)
             Next
 
@@ -138,6 +158,7 @@ Module modUpdateHttp
             WebResponse.Close()
             WebRequest = Nothing
 
+            ' Versions will have the format v?.?.?.?
             Debug.Print("Checking versions...")
             If GetVer > MyCurrentVersionNumber Then
                 Debug.Print("Update is available!")
@@ -146,37 +167,40 @@ Module modUpdateHttp
                 frmUpdate.ActivateUpdateLabels(True, MyCurrentVersionNumber, GetVer)
                 UpdateYesNo = 99
 
+                ' At this stage the Updates Form is displaying the current version and the available update version.
+                ' The user must select Yes or No at this stage.
                 ' Wait for response from the updates form.
                 While UpdateYesNo = 99
                     Application.DoEvents()
                 End While
                 frmUpdate.Close()
 
+                'UpdateYesNo = True when the user selected Yes on the Update Form
                 If UpdateYesNo = True Then
-                    Debug.Print("User selected to update...")
+                    Debug.Print("User selected ""Yes"" to update...")
 
                     'Prepare to Get the updated program file via Http.
-                    Dim buffer(1023) As Byte ' Allocate a read buffer of 1kB size
-                    Dim output As IO.Stream ' A file to save response
-                    Dim bytesIn As Integer = 0 ' Number of bytes read to buffer
+                    Dim buffer(1023) As Byte        ' Allocate a read buffer of 1kB size
+                    Dim output As IO.Stream         ' A file to save response
+                    Dim bytesIn As Integer = 0      ' Number of bytes read to buffer
                     Dim totalBytesIn As Integer = 0 ' Total number of bytes received (= filesize)
 
                     'Prepare to Get the updater program file via Http.
-                    bytesIn = 0 ' Number of bytes read to buffer
-                    totalBytesIn = 0 ' Total number of bytes received (= filesize)
+                    bytesIn = 0                     ' Number of bytes read to buffer
+                    totalBytesIn = 0                ' Total number of bytes received (= filesize)
+
+                    ' #####################################
+                    ' ### Get the Updater Program       ###
+                    ' #####################################
 
                     'Prepare new Http connection to Get the required file.
                     Debug.Print("Preparing a new Http Download connection...")
                     Debug.Print("Requesting file: " & UpdaterProgramName & "...")
-                    Dim HttpRequest2 As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create(SiteName & SiteUpdatePath & UpdaterProgramName & "apm")
-
-                    'FtpRequest2.Credentials = New Net.NetworkCredential(UserName, Password)
-                    'FtppRequest2.Method = Net.WebRequestMethods.Ftp.DownloadFile
-
-                    HttpRequest2.Method = Net.WebRequestMethods.Http.Get
+                    WebRequest = Net.WebRequest.Create(SiteName & SiteUpdatePath & UpdaterProgramName & "apm")
+                    WebRequest.Method = Net.WebRequestMethods.Http.Get
 
                     Debug.Print("Waiting for a response...")
-                    Dim HttpResponse2 As System.Net.HttpWebResponse = HttpRequest2.GetResponse
+                    WebResponse = WebRequest.GetResponse
                     Debug.Print("Found Http File.")
 
                     'Need to check local folder exists, if not create it.
@@ -206,11 +230,11 @@ Module modUpdateHttp
 
                     ' Write the content to the output file
                     Debug.Print("Creating Local Update File: " & UpdateToLocaleFolder & "\" & UpdaterProgramName)
-                    output = System.IO.File.Create(UpdateToLocaleFolder & "\" & UpdaterProgramName & "apm")
+                    output = File.Create(UpdateToLocaleFolder & "\" & UpdaterProgramName & "apm")
                     Debug.Print("Success, at least by name, file is still empty!")
 
                     Debug.Print("Opening the stream...")
-                    Dim stream3 As System.IO.Stream = HttpRequest2.GetResponse.GetResponseStream
+                    Dim stream3 As Stream = WebRequest.GetResponse.GetResponseStream
 
                     Debug.Print("Writing file contents...")
                     bytesIn = 1 ' Set initial value to 1 to get into loop. We get out of the loop when bytesIn is zero
@@ -222,16 +246,16 @@ Module modUpdateHttp
                             ' Calc total filesize
                             totalBytesIn += bytesIn
                             ' Show user the filesize
-                            'Label1.Text = totalBytesIn.ToString + " Bytes Downloaded"
                             Application.DoEvents()
                         End If
                     Loop
-                    Debug.Print("Total Byte Downloaded: " & totalBytesIn.ToString)
+                    Debug.Print("Total Bytes Downloaded: " & totalBytesIn.ToString)
                     Debug.Print("Success!")
                     ' Close streams
                     Debug.Print("Closing Http download connection...")
                     output.Close()
                     stream3.Close()
+                    WebResponse.Close()
 
                     ' Need to check that the file without the "apm" does not already exist.
                     Debug.Print("Checking previous update does not still exist: " & UpdateToLocaleFolder & "\" & UpdaterProgramName)
@@ -245,7 +269,7 @@ Module modUpdateHttp
                     End If
 
                     ' Rename the file to loose the "apm" from the end.
-                    FileSystem.Rename(UpdateToLocaleFolder & "\" & UpdaterProgramName & "apm", UpdateToLocaleFolder & "\" & UpdaterProgramName)
+                    Rename(UpdateToLocaleFolder & "\" & UpdaterProgramName & "apm", UpdateToLocaleFolder & "\" & UpdaterProgramName)
 
 
                     'Call the updater program to do its stuff
@@ -254,15 +278,15 @@ Module modUpdateHttp
                     Dim StartInfo As New ProcessStartInfo
                     StartInfo.FileName = UpdateToLocaleFolder & "\" & UpdaterProgramName
                     StartInfo.Arguments = """" & ProgramName & """ " & MyCurrentVersionNumber & " " & GetVer & " """ & ProgramInstallationFolder & """ " & """" & UpdateToLocaleFolder & """ " & SiteName & SiteUpdatePath
-                    System.Diagnostics.Process.Start(StartInfo)
+                    Process.Start(StartInfo)
 
                     Debug.Print("Close the APM Log Anayliser Program so it can update...")
                     Debug.Print(vbNewLine)
                     frmMainForm.Close()
 
-                    HttpResponse2.Close()
-                    HttpResponse2 = Nothing
-                    HttpRequest2 = Nothing
+                    WebResponse.Close()
+                    WebResponse = Nothing
+                    WebRequest = Nothing
                 Else
                     Debug.Print("User selected not to update...")
                     UpdateYesNo = 98   ' Update finished

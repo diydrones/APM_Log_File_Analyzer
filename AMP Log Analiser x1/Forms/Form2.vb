@@ -56,6 +56,9 @@ Public Class frmUpdate
     Private Sub frmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RestorePosition(Me, "UpdateFRM")
         ActivateUpdateLabels(False, "", "")
+        Width = 320
+        Height = 260
+        Refresh()
     End Sub
 
     Private Sub frmUpdate_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
@@ -63,8 +66,6 @@ Public Class frmUpdate
         ' This routine will call the updater but will not wait for the updater to finish before
         ' carrying on to the next line of code. Therefore we need to create a loop until the
         ' update code finishes. It will signal 98 when done.
-        Width = 320
-        Height = 260
         While UpdateYesNo <> 98
             Application.DoEvents()
         End While
