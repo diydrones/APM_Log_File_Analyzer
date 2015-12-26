@@ -66,13 +66,13 @@ Public Class SplashScreen
 
     Private Sub SplashScreen_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         Me.Refresh()
-        If (ApplicationDeployment.IsNetworkDeployed) Then
-            Debug.Print("Application is Deployed")
+        If IsDeveloping() = False Then
+            Debug.Print("Application is Deployed by End User")
             't.Interval = 3000
             Threading.Thread.Sleep(3000)
 
         Else
-            Debug.Print("Application is NOT Deployed")
+            Debug.Print("Application is running in a GitHub folder / path and assumed to be in development mode")
             't.Interval = 50
             Threading.Thread.Sleep(50)
 

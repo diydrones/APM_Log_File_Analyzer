@@ -262,7 +262,7 @@ Public Class frmMainForm
         Debug.Print("ProgramInstallationFolder: " & ProgramInstallationFolder)
         Debug.Print("TempProgramInstallationFolder: " & TempProgramInstallationFolder)
         Debug.Print("ApplicationStartUpPath: " & ApplicationStartUpPath)
-        Debug.Print("TempIsDeployed: " & TempIsDeployed)
+        Debug.Print("TempIsDeployed: " & IsDeveloping())
         Debug.Print("MyCurrentVersionNumber:      " & MyCurrentVersionNumber)
         Debug.Print("CurrentPublishVersionNumber: " & CurrentPublishVersionNumber)
         Debug.Print("==========================================================================")

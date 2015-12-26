@@ -1,6 +1,7 @@
 ﻿Module modVariable_Initialisation
     Public Sub Variable_Initialisation()
         UpdateYesNo = 99                          ' 99 = Waiting for Reponse, True = Update, False = dont update
+        XPInstallation = False                    ' True is running on XP
 
         'Initialise the Parameter Variables
         Param = ""                                  ' Parameter read from the Log.
