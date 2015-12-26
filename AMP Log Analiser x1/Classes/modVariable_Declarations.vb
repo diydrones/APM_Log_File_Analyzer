@@ -4,8 +4,9 @@ Imports System.Deployment.Application
 Module modVariable_Declarations
 
 
-    Public MyCurrentVersionNumber As String = "v2.2.0.7"        ' Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v2.2.0.8"        ' Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""           ' frmMainForm.PublishedVers() 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
+    Public XPInstallation As Boolean = False                    ' True is running on XP
 
     '### DEVELOPER TEMPORARY VARIABLES, TODO ###
     Public TempMaxRollDiff As Single = 0
@@ -57,8 +58,6 @@ Module modVariable_Declarations
             Environment.CurrentDirectory                        ' Holds the current environment directory
     Public ApplicationStartUpPath As String = _
             Application.StartupPath                             ' Holds the current startup directory
-    Public TempIsDeployed As Boolean = _
-            ApplicationDeployment.IsNetworkDeployed             ' TRUE if the application is deployed.
     Public TotalDataLines As Integer = 0                        ' Holds the Total Number of Data Lines in the current log.
     Public ErrorCount As Integer = 0                            ' Counts the number of errors found in the logs.
     Public ESCPress As Boolean = False                          ' True if Escape is pressed

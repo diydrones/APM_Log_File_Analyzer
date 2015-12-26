@@ -82,9 +82,10 @@ Module modUpdateHttp
             Dim ReadSource As String = Nothing
 
 
-            ' If we are not deplopyed then Exit the Update checks
+            ' If we are developing then Exit the Update checks
 #If ForceUpdate = False Then
-            If Not (ApplicationDeployment.IsNetworkDeployed) Then
+            If IsDeveloping() = True Then
+                Debug.Print("Forcing code to not allow update checks")
                 UpdateYesNo = 98 'signal finished OK
                 Exit Function
             End If
