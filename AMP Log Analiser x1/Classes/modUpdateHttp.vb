@@ -68,8 +68,8 @@ Module modUpdateHttp
             Dim ProgramName As String = "APM Log File Analiser.exe"             'This program we want to update.
             Dim UpdaterProgramName As String = "UpdaterProgram.exe"             'This program we will use to update the main program.
             Dim UpdateToLocaleFolder As String = "C:\Temp"
-            Dim SiteName2 As String = "http://apmloganalyser.x10host.com/"      'New http address for Update Server 1
-            Dim SiteName1 As String = "http://www.apmloganalyser.net63.net/"    'New http address for Update Server 2
+            Dim SiteName1 As String = "http://apmloganalyser.x10host.com/"      'New http address for Update Server 1
+            Dim SiteName2 As String = "http://www.apmloganalyser.net63.net/"    'New http address for Update Server 2
             Dim SiteName As String = ""
             Dim SiteUpdatePath As String = "update_v2_1_onwards/"
             Dim SiteVersionsPath As String = "versions/"
