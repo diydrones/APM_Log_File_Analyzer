@@ -70,6 +70,7 @@ C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\De
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.pdb
+C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\AMP Log Analiser x1.vbprojResolveAssemblyReference.cache
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.frmMainForm.resources
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.frmUpdate.resources
 C:\Users\Kevin\Documents\GitHub\APM_Log_File_Analyzer\AMP Log Analiser x1\obj\Debug\APMLogFileAnaliser.frmHelp.resources
