@@ -81,6 +81,7 @@ Public Class frmUpdate
     Private Sub lblReviewChanges_Click(sender As Object, e As EventArgs) Handles lblReviewChanges.Click
         ' open the change log in the users web browser
         Process.Start("http://apmloganalyser.x10host.com/versions/ChangeLog_v1.0.html")
+        'Process.Start("http://apmloganalyser.net63.net//versions/ChangeLog_v1.0.html")
     End Sub
 
     Public Sub ActivateUpdateLabels(ByVal Switch As Boolean, ByVal CurrentVersionNo As String, ByVal UpdateVersionNo As String)

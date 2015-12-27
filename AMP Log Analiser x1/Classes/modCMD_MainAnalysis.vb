@@ -28,7 +28,7 @@
                 If Log_CMD_WP_PreviousTime <> GPS_Base_Date Then
                     WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Auto Command: WP - WP Time was          : " & DateDiff(DateInterval.Second, Log_CMD_WP_PreviousTime, Log_GPS_DateTime) & " seconds")
                 End If
-                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Auto Command: WP - WP Speed was         : " & Log_CMD_WP_PreviousSpeed & " m/s")
+                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Auto Command: WP - WP Speed was         : " & Log_CMD_Dist1 / (DateDiff(DateInterval.Second, Log_CMD_WP_PreviousTime, Log_GPS_DateTime)) & " m/s")
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Auto Command: WP - WP Used Capacity was : " & (LOG_CURR_CurrTot - Log_CMD_WPtoWP_Eff) & " mAh")
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Auto Command: WP - WP Efficiency was    : " & (LOG_CURR_CurrTot - Log_CMD_WPtoWP_Eff) / Log_CMD_Dist1 & " mAh/m (mAh per Meter)")
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Auto Command: WP - WP Efficiency Result : " & 1000 / ((LOG_CURR_CurrTot - Log_CMD_WPtoWP_Eff) / Log_CMD_Dist1) & " m/A (Meters per Amp)")
