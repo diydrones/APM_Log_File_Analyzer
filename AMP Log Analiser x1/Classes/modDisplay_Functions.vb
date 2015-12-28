@@ -115,7 +115,7 @@ Module modDisplay_Functions
         FormatTextLogValuesFlying = LineTemp
     End Function
 
-    Function FormatTextLogValuesBattery(ByVal Range As String, ByVal Volt As String, ByVal Vcc As String, ByVal Curr As String, ByVal CurrTot As String, ByVal Efficiency As String) As String
+    Function FormatTextLogValuesBattery(ByVal Range As String, ByVal Volt As String, ByVal Vcc As String, ByVal Curr As String, ByVal BatCap As String, ByVal CurrTot As String, ByVal Efficiency As String, ByVal MaxFlightTime As String) As String
         FormatTextLogValuesBattery = ""
         Dim ValueTemp As String = ""
         Dim LineTemp As String = ""
@@ -139,7 +139,16 @@ Module modDisplay_Functions
         ValueTemp = ValueTemp.PadLeft(17, " ")
         LineTemp = LineTemp & ValueTemp
 
-        'CurrTot is reported as mA 
+        'Capacity is reported as mAh
+        If BatCap <> "N/A" Then
+            ValueTemp = BatCap
+        Else
+            ValueTemp = "N/A"
+        End If
+        ValueTemp = ValueTemp.PadLeft(17, " ")
+        LineTemp = LineTemp & ValueTemp
+
+        'CurrTot is reported as mAh
         If CurrTot <> "N/A" Then
             ValueTemp = CurrTot
         Else
@@ -155,6 +164,15 @@ Module modDisplay_Functions
             ValueTemp = Efficiency
         End If
         ValueTemp = ValueTemp.PadLeft(16, " ")
+        LineTemp = LineTemp & ValueTemp
+
+        'Flight Time is reported as mins
+        If MaxFlightTime <> "N/A" Then
+            ValueTemp = MaxFlightTime
+        Else
+            ValueTemp = "N/A"
+        End If
+        ValueTemp = ValueTemp.PadLeft(17, " ")
         LineTemp = LineTemp & ValueTemp
 
         FormatTextLogValuesBattery = LineTemp
@@ -406,10 +424,12 @@ Module modDisplay_Functions
             WriteTextLog(FormatTextLogValuesFlying("Max", Log_Mode_Max_BarAlt, Log_Mode_Max_Spd, Mode_Dist_Travelled, Mode_Max_Dist_From_Launch, Log_Mode_Max_NSats, Log_Mode_Max_HDop, "N/A"))
             WriteTextLog(FormatTextLogValuesFlying("Avg", Int(Log_Mode_Sum_BarAlt / Log_CTUN_DLs_for_Mode), Int(Log_Mode_Sum_Spd / Log_GPS_DLs_for_Mode), "N/A", "N/A", Int(Log_Mode_Sum_NSats / Log_GPS_DLs_for_Mode), Format(Log_Mode_Sum_HDop / Log_GPS_DLs_for_Mode, "0.00"), Efficiency))
             WriteTextLog(FormatTextLogValuesFlying("Min", Log_Mode_Min_BarAlt, Log_Mode_Min_Spd, "N/A", Mode_Min_Dist_From_Launch, Log_Mode_Min_NSats, Log_Mode_Min_HDop, "N/A"))
-            WriteTextLog(Log_Current_Mode & " Flight Time (Session)= " & Log_Current_Mode_Flight_Time & " seconds, " & Int(Log_Current_Mode_Flight_Time / 60) & ":" & Format((((Log_Current_Mode_Flight_Time / 60) - Int(Log_Current_Mode_Flight_Time / 60)) * 60), "00"))
-            WriteTextLog(Log_Current_Mode & " Flight Time   (Total)= " & TempFlightTime & " seconds, " & Int(TempFlightTime / 60) & ":" & Format((((TempFlightTime / 60) - Int(TempFlightTime / 60)) * 60), "00"))
+            WriteTextLog(Log_Current_Mode & " Flight Time (Session)= " & Log_Current_Mode_Flight_Time & " seconds, " & ConvertSeconds(Log_Current_Mode_Flight_Time))
+            WriteTextLog(Log_Current_Mode & " Flight Time   (Total)= " & TempFlightTime & " seconds, " & ConvertSeconds(TempFlightTime))
+            WriteTextLog("Testing:" & Total_Mode_Current & "mA" & "  " & Log_Current_Mode_Flight_Time & " secs")
+
             If CTUN_Logging = False Then
-                WriteTextLog("* Altitude above launch estimated from GPS Data, enable CTUN for accurate borometer data!")
+                WriteTextLog(" * Altitude above launch estimated from GPS Data, enable CTUN for accurate borometer data!")
             End If
             If Log_Mode_Min_NSats < 9 Then
                 WriteTextLog("WARNING: Less than 9 Satellites was detected during this mode.")
@@ -491,11 +511,21 @@ Module modDisplay_Functions
         'Only display this if CURR logging has been performed.
         If CURR_Logging = True Then
             WriteTextLog("Power Summary:")
-            WriteTextLog("       Battery(V)        Vcc(V)        Current(A)       Used Cap(mAh)    Eff(mA/mim)")
-            WriteTextLog(FormatTextLogValuesBattery("Max", Log_Max_Battery_Volts, Log_Max_VCC, Log_Max_Battery_Current, Log_Total_Current, "N/A"))
-            WriteTextLog(FormatTextLogValuesBattery("Avg", 0, 0, Log_Sum_Battery_Current / Log_CURR_DLs, "N/A", Efficiency))
-            WriteTextLog(FormatTextLogValuesBattery("Min", Log_Min_Battery_Volts, Log_Min_VCC, Log_Min_Battery_Current, "N/A", "N/A"))
-            WriteTextLog("Overall Flight Time = " & Log_Total_Flight_Time & " seconds, " & Int(Log_Total_Flight_Time / 60) & ":" & Format((((Log_Total_Flight_Time / 60) - Int(Log_Total_Flight_Time / 60)) * 60), "00"))
+
+            'WriteTextLog("       Battery(V)        Vcc(V)        Current(A)       Used Cap(mAh)    Eff(mA/mim)")
+            'WriteTextLog(FormatTextLogValuesBattery("Max", Log_Max_Battery_Volts, Log_Max_VCC, Log_Max_Battery_Current, Log_Total_Current, "N/A"))
+            'WriteTextLog(FormatTextLogValuesBattery("Avg", 0, 0, Log_Sum_Battery_Current / Log_CURR_DLs, "N/A", Efficiency))
+            'WriteTextLog(FormatTextLogValuesBattery("Min", Log_Min_Battery_Volts, Log_Min_VCC, Log_Min_Battery_Current, "N/A", "N/A"))
+
+            ' New Power Summary Dec 2015 KXG
+            WriteTextLog("       Battery(V)        Vcc(V)        Current(A)        Cap(mAh)        Used Cap(mAh)    Eff(mA/mim)    Max Fly 80%(mins)")
+            WriteTextLog(FormatTextLogValuesBattery("Max", Log_Max_Battery_Volts, Log_Max_VCC, Log_Max_Battery_Current, PARM_BATTERY_CAPACITY, Log_Total_Current, "N/A", "N/A"))
+            Dim Temp As Single = (PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency
+            WriteTextLog(FormatTextLogValuesBattery("Avg", 0, 0, Log_Sum_Battery_Current / Log_CURR_DLs, "N/A", "N/A", Efficiency, ConvertSeconds((PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency)))
+            WriteTextLog(FormatTextLogValuesBattery("Min", Log_Min_Battery_Volts, Log_Min_VCC, Log_Min_Battery_Current, PARM_BATTERY_CAPACITY - Log_Total_Current, "N/A", "N/A", "N/A"))
+
+            WriteTextLog("Overall Flight Time = " & Log_Total_Flight_Time & " seconds, " & ConvertSeconds(Log_Total_Flight_Time))
+
             'Check that VCC is stable and in the scope on the .ini setting MAX_VCC_FLUC
             If (Log_Max_VCC / 1000) - (Log_Min_VCC / 1000) > MAX_VCC_FLUC Then
                 WriteTextLog("")
@@ -551,6 +581,7 @@ Module modDisplay_Functions
         frmMainForm.chartPowerRails.ChartAreas("Volts").AxisY.Maximum = Int((Log_Max_Battery_Volts / 100)) + 1.5
 
     End Sub
+
 
     Public Function StandardDeviation(NumericArray As Object) As Double
 

@@ -13,6 +13,8 @@
         End If
 
 
+
+
         'It is possible for Log_Last_Mode_Changed_DateTime to equal GPS_Base_Date
         'where the first GPS log has not been read before the first MODE change.
         'This is quite common, this line traps the error and updates Log_Last_Mode_Changed_DateTime
