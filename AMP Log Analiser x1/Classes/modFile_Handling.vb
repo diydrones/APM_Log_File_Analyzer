@@ -217,11 +217,10 @@ Module modFile_Handling
             If DataArray(0) = "MSG" And DataArray(1) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
             If DataArray(0) = "MSG" And DataArray(1) = "PX4:" Then APM_Version = DataArray(1) & " " & DataArray(2) & " " & DataArray(3) & " " & DataArray(4)
             If DataArray(0) = "MSG" And DataArray(1) = "PX4v2" Then Pixhawk_Serial_Number = DataArray(1) & " " & DataArray(2) & " " & DataArray(3) & " " & DataArray(4)
-            If DataArray(0) = "RCOU" And MotorsDetectedForV3_2 = False Then
-                For N = 2 To 9
-                    If DataArray(N) > 0 And DataArray(N) < 32767 Then APM_No_Motors = APM_No_Motors + 1
-                Next
-                MotorsDetectedForV3_2 = True
+
+            ' New Detect Motors Code Dec 2015 - KXG
+            If DataArray(0) = "RCOU" Then
+                DetectMotors()
             End If
 
             ' Logging Data Support for all Firmwares
