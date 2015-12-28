@@ -476,7 +476,7 @@ Module modFile_Handling
     Public Sub SelectFile()
         With frmMainForm
             Debug.Print("Open File")
-            .OpenFD.InitialDirectory = "C:\Program Files (x86)\Mission Planner\logs\"
+            '.OpenFD.InitialDirectory = "C:\Program Files (x86)\Mission Planner\logs\"
             .OpenFD.Title = "Open a Text File"
 
             ' ## Changed KXG 26/04/2015 ##
@@ -486,7 +486,7 @@ Module modFile_Handling
 
 
             'Display the Open File Dialog Window.
-            If .OpenFD.ShowDialog() = Windows.Forms.DialogResult.Cancel Then
+            If .OpenFD.ShowDialog() = DialogResult.Cancel Then
                 Dim strLogFileName As String = ""
                 Debug.Print("User Selected Cancel " & strLogFileName)
                 FileOpened = False
