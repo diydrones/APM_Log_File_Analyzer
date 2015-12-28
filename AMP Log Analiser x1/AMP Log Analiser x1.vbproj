@@ -208,6 +208,7 @@
     </Compile>
     <Compile Include="GPS_Checks_v3_1_v3_2.vb" />
     <Compile Include="GPS_Checks_v3_3.vb" />
+    <Compile Include="modDetectMotors_v3_2_v3_3.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

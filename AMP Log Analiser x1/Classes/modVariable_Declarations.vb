@@ -4,7 +4,8 @@ Imports System.Deployment.Application
 Module modVariable_Declarations
 
 
-    Public MyCurrentVersionNumber As String = "v2.2.0.9"        ' Update on every released version.      'frmMainForm.BuildVers()                          'Update on every released version.
+    Public MyCurrentVersionNumber As String = "v2.2.1.0"        ' Update on every released version, format v?.?.?.?  i.e. single digit only.      
+    'frmMainForm.BuildVers()                                    'Update on every released version.
     Public CurrentPublishVersionNumber As String = ""           ' frmMainForm.PublishedVers() 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
     Public XPInstallation As Boolean = False                    ' True is running on XP
 
@@ -28,7 +29,25 @@ Module modVariable_Declarations
     Public APM_Frame_Type As Single = 0                         ' Holds the APM Frame Type, determined from the Parmeter FRAME
     Public APM_Frame_Name As String = ""                        ' The Text Name of the Frame Type
     Public APM_No_Motors As Integer = 0                         ' Holds the number of Motors, determined from the FMT for MOT.
-    '                                                           ' or for v3.2 a count of the values > 0  in the RCOUT dataline.
+    '                                                           ' or for v3.2 a calculation based on similar RCOUT datalines.
+
+    Public Log_RCOU_Ch1 As Integer = 0                          ' Set up the Motor Calculation Variables
+    Public Log_RCOU_Ch2 As Integer = 0
+    Public Log_RCOU_Ch3 As Integer = 0
+    Public Log_RCOU_Ch4 As Integer = 0
+    Public Log_RCOU_Ch5 As Integer = 0
+    Public Log_RCOU_Ch6 As Integer = 0
+    Public Log_RCOU_Ch7 As Integer = 0
+    Public Log_RCOU_Ch8 As Integer = 0
+    Public Log_RCOU_Ch9 As Integer = 0
+    Public Log_RCOU_Ch10 As Integer = 0
+    Public Log_RCOU_Ch11 As Integer = 0
+    Public Log_RCOU_Ch12 As Integer = 0
+    Public Log_RCOU_Count As Single = 0
+    Public Log_RCOU_MinCh1toCh3 As Integer = 0
+    Public Log_RCOU_MaxCh1toCh3 As Integer = 0
+    Public myStopWatchTimer As Double = 0
+
     Public Hardware As String = ""                              ' Holds the type of hardware used.
     Public Pixhawk_Serial_Number As String                      ' Holds the PixHawk Serial Number.
     Public SoloFirmwareDetected_v3_2 As Boolean = False         ' True if ArduVersion returned with the name "solo" in it and was replaced with v3.2

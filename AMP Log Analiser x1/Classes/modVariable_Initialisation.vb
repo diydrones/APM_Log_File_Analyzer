@@ -238,10 +238,27 @@
         ArduBuild = ""                                  'Holds the ArduCopter Build Version found in the Log File
         ArduType = ""                                   'Holds the Ardu type determined from the log file, "ArduCopter".
         APM_Free_RAM = 0                                'Holds the APM Free RAM reported in the Log File
-        APM_Version = ""                                 'Hold the APM Version Number as reported in the log file
+        APM_Version = ""                                'Hold the APM Version Number as reported in the log file
         APM_Frame_Type = 0                              'Holds the APM Frame Type, determined from the Parmeter FRAME 
-        APM_Frame_Name = ""                            'The Text Name of the Frame Type
+        APM_Frame_Name = ""                             'The Text Name of the Frame Type
         APM_No_Motors = 0                               'Holds the number of Motors, determined from the FMT for MOT.
+
+        Log_RCOU_Ch1 = 0                                ' Set up the Motor Calculation Variables
+        Log_RCOU_Ch2 = 0
+        Log_RCOU_Ch3 = 0
+        Log_RCOU_Ch4 = 0
+        Log_RCOU_Ch5 = 0
+        Log_RCOU_Ch6 = 0
+        Log_RCOU_Ch7 = 0
+        Log_RCOU_Ch8 = 0
+        Log_RCOU_Ch9 = 0
+        Log_RCOU_Ch10 = 0
+        Log_RCOU_Ch11 = 0
+        Log_RCOU_Ch12 = 0
+        Log_RCOU_Count = 0
+        Log_RCOU_MinCh1toCh3 = 0
+        Log_RCOU_MaxCh1toCh3 = 0
+
         Hardware = ""                                   'Holds the type of hardware used.
         Pixhawk_Serial_Number = ""                      'Holds the PixHawk Serial Number.
         SoloFirmwareDetected_v3_2 = False               ' True if ArduVersion returned with the name "solo" in it and was replaced with v3.2
