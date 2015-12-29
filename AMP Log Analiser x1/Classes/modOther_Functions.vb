@@ -52,4 +52,10 @@ Module modOther_Functions
         Debug.Print("IsDeveloping = " & IsDeveloping)
     End Function
 
+
+    Public Function ConvertSeconds(ByVal Seconds As Integer) As String
+        ' Converts seconds into mm:ss format
+        ConvertSeconds = Int(Seconds / 60) & ":" & Format((((Seconds / 60) - Int(Seconds / 60)) * 60), "00").ToString
+    End Function
+
 End Module
