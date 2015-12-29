@@ -235,6 +235,7 @@ Module modVariable_Declarations
     Public Log_Armed_BarAlt As Integer = 0                      ' Holds the last Barometer Altitude when the APM is Armed, , now driven from EV Data.
     Public Log_Disarmed_BarAlt As Integer = 99999               ' Holds the last Barometer Altitude when the APM is disarmed, now driven from EV Data.
     Public Log_In_Flight As Boolean = False                     ' TRUE if the APM is in flight, now driven from EV Data.
+    Public Log_In_Flight_Change_Status_Counter As Integer = 0   ' Counts upwards after the Log_In_Flight changes, used to suppress the In Flight Validation Code
     Public In_Flight_Start_Time As Date = BaseDate              ' Holds the GPS Date and Time as the Quad takes off, now driven from EV Data.
     Public Mode_In_Flight_Start_Time As Date = BaseDate         ' Holds the GPS Date and Time as the Quad takes off during MOde, now driven from EV Data.
     Public Log_Temp_Ground_GPS_Alt As Integer = 0               ' Holds the GPS alt on Take Off, recorded in Take Off Event.
