@@ -12,7 +12,7 @@ Module modDisplay_Functions
         If InStr(LineText, "Error:") Then txtColor = Color.OrangeRed
         If InStr(LineText, "Warning:") Then txtColor = Color.Orange
         If InStr(LineText, "Mode") Then txtColor = Color.Aqua
-        If InStr(LineText, "Flight Time") Then txtColor = Color.Aqua
+        If InStr(LineText, "Flight Time") Or InStr(LineText, "--") Then txtColor = Color.Aqua
         If InStr(LineText, "Testing") Then txtColor = Color.LightPink
         If InStr(LineText, "Information") Then txtColor = Color.LightGreen
         If InStr(LineText, "***") Then txtColor = Color.LightPink
@@ -518,14 +518,19 @@ Module modDisplay_Functions
             'WriteTextLog(FormatTextLogValuesBattery("Min", Log_Min_Battery_Volts, Log_Min_VCC, Log_Min_Battery_Current, "N/A", "N/A"))
 
             ' New Power Summary Dec 2015 KXG
+            Dim MaxFlyTime As Integer = (PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency
             WriteTextLog("       Battery(V)        Vcc(V)        Current(A)        Cap(mAh)        Used Cap(mAh)    Eff(mA/mim)    Max Fly 80%(mins)")
             WriteTextLog(FormatTextLogValuesBattery("Max", Log_Max_Battery_Volts, Log_Max_VCC, Log_Max_Battery_Current, PARM_BATTERY_CAPACITY, Log_Total_Current, "N/A", "N/A"))
             If Efficiency <> "~~~" Then
-                WriteTextLog(FormatTextLogValuesBattery("Avg", 0, 0, Log_Sum_Battery_Current / Log_CURR_DLs, "N/A", "N/A", Efficiency, ConvertSeconds((PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency)))
+                WriteTextLog(FormatTextLogValuesBattery("Avg", 0, 0, Log_Sum_Battery_Current / Log_CURR_DLs, "N/A", "N/A", Efficiency, ConvertSeconds(MaxFlyTime)))
             End If
             WriteTextLog(FormatTextLogValuesBattery("Min", Log_Min_Battery_Volts, Log_Min_VCC, Log_Min_Battery_Current, PARM_BATTERY_CAPACITY - Log_Total_Current, "N/A", "N/A", "N/A"))
-
-            WriteTextLog("Overall Flight Time = " & Log_Total_Flight_Time & " seconds, " & ConvertSeconds(Log_Total_Flight_Time))
+            WriteTextLog("  Overall Flight Time = " & Log_Total_Flight_Time & " seconds, " & ConvertSeconds(Log_Total_Flight_Time))
+            WriteTextLog("Max Flight Time @ 80% = " & MaxFlyTime & " seconds, " & ConvertSeconds(MaxFlyTime))
+            WriteTextLog("                        Max Flight Time calculation can be influenced by")
+            WriteTextLog("                         -- Battery Capacity Parameter setting")
+            WriteTextLog("                         -- Calibration of the Battery Current Monitoring Circuit")
+            WriteTextLog("                         -- The type of flight being analysed")
 
             'Check that VCC is stable and in the scope on the .ini setting MAX_VCC_FLUC
             If (Log_Max_VCC / 1000) - (Log_Min_VCC / 1000) > MAX_VCC_FLUC Then
