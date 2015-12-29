@@ -13,6 +13,24 @@
         End If
 
 
+        'It is possible for the "Take_OFF" event to be added to the log but in actual fact the vehicle is not in the air. Pix V3.2.1 - Auto Mission Testing.log
+        'This code checks to make sure the current in flight status makes sense.
+        'We also add a counter to ensure we are not too quick to change the flight status.
+        If Log_Ground_BarAlt + 0.5 > Log_CTUN_BarAlt And Log_In_Flight = True And CTUN_ThrOut_40 = False And Log_In_Flight_Change_Status_Counter > 500 Then  ' 1/2 second delay
+            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": LOG Information: Vehicle is landed without Landed Event recorded in the APM Log,")
+            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": ----- Testing: Log_In_Flight = " & Log_In_Flight & ", Alt = " & Log_CTUN_BarAlt & ", Throttle = " & Log_CTUN_ThrOut / 10 & "%")
+            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": LOG Information: The Log Analiser program will simulate a LANDING Event from this point,")
+            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": LOG Information: The effect on the results can not be determined but should be minimal.")
+            Call LandedEvent()
+            PM_Delay_Counter = 0
+        Else
+            ' Check if we should be updating the "force landing" delay counter
+            If Log_Ground_BarAlt + 0.5 > Log_CTUN_BarAlt And Log_In_Flight = True And CTUN_ThrOut_40 = False Then
+                Log_In_Flight_Change_Status_Counter += 1
+            Else
+                Log_In_Flight_Change_Status_Counter = 0
+            End If
+        End If
 
 
         'It is possible for Log_Last_Mode_Changed_DateTime to equal GPS_Base_Date

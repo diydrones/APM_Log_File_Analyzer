@@ -520,8 +520,9 @@ Module modDisplay_Functions
             ' New Power Summary Dec 2015 KXG
             WriteTextLog("       Battery(V)        Vcc(V)        Current(A)        Cap(mAh)        Used Cap(mAh)    Eff(mA/mim)    Max Fly 80%(mins)")
             WriteTextLog(FormatTextLogValuesBattery("Max", Log_Max_Battery_Volts, Log_Max_VCC, Log_Max_Battery_Current, PARM_BATTERY_CAPACITY, Log_Total_Current, "N/A", "N/A"))
-            Dim Temp As Single = (PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency
-            WriteTextLog(FormatTextLogValuesBattery("Avg", 0, 0, Log_Sum_Battery_Current / Log_CURR_DLs, "N/A", "N/A", Efficiency, ConvertSeconds((PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency)))
+            If Efficiency <> "~~~" Then
+                WriteTextLog(FormatTextLogValuesBattery("Avg", 0, 0, Log_Sum_Battery_Current / Log_CURR_DLs, "N/A", "N/A", Efficiency, ConvertSeconds((PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency)))
+            End If
             WriteTextLog(FormatTextLogValuesBattery("Min", Log_Min_Battery_Volts, Log_Min_VCC, Log_Min_Battery_Current, PARM_BATTERY_CAPACITY - Log_Total_Current, "N/A", "N/A", "N/A"))
 
             WriteTextLog("Overall Flight Time = " & Log_Total_Flight_Time & " seconds, " & ConvertSeconds(Log_Total_Flight_Time))
@@ -687,7 +688,7 @@ Module modDisplay_Functions
         If OnOff = True Then 'only valid if we are displaying graph buttons.
             If IMU_Logging = True Then frmMainForm.btnVibrationChart.Enabled = True Else frmMainForm.btnVibrationChart.Enabled = False
             If CURR_Logging = True Then frmMainForm.btnPowerChart.Enabled = True Else frmMainForm.btnPowerChart.Enabled = False
-            If GPS_Logging = True Then frmMainForm.btnGPSChart.enabled = True Else frmMainForm.btnGPSChart.Enabled = False
+            If GPS_Logging = True Then frmMainForm.btnGPSChart.Enabled = True Else frmMainForm.btnGPSChart.Enabled = False
             If ATT_Logging = True Then frmMainForm.btnAttitudeChart.Enabled = True Else frmMainForm.btnAttitudeChart.Enabled = False
         End If
 

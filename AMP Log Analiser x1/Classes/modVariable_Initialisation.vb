@@ -120,6 +120,7 @@
         Log_Armed_BarAlt = 0                            'Holds the last Barometer Altitude when the APM is Armed, , now driven from EV Data.
         Log_Disarmed_BarAlt = 99999                     'Holds the last Barometer Altitude when the APM is disarmed, now driven from EV Data.
         Log_In_Flight = False                           'TRUE if the APM is in flight, now driven from EV Data.
+        Log_In_Flight_Change_Status_Counter = 0         ' Counts upwards after the Log_In_Flight changes, used to suppress the In Flight Validation Code
         In_Flight_Start_Time = BaseDate                 'Holds the GPS Date and Time as the Quad takes off, now driven from EV Data.
         Mode_In_Flight_Start_Time = BaseDate            'Holds the GPS Date and Time as the Quad takes off during MOde, now driven from EV Data.
         Log_Temp_Ground_GPS_Alt = 0                     'Holds the GPS alt on Take Off, recorded in Take Off Event.
