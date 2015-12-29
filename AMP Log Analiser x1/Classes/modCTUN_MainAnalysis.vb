@@ -8,7 +8,6 @@
         'Capture Throttle up based on CTUN.
         If Log_CTUN_ThrOut > 0 And CTUN_ThrottleUp = False Then
             CTUN_ThrottleUp = True
-            'Log_Armed_BarAlt = Log_CTUN_BarAlt
         End If
 
         'Capture Throttle % based on CTUN.
@@ -18,45 +17,8 @@
             CTUN_ThrOut_40 = False
         End If
 
-        'Capture Throttle up based on CTUN and Capture BarAlt if just throttled down
-        If Log_CTUN_ThrOut = 0 And CTUN_ThrottleUp = True Then
-            'CTUN_ThrottleUp = False
-            'Log_Disarmed_BarAlt = Log_CTUN_BarAlt
-        End If
-        'Capture Throttle up based on CTUN and Capture BarAlt if we have just landed.
-        'Also add the "In Flight Time" to the Total so far.
-        If Log_CTUN_ThrOut = 0 And CTUN_ThrottleUp = False And Log_In_Flight = True Then
-            'Log_Ground_BarAlt = Log_CTUN_BarAlt
-            'Debug.Print(vbNewLine)
-            'Debug.Print("CTUN detected Aircraft Landed (Old Code, Now Driven from EV Data):")
-            'Debug.Print("Log_Total_Flight_Time: " & Log_Total_Flight_Time)
-            'Debug.Print("Current_Flight_Time (should be Zero now): " & Log_Current_Flight_Time)
-            'Log_Total_Flight_Time = Log_Total_Flight_Time + Log_Current_Flight_Time
-            'Log_Current_Flight_Time = 0
-            'Log_In_Flight = False
-        End If
-
         'Capture the Maximum Altitude detected.
         If Log_CTUN_BarAlt > Log_Maximum_Altitude Then Log_Maximum_Altitude = Log_CTUN_BarAlt
-
-        'Try to workout if the ArduCopter is in the air :)
-        If Log_Ground_BarAlt < Log_CTUN_BarAlt And Log_In_Flight = False Then
-            'Debug.Print(vbNewLine)
-            'Debug.Print("CTUN detected Aircraft Take-Off (Old Code, Now Driven from EV Data):")
-            'Debug.Print("Log_Total_Flight_Time: " & Log_Total_Flight_Time)
-            'Debug.Print("Current_Flight_Time (should be Zero now): " & Log_Current_Flight_Time)
-            'Log_In_Flight = True
-
-            'Capture the GPS time as the Quad takes off.
-            'In_Flight_Start_Time = Log_GPS_DateTime
-
-            'Capture the First GPS Lat & Lng if this is the first take off.
-            'If First_In_Flight = False Then
-            '    First_GPS_Lat = Log_GPS_Lat
-            '    First_GPS_Lng = Log_GPS_Lng
-            '    First_In_Flight = True
-            'End If
-        End If
 
         'Collect the data for this Flight Mode Summary.
         If Log_In_Flight = True Then
