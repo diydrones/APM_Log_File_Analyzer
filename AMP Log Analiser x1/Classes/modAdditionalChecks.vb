@@ -5,7 +5,7 @@
         'This code checks to make sure the current in flight status makes sense
         If Log_Ground_BarAlt + 0.5 < Log_CTUN_BarAlt And Log_In_Flight = False And CTUN_ThrOut_40 = True Then
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": LOG Information: Vehicle is flying without TAKE_OFF Event recorded in the APM Log,")
-            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": ----- Testing: Log_In_Flight = " & Log_In_Flight & ", Alt = " & Log_CTUN_BarAlt & ", Throttle = " & Log_CTUN_ThrOut / 10 & "%")
+            'WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": ----- Testing: Log_In_Flight = " & Log_In_Flight & ", Alt = " & Log_CTUN_BarAlt & ", Throttle = " & Log_CTUN_ThrOut / 10 & "%")
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": LOG Information: The Log Analiser program will simulate a TAKE_OFF Event from this point,")
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": LOG Information: The effect on the results can not be determined but should be minimal.")
             Call TakeOffEvent()
@@ -18,7 +18,7 @@
         'We also add a counter to ensure we are not too quick to change the flight status.
         If Log_Ground_BarAlt + 0.5 > Log_CTUN_BarAlt And Log_In_Flight = True And CTUN_ThrOut_40 = False And Log_In_Flight_Change_Status_Counter > 500 Then  ' 1/2 second delay
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": LOG Information: Vehicle is landed without Landed Event recorded in the APM Log,")
-            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": ----- Testing: Log_In_Flight = " & Log_In_Flight & ", Alt = " & Log_CTUN_BarAlt & ", Throttle = " & Log_CTUN_ThrOut / 10 & "%")
+            'WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": ----- Testing: Log_In_Flight = " & Log_In_Flight & ", Alt = " & Log_CTUN_BarAlt & ", Throttle = " & Log_CTUN_ThrOut / 10 & "%")
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": LOG Information: The Log Analiser program will simulate a LANDING Event from this point,")
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": LOG Information: The effect on the results can not be determined but should be minimal.")
             Call LandedEvent()

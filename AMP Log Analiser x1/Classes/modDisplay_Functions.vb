@@ -426,7 +426,7 @@ Module modDisplay_Functions
             WriteTextLog(FormatTextLogValuesFlying("Min", Log_Mode_Min_BarAlt, Log_Mode_Min_Spd, "N/A", Mode_Min_Dist_From_Launch, Log_Mode_Min_NSats, Log_Mode_Min_HDop, "N/A"))
             WriteTextLog(Log_Current_Mode & " Flight Time (Session)= " & Log_Current_Mode_Flight_Time & " seconds, " & ConvertSeconds(Log_Current_Mode_Flight_Time))
             WriteTextLog(Log_Current_Mode & " Flight Time   (Total)= " & TempFlightTime & " seconds, " & ConvertSeconds(TempFlightTime))
-            WriteTextLog("Testing:" & Total_Mode_Current & "mA" & "  " & Log_Current_Mode_Flight_Time & " secs")
+            'WriteTextLog("Testing:" & Total_Mode_Current & "mA" & "  " & Log_Current_Mode_Flight_Time & " secs")
 
             If CTUN_Logging = False Then
                 WriteTextLog(" * Altitude above launch estimated from GPS Data, enable CTUN for accurate borometer data!")
@@ -511,12 +511,6 @@ Module modDisplay_Functions
         'Only display this if CURR logging has been performed.
         If CURR_Logging = True Then
             WriteTextLog("Power Summary:")
-
-            'WriteTextLog("       Battery(V)        Vcc(V)        Current(A)       Used Cap(mAh)    Eff(mA/mim)")
-            'WriteTextLog(FormatTextLogValuesBattery("Max", Log_Max_Battery_Volts, Log_Max_VCC, Log_Max_Battery_Current, Log_Total_Current, "N/A"))
-            'WriteTextLog(FormatTextLogValuesBattery("Avg", 0, 0, Log_Sum_Battery_Current / Log_CURR_DLs, "N/A", Efficiency))
-            'WriteTextLog(FormatTextLogValuesBattery("Min", Log_Min_Battery_Volts, Log_Min_VCC, Log_Min_Battery_Current, "N/A", "N/A"))
-
             ' New Power Summary Dec 2015 KXG
             Dim MaxFlyTime As Integer = (PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency
             WriteTextLog("       Battery(V)        Vcc(V)        Current(A)        Cap(mAh)        Used Cap(mAh)    Eff(mA/mim)    Max Fly 80%(mins)")
