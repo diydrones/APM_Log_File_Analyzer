@@ -2,8 +2,6 @@
 Module modDisplay_Functions
 
     Sub WriteTextLog(ByVal LineText As String)
-        'set the timer.
-
         'review the contents of the text that needs to be written.
         Dim txtColor As Color
         txtColor = Color.White
@@ -21,7 +19,6 @@ Module modDisplay_Functions
             LineText = Mid(LineText, 4, Len(LineText) - 3)
             txtColor = Color.LightGreen
         End If
-
 
         With frmMainForm.richtxtLogAnalysis
             .SelectionStart = .Text.Length
@@ -178,38 +175,6 @@ Module modDisplay_Functions
         FormatTextLogValuesBattery = LineTemp
     End Function
 
-    Function FormatTextLogValuesVibration(Range As String, AccX As Single, AccY As Single, AccZ As Single, Spd As Single, Alt As Single) As String
-        Dim ValueTemp As String = ""
-        Dim LineTemp As String = ""
-        Dim Value As Single = 0
-
-        ValueTemp = Range
-        ValueTemp = ValueTemp.PadRight(5, " ")
-        LineTemp = LineTemp & ValueTemp
-
-        ValueTemp = AccX.ToString("00.000", CultureInfo.CurrentCulture.NumberFormat)  'Format(Val(AccX), "00.000")
-        ValueTemp = ValueTemp.PadLeft(10, " ")
-        LineTemp = LineTemp & ValueTemp
-
-        ValueTemp = AccY.ToString("00.000", CultureInfo.CurrentCulture.NumberFormat)   'Format(Val(AccY), "00.000")
-        ValueTemp = ValueTemp.PadLeft(10, " ")
-        LineTemp = LineTemp & ValueTemp
-
-        ValueTemp = AccZ.ToString("00.000", CultureInfo.CurrentCulture.NumberFormat)    'Format(Val(AccZ), "00.000")
-        ValueTemp = ValueTemp.PadLeft(10, " ")
-        LineTemp = LineTemp & ValueTemp
-
-        ValueTemp = Spd.ToString("00", CultureInfo.CurrentCulture.NumberFormat)    'Format(Val(AccZ), "00.000")
-        ValueTemp = ValueTemp.PadLeft(7, " ")
-        LineTemp = LineTemp & ValueTemp
-
-        ValueTemp = Alt.ToString("00.00", CultureInfo.CurrentCulture.NumberFormat)    'Format(Val(AccZ), "00.000")
-        ValueTemp = ValueTemp.PadLeft(12, " ")
-        LineTemp = LineTemp & ValueTemp
-
-        FormatTextLogValuesVibration = LineTemp
-    End Function
-
     Sub WriteLogFileHeader()
         If ArduVersion <> "" And LogAnalysisHeader = False Then
             LogAnalysisHeader = True
@@ -359,43 +324,43 @@ Module modDisplay_Functions
             'Select Case UCase(Log_Current_Mode)
             Select Case UCase(Log_Current_Mode)
                 Case "STABILIZE"
-                    STABILIZE_Flight_Time = STABILIZE_Flight_Time + Log_Current_Mode_Flight_Time    'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    STABILIZE_Flight_Time = STABILIZE_Flight_Time + Log_Current_Mode_Flight_Time
                     TempFlightTime = STABILIZE_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & STABILIZE_Flight_Time & " Seconds")
                 Case "ALT_HOLD"
-                    ALT_HOLD_Flight_Time = ALT_HOLD_Flight_Time + Log_Current_Mode_Flight_Time      'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    ALT_HOLD_Flight_Time = ALT_HOLD_Flight_Time + Log_Current_Mode_Flight_Time
                     TempFlightTime = ALT_HOLD_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & ALT_HOLD_Flight_Time & " Seconds")
                 Case "ALTHOLD"
-                    ALT_HOLD_Flight_Time = ALT_HOLD_Flight_Time + Log_Current_Mode_Flight_Time      'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    ALT_HOLD_Flight_Time = ALT_HOLD_Flight_Time + Log_Current_Mode_Flight_Time
                     TempFlightTime = ALT_HOLD_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & ALT_HOLD_Flight_Time & " Seconds")
                 Case "LOITER"
-                    LOITER_Flight_Time = LOITER_Flight_Time + Log_Current_Mode_Flight_Time          'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    LOITER_Flight_Time = LOITER_Flight_Time + Log_Current_Mode_Flight_Time
                     TempFlightTime = LOITER_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & LOITER_Flight_Time & " Seconds")
                 Case "AUTO"
-                    AUTO_Flight_Time = AUTO_Flight_Time + Log_Current_Mode_Flight_Time              'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    AUTO_Flight_Time = AUTO_Flight_Time + Log_Current_Mode_Flight_Time
                     TempFlightTime = AUTO_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & AUTO_Flight_Time & " Seconds")
                 Case "RTL"
-                    RTL_Flight_Time = RTL_Flight_Time + Log_Current_Mode_Flight_Time                'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    RTL_Flight_Time = RTL_Flight_Time + Log_Current_Mode_Flight_Time
                     TempFlightTime = RTL_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & RTL_Flight_Time & " Seconds")
                 Case "LAND"
-                    LAND_Flight_Time = LAND_Flight_Time + Log_Current_Mode_Flight_Time              'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    LAND_Flight_Time = LAND_Flight_Time + Log_Current_Mode_Flight_Time
                     TempFlightTime = LAND_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & LAND_Flight_Time & " Seconds")
                 Case "FBW_A"
-                    FBW_A_Flight_Time = FBW_A_Flight_Time + Log_Current_Mode_Flight_Time              'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    FBW_A_Flight_Time = FBW_A_Flight_Time + Log_Current_Mode_Flight_Time
                     TempFlightTime = FBW_A_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & FBW_A_Flight_Time & " Seconds")
                 Case "AUTOTUNE"
-                    AUTOTUNE_Flight_Time = AUTOTUNE_Flight_Time + Log_Current_Mode_Flight_Time              'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    AUTOTUNE_Flight_Time = AUTOTUNE_Flight_Time + Log_Current_Mode_Flight_Time
                     TempFlightTime = AUTOTUNE_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & AUTOTUNE_Flight_Time & " Seconds")
                 Case "MANUAL"
-                    MANUAL_Flight_Time = MANUAL_Flight_Time + Log_Current_Mode_Flight_Time              'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    MANUAL_Flight_Time = MANUAL_Flight_Time + Log_Current_Mode_Flight_Time
                     TempFlightTime = MANUAL_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & MANUAL_Flight_Time & " Seconds")
                 Case Else
@@ -407,7 +372,7 @@ Module modDisplay_Functions
                     Debug.Print("DataLine: " & DataLine)
                     Debug.Print("#############################################")
                     Debug.Print(vbNewLine)
-                    OTHER_Flight_Time = OTHER_Flight_Time + Log_Current_Mode_Flight_Time            'DateDiff(DateInterval.Second, Log_Last_Mode_Changed_DateTime, Log_GPS_DateTime)
+                    OTHER_Flight_Time = OTHER_Flight_Time + Log_Current_Mode_Flight_Time
                     TempFlightTime = OTHER_Flight_Time
                     Debug.Print("Mode Changed from: " & Log_Current_Mode & " Flight Time: " & OTHER_Flight_Time & " Seconds")
             End Select
@@ -474,19 +439,21 @@ Module modDisplay_Functions
         Log_Mode_Min_Volt = 99999
         Log_Mode_Max_Volt = 0
         Log_Mode_Sum_Volt = 0
-        Log_Last_CMD_Lat = 0                      'Holds the previous WP1 Co-ordinates
-        Log_Last_CMD_Lng = 0                      'Holds the previous WP1 Co-ordinates
-        Log_Last_CMD_Alt = 0                      'Holds the previous WP Alititude
-        Log_CMD_Dist1 = 0                    'Distance using current GPS when we hit the WP radius to the next way point
-        Log_CMD_Dist2 = 0                     'Distance between the two way points.
+        Log_Last_CMD_Lat = 0                        'Holds the previous WP1 Co-ordinates
+        Log_Last_CMD_Lng = 0                        'Holds the previous WP1 Co-ordinates
+        Log_Last_CMD_Alt = 0                        'Holds the previous WP Alititude
+        Log_CMD_Dist1 = 0                           'Distance using current GPS when we hit the WP radius to the next way point
+        Log_CMD_Dist2 = 0                           'Distance between the two way points.
 
     End Sub
 
     Sub AddFinalFlightSummary()
         'Calculate the Efficiency if we have enough data points (i.e. based on flight time)
-        Dim Efficiency As String = ""        'Calculated Efficiency
+        Dim Efficiency As String = ""           'Calculated Efficiency
+        Dim MaxFlyTime As Integer = 0           'Calculated Maximum Flight Time
         If Log_Total_Flight_Time > MIN_EFF_TIME Then
             Efficiency = Str(Val(Log_Total_Current / Log_Total_Flight_Time))
+            MaxFlyTime = (PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency
         Else
             Efficiency = "~~~"
         End If
@@ -512,7 +479,6 @@ Module modDisplay_Functions
         If CURR_Logging = True Then
             WriteTextLog("Power Summary:")
             ' New Power Summary Dec 2015 KXG
-            Dim MaxFlyTime As Integer = (PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency
             WriteTextLog("       Battery(V)        Vcc(V)        Current(A)        Cap(mAh)        Used Cap(mAh)    Eff(mA/mim)    Max Fly 80%(mins)")
             WriteTextLog(FormatTextLogValuesBattery("Max", Log_Max_Battery_Volts, Log_Max_VCC, Log_Max_Battery_Current, PARM_BATTERY_CAPACITY, Log_Total_Current, "N/A", "N/A"))
             If Efficiency <> "~~~" Then
@@ -672,10 +638,6 @@ Module modDisplay_Functions
         frmMainForm.panAnalysisButtons.Visible = Not OnOff
         frmMainForm.panGraphButtons.Visible = OnOff
         frmMainForm.btnParameters.Visible = OnOff
-
-        'frmMainForm.btnPowerChart.Visible = Not OnOff
-        'frmMainForm.btnVibrationChart.Visible = Not OnOff
-        'frmMainForm.lblWorkInProgress.Visible = Not OnOff
     End Sub
 
     Public Sub ButtonsCharting_Visible(OnOff As Boolean)
