@@ -1,7 +1,7 @@
 ﻿Module modVariable_Initialisation
     Public Sub Variable_Initialisation()
-        UpdateYesNo = 99                          ' 99 = Waiting for Reponse, True = Update, False = dont update
-        XPInstallation = False                    ' True is running on XP
+        UpdateYesNo = 99                            ' 99 = Waiting for Reponse, True = Update, False = dont update
+        XPInstallation = False                      ' True is running on XP
 
         'Initialise the Parameter Variables
         Param = ""                                  ' Parameter read from the Log.
@@ -71,48 +71,48 @@
         Log_CMD_Alt = 0                                 'Alt: the command’s altitude in meters
         Log_CMD_Lat = 0                                 'Lat: the command’s latitude position
         Log_CMD_Lng = 0                                 'Lng: the command’s longitude position
-        Log_Last_CMD_Lat = 0                      'Holds the previous WP1 Co-ordinates
-        Log_Last_CMD_Lng = 0                      'Holds the previous WP1 Co-ordinates
-        Log_Last_CMD_Alt = 0                      'Holds the previous WP Alititude
-        Log_CMD_Dist1 = 0                      'Distance between the last two way points.
-        Log_CMD_Dist2 = 0                      'Distance between the two way points.
-        Log_CMD_WPtoWP_Eff = 0                 'Holds the Capacity used at the start of each new WP to calculate the capcity used to get to the new WP.
-        Log_CMD_WP_Speed = 0                   'Holds either the Parameter WPNAV_SPEED or the last Command Waypoint Speed.
-        Log_CMD_WP_PreviousSpeed = 0           'Holds either 0 or the last Command Waypoint Speed when it is changed.
-        Log_CMD_WP_PreviousTime = GPS_Base_Date 'Hold either GPS_Base_Date or the GPS Time when we hit the previous WP.
+        Log_Last_CMD_Lat = 0                            'Holds the previous WP1 Co-ordinates
+        Log_Last_CMD_Lng = 0                            'Holds the previous WP1 Co-ordinates
+        Log_Last_CMD_Alt = 0                            'Holds the previous WP Alititude
+        Log_CMD_Dist1 = 0                               'Distance between the last two way points.
+        Log_CMD_Dist2 = 0                               'Distance between the two way points.
+        Log_CMD_WPtoWP_Eff = 0                          'Holds the Capacity used at the start of each new WP to calculate the capcity used to get to the new WP.
+        Log_CMD_WP_Speed = 0                            'Holds either the Parameter WPNAV_SPEED or the last Command Waypoint Speed.
+        Log_CMD_WP_PreviousSpeed = 0                    'Holds either 0 or the last Command Waypoint Speed when it is changed.
+        Log_CMD_WP_PreviousTime = GPS_Base_Date         'Hold either GPS_Base_Date or the GPS Time when we hit the previous WP.
 
 
         'Initialise the DU32 Variables
-        Log_DU32_ID = 0                                     'Holds the ID number, 7 (bit mask of internal state) or 9 (simple mode’s initial heading in centi-degrees)
-        Log_DU32_Value = 0                                  'Holds the DU32 value.
-        Log_DU32_HomeSet = 99                               'True if DU32 is reporting Home is set, starts 99 then changes to True or False
-        Log_DU32_SimpleMode = 99                             '0=Disabled, 1=Simple, 2=Super Simple Modes
-        Log_DU32_RC_PreArm = 99                             'True if the PreArm checks have been completed.
-        Log_DU32_ALL_PreArm = 99                                'True if all the PreArm checks have been completed.
-        Log_DU32_Landing = 99                                'Ture is Landing Detected
-        Log_DU32_CH7_Switch = 99                            'ch7 aux switch : 0 is low or false, 1 is center or true, 2 is high
-        Log_DU32_CH8_Switch = 99                            'ch8 aux switch : 0 is low or false, 1 is center or true, 2 is high
-        Log_DU32_USB = 99                                   'True if USB is Powered.
-        Log_DU32_Compass_Mot = 99                           'True if compassmot is being calibrated.
-        Log_DU32_SystemTimeGPS = 99                         'Ture if the System Time has been set by the GPS
-        Log_DU32_Receiver = 99                              'True if a receiver is present.
-        Log_DU32_AutoWait = 99                              'True if Auto mode is waiting for Throttle.
-        USB_Warning1 = False                                'True if the USB warning has been presented to the user when APM thinks it has a USB connection while in flight
+        Log_DU32_ID = 0                                 'Holds the ID number, 7 (bit mask of internal state) or 9 (simple mode’s initial heading in centi-degrees)
+        Log_DU32_Value = 0                              'Holds the DU32 value.
+        Log_DU32_HomeSet = 99                           'True if DU32 is reporting Home is set, starts 99 then changes to True or False
+        Log_DU32_SimpleMode = 99                        '0=Disabled, 1=Simple, 2=Super Simple Modes
+        Log_DU32_RC_PreArm = 99                         'True if the PreArm checks have been completed.
+        Log_DU32_ALL_PreArm = 99                        'True if all the PreArm checks have been completed.
+        Log_DU32_Landing = 99                           'True is Landing Detected
+        Log_DU32_CH7_Switch = 99                        'ch7 aux switch : 0 is low or false, 1 is center or true, 2 is high
+        Log_DU32_CH8_Switch = 99                        'ch8 aux switch : 0 is low or false, 1 is center or true, 2 is high
+        Log_DU32_USB = 99                               'True if USB is Powered.
+        Log_DU32_Compass_Mot = 99                       'True if compassmot is being calibrated.
+        Log_DU32_SystemTimeGPS = 99                     'Ture if the System Time has been set by the GPS
+        Log_DU32_Receiver = 99                          'True if a receiver is present.
+        Log_DU32_AutoWait = 99                          'True if Auto mode is waiting for Throttle.
+        USB_Warning1 = False                            'True if the USB warning has been presented to the user when APM thinks it has a USB connection while in flight
 
         'Initialise the PM Variables
-        Log_PM_RenCnt = 0                                      'DCM renormalization count
-        Log_PM_RenBlw = 0                                      'DCM renormalization blow-up count
-        Log_PM_NLon = 0                                        'number of long running main loops
-        Log_PM_NLoop = 0                                       'the total number of loops since the last PM message was displayed
-        Log_PM_MaxT = 0                                        'the maximum time that any loop took since the last PM message.
-        Log_PM_PMT = 0                                         'a number that increments each time a heart beat is received from the ground station, should = 10
-        Log_GCS_Attached = False                                'True once we have a valid 100% (PMT = 10) signal from the GCS
-        Log_PM_I2CErr = 0                                      'the number of I2C errors since the last PM message.
-        Log_PM_INSErr = 0                                      'MPU6k spi bus errors
+        Log_PM_RenCnt = 0                               'DCM renormalization count
+        Log_PM_RenBlw = 0                               'DCM renormalization blow-up count
+        Log_PM_NLon = 0                                 'number of long running main loops
+        Log_PM_NLoop = 0                                'the total number of loops since the last PM message was displayed
+        Log_PM_MaxT = 0                                 'the maximum time that any loop took since the last PM message.
+        Log_PM_PMT = 0                                  'a number that increments each time a heart beat is received from the ground station, should = 10
+        Log_GCS_Attached = False                        'True once we have a valid 100% (PMT = 10) signal from the GCS
+        Log_PM_I2CErr = 0                               'the number of I2C errors since the last PM message.
+        Log_PM_INSErr = 0                               'MPU6k spi bus errors
         Log_PM_INAVErr = 0
-        PM_Delay_Counter = 0                         'Counts each PM log found, PM errors on reported when it reaches > x (default = 3)
-        PM_Last_PMT = 10                              'The previous PMT reading before the current reading, used to stop repeats.
-        PM_Last_INAVErr = 0                          'The previous INAVErr reading before the current reading, used to stop repeats.
+        PM_Delay_Counter = 0                            'Counts each PM log found, PM errors on reported when it reaches > x (default = 3)
+        PM_Last_PMT = 10                                'The previous PMT reading before the current reading, used to stop repeats.
+        PM_Last_INAVErr = 0                             'The previous INAVErr reading before the current reading, used to stop repeats.
 
         'Declare the EV Variables
         Log_Ground_BarAlt = 0                           'Holds the last Barometer Altitude detected during lift off, now driven from EV Data.
@@ -120,14 +120,14 @@
         Log_Armed_BarAlt = 0                            'Holds the last Barometer Altitude when the APM is Armed, , now driven from EV Data.
         Log_Disarmed_BarAlt = 99999                     'Holds the last Barometer Altitude when the APM is disarmed, now driven from EV Data.
         Log_In_Flight = False                           'TRUE if the APM is in flight, now driven from EV Data.
-        Log_In_Flight_Change_Status_Counter = 0         ' Counts upwards after the Log_In_Flight changes, used to suppress the In Flight Validation Code
+        Log_In_Flight_Change_Status_Counter = 0         'Counts upwards after the Log_In_Flight changes, used to suppress the In Flight Validation Code
         In_Flight_Start_Time = BaseDate                 'Holds the GPS Date and Time as the Quad takes off, now driven from EV Data.
         Mode_In_Flight_Start_Time = BaseDate            'Holds the GPS Date and Time as the Quad takes off during MOde, now driven from EV Data.
         Log_Temp_Ground_GPS_Alt = 0                     'Holds the GPS alt on Take Off, recorded in Take Off Event.
 
 
         'Declare the MODE Variables
-        Log_Current_Mode = "Not Determined"              'Holds the Current Mode, i.e. STABILIZE or AUTO
+        Log_Current_Mode = "Not Determined"             'Holds the Current Mode, i.e. STABILIZE or AUTO
         Log_Last_Mode_Changed_DateTime = BaseDate       'Holds the Date and Time the Current Mode was initialised, may not be in flight time!
         Log_Current_Mode_Time = 0                       'Holds the number of seconds since the Current Mode was initialised, may not be in flight time!
         Log_Current_Mode_Flight_Time = 0                'Holds the number of seconds recorded in the log during flight in this mode.
@@ -142,10 +142,10 @@
         'Declare the CURR Variables
         LOG_CURR_ThrOut = 0                             'Holds the last value in the CURR dataline
         LOG_CURR_ThrInt = 0                             'Holds the last value in the CURR dataline
-        LOG_CURR_Volt = 0                              'Holds the last value in the CURR dataline
-        LOG_CURR_Curr = 0                              'Holds the last value in the CURR dataline
-        LOG_CURR_Vcc = 0                               'Holds the last value in the CURR dataline
-        LOG_CURR_CurrTot = 0                             'Holds the last value in the CURR dataline
+        LOG_CURR_Volt = 0                               'Holds the last value in the CURR dataline
+        LOG_CURR_Curr = 0                               'Holds the last value in the CURR dataline
+        LOG_CURR_Vcc = 0                                'Holds the last value in the CURR dataline
+        LOG_CURR_CurrTot = 0                            'Holds the last value in the CURR dataline
         CURR_ThrottleUp = False                         'TRUE if Throttle > 0 in CURR logs
         Log_Min_VCC = 99999                             'Holds the Minimum VCC found in the Log while in Flight Only
         Log_Max_VCC = 0                                 'Holds the Maximum VCC found in the Log while in Flight Only
@@ -212,7 +212,7 @@
         First_GPS_Lng = 0                               'Holds the Longtitude when the Qaud first takes off.
         Last_GPS_Lat = 0                                'Holds the last Latitude Result, used to calculate distance between each GPS Log.
         Last_GPS_Lng = 0                                'Holds the last Longtitude Result, used to calculate distance between each GPS Log.
-        Log_GPS_Alt = 0                                 'Holda the current GPS_Alt result.
+        Log_GPS_Alt = 0                                 'Holds the current GPS_Alt result.
         Log_GPS_Last_Alt = 0                            'Holds the last GPS_Alt result, used to filter spikes.
         Log_GPS_Calculated_Alt = 0                      'Calculated Altitude by taking the GPS Alt - launch GPS Alt
         GPS_Calculated_Direction = 0                    'Calculated Direction based on GPS Lat & Lng movements.
@@ -244,7 +244,7 @@
         APM_Frame_Name = ""                             'The Text Name of the Frame Type
         APM_No_Motors = 0                               'Holds the number of Motors, determined from the FMT for MOT.
 
-        Log_RCOU_Ch1 = 0                                ' Set up the Motor Calculation Variables
+        Log_RCOU_Ch1 = 0                                'Set up the Motor Calculation Variables
         Log_RCOU_Ch2 = 0
         Log_RCOU_Ch3 = 0
         Log_RCOU_Ch4 = 0
@@ -262,7 +262,7 @@
 
         Hardware = ""                                   'Holds the type of hardware used.
         Pixhawk_Serial_Number = ""                      'Holds the PixHawk Serial Number.
-        SoloFirmwareDetected_v3_2 = False               ' True if ArduVersion returned with the name "solo" in it and was replaced with v3.2
+        SoloFirmwareDetected_v3_2 = False               'True if ArduVersion returned with the name "solo" in it and was replaced with v3.2
 
         'Decalre the IMU Variables
         Log_IMU_TimeMS = 0                              'Holds the current IMU Time in ms that the last reading was taken.
@@ -311,24 +311,24 @@
         ERR_Logging = False                             'TRUE if Valid data found in Log File
 
         'Added for V3.2 compatibility
-        GPS2_Logging = False                   'TRUE if Valid data found in Log File
-        IMU2_Logging = False                   'TRUE if Valid data found in Log File
-        IMU3_Logging = False                   'TRUE if Valid data found in Log File
-        MAG2_Logging = False                   'TRUE if Valid data found in Log File
-        MAG3_Logging = False                   'TRUE if Valid data found in Log File
-        AHR2_Logging = False                   'TRUE if Valid data found in Log File
-        SIM_Logging = False                   'TRUE if Valid data found in Log File
-        EKF1_Logging = False                   'TRUE if Valid data found in Log File
-        EKF2_Logging = False                   'TRUE if Valid data found in Log File
-        EKF3_Logging = False                   'TRUE if Valid data found in Log File
-        EKF4_Logging = False                   'TRUE if Valid data found in Log File
-        TERR_Logging = False                   'TRUE if Valid data found in Log File
-        UBX1_Logging = False                   'TRUE if Valid data found in Log File
-        UBX2_Logging = False                   'TRUE if Valid data found in Log File
-        RCIN_Logging = False                   'TRUE if Valid data found in Log File
-        RCOU_Logging = False                   'TRUE if Valid data found in Log File
-        BARO_Logging = False                   'TRUE if Valid data found in Log File
-        POWR_Logging = False                   'TRUE if Valid data found in Log File
-        RAD_Logging = False                   'TRUE if Valid data found in Log File
+        GPS2_Logging = False                            'TRUE if Valid data found in Log File
+        IMU2_Logging = False                            'TRUE if Valid data found in Log File
+        IMU3_Logging = False                            'TRUE if Valid data found in Log File
+        MAG2_Logging = False                            'TRUE if Valid data found in Log File
+        MAG3_Logging = False                            'TRUE if Valid data found in Log File
+        AHR2_Logging = False                            'TRUE if Valid data found in Log File
+        SIM_Logging = False                             'TRUE if Valid data found in Log File
+        EKF1_Logging = False                            'TRUE if Valid data found in Log File
+        EKF2_Logging = False                            'TRUE if Valid data found in Log File
+        EKF3_Logging = False                            'TRUE if Valid data found in Log File
+        EKF4_Logging = False                            'TRUE if Valid data found in Log File
+        TERR_Logging = False                            'TRUE if Valid data found in Log File
+        UBX1_Logging = False                            'TRUE if Valid data found in Log File
+        UBX2_Logging = False                            'TRUE if Valid data found in Log File
+        RCIN_Logging = False                            'TRUE if Valid data found in Log File
+        RCOU_Logging = False                            'TRUE if Valid data found in Log File
+        BARO_Logging = False                            'TRUE if Valid data found in Log File
+        POWR_Logging = False                            'TRUE if Valid data found in Log File
+        RAD_Logging = False                             'TRUE if Valid data found in Log File
     End Sub
 End Module
