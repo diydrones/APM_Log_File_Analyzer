@@ -151,7 +151,6 @@
     <Compile Include="Classes\modERROR_Checks_v3_3.vb" />
     <Compile Include="Classes\modERROR_Checks.vb" />
     <Compile Include="Classes\modEV_Checks_v3_3.vb" />
-    <Compile Include="Classes\modEV_Checks.vb" />
     <Compile Include="Classes\modFile_Handling.vb" />
     <Compile Include="Classes\modGPS_MainAnalysis.vb" />
     <Compile Include="Classes\modGPS_Functions.vb" />
