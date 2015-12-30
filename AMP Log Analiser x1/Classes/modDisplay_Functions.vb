@@ -518,17 +518,18 @@ Module modDisplay_Functions
                     WriteTextLog("WARNING: Current Sensing is Enabled but failing to measure current consumption correctly!")
                     WriteTextLog("WARNING: Issue Analysis:")
                     If PARM_BATT_CURR_PIN <> 12 And Hardware = "APM2" Then
-                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is normally set to 12 on an APM, this is " & PARM_BATT_CURR_PIN)
+                        WriteTextLog("WARNING:  - Parameter BATT_CURR_PIN is normally set to 12 on an APM, this is Pin " & PARM_BATT_CURR_PIN)
+                    ElseIf PARM_BATT_CURR_PIN = 12 And Hardware = "APM2" Then
+                        WriteTextLog("WARNING:  - Parameter BATT_CURR_PIN is set correctly for an APM as pin " & PARM_BATT_CURR_PIN)
+                    ElseIf PARM_BATT_CURR_PIN <> 3 And Hardware = "PX4v2" Then
+                        WriteTextLog("WARNING:  - Parameter BATT_CURR_PIN is normally set to 3 on a Pix v2, this is Pin " & PARM_BATT_CURR_PIN)
+                    ElseIf PARM_BATT_CURR_PIN = 3 And Hardware = "PX4v2" Then
+                        WriteTextLog("WARNING:  - Parameter BATT_CURR_PIN is set correctly for a Pixhawk as pin " & PARM_BATT_CURR_PIN)
                     Else
-                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is set correctly for an APM as pin " & PARM_BATT_CURR_PIN)
+                        WriteTextLog("WARNING:  - Situation can not be automatically determined " & PARM_BATT_CURR_PIN)
                     End If
-                    If PARM_BATT_CURR_PIN <> 3 And Hardware = "PX4v2" Then
-                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is normally set to 3 on a Pix v2, this is " & PARM_BATT_CURR_PIN)
-                    Else
-                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is set correctly for a Pixhawk as pin " & PARM_BATT_CURR_PIN)
-                    End If
-                    WriteTextLog("WARNING:  -- Calibrate your Power Module: https://www.youtube.com/watch?v=tEA0Or-1n18")
-                    WriteTextLog("WARNING:  -- Switch off Current Sensing by setting Parameter BATT_CURR_PIN to -1")
+                    WriteTextLog("WARNING:  - Calibrate your Power Module: https://www.youtube.com/watch?v=tEA0Or-1n18")
+                    WriteTextLog("WARNING:  - Switch off Current Sensing by setting Parameter BATT_CURR_PIN to -1")
                     WriteTextLog("")
                 End If
             End If
