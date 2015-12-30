@@ -486,55 +486,59 @@ Module modDisplay_Functions
             End If
             WriteTextLog(FormatTextLogValuesBattery("Min", Log_Min_Battery_Volts, Log_Min_VCC, Log_Min_Battery_Current, PARM_BATTERY_CAPACITY - Log_Total_Current, "N/A", "N/A", "N/A"))
             WriteTextLog("  Overall Flight Time = " & Log_Total_Flight_Time & " seconds, " & ConvertSeconds(Log_Total_Flight_Time))
-            WriteTextLog("Max Flight Time @ 80% = " & MaxFlyTime & " seconds, " & ConvertSeconds(MaxFlyTime))
-            WriteTextLog("                        Max Flight Time calculation can be influenced by")
-            WriteTextLog("                         -- Battery Capacity Parameter setting")
-            WriteTextLog("                         -- Calibration of the Battery Current Monitoring Circuit")
-            WriteTextLog("                         -- The type of flight being analysed")
+
+            If MaxFlyTime <> 0 Then
+                WriteTextLog("Max Flight Time @ 80% = " & MaxFlyTime & " seconds, " & ConvertSeconds(MaxFlyTime))
+                WriteTextLog("                        Max Flight Time calculation can be influenced by")
+                WriteTextLog("                         -- Battery Capacity Parameter setting")
+                WriteTextLog("                         -- Calibration of the Battery Current Monitoring Circuit")
+                WriteTextLog("                         -- The type of flight being analysed")
+            End If
 
             'Check that VCC is stable and in the scope on the .ini setting MAX_VCC_FLUC
             If (Log_Max_VCC / 1000) - (Log_Min_VCC / 1000) > MAX_VCC_FLUC Then
-                WriteTextLog("")
-                WriteTextLog("WARNING: VCC is unstable with fluctuations of " & (Log_Max_VCC / 1000) - (Log_Min_VCC / 1000) & "v reported.")
-                WriteTextLog("         VCC needs to be within " & MAX_VCC_FLUC & "v according to this UAV profile")
-            End If
-            WriteTextLog("")
-
-            'Add the code to check on Capacity Consumption against the set Battery Capacity in the Parameters.
-            If Log_Total_Current > (PARM_BATTERY_CAPACITY * 80) / 100 Then
-                WriteTextLog("WARNING: Battery Capacity in Parameters is set to: " & PARM_BATTERY_CAPACITY)
-                WriteTextLog("WARNING: However, Capacity used in this flight is: " & Log_Total_Current)
-                WriteTextLog("WARNING: This means you have used " & (Log_Total_Current / PARM_BATTERY_CAPACITY) * 100 & "% of the total Capacity")
-                WriteTextLog("WARNING: First, Check the Battery Capacity Parameter setting is correct.")
-                WriteTextLog("WARNING: Second, check the Power Calibration: https://www.youtube.com/watch?v=tEA0Or-1n18")
-                WriteTextLog("WARNING: Thrid, reduce flight times to protect the main battery!")
-                WriteTextLog("")
-            End If
-            If Log_Total_Current = 0 Then
-                If PARM_BATT_CURR_PIN = -1 Then
-                    WriteTextLog("APM Information: Current Sensing is disabled.")
                     WriteTextLog("")
-                Else
-                    WriteTextLog("WARNING: Current Sensing is Enabled but failing to measure current consumption correctly!")
-                    WriteTextLog("WARNING: Issue Analysis:")
-                    If PARM_BATT_CURR_PIN <> 12 And Hardware = "APM2" Then
-                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is normally set to 12 on an APM, this is " & PARM_BATT_CURR_PIN)
-                    Else
-                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is set correctly for an APM as pin " & PARM_BATT_CURR_PIN)
-                    End If
-                    If PARM_BATT_CURR_PIN <> 3 And Hardware = "PX4v2" Then
-                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is normally set to 3 on a Pix v2, this is " & PARM_BATT_CURR_PIN)
-                    Else
-                        WriteTextLog("WARNING:  -- Parameter BATT_CURR_PIN is set correctly for a Pixhawk as pin " & PARM_BATT_CURR_PIN)
-                    End If
-                    WriteTextLog("WARNING:  -- Calibrate your Power Module: https://www.youtube.com/watch?v=tEA0Or-1n18")
-                    WriteTextLog("WARNING:  -- Switch off Current Sensing by setting Parameter BATT_CURR_PIN to -1")
+                    WriteTextLog("WARNING: VCC is unstable with fluctuations of " & (Log_Max_VCC / 1000) - (Log_Min_VCC / 1000) & "v reported.")
+                    WriteTextLog("         VCC needs to be within " & MAX_VCC_FLUC & "v according to this UAV profile")
+                End If
+                WriteTextLog("")
+
+                'Add the code to check on Capacity Consumption against the set Battery Capacity in the Parameters.
+                If Log_Total_Current > (PARM_BATTERY_CAPACITY * 80) / 100 Then
+                    WriteTextLog("WARNING: Battery Capacity in Parameters is set to: " & PARM_BATTERY_CAPACITY)
+                    WriteTextLog("WARNING: However, Capacity used in this flight is: " & Log_Total_Current)
+                    WriteTextLog("WARNING: This means you have used " & (Log_Total_Current / PARM_BATTERY_CAPACITY) * 100 & "% of the total Capacity")
+                    WriteTextLog("WARNING: First, Check the Battery Capacity Parameter setting is correct.")
+                    WriteTextLog("WARNING: Second, check the Power Calibration: https://www.youtube.com/watch?v=tEA0Or-1n18")
+                    WriteTextLog("WARNING: Thrid, reduce flight times to protect the main battery!")
                     WriteTextLog("")
                 End If
-            End If
+                If Log_Total_Current = 0 Then
+                    If PARM_BATT_CURR_PIN = -1 Then
+                        WriteTextLog("APM Information: Current Sensing is disabled.")
+                        WriteTextLog("")
+                    Else
+                        WriteTextLog("WARNING: Current Sensing is Enabled but failing to measure current consumption correctly!")
+                        WriteTextLog("WARNING: Issue Analysis:")
+                        If PARM_BATT_CURR_PIN <> 12 And Hardware = "APM2" Then
+                            WriteTextLog("WARNING:  - Parameter BATT_CURR_PIN is normally set to 12 on an APM, this is Pin " & PARM_BATT_CURR_PIN)
+                        ElseIf PARM_BATT_CURR_PIN = 12 And Hardware = "APM2" Then
+                            WriteTextLog("WARNING:  - Parameter BATT_CURR_PIN is set correctly for an APM as pin " & PARM_BATT_CURR_PIN)
+                        ElseIf PARM_BATT_CURR_PIN <> 3 And Hardware = "PX4v2" Then
+                            WriteTextLog("WARNING:  - Parameter BATT_CURR_PIN is normally set to 3 on a Pix v2, this is Pin " & PARM_BATT_CURR_PIN)
+                        ElseIf PARM_BATT_CURR_PIN = 3 And Hardware = "PX4v2" Then
+                            WriteTextLog("WARNING:  - Parameter BATT_CURR_PIN is set correctly for a Pixhawk as pin " & PARM_BATT_CURR_PIN)
+                        Else
+                            WriteTextLog("WARNING:  - Situation can not be automatically determined " & PARM_BATT_CURR_PIN)
+                        End If
+                        WriteTextLog("WARNING:  - Calibrate your Power Module: https://www.youtube.com/watch?v=tEA0Or-1n18")
+                        WriteTextLog("WARNING:  - Switch off Current Sensing by setting Parameter BATT_CURR_PIN to -1")
+                        WriteTextLog("")
+                    End If
+                End If
 
-        Else
-            WriteTextLog("*** Enable CURR logging to view battery and flight efficiency data.")
+            Else
+                WriteTextLog("*** Enable CURR logging to view battery and flight efficiency data.")
             WriteTextLog("")
         End If
 
