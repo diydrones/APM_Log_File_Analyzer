@@ -88,9 +88,12 @@
                     If DU32_Logging <> True Or frmMainForm.chkboxDU32.Checked <> True Then
                         WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": SET_SIMPLE_OFF")
                     End If
-                'Case "28"    ' AUTOTUNE_INITIALISED
-                '    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": AUTOTUNE_INITIALISED")
-                '    PM_Delay_Counter = 0
+                Case "28"    ' NOT_LANDED
+                    If Log_In_Flight = False Then
+                        WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": NOT_LANDED")
+                        '    WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": ----- Testing: Log_In_Flight = " & Log_In_Flight & ", Alt = " & Log_CTUN_BarAlt & ", Throttle = " & Log_CTUN_ThrOut / 10 & "%")
+                    End If
+                    PM_Delay_Counter = 0
                 Case "29"    ' SET_SUPERSIMPLE_ON
                     If DU32_Logging <> True Or frmMainForm.chkboxDU32.Checked <> True Then
                         WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ":  SET_SUPERSIMPLE_ON")
