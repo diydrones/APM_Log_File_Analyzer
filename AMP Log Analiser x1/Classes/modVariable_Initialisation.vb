@@ -175,7 +175,7 @@
         Log_Mode_Min_BarAlt = 99999                     'Holds the Minimum BarAlt recorded in the log during flight in this mode.
         Log_Mode_Max_BarAlt = 0                         'Holds the Maximum BarAlt recorded in the log during flight in this mode.
         Log_Mode_Sum_BarAlt = 0                         'Holds the Sum of all BarAlt recorded in the log during flight in this mode.
-
+        Log_CTUN_Alt = 0
 
         'Declare the GPS Variables
         Log_GPS_GCrs = 0                                'Holds the GPS ground course in degrees (0 = north)

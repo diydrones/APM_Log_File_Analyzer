@@ -636,6 +636,11 @@ Module modDisplay_Functions
         frmMainForm.Refresh()
     End Sub
 
+    Public Sub Chart_Motors_Visible(OnOff As Boolean)
+        frmMainForm.panRCOU.Visible = OnOff
+        frmMainForm.Refresh()
+    End Sub
+
     Public Sub ButtonsCheckBoxes_Visible(OnOff As Boolean)
         frmMainForm.btnLoadLog.Visible = OnOff
         frmMainForm.panAnalysis.Visible = OnOff

@@ -291,6 +291,7 @@ Module modVariable_Declarations
     Public Log_CTUN_ThrOut As Integer = 0                       ' Holds the Current ThrOut recorded in the log from the CTUN data line.
     Public Log_CTUN_ThrIn As Single = 0
     Public Log_CTUN_SonAlt As Single = 0
+    Public Log_CTUN_Alt As Single = 0
     Public Log_CTUN_WPAlt As Single = 0
     Public Log_CTUN_DesSonAlt As Single = 0
     Public Log_CTUN_AngBst As Single = 0
