@@ -156,7 +156,7 @@
     <Compile Include="Classes\modFile_Handling.vb" />
     <Compile Include="Classes\modGPS_MainAnalysis.vb" />
     <Compile Include="Classes\modGPS_Functions.vb" />
-    <Compile Include="Classes\modIMU_Checks.vb" />
+    <Compile Include="Classes\modIMU_MainAnalysis.vb" />
     <Compile Include="Classes\modIMU_Checks_Solo_v1_2_0.vb" />
     <Compile Include="Classes\modIMU_Checks_v3_1_v3_2.vb" />
     <Compile Include="Classes\modIMU_Checks_v3_3.vb" />
@@ -209,8 +209,8 @@
     <Compile Include="Forms\SplashScreen.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Classes\GPS_Checks_v3_1_v3_2.vb" />
-    <Compile Include="Classes\GPS_Checks_v3_3.vb" />
+    <Compile Include="Classes\modGPS_Checks_v3_1_v3_2.vb" />
+    <Compile Include="Classes\modGPS_Checks_v3_3.vb" />
     <Compile Include="Classes\modDetectMotors_v3_2_v3_3.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
