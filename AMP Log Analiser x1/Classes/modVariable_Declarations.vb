@@ -230,6 +230,7 @@ Module modVariable_Declarations
     Public PM_Last_INAVErr As Integer = 0                       ' The previous INAVErr reading before the current reading, used to stop repeats.
 
     'Declare the EV Variables
+    Public Log_EV_ID As Integer = 0                             ' Holds the Event ID to be passed to the main analysis.
     Public Log_Ground_BarAlt As Integer = 0                     ' Holds the last Barometer Altitude detected during lift off, now driven from EV Data.
     Public Log_Armed = False                                    ' TRUE if the APM is in an Armed State
     Public Log_Armed_BarAlt As Integer = 0                      ' Holds the last Barometer Altitude when the APM is Armed, , now driven from EV Data.

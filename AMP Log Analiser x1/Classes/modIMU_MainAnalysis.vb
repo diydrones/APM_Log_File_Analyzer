@@ -1,4 +1,4 @@
-﻿Module modIMU_Checks
+﻿Module modIMU_MainAnalysis
 
     Public Sub IMU_MainAnalysis()
 

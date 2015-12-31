@@ -5,8 +5,6 @@
         'and prepares the variables ready for the MainAnalysis which
         'is called directly after by this code.
 
-        ' THIS CODE MUST ONLY BE CALLED AFTER THE DATA LINE HAS BEEN VALIDATED AS THE CORRECT TYPE !!!
-
         If ReadFileResilienceCheck(11) = True Then
             'v3.1 - FMT, 4, 25, CTUN, hcefchhhh, ThrIn,SonAlt,BarAlt,WPAlt,DesSonAlt,AngBst,CRate,ThrOut,DCRate
             'v3.2 - FMT, 4, 33, CTUN, Ihhhffecchh, TimeMS, ThrIn, AngBst, ThrOut, DAlt, Alt, BarAlt, DSAlt, SAlt, DCRt, CRt

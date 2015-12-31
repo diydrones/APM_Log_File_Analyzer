@@ -120,12 +120,16 @@ Module modMainReadFile
 
                         'EV Checks
                         If DataArray(0) = "EV" Then
-                            Call EV_Checks_v3_3() ' Will analyse all firmware upto v3.3
+                            If (ReadFileVersion = 3.1 Or ReadFileVersion = 3.2) And ArduType = "APM:Copter" Then
+                                Call EV_Checks_v3_1_v3_2()
+                            Else
+                                Call EV_Checks_v3_3() ' Will analyse all firmware upto v3.3
+                            End If
                         End If
 
 
-                            'Error Checks
-                            If frmMainForm.chkboxErrors.Checked = True Then
+                        'Error Checks
+                        If frmMainForm.chkboxErrors.Checked = True Then
                             If DataArray(0) = "ERR" Then
                                 If (ReadFileVersion = 3.1 Or ReadFileVersion = 3.2) And ArduType = "APM:Copter" Then
                                     Call ERROR_Checks()
