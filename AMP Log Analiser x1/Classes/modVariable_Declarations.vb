@@ -4,7 +4,7 @@ Imports System.Deployment.Application
 Module modVariable_Declarations
 
 
-    Public MyCurrentVersionNumber As String = "v2.2.1.3"        ' Update on every released version, format v?.?.?.?  i.e. single digit only.      
+    Public MyCurrentVersionNumber As String = "v2.2.1.4"        ' Update on every released version, format v?.?.?.?  i.e. single digit only.      
     'frmMainForm.BuildVers()                                    ' Update on every released version.
     Public CurrentPublishVersionNumber As String = ""           ' frmMainForm.PublishedVers() 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
     Public XPInstallation As Boolean = False                    ' True is running on XP
