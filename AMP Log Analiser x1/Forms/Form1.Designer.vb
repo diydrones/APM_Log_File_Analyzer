@@ -100,6 +100,28 @@ Partial Class frmMainForm
         Dim Series48 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim Series49 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim Series50 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea21 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea22 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea23 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim ChartArea24 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend6 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series51 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series52 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series53 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series54 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series55 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series56 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series57 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series58 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series59 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series60 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series61 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series62 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series63 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series64 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series65 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series66 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series67 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OpenFD = New System.Windows.Forms.OpenFileDialog()
         Me.lblCurrentVersion = New System.Windows.Forms.Label()
@@ -152,6 +174,7 @@ Partial Class frmMainForm
         Me.lblOSD = New System.Windows.Forms.Label()
         Me.panAnalysis = New System.Windows.Forms.Panel()
         Me.panGraphButtons = New System.Windows.Forms.Panel()
+        Me.btnRCouChart = New System.Windows.Forms.Button()
         Me.btnTravel = New System.Windows.Forms.Button()
         Me.btnAttitudeChart = New System.Windows.Forms.Button()
         Me.btnGPSChart = New System.Windows.Forms.Button()
@@ -212,6 +235,12 @@ Partial Class frmMainForm
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.chartTravel = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.panRCOU = New System.Windows.Forms.Panel()
+        Me.lblRCOU_RCOUT = New System.Windows.Forms.Label()
+        Me.lblRCOU_ClimbRate = New System.Windows.Forms.Label()
+        Me.lblRCOU_Speed = New System.Windows.Forms.Label()
+        Me.lblRCOU_Altitude = New System.Windows.Forms.Label()
+        Me.chartRCOU = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.panAnalysisButtons.SuspendLayout()
         CType(Me.picClickButton, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartPowerRails, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -256,6 +285,8 @@ Partial Class frmMainForm
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartTravel, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panRCOU.SuspendLayout()
+        CType(Me.chartRCOU, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -1156,6 +1187,7 @@ Partial Class frmMainForm
         '
         Me.panGraphButtons.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.left_back
         Me.panGraphButtons.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.panGraphButtons.Controls.Add(Me.btnRCouChart)
         Me.panGraphButtons.Controls.Add(Me.btnTravel)
         Me.panGraphButtons.Controls.Add(Me.btnAttitudeChart)
         Me.panGraphButtons.Controls.Add(Me.btnGPSChart)
@@ -1169,6 +1201,21 @@ Partial Class frmMainForm
         Me.panGraphButtons.TabIndex = 52
         Me.panGraphButtons.Visible = False
         '
+        'btnRCouChart
+        '
+        Me.btnRCouChart.BackgroundImage = Global.APMLogFileAnaliser.My.Resources.Resources.menuback_B_R
+        Me.btnRCouChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnRCouChart.FlatAppearance.BorderSize = 0
+        Me.btnRCouChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnRCouChart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRCouChart.Location = New System.Drawing.Point(21, 212)
+        Me.btnRCouChart.Name = "btnRCouChart"
+        Me.btnRCouChart.Size = New System.Drawing.Size(177, 42)
+        Me.btnRCouChart.TabIndex = 53
+        Me.btnRCouChart.Text = "Motors / RC Out"
+        Me.btnRCouChart.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnRCouChart.UseVisualStyleBackColor = True
+        '
         'btnTravel
         '
         Me.btnTravel.BackgroundImage = CType(resources.GetObject("btnTravel.BackgroundImage"), System.Drawing.Image)
@@ -1176,14 +1223,13 @@ Partial Class frmMainForm
         Me.btnTravel.FlatAppearance.BorderSize = 0
         Me.btnTravel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnTravel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnTravel.Location = New System.Drawing.Point(22, 215)
+        Me.btnTravel.Location = New System.Drawing.Point(21, 260)
         Me.btnTravel.Name = "btnTravel"
         Me.btnTravel.Size = New System.Drawing.Size(177, 42)
         Me.btnTravel.TabIndex = 52
         Me.btnTravel.Text = "Travel"
         Me.btnTravel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnTravel.UseVisualStyleBackColor = True
-        Me.btnTravel.Visible = False
         '
         'btnAttitudeChart
         '
@@ -1219,7 +1265,7 @@ Partial Class frmMainForm
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(17, 292)
+        Me.Label1.Location = New System.Drawing.Point(18, 382)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(170, 24)
         Me.Label1.TabIndex = 49
@@ -2285,12 +2331,252 @@ Partial Class frmMainForm
         Me.chartTravel.TabIndex = 33
         Me.chartTravel.Text = "Chart1"
         '
+        'panRCOU
+        '
+        Me.panRCOU.Controls.Add(Me.lblRCOU_RCOUT)
+        Me.panRCOU.Controls.Add(Me.lblRCOU_ClimbRate)
+        Me.panRCOU.Controls.Add(Me.lblRCOU_Speed)
+        Me.panRCOU.Controls.Add(Me.lblRCOU_Altitude)
+        Me.panRCOU.Controls.Add(Me.chartRCOU)
+        Me.panRCOU.Location = New System.Drawing.Point(217, 59)
+        Me.panRCOU.Name = "panRCOU"
+        Me.panRCOU.Size = New System.Drawing.Size(690, 432)
+        Me.panRCOU.TabIndex = 58
+        Me.panRCOU.Visible = False
+        '
+        'lblRCOU_RCOUT
+        '
+        Me.lblRCOU_RCOUT.AutoSize = True
+        Me.lblRCOU_RCOUT.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRCOU_RCOUT.ForeColor = System.Drawing.Color.Blue
+        Me.lblRCOU_RCOUT.Location = New System.Drawing.Point(92, 29)
+        Me.lblRCOU_RCOUT.Name = "lblRCOU_RCOUT"
+        Me.lblRCOU_RCOUT.Size = New System.Drawing.Size(198, 26)
+        Me.lblRCOU_RCOUT.TabIndex = 44
+        Me.lblRCOU_RCOUT.Text = "RC Out Channels"
+        '
+        'lblRCOU_ClimbRate
+        '
+        Me.lblRCOU_ClimbRate.AutoSize = True
+        Me.lblRCOU_ClimbRate.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRCOU_ClimbRate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lblRCOU_ClimbRate.Location = New System.Drawing.Point(92, 189)
+        Me.lblRCOU_ClimbRate.Name = "lblRCOU_ClimbRate"
+        Me.lblRCOU_ClimbRate.Size = New System.Drawing.Size(131, 26)
+        Me.lblRCOU_ClimbRate.TabIndex = 45
+        Me.lblRCOU_ClimbRate.Text = "Climb Rate"
+        '
+        'lblRCOU_Speed
+        '
+        Me.lblRCOU_Speed.AutoSize = True
+        Me.lblRCOU_Speed.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRCOU_Speed.ForeColor = System.Drawing.Color.Red
+        Me.lblRCOU_Speed.Location = New System.Drawing.Point(92, 472)
+        Me.lblRCOU_Speed.Name = "lblRCOU_Speed"
+        Me.lblRCOU_Speed.Size = New System.Drawing.Size(80, 26)
+        Me.lblRCOU_Speed.TabIndex = 47
+        Me.lblRCOU_Speed.Text = "Speed"
+        '
+        'lblRCOU_Altitude
+        '
+        Me.lblRCOU_Altitude.AutoSize = True
+        Me.lblRCOU_Altitude.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRCOU_Altitude.ForeColor = System.Drawing.Color.Green
+        Me.lblRCOU_Altitude.Location = New System.Drawing.Point(92, 333)
+        Me.lblRCOU_Altitude.Name = "lblRCOU_Altitude"
+        Me.lblRCOU_Altitude.Size = New System.Drawing.Size(93, 26)
+        Me.lblRCOU_Altitude.TabIndex = 46
+        Me.lblRCOU_Altitude.Text = "Altitude"
+        '
+        'chartRCOU
+        '
+        Me.chartRCOU.BackColor = System.Drawing.Color.Transparent
+        ChartArea21.AxisX.LabelStyle.Enabled = False
+        ChartArea21.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea21.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea21.AxisX.MajorTickMark.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number
+        ChartArea21.AxisX.Minimum = 0R
+        ChartArea21.AxisY.Interval = 1.0R
+        ChartArea21.AxisY.IsStartedFromZero = False
+        ChartArea21.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea21.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea21.AxisY.LabelStyle.Interval = 0R
+        ChartArea21.AxisY.MajorGrid.Interval = 100.0R
+        ChartArea21.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea21.AxisY.Maximum = 2100.0R
+        ChartArea21.AxisY.Minimum = 900.0R
+        ChartArea21.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea21.Name = "RCout"
+        ChartArea21.Position.Auto = False
+        ChartArea21.Position.Height = 19.0!
+        ChartArea21.Position.Width = 93.0!
+        ChartArea21.Position.X = 4.0!
+        ChartArea21.Position.Y = 3.0!
+        ChartArea22.AlignWithChartArea = "RCout"
+        ChartArea22.AxisX.LabelStyle.Enabled = False
+        ChartArea22.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea22.AxisX.MajorGrid.Interval = 0R
+        ChartArea22.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.[Auto]
+        ChartArea22.AxisX.MajorTickMark.Interval = 10.0R
+        ChartArea22.AxisX.Minimum = 0R
+        ChartArea22.AxisY.Interval = 1.0R
+        ChartArea22.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea22.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea22.AxisY.LabelStyle.Interval = 0R
+        ChartArea22.AxisY.MajorGrid.Interval = 0R
+        ChartArea22.AxisY.MajorTickMark.Interval = 1.0R
+        ChartArea22.AxisY.Maximum = 300.0R
+        ChartArea22.AxisY.Minimum = -300.0R
+        ChartArea22.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea22.Name = "Climb"
+        ChartArea22.Position.Auto = False
+        ChartArea22.Position.Height = 20.0!
+        ChartArea22.Position.Width = 94.0!
+        ChartArea22.Position.X = 3.0!
+        ChartArea22.Position.Y = 26.0!
+        ChartArea23.AlignWithChartArea = "RCout"
+        ChartArea23.AxisX.LabelStyle.Enabled = False
+        ChartArea23.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea23.AxisY.IsLabelAutoFit = False
+        ChartArea23.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea23.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea23.AxisY.LabelStyle.Format = "0000"
+        ChartArea23.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea23.Name = "Altitude"
+        ChartArea23.Position.Auto = False
+        ChartArea23.Position.Height = 20.0!
+        ChartArea23.Position.Width = 93.0!
+        ChartArea23.Position.X = 4.0!
+        ChartArea23.Position.Y = 47.0!
+        ChartArea24.AlignWithChartArea = "RCout"
+        ChartArea24.AxisX.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea24.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea24.AxisY.LabelStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea24.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White
+        ChartArea24.AxisY.LabelStyle.Format = "00"
+        ChartArea24.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        ChartArea24.Name = "Speed"
+        ChartArea24.Position.Auto = False
+        ChartArea24.Position.Height = 20.0!
+        ChartArea24.Position.Width = 93.0!
+        ChartArea24.Position.X = 4.0!
+        ChartArea24.Position.Y = 67.0!
+        Me.chartRCOU.ChartAreas.Add(ChartArea21)
+        Me.chartRCOU.ChartAreas.Add(ChartArea22)
+        Me.chartRCOU.ChartAreas.Add(ChartArea23)
+        Me.chartRCOU.ChartAreas.Add(ChartArea24)
+        Legend6.Enabled = False
+        Legend6.IsDockedInsideChartArea = False
+        Legend6.Name = "Legend1"
+        Legend6.Title = "Key"
+        Me.chartRCOU.Legends.Add(Legend6)
+        Me.chartRCOU.Location = New System.Drawing.Point(12, 12)
+        Me.chartRCOU.Name = "chartRCOU"
+        Series51.ChartArea = "RCout"
+        Series51.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series51.Legend = "Legend1"
+        Series51.Name = "RC1"
+        Series52.ChartArea = "RCout"
+        Series52.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series52.Legend = "Legend1"
+        Series52.Name = "RC2"
+        Series53.ChartArea = "RCout"
+        Series53.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series53.IsVisibleInLegend = False
+        Series53.Legend = "Legend1"
+        Series53.Name = "RC3"
+        Series54.ChartArea = "RCout"
+        Series54.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series54.IsVisibleInLegend = False
+        Series54.Legend = "Legend1"
+        Series54.Name = "RC4"
+        Series55.ChartArea = "RCout"
+        Series55.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series55.Legend = "Legend1"
+        Series55.Name = "RC5"
+        Series56.ChartArea = "RCout"
+        Series56.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series56.Legend = "Legend1"
+        Series56.Name = "RC6"
+        Series57.ChartArea = "RCout"
+        Series57.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series57.Legend = "Legend1"
+        Series57.Name = "RC7"
+        Series58.ChartArea = "RCout"
+        Series58.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series58.Legend = "Legend1"
+        Series58.Name = "RC8"
+        Series59.ChartArea = "RCout"
+        Series59.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series59.Legend = "Legend1"
+        Series59.Name = "RC9"
+        Series60.ChartArea = "RCout"
+        Series60.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series60.Legend = "Legend1"
+        Series60.Name = "RC10"
+        Series61.ChartArea = "RCout"
+        Series61.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series61.Legend = "Legend1"
+        Series61.Name = "RC11"
+        Series62.ChartArea = "RCout"
+        Series62.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series62.Legend = "Legend1"
+        Series62.Name = "RC12"
+        Series63.ChartArea = "Climb"
+        Series63.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series63.Color = System.Drawing.Color.Blue
+        Series63.Legend = "Legend1"
+        Series63.Name = "ClimbRate"
+        Series63.YValuesPerPoint = 2
+        Series64.ChartArea = "Climb"
+        Series64.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series64.Color = System.Drawing.Color.ForestGreen
+        Series64.Legend = "Legend1"
+        Series64.Name = "DesiredClimbRate"
+        Series65.ChartArea = "Altitude"
+        Series65.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series65.Color = System.Drawing.Color.Fuchsia
+        Series65.IsVisibleInLegend = False
+        Series65.Legend = "Legend1"
+        Series65.Name = "Altitude"
+        Series66.ChartArea = "Altitude"
+        Series66.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series66.Legend = "Legend1"
+        Series66.Name = "AltitudeSmoothed"
+        Series67.ChartArea = "Speed"
+        Series67.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series67.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Series67.IsVisibleInLegend = False
+        Series67.Legend = "Legend1"
+        Series67.Name = "Speed"
+        Me.chartRCOU.Series.Add(Series51)
+        Me.chartRCOU.Series.Add(Series52)
+        Me.chartRCOU.Series.Add(Series53)
+        Me.chartRCOU.Series.Add(Series54)
+        Me.chartRCOU.Series.Add(Series55)
+        Me.chartRCOU.Series.Add(Series56)
+        Me.chartRCOU.Series.Add(Series57)
+        Me.chartRCOU.Series.Add(Series58)
+        Me.chartRCOU.Series.Add(Series59)
+        Me.chartRCOU.Series.Add(Series60)
+        Me.chartRCOU.Series.Add(Series61)
+        Me.chartRCOU.Series.Add(Series62)
+        Me.chartRCOU.Series.Add(Series63)
+        Me.chartRCOU.Series.Add(Series64)
+        Me.chartRCOU.Series.Add(Series65)
+        Me.chartRCOU.Series.Add(Series66)
+        Me.chartRCOU.Series.Add(Series67)
+        Me.chartRCOU.Size = New System.Drawing.Size(780, 507)
+        Me.chartRCOU.TabIndex = 41
+        Me.chartRCOU.Text = "Chart1"
+        '
         'frmMainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(1006, 695)
+        Me.Controls.Add(Me.panRCOU)
         Me.Controls.Add(Me.panVibrations)
         Me.Controls.Add(Me.panTravel)
         Me.Controls.Add(Me.panAttitude)
@@ -2365,6 +2651,9 @@ Partial Class frmMainForm
         CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.chartTravel, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panRCOU.ResumeLayout(False)
+        Me.panRCOU.PerformLayout()
+        CType(Me.chartRCOU, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2481,4 +2770,11 @@ Partial Class frmMainForm
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents chartTravel As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents btnTravel As System.Windows.Forms.Button
+    Friend WithEvents panRCOU As Panel
+    Friend WithEvents lblRCOU_RCOUT As Label
+    Friend WithEvents lblRCOU_ClimbRate As Label
+    Friend WithEvents lblRCOU_Speed As Label
+    Friend WithEvents lblRCOU_Altitude As Label
+    Friend WithEvents chartRCOU As DataVisualization.Charting.Chart
+    Friend WithEvents btnRCouChart As Button
 End Class

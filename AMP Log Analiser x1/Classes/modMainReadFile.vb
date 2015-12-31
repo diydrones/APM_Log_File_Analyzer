@@ -247,6 +247,10 @@ Module modMainReadFile
                             End If
                         End If
 
+                        If DataArray(0) = "RCOU" Then
+                            Call RCOUT_MainAnalysis()
+                        End If
+
                         'Additional Checks not related to any one log data type
                         Call Additional_Checks()
 

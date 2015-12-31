@@ -14,6 +14,7 @@
             Log_CTUN_ThrIn = Val(DataArray(2))
             Log_CTUN_SonAlt = Val(DataArray(9))
             Log_CTUN_BarAlt = Val(DataArray(7))
+            Log_CTUN_Alt = Val(DataArray(6))
             Log_CTUN_WPAlt = Val(DataArray(5))       ' CHECK - This may not be correct !!!
             Log_CTUN_DesSonAlt = Val(DataArray(9))   ' CHECK - This may not be correct !!!
             Log_CTUN_AngBst = Val(DataArray(3))

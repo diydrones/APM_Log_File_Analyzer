@@ -247,6 +247,22 @@ Public Class frmMainForm
         chartTravel.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
 
 
+        'Setup the RCOU (RCOUT) Chart Panel.
+        panRCOU.Location = New Point(222, 87) : panRCOU.Size = New Point(784, 602) : panRCOU.Anchor = AnchorStyles.Left Or AnchorStyles.Bottom Or AnchorStyles.Top Or AnchorStyles.Right
+        Me.panRCOU.Controls.Add(chartRCOU)
+        Me.panRCOU.Controls.Add(lblRCOU_RCOUT) : lblRCOU_RCOUT.BringToFront()
+        Me.panRCOU.Controls.Add(lblRCOU_ClimbRate) : lblRCOU_ClimbRate.BringToFront()
+        Me.panRCOU.Controls.Add(lblRCOU_Altitude) : lblRCOU_Altitude.BringToFront()
+        Me.panRCOU.Controls.Add(lblRCOU_Speed) : lblRCOU_Speed.BringToFront()
+        chartRCOU.Location = New Point(3, 3) : chartRCOU.Size = New Point(794, 691)
+        lblRCOU_RCOUT.Location = New Point(92, 29)
+        lblRCOU_ClimbRate.Location = New Point(92, 180)
+        lblRCOU_Altitude.Location = New Point(92, 333)
+        lblRCOU_Speed.Location = New Point(92, 472)
+        chartRCOU.Anchor = AnchorStyles.Left Or AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+
+
+
         ' ### DO NOT FORGET TO CLEAR NEW GRAPHS WHEN THE ANALYZE BUTTON IS PRESSED!
 
 
@@ -274,16 +290,6 @@ Public Class frmMainForm
             File.Delete("C:\Temp\OpenKKWM.LFA")
             Debug.Print("Success!")
         End If
-
-        'If (ApplicationDeployment.IsNetworkDeployed) Then ' Check for Updates
-        '    'display the Updating splash screen.
-        '    frmUpdate.Show()
-        '    frmUpdate.Refresh()
-        '    Call AutoUpdateHttp(CurrentPublishVersionNumber)
-        '    While UpdateYesNo <> 98
-        '    End While
-        '    frmUpdate.Close()
-        'End If
 
         Call ReadINIfile()
 
@@ -364,7 +370,7 @@ Public Class frmMainForm
     End Sub
 
     Private Sub richtxtLogAnalysis_LinkClicked_1(sender As Object, e As LinkClickedEventArgs) Handles richtxtLogAnalysis.LinkClicked
-        System.Diagnostics.Process.Start(e.LinkText)
+        Process.Start(e.LinkText)
     End Sub
 
     Private Sub btnLoadLog_Click(sender As Object, e As EventArgs) Handles btnLoadLog.Click
@@ -423,6 +429,23 @@ Public Class frmMainForm
             chartAttitude.Series("Altitude").Points.Clear()
             chartTravel.Series("Yaw").Points.Clear()
             chartTravel.Series("GPS Calculated Direction").Points.Clear()
+            chartRCOU.Series("RC1").Points.Clear()
+            chartRCOU.Series("RC2").Points.Clear()
+            chartRCOU.Series("RC3").Points.Clear()
+            chartRCOU.Series("RC4").Points.Clear()
+            chartRCOU.Series("RC5").Points.Clear()
+            chartRCOU.Series("RC6").Points.Clear()
+            chartRCOU.Series("RC7").Points.Clear()
+            chartRCOU.Series("RC8").Points.Clear()
+            chartRCOU.Series("RC9").Points.Clear()
+            chartRCOU.Series("RC10").Points.Clear()
+            chartRCOU.Series("RC11").Points.Clear()
+            chartRCOU.Series("RC12").Points.Clear()
+            chartRCOU.Series("ClimbRate").Points.Clear()
+            chartRCOU.Series("DesiredClimbRate").Points.Clear()
+            chartRCOU.Series("Speed").Points.Clear()
+            chartRCOU.Series("Altitude").Points.Clear()
+            chartRCOU.Series("AltitudeSmoothed").Points.Clear()
 
             lblEsc.Visible = True
             Call ReadFile(strLogPathFileName)
@@ -476,6 +499,8 @@ Public Class frmMainForm
         Call Chart_Vibrations_Visible(False)
         Call Chart_GPS_Visible(False)
         Call Chart_Attitude_Visible(False)
+        Call Chart_Travel_Visible(False)
+        Call Chart_Motors_Visible(False)
     End Sub
 
     Private Sub btnGraphs_Click(sender As Object, e As EventArgs) Handles btnGraphs.Click
@@ -492,6 +517,7 @@ Public Class frmMainForm
         Call Chart_GPS_Visible(False)
         Call Chart_Attitude_Visible(False)
         Call Chart_Travel_Visible(False)
+        Call Chart_Motors_Visible(False)
     End Sub
 
     Private Sub btnVibrationChart_Click(sender As Object, e As EventArgs) Handles btnVibrationChart.Click
@@ -500,6 +526,7 @@ Public Class frmMainForm
         Call Chart_GPS_Visible(False)
         Call Chart_Attitude_Visible(False)
         Call Chart_Travel_Visible(False)
+        Call Chart_Motors_Visible(False)
     End Sub
 
     Private Sub btnGPS_Click(sender As Object, e As EventArgs) Handles btnGPSChart.Click
@@ -508,6 +535,7 @@ Public Class frmMainForm
         Call Chart_GPS_Visible(True)
         Call Chart_Attitude_Visible(False)
         Call Chart_Travel_Visible(False)
+        Call Chart_Motors_Visible(False)
     End Sub
 
     Private Sub btnAttitude_Click(sender As Object, e As EventArgs) Handles btnAttitudeChart.Click
@@ -516,6 +544,7 @@ Public Class frmMainForm
         Call Chart_GPS_Visible(False)
         Call Chart_Attitude_Visible(True)
         Call Chart_Travel_Visible(False)
+        Call Chart_Motors_Visible(False)
     End Sub
 
     Private Sub btnTravel_Click(sender As Object, e As EventArgs) Handles btnTravel.Click
@@ -524,6 +553,16 @@ Public Class frmMainForm
         Call Chart_GPS_Visible(False)
         Call Chart_Attitude_Visible(False)
         Call Chart_Travel_Visible(True)
+        Call Chart_Motors_Visible(False)
+    End Sub
+
+    Private Sub btnRCouChart_Click(sender As Object, e As EventArgs) Handles btnRCouChart.Click
+        Call Chart_Vibrations_Visible(False)
+        Call Chart_PowerRails_Visible(False)
+        Call Chart_GPS_Visible(False)
+        Call Chart_Attitude_Visible(False)
+        Call Chart_Travel_Visible(False)
+        Call Chart_Motors_Visible(True)
     End Sub
 End Class
 
