@@ -161,7 +161,6 @@ Partial Class frmMainForm
         Me.lblAmps = New System.Windows.Forms.Label()
         Me.lblThrust = New System.Windows.Forms.Label()
         Me.btnGraphs = New System.Windows.Forms.Button()
-        Me.btnAnalysis = New System.Windows.Forms.Button()
         Me.chartVibrations = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.lblSpeed = New System.Windows.Forms.Label()
         Me.lblAltitude = New System.Windows.Forms.Label()
@@ -241,6 +240,7 @@ Partial Class frmMainForm
         Me.lblRCOU_Speed = New System.Windows.Forms.Label()
         Me.lblRCOU_Altitude = New System.Windows.Forms.Label()
         Me.chartRCOU = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.btnAnalysis = New System.Windows.Forms.Button()
         Me.panAnalysisButtons.SuspendLayout()
         CType(Me.picClickButton, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.chartPowerRails, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -908,16 +908,6 @@ Partial Class frmMainForm
         Me.btnGraphs.UseVisualStyleBackColor = True
         Me.btnGraphs.Visible = False
         '
-        'btnAnalysis
-        '
-        Me.btnAnalysis.Location = New System.Drawing.Point(152, 30)
-        Me.btnAnalysis.Name = "btnAnalysis"
-        Me.btnAnalysis.Size = New System.Drawing.Size(75, 23)
-        Me.btnAnalysis.TabIndex = 40
-        Me.btnAnalysis.Text = "Analysis"
-        Me.btnAnalysis.UseVisualStyleBackColor = True
-        Me.btnAnalysis.Visible = False
-        '
         'chartVibrations
         '
         Me.chartVibrations.BackColor = System.Drawing.Color.Transparent
@@ -1230,6 +1220,7 @@ Partial Class frmMainForm
         Me.btnTravel.Text = "Travel"
         Me.btnTravel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnTravel.UseVisualStyleBackColor = True
+        Me.btnTravel.Visible = False
         '
         'btnAttitudeChart
         '
@@ -2338,9 +2329,9 @@ Partial Class frmMainForm
         Me.panRCOU.Controls.Add(Me.lblRCOU_Speed)
         Me.panRCOU.Controls.Add(Me.lblRCOU_Altitude)
         Me.panRCOU.Controls.Add(Me.chartRCOU)
-        Me.panRCOU.Location = New System.Drawing.Point(217, 59)
+        Me.panRCOU.Location = New System.Drawing.Point(515, 200)
         Me.panRCOU.Name = "panRCOU"
-        Me.panRCOU.Size = New System.Drawing.Size(690, 432)
+        Me.panRCOU.Size = New System.Drawing.Size(325, 183)
         Me.panRCOU.TabIndex = 58
         Me.panRCOU.Visible = False
         '
@@ -2566,9 +2557,21 @@ Partial Class frmMainForm
         Me.chartRCOU.Series.Add(Series65)
         Me.chartRCOU.Series.Add(Series66)
         Me.chartRCOU.Series.Add(Series67)
-        Me.chartRCOU.Size = New System.Drawing.Size(780, 507)
+        Me.chartRCOU.Size = New System.Drawing.Size(264, 158)
         Me.chartRCOU.TabIndex = 41
         Me.chartRCOU.Text = "Chart1"
+        '
+        'btnAnalysis
+        '
+        Me.btnAnalysis.Image = CType(resources.GetObject("btnAnalysis.Image"), System.Drawing.Image)
+        Me.btnAnalysis.Location = New System.Drawing.Point(152, 6)
+        Me.btnAnalysis.MaximumSize = New System.Drawing.Size(64, 68)
+        Me.btnAnalysis.MinimumSize = New System.Drawing.Size(64, 68)
+        Me.btnAnalysis.Name = "btnAnalysis"
+        Me.btnAnalysis.Size = New System.Drawing.Size(64, 68)
+        Me.btnAnalysis.TabIndex = 40
+        Me.btnAnalysis.UseVisualStyleBackColor = True
+        Me.btnAnalysis.Visible = False
         '
         'frmMainForm
         '
@@ -2697,7 +2700,6 @@ Partial Class frmMainForm
     Friend WithEvents lblAmps As System.Windows.Forms.Label
     Friend WithEvents lblThrust As System.Windows.Forms.Label
     Friend WithEvents btnGraphs As System.Windows.Forms.Button
-    Friend WithEvents btnAnalysis As System.Windows.Forms.Button
     Friend WithEvents chartVibrations As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents lblSpeed As System.Windows.Forms.Label
     Friend WithEvents lblAltitude As System.Windows.Forms.Label
@@ -2777,4 +2779,5 @@ Partial Class frmMainForm
     Friend WithEvents lblRCOU_Altitude As Label
     Friend WithEvents chartRCOU As DataVisualization.Charting.Chart
     Friend WithEvents btnRCouChart As Button
+    Friend WithEvents btnAnalysis As Button
 End Class
