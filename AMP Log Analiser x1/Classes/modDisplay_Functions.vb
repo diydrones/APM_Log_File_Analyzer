@@ -453,7 +453,7 @@ Module modDisplay_Functions
         Dim MaxFlyTime As Integer = 0           'Calculated Maximum Flight Time
         If Log_Total_Flight_Time > MIN_EFF_TIME Then
             Efficiency = Str(Val(Log_Total_Current / Log_Total_Flight_Time))
-            MaxFlyTime = (PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency
+            If Efficiency <> 0 Then MaxFlyTime = (PARM_BATTERY_CAPACITY * 80 / 100) / Efficiency
         Else
             Efficiency = "~~~"
         End If
