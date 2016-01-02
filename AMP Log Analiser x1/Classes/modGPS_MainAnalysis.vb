@@ -16,8 +16,18 @@ Module modGPS_MainAnalysis
             'Debug.Print("After:- Log_GPS_DateTime = " & Log_GPS_DateTime & vbNewLine)
 
             'Store the First GPS Date & Time captured
-            If Log_GPS_DateTime <> GPS_Base_Date And Log_First_DateTime = GPS_Base_Date Then _
+            If Log_GPS_DateTime <> GPS_Base_Date And Log_First_DateTime = GPS_Base_Date Then
+
+                ' Issue #199 - TheQuestor reports bad log.
+                ' Reason, we process a takeoff event before the Log_GPS_DateTime has been updated with a true date
+                ' This code checks that the Log_GPS_DateTime is not in year 1980 before allowing the 
+                ' Log_First_DateTime to be updated.
+                If InStr(Log_GPS_DateTime, "1980") = 0 Then
                     Log_First_DateTime = Log_GPS_DateTime
+                End If
+
+            End If
+
 
             ' Detect the DataLog file Truncation Issue using the GPS DateTime
             If Log_GPS_DateTime < Log_First_DateTime Then
