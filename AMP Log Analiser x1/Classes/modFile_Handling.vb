@@ -352,12 +352,23 @@ Module modFile_Handling
 
             TotalDataLines = TotalDataLines + 1
         Loop
+
+        ' Sanity Check the findings
         If FoundFMT <> True Then
             MsgBox("No FMT Lines Detected, analysis will be unreliable!", vbOKOnly & vbExclamation, "Warning!")
         End If
         If FoundPARAM <> True Then
             MsgBox("This log file was partially overwritten by a newer log!  Analysis is unreliable at the best!", vbOKOnly & vbExclamation, "Warning!")
         End If
+        If ArduVersion = "" Then
+            Dim str As String = ""
+            str = str & "The APM Firmware Version could not be detected due to file corruption," & vbLf
+            str = str & "in an attempt to read the file we shall assume APM:Copter v3.2.1 as" & vbLf
+            str = str & "this firmware version was known to suffer from this issue." & vbLf
+            MsgBox(str, vbOKOnly & vbExclamation, "Warning!")
+            ArduType = "APM:Copter" : ArduVersion = "V3.2.1" : ArduBuild = "Unknown"
+        End If
+
         objReader.Close()
         Debug.Print("Success!")
     End Sub
