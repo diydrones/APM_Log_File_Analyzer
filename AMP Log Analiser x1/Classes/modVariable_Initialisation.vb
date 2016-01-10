@@ -17,6 +17,9 @@
         TruncationIssue = False                     ' Used during DataLog file reading to detect truncation issues.
         FoundFailSafeError = 0                      ' Number of FailSafe Errors found during PARAM_Checks
 
+        ' MSG and STRT Variables
+        Auto_NewMission = False                     ' True when reading the "New Mission" text at the start of v3.3 logs
+
         PARM_THR_MIN = 99                           ' Used to Determine the settings for Thr_Min & Mot_Spin_Armed
         PARM_THR_MAX = 99                           ' Used to check this is set between 800-1000
         PARM_MOT_SPIN_ARMED = 99                    ' Used to Determine the settings for Thr_Min & Mot_Spin_Armed

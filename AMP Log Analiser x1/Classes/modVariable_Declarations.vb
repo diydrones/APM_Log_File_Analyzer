@@ -4,7 +4,7 @@ Imports System.Deployment.Application
 Module modVariable_Declarations
 
 
-    Public MyCurrentVersionNumber As String = "v2.2.1.6"        ' Update on every released version, format v?.?.?.?  i.e. single digit only.      
+    Public MyCurrentVersionNumber As String = "v2.2.1.7"        ' Update on every released version, format v?.?.?.?  i.e. single digit only.      
     'frmMainForm.BuildVers()                                    ' Update on every released version.
     Public CurrentPublishVersionNumber As String = ""           ' frmMainForm.PublishedVers() 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
     Public XPInstallation As Boolean = False                    ' True is running on XP
@@ -31,7 +31,11 @@ Module modVariable_Declarations
     Public APM_No_Motors As Integer = 0                         ' Holds the number of Motors, determined from the FMT for MOT.
     '                                                           ' or for v3.2 a calculation based on similar RCOUT datalines.
 
+    ' MSG and STRT Variables
+    Public AUTO_NewMission As Boolean = False                   ' True when reading the "New Mission" text at the start of v3.3 logs
 
+
+    ' RCOU and Motor Detection Variables
     Public Log_RCOU_Ch1 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.
     Public Log_RCOU_Ch2 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.
     Public Log_RCOU_Ch3 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.

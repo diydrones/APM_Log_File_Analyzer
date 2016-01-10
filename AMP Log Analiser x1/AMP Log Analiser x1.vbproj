@@ -165,6 +165,7 @@
     <Compile Include="Classes\modMODE_MainAnalysis.vb" />
     <Compile Include="Classes\modMODE_Checks_v3_3.vb" />
     <Compile Include="Classes\modMODE_Checks_v3_1_v3_2.vb" />
+    <Compile Include="Classes\modMSG_Checks_v3_3.vb" />
     <Compile Include="Classes\modNTUN_Checks_v3_1.vb" />
     <Compile Include="Classes\modNTUN_Checks_v3_2.vb" />
     <Compile Include="Classes\modNTUN_MainAnalysis.vb" />
@@ -175,6 +176,7 @@
     <Compile Include="Classes\modPM_Checks_v3_2.vb" />
     <Compile Include="Classes\modPM_MainAnalysis.vb" />
     <Compile Include="Classes\modRCOU_MainAnalysis.vb" />
+    <Compile Include="Classes\modSTRT_Checks_v3_3.vb" />
     <Compile Include="Classes\modTakeOffEvent.vb" />
     <Compile Include="Classes\modUpdateHttp.vb" />
     <Compile Include="Classes\modVariable_Declarations.vb" />
