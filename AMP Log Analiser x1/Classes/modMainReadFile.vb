@@ -118,6 +118,20 @@ Module modMainReadFile
                     ' Stop Processing data if we have detected the DataLog File Truncation Issue
                     If TruncationIssue = False Then
 
+                        'MSG Checks - NOTE that most of this work is completed in the pre-read, but from v3.3 we need to detect the "new mission" for Auto commands
+                        If DataArray(0) = "MSG" Then
+                            If ReadFileVersion = 3.3 And ArduType = "APM:Copter" Then
+                                Call MSG_Checks_v3_3()
+                            End If
+                        End If
+
+                        'STRT Checks - NOTE that most of this work is completed in the pre-read, but from v3.3 we need to detect the "new mission" for Auto commands
+                        If DataArray(0) = "STRT" Then
+                            If ReadFileVersion = 3.3 And ArduType = "APM:Copter" Then
+                                Call STRT_Checks_v3_3()
+                            End If
+                        End If
+
                         'EV Checks
                         If DataArray(0) = "EV" Then
                             If (ReadFileVersion = 3.1 Or ReadFileVersion = 3.2) And ArduType = "APM:Copter" Then

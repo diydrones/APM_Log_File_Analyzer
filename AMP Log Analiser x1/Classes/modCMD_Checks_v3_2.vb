@@ -8,18 +8,20 @@
         ' THIS CODE MUST ONLY BE CALLED AFTER THE DATA LINE HAS BEEN VALIDATED AS THE CORRECT TYPE !!!
 
         If ReadFileResilienceCheck(11) = True Then
-            'FMT, 145, 41, CMD, IHHHfffffff, TimeMS,CTot,CNum,CId,Prm1,Prm2,Prm3,Prm4,Lat,Lng,Alt
-            Log_CMD_CTot = Val(DataArray(2)) - 1
-            Log_CMD_CNum = Val(DataArray(3))
+            'v3.2 - FMT, 145, 41, CMD, IHHHfffffff, TimeMS, CTot, CNum, CId, Prm1, Prm2, Prm3, Prm4, Lat, Lng, Alt
+            ' Note  CTot = Total number of instructions
+            '       CNum = Current instruction number 
+
+            Log_CMD_CTot = Val(DataArray(2))  '- 1
+            Log_CMD_CNum = Val(DataArray(3)) + 1
             Log_CMD_CId = Val(DataArray(4))
-            Log_CMD_Copt = 0                    'This value may not be available.
             Log_CMD_Prm1 = Val(DataArray(5))
             Log_CMD_Prm2 = Val(DataArray(6))
             Log_CMD_Prm3 = Val(DataArray(7))
             Log_CMD_Prm4 = Val(DataArray(8))
-            Log_CMD_Alt = Val(DataArray(11))
             Log_CMD_Lat = Val(DataArray(9))
             Log_CMD_Lng = Val(DataArray(10))
+            Log_CMD_Alt = Val(DataArray(11))
             Call CMD_Checks_MainAnalysis()
         End If
 

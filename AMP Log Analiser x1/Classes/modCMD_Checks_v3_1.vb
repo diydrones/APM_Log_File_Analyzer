@@ -9,8 +9,8 @@
 
         If ReadFileResilienceCheck(8) = True Then
             'FMT, 8, 20, CMD, BBBBBeLL, CTot,CNum,CId,COpt,Prm1,Alt,Lat,Lng
-            Log_CMD_CTot = Val(DataArray(1)) - 1
-            Log_CMD_CNum = Val(DataArray(2))
+            Log_CMD_CTot = Val(DataArray(1))  '- 1
+            Log_CMD_CNum = Val(DataArray(2)) + 1
             Log_CMD_CId = Val(DataArray(3))
             Log_CMD_Copt = Val(DataArray(4))
             Log_CMD_Prm1 = Val(DataArray(5))
