@@ -259,6 +259,11 @@
         Log_RCOU_Count = 0
         Log_RCOU_MinCh1toCh3 = 0
         Log_RCOU_MaxCh1toCh3 = 0
+        Log_RCOU_AvgCh1toCh3 = 0
+        RCOU_LargestVariance = 0
+        RCOU_LargestVarianceChannel = 0
+        RCOU_MaxNonMotorChannel1 = 0
+        RCOU_MaxNonMotorChannel2 = 0
 
         Hardware = ""                                   'Holds the type of hardware used.
         Pixhawk_Serial_Number = ""                      'Holds the PixHawk Serial Number.

@@ -46,6 +46,11 @@ Module modVariable_Declarations
     Public Log_RCOU_Count As Single = 0
     Public Log_RCOU_MinCh1toCh3 As Integer = 0
     Public Log_RCOU_MaxCh1toCh3 As Integer = 0
+    Public Log_RCOU_AvgCh1toCh3 As Integer = 0
+    Public RCOU_LargestVariance As Integer = 0
+    Public RCOU_LargestVarianceChannel As Integer = 0
+    Public RCOU_MaxNonMotorChannel1 As Integer = 0
+    Public RCOU_MaxNonMotorChannel2 As Integer = 0
     Public myStopWatchTimer As Double = 0
 
     Public Hardware As String = ""                              ' Holds the type of hardware used.
