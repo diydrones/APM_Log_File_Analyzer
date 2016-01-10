@@ -229,7 +229,17 @@ Module modDisplay_Functions
             End Select
             If APM_No_Motors = 6 Then APM_Frame_Name += " (Hexa)"
             If APM_Frame_Name <> "" Then WriteTextLog("  Frame Type: " & APM_Frame_Name)
-            If APM_No_Motors <> 0 Then WriteTextLog("  No. Motors: " & APM_No_Motors)
+            If APM_No_Motors <> 0 Then
+                WriteTextLog("     Testing: Motor Detection Analysis Results:-")
+                WriteTextLog("     Testing: ┌-----------------------------------------┐")
+                WriteTextLog("     Testing: |  Ch1 = " & Format(Log_RCOU_Ch1, "000") & "% |  Ch2 = " & Format(Log_RCOU_Ch2, "000") & "% |  Ch3 = " & Format(Log_RCOU_Ch3, "000") & "% |")
+                WriteTextLog("     Testing: |  Ch4 = " & Format(Log_RCOU_Ch4, "000") & "% |  Ch5 = " & Format(Log_RCOU_Ch5, "000") & "% |  Ch6 = " & Format(Log_RCOU_Ch6, "000") & "% |")
+                WriteTextLog("     Testing: |  Ch7 = " & Format(Log_RCOU_Ch7, "000") & "% |  Ch8 = " & Format(Log_RCOU_Ch8, "000") & "% |  Ch9 = " & Format(Log_RCOU_Ch9, "000") & "% |")
+                WriteTextLog("     Testing: | Ch10 = " & Format(Log_RCOU_Ch10, "000") & "% | Ch11 = " & Format(Log_RCOU_Ch11, "000") & "% | Ch12 = " & Format(Log_RCOU_Ch12, "000") & "% |")
+                WriteTextLog("     Testing: └-----------------------------------------┘")
+                WriteTextLog("     Testing: Sampled " & MotorDetec_Counter_RCOU & " Channel Output Readings")
+                WriteTextLog("  No. Motors: " & APM_No_Motors)
+            End If
             WriteTextLog("")
             'Display what Data Types were found in the log file.
             WriteTextLog_LoggingData()

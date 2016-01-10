@@ -31,22 +31,35 @@ Module modVariable_Declarations
     Public APM_No_Motors As Integer = 0                         ' Holds the number of Motors, determined from the FMT for MOT.
     '                                                           ' or for v3.2 a calculation based on similar RCOUT datalines.
 
-    Public Log_RCOU_Ch1 As Integer = 0                          ' Set up the Motor Calculation Variables
-    Public Log_RCOU_Ch2 As Integer = 0
-    Public Log_RCOU_Ch3 As Integer = 0
-    Public Log_RCOU_Ch4 As Integer = 0
-    Public Log_RCOU_Ch5 As Integer = 0
-    Public Log_RCOU_Ch6 As Integer = 0
-    Public Log_RCOU_Ch7 As Integer = 0
-    Public Log_RCOU_Ch8 As Integer = 0
-    Public Log_RCOU_Ch9 As Integer = 0
-    Public Log_RCOU_Ch10 As Integer = 0
-    Public Log_RCOU_Ch11 As Integer = 0
-    Public Log_RCOU_Ch12 As Integer = 0
-    Public Log_RCOU_Count As Single = 0
-    Public Log_RCOU_MinCh1toCh3 As Integer = 0
-    Public Log_RCOU_MaxCh1toCh3 As Integer = 0
-    Public myStopWatchTimer As Double = 0
+
+    Public Log_RCOU_Ch1 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public Log_RCOU_Ch2 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public Log_RCOU_Ch3 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public Log_RCOU_Ch4 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public Log_RCOU_Ch5 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public Log_RCOU_Ch6 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public Log_RCOU_Ch7 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public Log_RCOU_Ch8 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public Log_RCOU_Ch9 As Integer = 0                          ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public Log_RCOU_Ch10 As Integer = 0                         ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public Log_RCOU_Ch11 As Integer = 0                         ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public Log_RCOU_Ch12 As Integer = 0                         ' The Last Log Result, also passes the Motor Detection % to main analysis.
+    Public MotorDetec_Counter_Ch1 As Integer = 0                ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_Ch2 As Integer = 0                ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_Ch3 As Integer = 0                ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_Ch4 As Integer = 0                ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_Ch5 As Integer = 0                ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_Ch6 As Integer = 0                ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_Ch7 As Integer = 0                ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_Ch8 As Integer = 0                ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_Ch9 As Integer = 0                ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_Ch10 As Integer = 0               ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_Ch11 As Integer = 0               ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_Ch12 As Integer = 0               ' Motor Detection code increments this each time it think it could be a motor 
+    Public MotorDetec_Counter_RCOU As Single = 0                ' Holds the total Number of RCOU processed, to work out the %
+    Public MotorDetec_Stop As Boolean = False                   ' True when the Number of motors has been detected
+    Public MotorDetec_Stop_Monitor As Boolean = False           ' True when we have good values and we can start the motor detection.
+
 
     Public Hardware As String = ""                              ' Holds the type of hardware used.
     Public Pixhawk_Serial_Number As String                      ' Holds the PixHawk Serial Number.
