@@ -111,18 +111,16 @@ Module modFile_Handling
 
 
         'Check to ensure the files contains the minimum data types required.
-        If Ignore_LOG_Requirements = False Then
-            If (ArduType = "ArduCopter" Or ArduType = "APM:Copter") And (GPS_Logging = False Or EV_Logging = False) Then
-                WriteTextLog("Log file does not contain the correct data!")
-                strTemp = "          Log must contain GPS and EV data as a minimum" & vbNewLine
-                strTemp = strTemp & "                                 for this program to be useful." & vbNewLine
-                strTemp = strTemp & "Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
-                MsgBox(strTemp, vbOKOnly, "Error")
-                FileDataSuitable = True
-            End If
-        Else
-            MsgBox("Ignore_LOG_Requirements is Active", vbOKOnly, "DEVELOPER WARNING")
+
+        If (ArduType = "ArduCopter" Or ArduType = "APM:Copter") And (GPS_Logging = False Or EV_Logging = False) Then
+            WriteTextLog("Log file does not contain the correct data!")
+            strTemp = "          Log must contain GPS and EV data as a minimum" & vbNewLine
+            strTemp = strTemp & "                                 for this program to be useful." & vbNewLine
+            strTemp = strTemp & "Try updating by selecting HELP - UPDATE NOW from the menus." & vbNewLine
+            strTemp = strTemp & "                     Do you want to run with limited results?" & vbNewLine
+            If MsgBox(strTemp, vbYesNo, "Error") = vbNo Then FileDataSuitable = True
         End If
+
 
         If Read_LOG_Percentage <> 100 Then
             MsgBox("Read_LOG_Percentage is Active @ " & Read_LOG_Percentage & "%", vbOKOnly, "DEVELOPER WARNING")
