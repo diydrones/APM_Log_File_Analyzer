@@ -4,7 +4,7 @@ Imports System.Deployment.Application
 Module modVariable_Declarations
 
 
-    Public MyCurrentVersionNumber As String = "v2.2.1.7"        ' Update on every released version, format v?.?.?.?  i.e. single digit only.      
+    Public MyCurrentVersionNumber As String = "v2.2.1.8"        ' Update on every released version, format v?.?.?.?  i.e. single digit only.      
     'frmMainForm.BuildVers()                                    ' Update on every released version.
     Public CurrentPublishVersionNumber As String = ""           ' frmMainForm.PublishedVers() 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
     Public XPInstallation As Boolean = False                    ' True is running on XP
@@ -16,7 +16,6 @@ Module modVariable_Declarations
     '### DEVELOPER VARIABLES ###
     Public Ignore_CTUN_Logging As Boolean = False               ' TRUE if you want to pretend that CTUN is not in the logs
     Public Ignore_LOG_Version As Boolean = False                ' TRUE is you want to load any log regardless of the Firmware Version that created it.
-    Public Ignore_LOG_Requirements As Boolean = False           ' TRUE is you want to load any log regardless of the Firmware Version that created it.
     Public Read_LOG_Percentage As Integer = 100                 ' Set to the percentage of the log you want to read, i.e. ignore the end.
 
 
