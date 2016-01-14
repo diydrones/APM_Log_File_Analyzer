@@ -1,5 +1,7 @@
 ﻿Public Class frmHelp
 
+    ' 14.01.2016, fixed spelling mistake
+
     Private Sub frmHelp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim strTempText As String = ""
         strTempText = strTempText & "       APM Log Analyser is Free to use, but if you" & vbNewLine
