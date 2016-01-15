@@ -166,6 +166,8 @@
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": ROTOR_SPEED_BELOW_CRITICAL")
             Case "60"    ' EKF_ALT_RESET
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": EKF_ALT_RESET")
+            Case "61"    'DATA_LAND_CANCELLED_BY_PILOT.
+                WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": DATA_LAND_CANCELLED_BY_PILOT ")
             Case Else
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": *** Update Program to include this Event *** : " & DataArray(2))
         End Select
