@@ -141,6 +141,7 @@ Module modFile_Handling
         ' Run the new code to populate the ?????????????
         Call FindFirmwareDetails()
 
+        Debug.Print("Finding Parameter and Logging Details....")
         Dim MotorsDetectedForV3_2 As Boolean = False 'for v3.2 we need to look at the actual dataline not just the FMT line.
         Dim ReadFileVersion As Double = 0
         Dim EndOfPARAM_Counter As Integer = 99        ' counts down for each data line after PARAMs have stopped.
@@ -362,6 +363,8 @@ Module modFile_Handling
             TotalDataLines = TotalDataLines + 1
         Loop
 
+        Debug.Print("Searched " & TotalDataLines & " datalines to find the parameter and logging details.")
+
         ' Sanity Check the findings
         If FoundFMT <> True Then
             MsgBox("No FMT Lines Detected, analysis will be unreliable!", vbOKOnly & vbExclamation, "Warning!")
@@ -383,6 +386,7 @@ Module modFile_Handling
         ' me to detect the version before reading the PARM lines.
         ' This new routine does a pre-scan of the file to get this information.
 
+        Debug.Print("Finding Firmware Details....")
         Dim ReadFileVersion As Double = 0
         Dim Found As Boolean = False              ' True when all details have been found.
         Dim Counter As Integer = 500
@@ -446,6 +450,7 @@ Module modFile_Handling
             End If
         Loop
 
+        Debug.Print("Searched " & TotalDataLines & " datalines to find the firmware details")
         ' Sanity Check the version
         If ArduVersion = "" Then
             Dim str As String = ""
