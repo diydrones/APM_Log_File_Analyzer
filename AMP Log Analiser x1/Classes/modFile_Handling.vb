@@ -52,6 +52,14 @@ Module modFile_Handling
             MsgBox(strTemp, vbOKOnly, "Error")
         End If
 
+        'Display the Release Candidate Warning
+        If InStr(StrConv(ArduVersion, vbUpperCase), "DEV") Then
+            WriteTextLog("WARNING: Installed APM firmware is a DEVELOPER version, only DEVELOPERS should be using this!")
+            WriteTextLog("WARNING: Beginners and Advanced pilots are recommended to install the latest stable officially released version.")
+            strTemp = "Installed APM firmware is a DEVELOPER version!" & vbNewLine
+            MsgBox(strTemp, vbOKOnly, "Error")
+        End If
+
         'Display and ArduPlane Warning
         If ArduType = "ArduPlane" Then MsgBox("ArduPlane analysis is still under testing!", vbOKOnly, "Message")
 
@@ -129,8 +137,28 @@ Module modFile_Handling
     End Function
 
     Public Sub FindLoggingDataAndParams()
+
+        ' Run the new code to populate the ?????????????
+        Call FindFirmwareDetails()
+
         Dim MotorsDetectedForV3_2 As Boolean = False 'for v3.2 we need to look at the actual dataline not just the FMT line.
         Dim ReadFileVersion As Double = 0
+        Dim EndOfPARAM_Counter As Integer = 99        ' counts down for each data line after PARAMs have stopped.
+
+        ' For Speed we need to set a local variable to quicky handle
+        ' the version of file being read. Using the check on each line
+        ' had a significant overhead.
+        If ReadFileVersion = 0 And ArduVersion <> "" Then
+            If VersionCompare(ArduVersion, "3.1.999") = True Then
+                ReadFileVersion = 3.1
+            ElseIf VersionCompare(ArduVersion, "3.2.999") = True Then
+                ReadFileVersion = 3.2
+            ElseIf VersionCompare(ArduVersion, "3.3.999") = True Then
+                ReadFileVersion = 3.3
+            Else
+                ReadFileVersion = 3.4
+            End If
+        End If
 
         APM_No_Motors = 0
         'Do some warnings about DEVELOPER IGNORES
@@ -171,28 +199,6 @@ Module modFile_Handling
             DataArray(DataArrayCounter) = DataSplit
             'Debug.Print("--- Paramter " & DataArrayCounter & " = " & DataArray(DataArrayCounter))
 
-            ' Header Data Support for Firmware v3.1.? 
-            If DataArray(0) = "ArduCopter" Or DataArray(0) = "APM:Copter" Then ArduType = "APM:Copter" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
-            If DataArray(0) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
-            If DataArray(0) = "Free" And DataArray(1) = "RAM:" Then APM_Free_RAM = DataArray(2)
-            If DataArray(0) = "APM" Then APM_Version = DataArray(1)
-
-            ' Header Data Support for Firmware v3.3
-            If DataArray(2) = "APM:Copter" Then ArduType = "APM:Copter" : ArduVersion = DataArray(3) : ArduBuild = DataArray(4)
-
-            ' For Speed we need to set a local variable to quicky handle
-            ' the version of file being read. Using the check on each line
-            ' had a significant overhead.
-            If ReadFileVersion = 0 And ArduVersion <> "" Then
-                If VersionCompare(ArduVersion, "3.1.999") = True Then
-                    ReadFileVersion = 3.1
-                ElseIf VersionCompare(ArduVersion, "3.2.999") = True Then
-                    ReadFileVersion = 3.2
-                Else
-                    ReadFileVersion = 3.3
-                End If
-            End If
-
 
             If DataArray(0) = "FMT" Then
                 FoundFMT = True
@@ -210,11 +216,6 @@ Module modFile_Handling
                     APM_No_Motors = 0
                 End If
             End If
-            ' Header Data Support Firmware v3.2.? 
-            If DataArray(0) = "MSG" And DataArray(1) = "ArduCopter" Or DataArray(1) = "APM:Copter" Then ArduType = "APM:Copter" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
-            If DataArray(0) = "MSG" And DataArray(1) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
-            If DataArray(0) = "MSG" And DataArray(1) = "PX4:" Then APM_Version = DataArray(1) & " " & DataArray(2) & " " & DataArray(3) & " " & DataArray(4)
-            If DataArray(0) = "MSG" And DataArray(1) = "PX4v2" Then Pixhawk_Serial_Number = DataArray(1) & " " & DataArray(2) & " " & DataArray(3) & " " & DataArray(4)
 
             ' New Detect Motors Code Dec 2015 - KXG
             If DataArray(0) = "RCOU" Then
@@ -275,7 +276,9 @@ Module modFile_Handling
             If DataArray(0) = "RAD" Then RAD_Logging = True : EndOfFMT = True : EndOfPARAM = True
             If DataArray(0) = "SIM" Then SIM_Logging = True : EndOfFMT = True : EndOfPARAM = True
 
-
+            ' Start the counter, if x datalines are received before getting another parameter then
+            ' parameters will be considers as finished.
+            If EndOfPARAM = True And EndOfPARAM_Counter > 0 Then EndOfPARAM_Counter -= 1
 
             ' Parameter Support for all Firmwares
             ' A v3.1 or v3.2 Parameter value should have only 3 pieces of data!
@@ -283,7 +286,8 @@ Module modFile_Handling
             ' v3.3 - FMT, 129, 31, PARM, QNf, TimeUS,Name,Value
             If DataArray(0) = "PARM" Then
                 EndOfFMT = True
-                If ReadFileVersion = 3.3 And ArduType = "APM:Copter" Then
+                EndOfPARAM = False
+                If ReadFileVersion >= 3.3 And ArduType = "APM:Copter" Then
                     'Alter Data to meet v3.2 requirements by shifting it down one place.
                     DataArray(1) = DataArray(2) : DataArray(2) = DataArray(3) : DataArray(3) = Nothing
                 End If
@@ -302,7 +306,14 @@ Module modFile_Handling
                         .lblErrorCountNo.Refresh()
                     End With
                 Else
-                    If EndOfPARAM = False Then 'Handles log corruption where PARAMS from previous logs are added at the end.
+
+                    ' EndOfPARAM Handles log corruption where PARAMS from previous logs are added at the end v3.2 issue.
+                    ' However, in v3.4 it may be possible for the PARAM's to be interupted by a few DataLines
+                    ' although this could be a SITL issue, not sure.
+                    ' Either way a counter has been introduced, we must have at least x datalines before we accept
+                    ' EndOfPARAM is actually True
+                    If EndOfPARAM = False And EndOfPARAM_Counter > 0 Then
+                        EndOfPARAM_Counter = 10                 'Reset the counter if Parameters are found
                         Dim Param As String = DataArray(1)
                         Dim Value As String = Val(DataArray(2))
 
@@ -358,6 +369,84 @@ Module modFile_Handling
         If FoundPARAM <> True Then
             MsgBox("This log file was partially overwritten by a newer log!  Analysis is unreliable at the best!", vbOKOnly & vbExclamation, "Warning!")
         End If
+
+        objReader.Close()
+        Debug.Print("Success!")
+    End Sub
+
+
+    Public Sub FindFirmwareDetails()
+        ' It has become apparent that the Firmware details has moved around within the DataLog files several times
+        ' over the different versions. V3.3 became ideal as we had FMT lines followed immediately by the MSG lines
+        ' describing the firmware version and type.
+        ' Playing with v3.4-Dev ot seems that some of the PARM lines are before the MSG lines, thus not allowing 
+        ' me to detect the version before reading the PARM lines.
+        ' This new routine does a pre-scan of the file to get this information.
+
+        Dim ReadFileVersion As Double = 0
+        Dim Found As Boolean = False              ' True when all details have been found.
+        Dim Counter As Integer = 500
+        Dim StartCounter As Boolean = False       ' True if we have detected the APM variables, allows time to detect Pix 
+
+        'Read the File line by line
+        Dim objReader As New System.IO.StreamReader(strLogPathFileName)
+        Do While objReader.Peek() <> -1 And Found = False And Counter <> 0
+            Array.Clear(DataArray, 0, 25)
+            DataArrayCounter = 0
+            DataSplit = ""
+
+            Data = objReader.ReadLine()
+            'Debug.Print("1st Pass Processing:-" & Str(DataLine) & ": " & Data)
+            ' Split the data into the DataArray()
+            For n = 1 To Len(Data)
+                DataChar = Mid(Data, n, 1)
+                If (DataChar = "," Or DataChar = " ") Then
+                    If DataSplit <> "" Then
+                        DataArray(DataArrayCounter) = DataSplit
+                        'Debug.Print("--- Paramter " & DataArrayCounter & " = " & DataArray(DataArrayCounter))
+                        DataSplit = ""
+                        DataArrayCounter = DataArrayCounter + 1
+                        'sometimes some bad data is found in the logs.
+                        'ensure we do not make more than 25 enteries into the array.
+                        If DataArrayCounter > 25 Then DataArrayCounter = 25
+                    End If
+                Else
+                    DataSplit = DataSplit + DataChar
+                End If
+            Next n
+            'Capture the very Last entry (i.e. there is no , after the last entry.
+            'DataArrayCounter is now = to the last entry in the data spilt.
+            DataArray(DataArrayCounter) = DataSplit
+            'Debug.Print("--- Paramter " & DataArrayCounter & " = " & DataArray(DataArrayCounter))
+
+            ' Header Data Support for Firmware v3.1.? 
+            If DataArray(0) = "ArduCopter" Or DataArray(0) = "APM:Copter" Then ArduType = "APM:Copter" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
+            If DataArray(0) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(1) : ArduBuild = DataArray(2)
+            If DataArray(0) = "Free" And DataArray(1) = "RAM:" Then APM_Free_RAM = DataArray(2)
+            If DataArray(0) = "APM" Then APM_Version = DataArray(1)
+
+            ' Header Data Support Firmware v3.2.? 
+            If DataArray(0) = "MSG" And DataArray(1) = "ArduCopter" Or DataArray(1) = "APM:Copter" Then ArduType = "APM:Copter" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
+            If DataArray(0) = "MSG" And DataArray(1) = "ArduPlane" Then ArduType = "ArduPlane" : ArduVersion = DataArray(2) : ArduBuild = DataArray(3)
+            If DataArray(0) = "MSG" And DataArray(1) = "PX4:" Then APM_Version = DataArray(1) & " " & DataArray(2) & " " & DataArray(3) & " " & DataArray(4)
+            If DataArray(0) = "MSG" And DataArray(1) = "PX4v2" Then Pixhawk_Serial_Number = DataArray(1) & " " & DataArray(2) & " " & DataArray(3) & " " & DataArray(4)
+
+            ' Header Data Support for Firmware v3.3
+            If DataArray(2) = "APM:Copter" Then ArduType = "APM:Copter" : ArduVersion = DataArray(3) : ArduBuild = DataArray(4)
+
+            TotalDataLines = TotalDataLines + 1
+
+            ' Check if we have found all the data required so we can exit the loop quicker
+            If ArduType <> "" And ArduVersion <> "" And ArduBuild <> "" Then
+                StartCounter = True
+                Counter -= 1
+            End If
+            If ArduType <> "" And ArduVersion <> "" And ArduBuild <> "" And APM_Version <> "" And Pixhawk_Serial_Number <> "" Then
+                Found = True
+            End If
+        Loop
+
+        ' Sanity Check the version
         If ArduVersion = "" Then
             Dim str As String = ""
             str = str & "The APM Firmware Version could not be detected due to file corruption," & vbLf
@@ -369,6 +458,7 @@ Module modFile_Handling
 
         objReader.Close()
         Debug.Print("Success!")
+
     End Sub
 
     Public Sub ReadINIfile()
