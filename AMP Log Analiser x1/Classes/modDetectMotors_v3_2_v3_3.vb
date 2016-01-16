@@ -79,18 +79,18 @@
 
 
             ' Check which other channels are within the fluctuation limit and increment that Channel counter by one.
-            If Ch1_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch1 += 1 : Debug.Print("Ch1 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch2_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch2 += 1 : Debug.Print("Ch2 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch3_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch3 += 1 : Debug.Print("Ch3 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch4_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch4 += 1 : Debug.Print("Ch4 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch5_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch5 += 1 : Debug.Print("Ch5 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch6_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch6 += 1 : Debug.Print("Ch6 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch7_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch7 += 1 : Debug.Print("Ch7 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch8_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch8 += 1 : Debug.Print("Ch8 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch9_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch9 += 1 : Debug.Print("Ch9 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch10_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch10 += 1 : Debug.Print("Ch10 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch11_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch11 += 1 : Debug.Print("Ch11 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch12_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch12 += 1 : Debug.Print("Ch12 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch1_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch1 += 1              'Debug.Print("Ch1 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch2_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch2 += 1              'Debug.Print("Ch2 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch3_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch3 += 1              'Debug.Print("Ch3 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch4_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch4 += 1              'Debug.Print("Ch4 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch5_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch5 += 1              'Debug.Print("Ch5 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch6_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch6 += 1              'Debug.Print("Ch6 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch7_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch7 += 1              'Debug.Print("Ch7 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch8_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch8 += 1              'Debug.Print("Ch8 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch9_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch9 += 1              'Debug.Print("Ch9 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch10_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch10 += 1            'Debug.Print("Ch10 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch11_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch11 += 1            'Debug.Print("Ch11 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch12_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch12 += 1            'Debug.Print("Ch12 in range, FLU >= " & MotorDetectionMinFluctuation)
 
 
             ' Re-Calculate the potential number of motors so far, it does this for every reading!
@@ -169,9 +169,9 @@
             '    Debug.Print(APM_No_Motors & " Motors will be used due to lack of data")
             'End If
 
-            Debug.Print(APM_No_Motors & " Motors will be used.")
-            Debug.Print(MotorDetec_Counter_RCOU & " RCOU Data Lines.")
-            Debug.Print(MotorDetec_Counter_RCOU & "")
+            'Debug.Print(APM_No_Motors & " Motors will be used.")
+            'Debug.Print(MotorDetec_Counter_RCOU & " RCOU Data Lines.")
+            'Debug.Print(MotorDetec_Counter_RCOU & "")
 
             'sWatch.Stop() ': Debug.Print(sWatch.Elapsed.ToString)
             'myStopWatchTimer = myStopWatchTimer + sWatch.Elapsed.TotalMilliseconds
