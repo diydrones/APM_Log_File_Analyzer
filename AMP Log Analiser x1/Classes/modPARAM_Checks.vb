@@ -241,8 +241,8 @@
             End If
         End If
 
-            'Warning if Hardware is not recongnised
-            If PARM_INS_PRODUCT_ID = 0 Or PARM_INS_PRODUCT_ID = 99 Then
+        'Warning if Hardware is not recongnised
+        If (PARM_INS_PRODUCT_ID = 0 Or PARM_INS_PRODUCT_ID = 99) And VersionCompare(ArduVersion, "3.2.1") = True Then
             Call WriteParamHeader()
             WriteTextLog("INS_PRODUCT_ID = " & PARM_INS_PRODUCT_ID)
             WriteTextLog("Warning: Unknown Ardupilot Hardware Detected.")

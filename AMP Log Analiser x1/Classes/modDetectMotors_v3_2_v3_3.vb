@@ -42,11 +42,11 @@
             Log_RCOU_Ch4 = DataArray(5) : Log_RCOU_Ch5 = DataArray(6) : Log_RCOU_Ch6 = DataArray(7)
             Log_RCOU_Ch7 = DataArray(8) : Log_RCOU_Ch8 = DataArray(9) : Log_RCOU_Ch9 = DataArray(10)
             Log_RCOU_Ch10 = DataArray(11) : Log_RCOU_Ch11 = DataArray(12) : Log_RCOU_Ch12 = DataArray(13)
-            Debug.Print("FIRST PASS - PRIME THE VARIABLES")
-            Debug.Print(" Ch1,  Ch2,  Ch3 = " & Format(Log_RCOU_Ch1, "0000") & "," & Format(Log_RCOU_Ch2, "0000") & "," & Format(Log_RCOU_Ch3, "0000"))
-            Debug.Print(" Ch4,  Ch5,  Ch6 = " & Format(Log_RCOU_Ch4, "0000") & "," & Format(Log_RCOU_Ch5, "0000") & "," & Format(Log_RCOU_Ch6, "0000"))
-            Debug.Print(" Ch7,  Ch8,  Ch9 = " & Format(Log_RCOU_Ch7, "0000") & "," & Format(Log_RCOU_Ch8, "0000") & "," & Format(Log_RCOU_Ch9, "0000"))
-            Debug.Print("Ch10, Ch11, Ch12 = " & Format(Log_RCOU_Ch10, "0000") & "," & Format(Log_RCOU_Ch11, "0000") & "," & Format(Log_RCOU_Ch12, "0000"))
+            'Debug.Print("FIRST PASS - PRIME THE VARIABLES")
+            'Debug.Print(" Ch1,  Ch2,  Ch3 = " & Format(Log_RCOU_Ch1, "0000") & "," & Format(Log_RCOU_Ch2, "0000") & "," & Format(Log_RCOU_Ch3, "0000"))
+            'Debug.Print(" Ch4,  Ch5,  Ch6 = " & Format(Log_RCOU_Ch4, "0000") & "," & Format(Log_RCOU_Ch5, "0000") & "," & Format(Log_RCOU_Ch6, "0000"))
+            'Debug.Print(" Ch7,  Ch8,  Ch9 = " & Format(Log_RCOU_Ch7, "0000") & "," & Format(Log_RCOU_Ch8, "0000") & "," & Format(Log_RCOU_Ch9, "0000"))
+            'Debug.Print("Ch10, Ch11, Ch12 = " & Format(Log_RCOU_Ch10, "0000") & "," & Format(Log_RCOU_Ch11, "0000") & "," & Format(Log_RCOU_Ch12, "0000"))
         End If
 
         ' Do we need to check this RCOU data?
@@ -61,7 +61,7 @@
 
             ' Increment the RCOU Counter
             MotorDetec_Counter_RCOU += 1
-            Debug.Print("Processing RCOU_Count = " & MotorDetec_Counter_RCOU)
+            'Debug.Print("Processing RCOU_Count = " & MotorDetec_Counter_RCOU)
 
             ' Populate the current PWM Readings into the temporary variables
             Dim Ch1_PWM As Integer = DataArray(2) : Dim Ch2_PWM As Integer = DataArray(3) : Dim Ch3_PWM As Integer = DataArray(4)
@@ -79,18 +79,18 @@
 
 
             ' Check which other channels are within the fluctuation limit and increment that Channel counter by one.
-            If Ch1_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch1 += 1 : Debug.Print("Ch1 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch2_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch2 += 1 : Debug.Print("Ch2 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch3_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch3 += 1 : Debug.Print("Ch3 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch4_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch4 += 1 : Debug.Print("Ch4 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch5_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch5 += 1 : Debug.Print("Ch5 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch6_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch6 += 1 : Debug.Print("Ch6 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch7_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch7 += 1 : Debug.Print("Ch7 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch8_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch8 += 1 : Debug.Print("Ch8 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch9_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch9 += 1 : Debug.Print("Ch9 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch10_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch10 += 1 : Debug.Print("Ch10 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch11_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch11 += 1 : Debug.Print("Ch11 in range, FLU >= " & MotorDetectionMinFluctuation)
-            If Ch12_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch12 += 1 : Debug.Print("Ch12 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch1_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch1 += 1              'Debug.Print("Ch1 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch2_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch2 += 1              'Debug.Print("Ch2 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch3_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch3 += 1              'Debug.Print("Ch3 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch4_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch4 += 1              'Debug.Print("Ch4 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch5_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch5 += 1              'Debug.Print("Ch5 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch6_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch6 += 1              'Debug.Print("Ch6 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch7_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch7 += 1              'Debug.Print("Ch7 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch8_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch8 += 1              'Debug.Print("Ch8 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch9_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch9 += 1              'Debug.Print("Ch9 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch10_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch10 += 1            'Debug.Print("Ch10 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch11_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch11 += 1            'Debug.Print("Ch11 in range, FLU >= " & MotorDetectionMinFluctuation)
+            If Ch12_FLU >= MotorDetectionMinFluctuation Then MotorDetec_Counter_Ch12 += 1            'Debug.Print("Ch12 in range, FLU >= " & MotorDetectionMinFluctuation)
 
 
             ' Re-Calculate the potential number of motors so far, it does this for every reading!
@@ -109,28 +109,28 @@
             If MotorDetec_Counter_Ch12 / MotorDetec_Counter_RCOU * 100 > MotorDetectionThreshold Then APM_No_Motors += 1
 
 
-            ' Show the Debug Data
-            Debug.Print(" Ch1: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch1, "0000") & "," & Format(Ch1_PWM, "0000") & "," & Format(Ch1_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch1, "0000") & "," & Format(MotorDetec_Counter_Ch1 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print(" Ch2: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch2, "0000") & "," & Format(Ch2_PWM, "0000") & "," & Format(Ch2_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch2, "0000") & "," & Format(MotorDetec_Counter_Ch2 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print(" Ch3: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch3, "0000") & "," & Format(Ch3_PWM, "0000") & "," & Format(Ch3_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch3, "0000") & "," & Format(MotorDetec_Counter_Ch3 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print(" Ch4: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch4, "0000") & "," & Format(Ch4_PWM, "0000") & "," & Format(Ch4_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch4, "0000") & "," & Format(MotorDetec_Counter_Ch4 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print(" Ch5: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch5, "0000") & "," & Format(Ch5_PWM, "0000") & "," & Format(Ch5_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch5, "0000") & "," & Format(MotorDetec_Counter_Ch5 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print(" Ch6: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch6, "0000") & "," & Format(Ch6_PWM, "0000") & "," & Format(Ch6_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch6, "0000") & "," & Format(MotorDetec_Counter_Ch6 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print(" Ch7: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch7, "0000") & "," & Format(Ch7_PWM, "0000") & "," & Format(Ch7_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch7, "0000") & "," & Format(MotorDetec_Counter_Ch7 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print(" Ch8: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch8, "0000") & "," & Format(Ch8_PWM, "0000") & "," & Format(Ch8_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch8, "0000") & "," & Format(MotorDetec_Counter_Ch8 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print(" Ch9: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch9, "0000") & "," & Format(Ch9_PWM, "0000") & "," & Format(Ch9_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch9, "0000") & "," & Format(MotorDetec_Counter_Ch9 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print(" Ch10: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch10, "0000") & "," & Format(Ch10_PWM, "0000") & "," & Format(Ch10_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch10, "0000") & "," & Format(MotorDetec_Counter_Ch10 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print(" Ch11: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch11, "0000") & "," & Format(Ch11_PWM, "0000") & "," & Format(Ch11_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch11, "0000") & "," & Format(MotorDetec_Counter_Ch11 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print(" Ch12: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch12, "0000") & "," & Format(Ch12_PWM, "0000") & "," & Format(Ch12_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch12, "0000") & "," & Format(MotorDetec_Counter_Ch12 / MotorDetec_Counter_RCOU * 100, "000") & "%")
-            Debug.Print("Based on a Motor Detection Threshold of " & MotorDetectionThreshold & "% the number of motors would be " & APM_No_Motors & " Motors")
+            '' Show the Debug Data
+            'Debug.Print(" Ch1: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch1, "0000") & "," & Format(Ch1_PWM, "0000") & "," & Format(Ch1_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch1, "0000") & "," & Format(MotorDetec_Counter_Ch1 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print(" Ch2: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch2, "0000") & "," & Format(Ch2_PWM, "0000") & "," & Format(Ch2_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch2, "0000") & "," & Format(MotorDetec_Counter_Ch2 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print(" Ch3: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch3, "0000") & "," & Format(Ch3_PWM, "0000") & "," & Format(Ch3_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch3, "0000") & "," & Format(MotorDetec_Counter_Ch3 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print(" Ch4: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch4, "0000") & "," & Format(Ch4_PWM, "0000") & "," & Format(Ch4_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch4, "0000") & "," & Format(MotorDetec_Counter_Ch4 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print(" Ch5: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch5, "0000") & "," & Format(Ch5_PWM, "0000") & "," & Format(Ch5_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch5, "0000") & "," & Format(MotorDetec_Counter_Ch5 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print(" Ch6: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch6, "0000") & "," & Format(Ch6_PWM, "0000") & "," & Format(Ch6_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch6, "0000") & "," & Format(MotorDetec_Counter_Ch6 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print(" Ch7: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch7, "0000") & "," & Format(Ch7_PWM, "0000") & "," & Format(Ch7_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch7, "0000") & "," & Format(MotorDetec_Counter_Ch7 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print(" Ch8: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch8, "0000") & "," & Format(Ch8_PWM, "0000") & "," & Format(Ch8_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch8, "0000") & "," & Format(MotorDetec_Counter_Ch8 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print(" Ch9: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch9, "0000") & "," & Format(Ch9_PWM, "0000") & "," & Format(Ch9_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch9, "0000") & "," & Format(MotorDetec_Counter_Ch9 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print(" Ch10: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch10, "0000") & "," & Format(Ch10_PWM, "0000") & "," & Format(Ch10_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch10, "0000") & "," & Format(MotorDetec_Counter_Ch10 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print(" Ch11: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch11, "0000") & "," & Format(Ch11_PWM, "0000") & "," & Format(Ch11_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch11, "0000") & "," & Format(MotorDetec_Counter_Ch11 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print(" Ch12: OLD, PWM, FLU, CNT, DET% -- " & Format(Log_RCOU_Ch12, "0000") & "," & Format(Ch12_PWM, "0000") & "," & Format(Ch12_FLU, "0000") & "," & Format(MotorDetec_Counter_Ch12, "0000") & "," & Format(MotorDetec_Counter_Ch12 / MotorDetec_Counter_RCOU * 100, "000") & "%")
+            'Debug.Print("Based on a Motor Detection Threshold of " & MotorDetectionThreshold & "% the number of motors would be " & APM_No_Motors & " Motors")
 
 
             ' DEBUG CODE, SHOULD NOT BE DEPLOYED.
             ' USED TO TRAP IF THIS CODE SWAPS THE NUMBER OF MOTORS FOUND DURING THE ANALYSIS.
             ' SET TO THE NUMBER OF MOTORS EXPECTED AND SET A BREAKPOINT, IF ALL IS WELL IT WILL NOT STOP.
-            If APM_No_Motors <> 6 Then
-                Debug.Print("Motor Detection Code differs between results")
-            End If
+            'If APM_No_Motors <> 6 Then
+            '    Debug.Print("Motor Detection Code differs between results")
+            'End If
 
             ' Set the MotorDetectionEnd_Monitor to activate the STOP code
             If MotorDetec_Stop_Monitor = False And MotorDetec_Counter_Ch1 / MotorDetec_Counter_RCOU * 100 >= MotorDetectionEnd_Percent _
@@ -169,9 +169,9 @@
             '    Debug.Print(APM_No_Motors & " Motors will be used due to lack of data")
             'End If
 
-            Debug.Print(APM_No_Motors & " Motors will be used.")
-            Debug.Print(MotorDetec_Counter_RCOU & " RCOU Data Lines.")
-            Debug.Print(MotorDetec_Counter_RCOU & "")
+            'Debug.Print(APM_No_Motors & " Motors will be used.")
+            'Debug.Print(MotorDetec_Counter_RCOU & " RCOU Data Lines.")
+            'Debug.Print(MotorDetec_Counter_RCOU & "")
 
             'sWatch.Stop() ': Debug.Print(sWatch.Elapsed.ToString)
             'myStopWatchTimer = myStopWatchTimer + sWatch.Elapsed.TotalMilliseconds
