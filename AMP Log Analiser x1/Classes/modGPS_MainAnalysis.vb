@@ -11,7 +11,9 @@ Module modGPS_MainAnalysis
             Log_GPS_DateTime = Log_GPS_DateTime.AddDays(7 * Log_GPS_Week)
             'Debug.Print("Calculation:- Add Days = " & 7 * Log_GPS_Week)
             'Debug.Print("Result:- Log_GPS_DateTime = " & Log_GPS_DateTime)
+
             Log_GPS_DateTime = Log_GPS_DateTime.AddMilliseconds(Log_GPS_TimeMS)
+
             'Debug.Print("Calculation:- Add MS = " & Log_GPS_TimeMS)
             'Debug.Print("After:- Log_GPS_DateTime = " & Log_GPS_DateTime & vbNewLine)
 

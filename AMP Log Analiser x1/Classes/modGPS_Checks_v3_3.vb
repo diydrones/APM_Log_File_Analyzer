@@ -16,7 +16,7 @@
 
         If ReadFileResilienceCheck(14) = True Then
             Log_GPS_Status = Val(DataArray(2))
-            Log_GPS_TimeMS = Val(DataArray(1)) / 1000
+            Log_GPS_TimeMS = Val(DataArray(3))
             Log_GPS_Week = Val(DataArray(4))
             Log_GPS_NSats = Val(DataArray(5))
             Log_GPS_HDop = Val(DataArray(6))

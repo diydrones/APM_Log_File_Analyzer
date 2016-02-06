@@ -4,7 +4,7 @@ Imports System.Deployment.Application
 Module modVariable_Declarations
 
 
-    Public MyCurrentVersionNumber As String = "v2.2.1.8"        ' Update on every released version, format v?.?.?.?  i.e. single digit only.      
+    Public MyCurrentVersionNumber As String = "v2.2.1.9"        ' Update on every released version, format v?.?.?.?  i.e. single digit only.      
     'frmMainForm.BuildVers()                                    ' Update on every released version.
     Public CurrentPublishVersionNumber As String = ""           ' frmMainForm.PublishedVers() 'Now Detected by ApplicationDeployment.CurrentDeployment.CurrentVersion
     Public XPInstallation As Boolean = False                    ' True is running on XP
@@ -399,7 +399,7 @@ Module modVariable_Declarations
     Public Log_GPS_GCrs As Integer = 0                      'Holds the GPS ground course in degrees (0 = north)
     Public Log_GPS_Status As Integer = 0                    'Holds the GPS Current status as recorded in the Log
     Public GPS_Base_Date As Date = BaseDate                 'Holds the Standard GPS Base Date of 06/01/1980
-    Public Log_GPS_TimeMS As Integer = 0                    'Holds the GPS Current Time in ms as recorded in the Log
+    Public Log_GPS_TimeMS As Integer = 0                    'Holds the GPS Current Time for <=v3.2 in ms as recorded in the Log
     Public Log_GPS_Week As Integer = 0                      'Holds the GPS CUrrent week as recorded in the Log
     Public Log_GPS_DateTime As Date = BaseDate              'Holds the Current Date and Time as calculated from the Log
     Public Log_First_DateTime As Date = BaseDate            'Holds the first recorded Date and Time as calculated from the Log.
