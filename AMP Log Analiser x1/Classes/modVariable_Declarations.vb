@@ -87,11 +87,11 @@ Module modVariable_Declarations
     Public DataSplit As String = ""                             ' Holds the Data Spilt so far until the end of the spilt is found.
     Public strLogFileName As String = ""                        ' Holds the Current Log Filename.
     Public strLogPathFileName As String = ""                    ' Holds the Current Log Path and Filename.
-    Public ProgramInstallationFolder As String = _
+    Public ProgramInstallationFolder As String =
             Directory.GetCurrentDirectory                       ' Holds the current installation directory
-    Public TempProgramInstallationFolder As String = _
+    Public TempProgramInstallationFolder As String =
             Environment.CurrentDirectory                        ' Holds the current environment directory
-    Public ApplicationStartUpPath As String = _
+    Public ApplicationStartUpPath As String =
             Application.StartupPath                             ' Holds the current startup directory
     Public TotalDataLines As Integer = 0                        ' Holds the Total Number of Data Lines in the current log.
     Public ErrorCount As Integer = 0                            ' Counts the number of errors found in the logs.
