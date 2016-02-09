@@ -87,11 +87,11 @@ Module modVariable_Declarations
     Public DataSplit As String = ""                             ' Holds the Data Spilt so far until the end of the spilt is found.
     Public strLogFileName As String = ""                        ' Holds the Current Log Filename.
     Public strLogPathFileName As String = ""                    ' Holds the Current Log Path and Filename.
-    Public ProgramInstallationFolder As String = _
+    Public ProgramInstallationFolder As String =
             Directory.GetCurrentDirectory                       ' Holds the current installation directory
-    Public TempProgramInstallationFolder As String = _
+    Public TempProgramInstallationFolder As String =
             Environment.CurrentDirectory                        ' Holds the current environment directory
-    Public ApplicationStartUpPath As String = _
+    Public ApplicationStartUpPath As String =
             Application.StartupPath                             ' Holds the current startup directory
     Public TotalDataLines As Integer = 0                        ' Holds the Total Number of Data Lines in the current log.
     Public ErrorCount As Integer = 0                            ' Counts the number of errors found in the logs.
@@ -399,7 +399,7 @@ Module modVariable_Declarations
     Public Log_GPS_GCrs As Integer = 0                      'Holds the GPS ground course in degrees (0 = north)
     Public Log_GPS_Status As Integer = 0                    'Holds the GPS Current status as recorded in the Log
     Public GPS_Base_Date As Date = BaseDate                 'Holds the Standard GPS Base Date of 06/01/1980
-    Public Log_GPS_TimeMS As Integer = 0                    'Holds the GPS Current Time for <=v3.2 in ms as recorded in the Log
+    Public Log_GPS_TimeMS As Integer = 0                    'Holds the GPS Current Time in ms as recorded in the Log
     Public Log_GPS_Week As Integer = 0                      'Holds the GPS CUrrent week as recorded in the Log
     Public Log_GPS_DateTime As Date = BaseDate              'Holds the Current Date and Time as calculated from the Log
     Public Log_First_DateTime As Date = BaseDate            'Holds the first recorded Date and Time as calculated from the Log.
