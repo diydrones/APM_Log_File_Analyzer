@@ -5,6 +5,8 @@
 
         ' THIS CODE MUST ONLY BE CALLED AFTER THE DATA LINE VARIABLES HAVE BEEN SET !!!
 
+        Debug.Print("PM_NLon = " & Log_PM_NLon & ", PM_NLoop = " & Log_PM_NLoop & ", PM_MaxT = " & Log_PM_MaxT)
+
         If Log_PM_RenCnt > 0 Then
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": DCM Error: DCM renormalization count is " & Log_PM_RenCnt)
             Debug.Print("DCM Error: DCM renormalization count is " & Log_PM_RenCnt)
@@ -19,8 +21,6 @@
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Speed Error: The number of long running main loops is " & Log_PM_NLon & " @ " & Log_PM_MaxT / 1000 & "ms")
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Speed Error: A one off here could be ignored but if repeated in this log,")
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Speed Error: then try disabling some logs, for example INAV, MOTORS and IMU.")
-            'WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Testing: Current Ground Speed is: " & Int(Log_GPS_Spd * 2.23693629) & " mph, this could be significant!")
-            'Debug.Print("APM Speed Error: The number of sustained long running main loops is " & Log_PM_NLon & " @ " & Log_PM_MaxT & "ms")
         End If
 
         If Log_PM_NLoop > 1002 And PM_Delay_Counter > 3 Then
@@ -28,15 +28,11 @@
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Speed Error: The total number of sustained loops " & Log_PM_NLoop)
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Speed Error: A one off here could be ignored but if repeated in this log,")
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Speed Error: then try disabling some logs, for example INAV, MOTORS and IMU.")
-                'WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Testing: Current Ground Speed is: " & Int(Log_GPS_Spd * 2.23693629) & " mph, this could be significant!")
-                'Debug.Print("APM Speed Error: The total number of sustained loops " & Log_PM_NLoop)
             Else
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Speed Error: The total number of sustained loops " & Log_PM_NLoop)
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Speed Error: This is above 5% of the total loops!")
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Speed Error: Try disabling some logs, for example INAV, MOTORS and IMU.")
                 WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": APM Speed Error: Otherwise seek further advice before flying!")
-                'WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Testing: Current Ground Speed is: " & Int(Log_GPS_Spd * 2.23693629) & " mph, this could be significant!")
-                'Debug.Print("APM Speed Error: The total number of sustained loops is >= 5% @ " & Log_PM_NLoop)
             End If
         End If
 
