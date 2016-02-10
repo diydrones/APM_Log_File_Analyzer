@@ -8,6 +8,7 @@
         ' <<<<< Testing Code >>>>>
         Debug.Print("PM_NLon = " & Log_PM_NLon & ", PM_NLoop = " & Log_PM_NLoop & ", PM_MaxT = " & Log_PM_MaxT)
         Debug.Print("The % of long loops is " & Log_PM_NLon / Log_PM_NLoop * 100)
+
         If Log_PM_NLoop <> 4000 Then
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Testing: The number of main loops is <> 4000  --  " & Log_PM_NLoop)
         End If
@@ -21,6 +22,10 @@
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": Testing: The % of long loops is > 15%  -- " & Log_PM_NLon / Log_PM_NLoop * 100 & "%")
         End If
         ' <<<<< End of Testing Code >>>>>
+
+
+
+
 
         If Log_PM_RenCnt > 0 Then
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": DCM Error: DCM renormalization count is " & Log_PM_RenCnt)
