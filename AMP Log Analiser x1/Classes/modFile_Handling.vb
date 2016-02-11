@@ -138,9 +138,11 @@ Module modFile_Handling
 
     Public Sub FindLoggingDataAndParams()
 
-        ' Run the new code to populate the ?????????????
+        ' Run the new code to populate the ardu variables like type, version, pix serial number etc.
         Call FindFirmwareDetails()
 
+        ' This code reads all the log to the end to find all the details, it is a first pass solution
+        ' to set up all the variables that the main pass needs to know before hand.
         Debug.Print("Finding Parameter and Logging Details....")
         Dim MotorsDetectedForV3_2 As Boolean = False 'for v3.2 we need to look at the actual dataline not just the FMT line.
         Dim ReadFileVersion As Double = 0
@@ -221,6 +223,43 @@ Module modFile_Handling
             ' New Detect Motors Code Dec 2015 - KXG
             If DataArray(0) = "RCOU" Then
                 DetectMotors()
+            End If
+
+            ' New Detect CPU Frequency, remember at this stage we already know the arduversion
+            If DataArray(0) = "PM" Then
+                'Solo v1.2.0 - FMT, 6, 16, PM, HHIhBH, NLon,NLoop,MaxT,PMT,I2CErr,INSErr
+                'v3.1        - FMT, 6, 19, PM, BBHHIhBHB, RenCnt, RenBlw, NLon, NLoop, MaxT, Pmt, I2CErr, INSErr, INAVErr
+                'v3.2        - FMT, 6, 17, PM, HHIhBHB, NLon, NLoop, MaxT, Pmt, I2CErr, INSErr, INAVErr
+                'v3.3.2      - FMT, 6, 24, PM, QHHIhBH, TimeUS,NLon,NLoop,MaxT,PMT,I2CErr,INSErr
+                Dim StoreCurrentFrequency As Integer = 0
+                Dim NumberOfSuccesiveHits As Integer = 3
+
+                If ReadFileVersion = 3.1 Then
+                    If InStr(ArduVersion, "solo") > 0 Then
+                        StoreCurrentFrequency = DataArray(2)
+                    Else
+                        StoreCurrentFrequency = DataArray(4)
+                    End If
+                ElseIf ReadFileVersion = 3.2 Then
+                    StoreCurrentFrequency = DataArray(2)
+                Else
+                    StoreCurrentFrequency = DataArray(3)
+                End If
+
+                If APM_Frequency_Last = StoreCurrentFrequency Then
+                    If APM_Frequency_Counter = NumberOfSuccesiveHits Then
+                        APM_Frequency_Counter = 0
+                        APM_Frequency = APM_Frequency + StoreCurrentFrequency * NumberOfSuccesiveHits
+                        Log_PM_Counter += NumberOfSuccesiveHits
+                        'Debug.Print("Found " & NumberOfSuccesiveHits & " in a row, recording " & APM_Frequency / Log_PM_Counter / 10 & "Hz")
+                    Else
+                        APM_Frequency_Counter += 1
+                    End If
+                Else
+                    APM_Frequency_Last = StoreCurrentFrequency
+                    APM_Frequency_Counter = 0
+                    'Debug.Print("Ignored...")
+                End If
             End If
 
             ' Logging Data Support for all Firmwares
@@ -364,6 +403,10 @@ Module modFile_Handling
         Loop
 
         Debug.Print("Searched " & TotalDataLines & " datalines to find the parameter and logging details.")
+
+        ' Calculate the final frequency we will display
+        If Log_PM_Counter <> 0 Then APM_Frequency = Int(APM_Frequency / Log_PM_Counter) / 10
+        Log_PM_Counter = 0 'reset this as it is re-used in the main analysis
 
         ' Sanity Check the findings
         If FoundFMT <> True Then

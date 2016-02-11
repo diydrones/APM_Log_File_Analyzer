@@ -231,18 +231,20 @@ Module modMainReadFile
 
 
                         'PM Checks, process manager timings
-
-                        If frmMainForm.chkboxPM.Checked = True Then
-                            If DataArray(0) = "PM" Then
-                                If ReadFileVersion = 3.1 Then
-                                    Call PM_Checks_v3_1()
-                                ElseIf ReadFileVersion = 3.2 Then
+                        If DataArray(0) = "PM" Then
+                            If ReadFileVersion = 3.1 Then
+                                Call PM_Checks_v3_1()
+                            ElseIf ReadFileVersion = 3.2 Then
+                                If SoloFirmwareDetected_v3_2 = False Then
                                     Call PM_Checks_v3_2()
                                 Else
-                                    Call PM_Checks_v3_3()
+                                    Call PM_Checks_Solo_v1_2()
                                 End If
+                            Else
+                                Call PM_Checks_v3_3()
                             End If
                         End If
+
 
                         'DU32 Checks
                         If DataArray(0) = "DU32" Then
