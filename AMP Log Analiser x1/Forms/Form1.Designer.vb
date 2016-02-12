@@ -2603,7 +2603,7 @@ Partial Class frmMainForm
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmMainForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
-        Me.Text = "APM Flight Log Analysis"
+        Me.Text = "APM Log Analyser"
         Me.panAnalysisButtons.ResumeLayout(False)
         Me.panAnalysisButtons.PerformLayout()
         CType(Me.picClickButton, System.ComponentModel.ISupportInitialize).EndInit()
