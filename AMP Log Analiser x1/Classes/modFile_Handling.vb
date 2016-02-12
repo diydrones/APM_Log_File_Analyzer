@@ -688,9 +688,11 @@ Module modFile_Handling
             If FileOpened = True Then
                 .btnAnalyze.Visible = True
                 .picClickButton.Visible = False
+                .Text = "APM Log Analyser: " & strLogFileName
             ElseIf FileOpened = False Then
                 .btnAnalyze.Visible = False
                 .picClickButton.Visible = True
+                .Text = "APM Log Analyser"
             End If
         End With
     End Sub
