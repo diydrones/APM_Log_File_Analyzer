@@ -68,8 +68,10 @@
         End If
         If SeverityLevel = "Error" Then
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": FC Performance " & SeverityLevel & ": This level is classed by the developers as serious and should be investigated further.")
-        ElseIf SeverityLevel = "Warning" Or SeverityLevel = "Information" Then
+        ElseIf SeverityLevel = "Warning" Then
             WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": FC Performance " & SeverityLevel & ": This level is not classed as serious and one off reports can be ignored.")
+        ElseIf SeverityLevel = "Information" Then
+            WriteTextLog(Log_GPS_DateTime & " - " & Format(DataLine, "000000") & ": FC Performance " & SeverityLevel & ": This level is not classed as serious and can be ignored.")
         End If
 
 
