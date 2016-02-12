@@ -555,7 +555,7 @@ Module modDisplay_Functions
             Else
                 LongestRating = 5
             End If
-            ' The Diagnosis, 1=Excellent, 2=Good, 3=Normal, 4=Slightly Overloaded, 5=Overloaded.
+            ' The Diagnosis, 1=Excellent, 2=Good, 3=Normal, 4=Almost Overloaded, 5=Overloaded.
             If LongLoopsRating > LongestRating Then
                 Log_PM_Perf_Rating = LongLoopsRating
             Else
@@ -568,7 +568,7 @@ Module modDisplay_Functions
             ElseIf Log_PM_Perf_Rating = 3 Then
                 Log_PM_Perf_Rating = "Normal"
             ElseIf Log_PM_Perf_Rating = 4 Then
-                Log_PM_Perf_Rating = "Slightly Overloaded"
+                Log_PM_Perf_Rating = "Almost Overloaded"
             Else
                 Log_PM_Perf_Rating = "Overloaded"
             End If
