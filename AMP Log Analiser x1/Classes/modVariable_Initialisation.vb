@@ -112,10 +112,18 @@
         Log_GCS_Attached = False                        'True once we have a valid 100% (PMT = 10) signal from the GCS
         Log_PM_I2CErr = 0                               'the number of I2C errors since the last PM message.
         Log_PM_INSErr = 0                               'MPU6k spi bus errors
+        Log_PM_Counter = 0                              ' Counts the  number of PM datalines to work out the average NLoop value for the HW Clock Hz
         Log_PM_INAVErr = 0
         PM_Delay_Counter = 0                            'Counts each PM log found, PM errors on reported when it reaches > x (default = 3)
         PM_Last_PMT = 10                                'The previous PMT reading before the current reading, used to stop repeats.
         PM_Last_INAVErr = 0                             'The previous INAVErr reading before the current reading, used to stop repeats.
+        Log_PM_Perf_AvgNLon = 0                         ' The Average % of Long Loops
+        Log_PM_Perf_AvgMaxT = 0                         ' The Average MaxT in ms
+        Log_PM_Perf_LastNLon = 0                        ' The Last % of Long Loops
+        Log_PM_Perf_LastMaxT = 0                        ' The Last MaxT in ms
+        Log_PM_HighValue_Counter = 0                    ' Counts the number of high Values in a row.
+        Log_PM_Stability_Counter = 0                    ' Counter to ignore the intial MaxT values.
+        Log_PM_Perf_Rating = ""                         ' The Diagnosis, Low, Below Average, Average, Above Average, High.
 
         'Declare the EV Variables
         Log_Ground_BarAlt = 0                           'Holds the last Barometer Altitude detected during lift off, now driven from EV Data.
@@ -245,6 +253,10 @@
         APM_Version = ""                                'Hold the APM Version Number as reported in the log file
         APM_Frame_Type = 0                              'Holds the APM Frame Type, determined from the Parmeter FRAME 
         APM_Frame_Name = ""                             'The Text Name of the Frame Type
+        APM_Frequency = 0                               ' Holds the APM firmware clock frequncy in Hz
+        APM_Frequency_Counter = 0                       ' Counts the number of successive frequencies.
+        APM_Frequency_Last = 0                          ' Holds the last frequency read.
+        APM_Version = 0                                 ' Holds the APM Version Number as reported in the log file
         APM_No_Motors = 0                               'Holds the number of Motors, determined from the FMT for MOT.
 
         Log_RCOU_Ch1 = 0                                ' The Last Log Result, also passes the Motor Detection % to main analysis.

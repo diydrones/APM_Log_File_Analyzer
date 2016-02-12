@@ -11,7 +11,6 @@ Module modDisplay_Functions
         If InStr(LineText, "Warning:") Then txtColor = Color.Orange
         If InStr(LineText, "Mode") Then txtColor = Color.Aqua
         If InStr(LineText, "Flight Time") Or InStr(LineText, "--") Then txtColor = Color.Aqua
-        If InStr(LineText, "Testing") Then txtColor = Color.LightPink
         If InStr(LineText, "Information") Then txtColor = Color.LightGreen
         If InStr(LineText, "***") Then txtColor = Color.LightPink
         If Mid(LineText, 1, 3) = "$$$" Then
@@ -19,6 +18,7 @@ Module modDisplay_Functions
             LineText = Mid(LineText, 4, Len(LineText) - 3)
             txtColor = Color.LightGreen
         End If
+        If InStr(LineText, "Testing") Then txtColor = Color.LightPink
 
         With frmMainForm.richtxtLogAnalysis
             .SelectionStart = .Text.Length
@@ -175,14 +175,47 @@ Module modDisplay_Functions
         FormatTextLogValuesBattery = LineTemp
     End Function
 
+    Function FormatTextLogValuesPerformance(ByVal Range As String, ByVal Frequency As Integer, ByVal LongLoops As Single, ByVal Longest As Single, ByVal Evaluation As String) As String
+        FormatTextLogValuesPerformance = ""
+        Dim ValueTemp As String = ""
+        Dim LineTemp As String = ""
+
+        ValueTemp = Range
+        ValueTemp = ValueTemp.PadRight(5, " ")
+        LineTemp = LineTemp & ValueTemp
+
+        'APM Frequency, usually 400hz but could be different
+        ValueTemp = Format(Frequency, "###")
+        ValueTemp = ValueTemp.PadLeft(10, " ")
+        LineTemp = LineTemp & ValueTemp
+
+        'Number of Long Loops as a percentage of the total
+        ValueTemp = Format(LongLoops, "0.00")
+        ValueTemp = ValueTemp.PadLeft(15, " ")
+        LineTemp = LineTemp & ValueTemp
+
+        'The longest loop average in ms 
+        ValueTemp = Format(Longest, "0.00")
+        ValueTemp = ValueTemp.PadLeft(17, " ")
+        LineTemp = LineTemp & ValueTemp
+
+        'The Evanulation
+        ValueTemp = Evaluation
+        ValueTemp = ValueTemp.PadLeft(26, " ")
+        LineTemp = LineTemp & ValueTemp
+
+        FormatTextLogValuesPerformance = LineTemp
+    End Function
+
+
     Sub WriteLogFileHeader()
         If ArduVersion <> "" And LogAnalysisHeader = False Then
             LogAnalysisHeader = True
             WriteTextLog("APM Log File Analiser " & MyCurrentVersionNumber)
             WriteTextLog("")
-            WriteTextLog("Log FileName: " & strLogPathFileName)
-            WriteTextLog("Ardu Version: " & ArduVersion & " Build: " & ArduBuild)
-            WriteTextLog("   Ardu Type: " & ArduType)
+            WriteTextLog(" Log FileName: " & strLogPathFileName)
+            WriteTextLog(" Ardu Version: " & ArduVersion & " Build: " & ArduBuild)
+            WriteTextLog("    Ardu Type: " & ArduType)
             If Hardware <> "" Then ' This just checks that the Hardware Parameter line was found before converting to int()
                 Select Case Int(Hardware)
                     Case 0
@@ -207,10 +240,19 @@ Module modDisplay_Functions
             Else
                 Hardware = "Parameter Value Missing"
             End If
-            If Hardware <> "" And APM_Version = "" Then WriteTextLog("    Hardware: " & Hardware)
-            If APM_Free_RAM <> 0 Then WriteTextLog(" HW Free RAM: " & APM_Free_RAM)
-            If APM_Version <> "" Then WriteTextLog("  HW Version: " & APM_Version)
-            If Pixhawk_Serial_Number <> "" Then WriteTextLog("  Serial No.: " & Pixhawk_Serial_Number)
+            If Hardware <> "" And APM_Version = "" Then WriteTextLog("     Hardware: " & Hardware)
+            If APM_Free_RAM <> 0 Then WriteTextLog("  FC Free RAM: " & APM_Free_RAM)
+            If APM_Version <> "" Then WriteTextLog("   FC Version: " & APM_Version)
+            If Pixhawk_Serial_Number <> "" Then WriteTextLog("   Serial No.: " & Pixhawk_Serial_Number)
+            If APM_Frequency <> 0 And PM_Logging = True Then
+                If APM_Frequency = 100 Or APM_Frequency = 400 Then
+                    WriteTextLog(" FC Frequency: " & APM_Frequency & "Hz")
+                Else
+                    WriteTextLog(" FC Frequency: " & APM_Frequency & "Hz - ERROR, review Performance Logs in more detail!")
+                End If
+            Else
+                WriteTextLog(" FC Frequency: Not Available, activate PM logging")
+            End If
             Select Case APM_Frame_Type
                 Case 0
                     APM_Frame_Name = "+"
@@ -228,17 +270,17 @@ Module modDisplay_Functions
                     APM_Frame_Name = "Error: Please update code to determine frame type " & APM_Frame_Type
             End Select
             If APM_No_Motors = 6 Then APM_Frame_Name += " (Hexa)"
-            If APM_Frame_Name <> "" Then WriteTextLog("  Frame Type: " & APM_Frame_Name)
+            If APM_Frame_Name <> "" Then WriteTextLog("   Frame Type: " & APM_Frame_Name)
             If APM_No_Motors <> 0 Then
-                WriteTextLog("     Testing: Motor Detection Analysis Results:-")
-                WriteTextLog("     Testing: ┌-----------------------------------------┐")
-                WriteTextLog("     Testing: |  Ch1 = " & Format(Log_RCOU_Ch1, "000") & "% |  Ch2 = " & Format(Log_RCOU_Ch2, "000") & "% |  Ch3 = " & Format(Log_RCOU_Ch3, "000") & "% |")
-                WriteTextLog("     Testing: |  Ch4 = " & Format(Log_RCOU_Ch4, "000") & "% |  Ch5 = " & Format(Log_RCOU_Ch5, "000") & "% |  Ch6 = " & Format(Log_RCOU_Ch6, "000") & "% |")
-                WriteTextLog("     Testing: |  Ch7 = " & Format(Log_RCOU_Ch7, "000") & "% |  Ch8 = " & Format(Log_RCOU_Ch8, "000") & "% |  Ch9 = " & Format(Log_RCOU_Ch9, "000") & "% |")
-                WriteTextLog("     Testing: | Ch10 = " & Format(Log_RCOU_Ch10, "000") & "% | Ch11 = " & Format(Log_RCOU_Ch11, "000") & "% | Ch12 = " & Format(Log_RCOU_Ch12, "000") & "% |")
-                WriteTextLog("     Testing: └-----------------------------------------┘")
-                WriteTextLog("     Testing: Sampled " & MotorDetec_Counter_RCOU & " Channel Output Readings")
-                WriteTextLog("  No. Motors: " & APM_No_Motors)
+                WriteTextLog("      Testing: Motor Detection Analysis Results:-")
+                WriteTextLog("      Testing: ┌-----------------------------------------┐")
+                WriteTextLog("      Testing: |  Ch1 = " & Format(Log_RCOU_Ch1, "000") & "% |  Ch2 = " & Format(Log_RCOU_Ch2, "000") & "% |  Ch3 = " & Format(Log_RCOU_Ch3, "000") & "% |")
+                WriteTextLog("      Testing: |  Ch4 = " & Format(Log_RCOU_Ch4, "000") & "% |  Ch5 = " & Format(Log_RCOU_Ch5, "000") & "% |  Ch6 = " & Format(Log_RCOU_Ch6, "000") & "% |")
+                WriteTextLog("      Testing: |  Ch7 = " & Format(Log_RCOU_Ch7, "000") & "% |  Ch8 = " & Format(Log_RCOU_Ch8, "000") & "% |  Ch9 = " & Format(Log_RCOU_Ch9, "000") & "% |")
+                WriteTextLog("      Testing: | Ch10 = " & Format(Log_RCOU_Ch10, "000") & "% | Ch11 = " & Format(Log_RCOU_Ch11, "000") & "% | Ch12 = " & Format(Log_RCOU_Ch12, "000") & "% |")
+                WriteTextLog("      Testing: └-----------------------------------------┘")
+                WriteTextLog("      Testing: Sampled " & MotorDetec_Counter_RCOU & " Channel Output Readings")
+                WriteTextLog("   No. Motors: " & APM_No_Motors)
             End If
             WriteTextLog("")
             'Display what Data Types were found in the log file.
@@ -407,7 +449,7 @@ Module modDisplay_Functions
                 WriteTextLog(" * Altitude above launch estimated from GPS Data, enable CTUN for accurate borometer data!")
             End If
             If Log_Mode_Min_NSats < 9 Then
-                WriteTextLog("WARNING: Less than 9 Satellites was detected during this mode.")
+                WriteTextLog("Warning: Less than 9 Satellites was detected during this mode.")
             End If
             If Log_Mode_Min_HDop > 2 Then
                 WriteTextLog("WARNING: A HDop of greater than 2 was detected during this mode.")
@@ -483,10 +525,68 @@ Module modDisplay_Functions
         If Log_GPS_Min_HDop > 2 Then
             WriteTextLog("WARNING: A HDop of greater than 2 was detected during this mode.")
         End If
-        WriteTextLog("")
+
+
+        ' Only display this if PM logging has been performed.
+        If PM_Logging = True Then
+            Dim LongLoops As Single = Format(Log_PM_Perf_AvgNLon / Log_PM_Counter, "0.00")
+            Dim Longest As Single = Format(Log_PM_Perf_AvgMaxT / Log_PM_Counter, "0.00")
+            Dim LongLoopsRating As Integer = 0
+            Dim LongestRating As Integer = 0
+            If LongLoops <= 5 Then
+                LongLoopsRating = 1
+            ElseIf LongLoops <= 8 Then
+                LongLoopsRating = 2
+            ElseIf LongLoops <= 11 Then
+                LongLoopsRating = 3
+            ElseIf LongLoops <= 15 Then
+                LongLoopsRating = 4
+            Else
+                LongLoopsRating = 5
+            End If
+            If Longest <= 5 Then
+                LongestRating = 1
+            ElseIf Longest <= 10 Then
+                LongestRating = 2
+            ElseIf Longest <= 15 Then
+                LongestRating = 3
+            ElseIf Longest <= 20 Then
+                LongestRating = 4
+            Else
+                LongestRating = 5
+            End If
+            ' The Diagnosis, 1=Excellent, 2=Good, 3=Normal, 4=Almost Overloaded, 5=Overloaded.
+            If LongLoopsRating > LongestRating Then
+                Log_PM_Perf_Rating = LongLoopsRating
+            Else
+                Log_PM_Perf_Rating = LongestRating
+            End If
+            If Log_PM_Perf_Rating = 1 Then
+                Log_PM_Perf_Rating = "Excellent"
+            ElseIf Log_PM_Perf_Rating = 2 Then
+                Log_PM_Perf_Rating = "Good"
+            ElseIf Log_PM_Perf_Rating = 3 Then
+                Log_PM_Perf_Rating = "Normal"
+            ElseIf Log_PM_Perf_Rating = 4 Then
+                Log_PM_Perf_Rating = "Almost Overloaded"
+            Else
+                Log_PM_Perf_Rating = "Overloaded"
+            End If
+
+
+            WriteTextLog("")
+            WriteTextLog("Flight Controller Performance Summary:")
+            WriteTextLog("          Freq(Hz)     LongLoops(%)   LongLoop(ms)    Analyser Evaluation")
+            WriteTextLog(FormatTextLogValuesPerformance("Avg", APM_Frequency, LongLoops, Longest, Log_PM_Perf_Rating))
+            If APM_Frequency <> 400 Then
+                WriteTextLog("Information: Non-Default HW Frequency detected, Analyser Evaluation may be effected.")
+            End If
+        End If
+
 
         'Only display this if CURR logging has been performed.
         If CURR_Logging = True Then
+            WriteTextLog("")
             WriteTextLog("Power Summary:")
             ' New Power Summary Dec 2015 KXG
             WriteTextLog("       Battery(V)        Vcc(V)        Current(A)        Cap(mAh)        Used Cap(mAh)    Eff(mA/mim)    Max Fly 80%(mins)")

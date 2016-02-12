@@ -27,6 +27,9 @@ Module modVariable_Declarations
     Public APM_Version As String = 0                            ' Hold the APM Version Number as reported in the log file
     Public APM_Frame_Type As Single = 0                         ' Holds the APM Frame Type, determined from the Parmeter FRAME
     Public APM_Frame_Name As String = ""                        ' The Text Name of the Frame Type
+    Public APM_Frequency As Double = 0                          ' Holds the APM firmware clock frequncy in Hz
+    Public APM_Frequency_Counter As Integer = 0                 ' Counts the number of successive frequencies. 
+    Public APM_Frequency_Last As Integer = 0                    ' Holds the last frequency read.
     Public APM_No_Motors As Integer = 0                         ' Holds the number of Motors, determined from the FMT for MOT.
     '                                                           ' or for v3.2 a calculation based on similar RCOUT datalines.
 
@@ -240,10 +243,19 @@ Module modVariable_Declarations
     Public Log_GCS_Attached As Boolean = False                  ' True once we have a valid 100% (PMT = 10) signal from the GCS
     Public Log_PM_I2CErr As Integer = 0                         ' the number of I2C errors since the last PM message.
     Public Log_PM_INSErr As Integer = 0                         ' MPU6k spi bus errors
+    Public Log_PM_Counter As Integer = 0                        ' Counts the  number of PM datalines to work out the average NLoop value for the HW Clock Hz
     Public Log_PM_INAVErr As Integer = 0                        ' Counts the number of Navigation Errors during flight
     Public PM_Delay_Counter As Integer = 0                      ' Counts each PM log found, PM errors on reported when it reaches > x (default = 3)
     Public PM_Last_PMT As Integer = 10                          ' The previous PMT reading before the current reading, used to stop repeats.
     Public PM_Last_INAVErr As Integer = 0                       ' The previous INAVErr reading before the current reading, used to stop repeats.
+    Public Log_PM_Perf_AvgNLon As Single = 0                    ' The Average % of Long Loops
+    Public Log_PM_Perf_AvgMaxT As Single = 0                    ' The Average MaxT in ms
+    Public Log_PM_Perf_LastNLon As Single = 0                   ' The Last % of Long Loops
+    Public Log_PM_Perf_LastMaxT As Single = 0                   ' The Last MaxT in ms
+    Public Log_PM_HighValue_Counter As Integer = 0              ' Counts the number of high Values in a row.
+    Public Log_PM_Stability_Counter As Integer = 0              ' Counter to ignore the intial MaxT values.
+    Public Log_PM_Perf_Rating As String = ""                    ' The Diagnosis, Good, Below Average, Average, Above Average, Overload.
+
 
     'Declare the EV Variables
     Public Log_EV_ID As Integer = 0                             ' Holds the Event ID to be passed to the main analysis.
